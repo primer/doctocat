@@ -1,0 +1,29 @@
+{
+  "name": "gatsby-theme-primer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "gatsby": "^2.10.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "peerDependencies": {
+    "gatsby": "2.x",
+    "react": "16.8.x",
+    "react-dom": "16.8.x"
+  },
+  "dependencies": {
+    "@githubprimer/octicons-react": "^8.5.0",
+    "@mdx-js/mdx": "^1.0.21",
+    "@mdx-js/react": "^1.0.21",
+    "@primer/components": "^13.0.0",
+    "gatsby-mdx": "^0.6.3",
+    "gatsby-plugin-page-creator": "^2.1.1",
+    "gatsby-source-filesystem": "^2.1.0",
+    "gatsby-transformer-yaml": "^2.2.0",
+    "lodash-es": "^4.17.11",
+    "sentence-case": "^2.1.1",
+    "styled-components": "^4.3.2"
+  }
+}
