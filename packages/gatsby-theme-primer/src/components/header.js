@@ -1,4 +1,4 @@
-import {MarkGithub} from '@githubprimer/octicons-react'
+import {MarkGithub} from '@primer/octicons-react'
 import {Flex, Sticky, StyledOcticon, Link} from '@primer/components'
 import React from 'react'
 import {Link as GatsbyLink} from 'gatsby'
