@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-primer",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -22,8 +22,6 @@
     "gatsby-plugin-page-creator": "^2.1.1",
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-transformer-yaml": "^2.2.0",
-    "lodash-es": "^4.17.11",
-    "sentence-case": "^2.1.1",
     "styled-components": "^4.3.2"
   }
 }
