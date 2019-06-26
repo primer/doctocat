@@ -1,4 +1,4 @@
-# Gatsby Theme Primer
+# Primer Gatsby Theme
 
 ⚠️ DO NOT USE. This is an experiment.
 
