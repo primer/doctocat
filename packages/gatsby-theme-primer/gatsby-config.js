@@ -21,6 +21,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'pages',
+        path: path.resolve('./src/pages'),
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'nav',
         path: path.resolve('./src/data/nav.yml'),
       },

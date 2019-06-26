@@ -1,6 +1,6 @@
+import {BaseStyles, Box, Flex} from '@primer/components'
 import React from 'react'
 import Header from './header'
-import {BaseStyles, Box, Flex} from '@primer/components'
 import Sidebar from './sidebar'
 
 function Layout({children}) {
