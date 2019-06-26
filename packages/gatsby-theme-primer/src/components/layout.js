@@ -3,16 +3,18 @@ import Header from './header'
 import {BaseStyles, Box, Flex} from '@primer/components'
 import Sidebar from './sidebar'
 
-export default ({children}) => (
-  <BaseStyles>
-    <Header />
-    <Flex flexDirection={['column', 'column', 'row']}>
-      <Flex.Item flex="0 0 auto" width={['100%', '100%', 300]}>
+function Layout({children}) {
+  return (
+    <BaseStyles>
+      <Header />
+      <Flex>
         <Sidebar />
-      </Flex.Item>
-      <Box width="100%" maxWidth={960} p={5} mx="auto">
-        {children}
-      </Box>
-    </Flex>
-  </BaseStyles>
-)
+        <Box width="100%" maxWidth={960} p={5} mx="auto">
+          {children}
+        </Box>
+      </Flex>
+    </BaseStyles>
+  )
+}
+
+export default Layout
