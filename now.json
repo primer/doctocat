@@ -3,9 +3,10 @@
   "name": "gatsby-theme-primer-example",
   "builds": [
     {
-      "src": "package.json",
+      "src": "packages/example/package.json",
       "use": "@now/static-build",
       "config": {"distDir": "public"}
     }
-  ]
+  ],
+  "routes": [{"src": "/(.*)", "dest": "/packages/example/$1"}]
 }
