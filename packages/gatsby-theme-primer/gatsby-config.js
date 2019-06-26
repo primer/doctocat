@@ -1,28 +1,28 @@
-const path = require(`path`)
+const path = require('path')
 
 module.exports = {
   plugins: [
-    `gatsby-plugin-styled-components`,
-    `gatsby-transformer-yaml`,
+    'gatsby-plugin-styled-components',
+    'gatsby-transformer-yaml',
     {
-      resolve: `gatsby-mdx`,
+      resolve: 'gatsby-mdx',
       options: {
         defaultLayouts: {
-          default: require.resolve(`./src/components/layout.js`),
+          default: require.resolve('./src/components/layout.js'),
         },
       },
     },
     {
-      resolve: `gatsby-plugin-page-creator`,
+      resolve: 'gatsby-plugin-page-creator',
       options: {
-        path: path.join(__dirname, `src/pages`),
+        path: path.join(__dirname, 'src/pages'),
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `nav`,
-        path: path.resolve(`./src/data/nav.yml`),
+        name: 'nav',
+        path: path.resolve('./src/data/nav.yml'),
       },
     },
   ],
