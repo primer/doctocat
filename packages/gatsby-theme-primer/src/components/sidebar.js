@@ -20,7 +20,7 @@ function Sidebar() {
   `)
 
   return (
-    <Flex flexDirection="column" p={4}>
+    <Flex flexDirection="column" width="100%" p={4} bg="gray.1">
       {data.allNavYaml.nodes.map(node => (
         <React.Fragment key={node.id}>
           <Link to={node.path} py={1}>
