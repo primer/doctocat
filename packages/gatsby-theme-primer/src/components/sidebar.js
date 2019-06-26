@@ -1,4 +1,4 @@
-import {Flex, Text} from '@primer/components'
+import {Flex} from '@primer/components'
 import {graphql, Link, useStaticQuery} from 'gatsby'
 import React from 'react'
 
