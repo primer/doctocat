@@ -1,3 +1,3 @@
 module.exports = {
-  __experimentalThemes: [`gatsby-theme-primer`],
+  __experimentalThemes: ['gatsby-theme-primer'],
 }
