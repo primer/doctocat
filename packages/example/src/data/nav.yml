@@ -1,10 +1,12 @@
+- title: Getting started
+  path: /getting-started
 - title: Components
-  href: /components
-  items:
+  path: /components
+  pages:
     - title: Alerts
-      href: /components/alerts
+      path: /components/alerts
 - title: Utilities
-  href: /utilities
-  items:
+  path: /utilities
+  pages:
     - title: Padding
-      href: /utilities/padding
+      path: /utilities/padding

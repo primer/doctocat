@@ -1,5 +1,5 @@
-import {Flex, Link} from '@primer/components'
-import {graphql, Link as GatsbyLink, useStaticQuery} from 'gatsby'
+import {Flex, Text} from '@primer/components'
+import {graphql, Link, useStaticQuery} from 'gatsby'
 import React from 'react'
 
 function Sidebar() {
@@ -9,10 +9,10 @@ function Sidebar() {
         nodes {
           id
           title
-          href
-          items {
+          path
+          pages {
             title
-            href
+            path
           }
         }
       }
@@ -20,17 +20,17 @@ function Sidebar() {
   `)
 
   return (
-    <Flex flexDirection="column" width="100%" height="100%" p={4} bg="gray.1">
+    <Flex flexDirection="column" p={4}>
       {data.allNavYaml.nodes.map(node => (
         <React.Fragment key={node.id}>
-          <Link as={GatsbyLink} to={node.href} py={1}>
+          <Link to={node.path} py={1}>
             {node.title}
           </Link>
-          {node.items ? (
+          {node.pages ? (
             <Flex flexDirection="column" pl={3}>
-              {node.items.map(item => (
-                <Link key={item.title} as={GatsbyLink} to={item.href} py={1}>
-                  {item.title}
+              {node.pages.map(page => (
+                <Link key={page.title} to={page.path} py={1}>
+                  {page.title}
                 </Link>
               ))}
             </Flex>
