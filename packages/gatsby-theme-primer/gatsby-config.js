@@ -2,6 +2,7 @@ const path = require(`path`)
 
 module.exports = {
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-mdx`,
