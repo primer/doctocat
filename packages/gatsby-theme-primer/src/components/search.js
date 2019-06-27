@@ -63,12 +63,14 @@ function Search() {
         getRootProps,
         isOpen,
         highlightedIndex,
+        clearSelection,
       }) => (
         <Position position="relative" {...getRootProps()}>
           <TextInput
             {...getInputProps({
               type: 'search',
               placeholder: 'Search',
+              onChange: () => clearSelection(),
             })}
           />
           {isOpen ? (
