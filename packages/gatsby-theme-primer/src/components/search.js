@@ -1,6 +1,6 @@
 import {BorderBox, Position, TextInput} from '@primer/components'
 import Downshift from 'downshift'
-import {useStaticQuery, navigateTo} from 'gatsby'
+import {navigate, useStaticQuery} from 'gatsby'
 import lunr from 'lunr'
 import React from 'react'
 import SearchResults from './search-results'
@@ -51,8 +51,10 @@ function Search() {
       inputValue={query}
       onInputValueChange={inputValue => setQuery(inputValue)}
       onSelect={item => {
-        setQuery('')
-        navigateTo(documentsById[item.ref].frontmatter.path)
+        if (item) {
+          setQuery('')
+          navigate(documentsById[item.ref].frontmatter.path)
+        }
       }}
       itemToString={item => (item ? item.ref : '')}
     >
