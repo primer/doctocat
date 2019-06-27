@@ -1,6 +1,7 @@
 import {Box, Flex, Text} from '@primer/components'
 import {Link} from 'gatsby'
 import React from 'react'
+import sentenceCase from 'sentence-case'
 
 function SearchResults({results, getItemProps, highlightedIndex}) {
   if (results.length === 0) {
@@ -28,10 +29,14 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         style: {textDecoration: 'none'},
       })}
     >
-      {item.title}
       <Text fontSize={0} color="gray.7">
-        {item.path}
+        {item.path
+          .split('/')
+          .filter(Boolean)
+          .map(sentenceCase)
+          .join(' / ') || '/'}
       </Text>
+      {item.title}
     </Flex>
   ))
 }
