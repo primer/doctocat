@@ -90,7 +90,7 @@ function useSearch(query) {
       title: node.frontmatter.title,
       rawBody: node.rawBody,
     })),
-    {keys: ['title', 'rawBody']},
+    {threshold: 0.2, keys: ['title', 'rawBody'], tokenize: true},
   )
 
   React.useEffect(() => {
