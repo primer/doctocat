@@ -13,16 +13,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-page-creator',
-      options: {
-        path: path.join(__dirname, 'src/pages'),
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'pages',
-        path: path.resolve('./src/pages'),
+        name: 'docs',
+        path: path.resolve('./src/docs'),
       },
     },
     {
