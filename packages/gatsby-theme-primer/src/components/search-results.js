@@ -1,4 +1,5 @@
 import {Box, Flex, Text} from '@primer/components'
+import {Link} from 'gatsby'
 import React from 'react'
 
 function SearchResults({
@@ -21,10 +22,15 @@ function SearchResults({
         key: item.ref,
         index,
         item,
+        as: Link,
+        to: documentsById[item.ref].frontmatter.path,
+        tabIndex: -1,
         flexDirection: 'column',
         px: 3,
         py: 2,
+        color: 'inherit',
         bg: highlightedIndex === index ? 'gray.2' : 'transparent',
+        style: {textDecoration: 'none'},
       })}
     >
       {documentsById[item.ref].frontmatter.title}
