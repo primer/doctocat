@@ -4,7 +4,6 @@ import Header from './header'
 import Sidebar from './sidebar'
 
 function Layout({children, ...props}) {
-  console.log(props)
   return (
     <BaseStyles>
       <Flex flexDirection="column" minHeight="100vh">
