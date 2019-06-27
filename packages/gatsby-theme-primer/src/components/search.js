@@ -10,29 +10,39 @@ function Search() {
     {
       allMdx {
         nodes {
-          id
+          fileAbsolutePath
           frontmatter {
             title
-            path
           }
           rawBody
+        }
+      }
+      allSitePage {
+        nodes {
+          componentPath
+          path
+          context {
+            frontmatter {
+              title
+            }
+          }
         }
       }
     }
   `)
 
-  const documentsById = data.allMdx.nodes.reduce((acc, node) => {
-    acc[node.id] = node
+  const pages = data.allSitePage.nodes.reduce((acc, node) => {
+    acc[node.componentPath] = node
     return acc
   }, {})
 
   const lunrIndex = lunr(function() {
-    this.ref('id')
+    this.ref('fileAbsolutePath')
     this.field('title')
     this.field('rawBody')
     data.allMdx.nodes.forEach(node => {
       this.add({
-        id: node.id,
+        fileAbsolutePath: node.fileAbsolutePath,
         title: node.frontmatter.title,
         rawBody: node.rawBody,
       })
@@ -46,6 +56,8 @@ function Search() {
     setResults(lunrIndex.search(`${query}*`))
   }, [query])
 
+  console.log(results)
+
   return (
     <Downshift
       inputValue={query}
@@ -53,7 +65,7 @@ function Search() {
       onSelect={item => {
         if (item) {
           setQuery('')
-          navigate(documentsById[item.ref].frontmatter.path)
+          navigate(pages[item.ref].path)
         }
       }}
       itemToString={item => (item ? item.ref : '')}
@@ -80,7 +92,7 @@ function Search() {
               <BorderBox minWidth={300} boxShadow="medium" bg="white">
                 <SearchResults
                   results={results}
-                  documentsById={documentsById}
+                  pages={pages}
                   getItemProps={getItemProps}
                   highlightedIndex={highlightedIndex}
                 />
