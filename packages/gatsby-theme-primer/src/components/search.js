@@ -1,6 +1,6 @@
 import {BorderBox, Position, TextInput} from '@primer/components'
 import Downshift from 'downshift'
-import {useStaticQuery} from 'gatsby'
+import {useStaticQuery, navigateTo} from 'gatsby'
 import lunr from 'lunr'
 import React from 'react'
 import SearchResults from './search-results'
@@ -13,6 +13,7 @@ function Search() {
           id
           frontmatter {
             title
+            path
           }
           rawBody
         }
@@ -20,11 +21,21 @@ function Search() {
     }
   `)
 
+  const documentsById = data.allMdx.nodes.reduce((acc, node) => {
+    acc[node.id] = node
+    return acc
+  }, {})
+
   const lunrIndex = lunr(function() {
-    this.ref('title')
+    this.ref('id')
+    this.field('title')
     this.field('rawBody')
     data.allMdx.nodes.forEach(node => {
-      this.add({title: node.frontmatter.title, rawBody: node.rawBody})
+      this.add({
+        id: node.id,
+        title: node.frontmatter.title,
+        rawBody: node.rawBody,
+      })
     })
   })
 
@@ -32,14 +43,17 @@ function Search() {
   const [results, setResults] = React.useState([])
 
   React.useEffect(() => {
-    setResults(lunrIndex.search(query))
+    setResults(lunrIndex.search(`${query}*`))
   }, [query])
 
   return (
     <Downshift
       inputValue={query}
       onInputValueChange={inputValue => setQuery(inputValue)}
-      onChange={selection => console.log(`You selected ${selection.ref}`)}
+      onSelect={item => {
+        setQuery('')
+        navigateTo(documentsById[item.ref].frontmatter.path)
+      }}
       itemToString={item => (item ? item.ref : '')}
     >
       {({
@@ -62,6 +76,7 @@ function Search() {
               <BorderBox minWidth={300} boxShadow="medium" bg="white">
                 <SearchResults
                   results={results}
+                  documentsById={documentsById}
                   getItemProps={getItemProps}
                   highlightedIndex={highlightedIndex}
                 />

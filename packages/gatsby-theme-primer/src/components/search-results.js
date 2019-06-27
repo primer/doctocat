@@ -1,7 +1,12 @@
-import {Box, Flex} from '@primer/components'
+import {Box, Flex, Text} from '@primer/components'
 import React from 'react'
 
-function SearchResults({results, getItemProps, highlightedIndex}) {
+function SearchResults({
+  results,
+  documentsById,
+  getItemProps,
+  highlightedIndex,
+}) {
   if (results.length === 0) {
     return (
       <Box px={3} py={2}>
@@ -16,12 +21,16 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         key: item.ref,
         index,
         item,
+        flexDirection: 'column',
         px: 3,
         py: 2,
         bg: highlightedIndex === index ? 'gray.2' : 'transparent',
       })}
     >
-      {item.ref}
+      {documentsById[item.ref].frontmatter.title}
+      <Text fontSize={0} color="gray.7">
+        {documentsById[item.ref].frontmatter.path}
+      </Text>
     </Flex>
   ))
 }
