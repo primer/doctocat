@@ -2,7 +2,7 @@ import {Box, Flex, Text} from '@primer/components'
 import {Link} from 'gatsby'
 import React from 'react'
 
-function SearchResults({results, pages, getItemProps, highlightedIndex}) {
+function SearchResults({results, getItemProps, highlightedIndex}) {
   if (results.length === 0) {
     return (
       <Box px={3} py={2}>
@@ -18,7 +18,7 @@ function SearchResults({results, pages, getItemProps, highlightedIndex}) {
         index,
         item,
         as: Link,
-        to: pages[item.ref].path,
+        to: item.path,
         tabIndex: -1,
         flexDirection: 'column',
         px: 3,
@@ -28,9 +28,9 @@ function SearchResults({results, pages, getItemProps, highlightedIndex}) {
         style: {textDecoration: 'none'},
       })}
     >
-      {pages[item.ref].context.frontmatter.title}
+      {item.title}
       <Text fontSize={0} color="gray.7">
-        {pages[item.ref].path}
+        {item.path}
       </Text>
     </Flex>
   ))
