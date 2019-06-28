@@ -1,9 +1,9 @@
+import {BaseStyles, Box, Flex, Heading} from '@primer/components'
 import React from 'react'
 import Header from './header'
-import {BaseStyles, Box, Flex} from '@primer/components'
 import Sidebar from './sidebar'
 
-function Layout({children}) {
+function Layout({children, ...props}) {
   return (
     <BaseStyles>
       <Flex flexDirection="column" minHeight="100vh">
@@ -13,6 +13,7 @@ function Layout({children}) {
             <Sidebar />
           </Flex>
           <Box width="100%" maxWidth={960} p={5} mx="auto">
+            <Heading>{props.pageContext.frontmatter.title}</Heading>
             {children}
           </Box>
         </Flex>
