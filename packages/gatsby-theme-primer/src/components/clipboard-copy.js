@@ -16,6 +16,7 @@ function ClipboardCopy({value}) {
 
   return (
     <Button
+      aria-label="Copy to clipboard"
       onClick={() => {
         copy(value)
         setCopied(true)
