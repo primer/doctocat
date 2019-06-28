@@ -8,7 +8,7 @@ function Code({className, children}) {
   const language = className ? className.replace(/language-/, '') : null
   return (
     <Relative>
-      <Absolute top={8} right={8}>
+      <Absolute top={0} right={0} p={2}>
         <ClipboardCopy value={children} />
       </Absolute>
       <Highlight
