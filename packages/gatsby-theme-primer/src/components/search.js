@@ -57,8 +57,6 @@ function Search() {
 }
 
 function useSearch(query) {
-  const [results, setResults] = React.useState([])
-
   const data = useStaticQuery(graphql`
     {
       allMdx {
@@ -79,19 +77,32 @@ function useSearch(query) {
     }
   `)
 
-  const pages = data.allSitePage.nodes.reduce((acc, node) => {
-    acc[node.componentPath] = node
-    return acc
-  }, {})
-
-  const fuse = new Fuse(
-    data.allMdx.nodes.map(node => ({
-      path: pages[node.fileAbsolutePath].path,
-      title: node.frontmatter.title,
-      rawBody: node.rawBody,
-    })),
-    {threshold: 0.2, keys: ['title', 'rawBody'], tokenize: true},
+  const pages = React.useMemo(
+    () =>
+      data.allSitePage.nodes.reduce((acc, node) => {
+        acc[node.componentPath] = node
+        return acc
+      }, {}),
+    [data],
   )
+
+  const list = React.useMemo(
+    () =>
+      data.allMdx.nodes.map(node => ({
+        path: pages[node.fileAbsolutePath].path,
+        title: node.frontmatter.title,
+        rawBody: node.rawBody,
+      })),
+    [data, pages],
+  )
+
+  const fuse = new Fuse(list, {
+    threshold: 0.2,
+    keys: ['title', 'rawBody'],
+    tokenize: true,
+  })
+
+  const [results, setResults] = React.useState([])
 
   React.useEffect(() => {
     setResults(fuse.search(query))
