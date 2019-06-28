@@ -1,4 +1,4 @@
-import {BorderBox, Text, Relative, Absolute, Flex} from '@primer/components'
+import {Absolute, BorderBox, Relative, Text} from '@primer/components'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/github'
 import React from 'react'
