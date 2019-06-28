@@ -1,5 +1,6 @@
+
 import {MDXProvider} from '@mdx-js/react'
-import {BaseStyles, Box, Flex, Link} from '@primer/components'
+import {BaseStyles, Box, Flex, Link, Heading} from '@primer/components'
 import React from 'react'
 import Code from './code'
 import Header from './header'
@@ -11,7 +12,7 @@ const components = {
   code: Code,
 }
 
-function Layout({children}) {
+function Layout({children, ...props}) {
   return (
     <MDXProvider components={components}>
       <BaseStyles>
@@ -22,6 +23,7 @@ function Layout({children}) {
               <Sidebar />
             </Flex>
             <Box width="100%" maxWidth={960} p={5} mx="auto">
+              <Heading>{props.pageContext.frontmatter.title}</Heading>
               {children}
             </Box>
           </Flex>

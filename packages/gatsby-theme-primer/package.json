@@ -18,12 +18,15 @@
     "@mdx-js/react": "^1.0.21",
     "@primer/components": "^13.1.0",
     "@primer/octicons-react": "^9.1.1",
+    "downshift": "^3.2.10",
+    "fuse.js": "^3.4.5",
     "gatsby-mdx": "^0.6.3",
     "gatsby-plugin-page-creator": "^2.1.1",
     "gatsby-plugin-styled-components": "^3.1.0",
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-transformer-yaml": "^2.2.0",
     "prism-react-renderer": "^0.1.7",
+    "sentence-case": "^2.1.1",
     "styled-components": "^4.3.2"
   }
 }
