@@ -1,20 +1,32 @@
 import {Absolute, BorderBox, Box, Relative, Text} from '@primer/components'
 import Highlight, {defaultProps} from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/github'
-import React from 'react'
+import githubTheme from 'prism-react-renderer/themes/github'
+import React, {useContext} from 'react'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
+import {ThemeContext} from 'styled-components'
 import ClipboardCopy from './clipboard-copy'
 
 function Code({className, children, live}) {
+  const theme = useContext(ThemeContext)
   const language = className ? className.replace(/language-/, '') : null
 
   if (live) {
     return (
       <BorderBox mb={3} css={{overflow: 'hidden'}}>
         <LiveProvider code={children.trim()}>
-          <Box as={LivePreview} p={3} />
+          <Box p={3}>
+            <LivePreview />
+          </Box>
           <Relative>
-            <LiveEditor theme={theme} />
+            <LiveEditor
+              theme={githubTheme}
+              ignoreTabKey={true}
+              padding={theme.space[3]}
+              style={{
+                fontFamily: theme.fonts.mono,
+                fontSize: theme.fontSizes[1],
+              }}
+            />
             <Absolute top={8} right={8}>
               <ClipboardCopy value={children} />
             </Absolute>
@@ -26,7 +38,7 @@ function Code({className, children, live}) {
             fontFamily="mono"
             fontSize={1}
             color="white"
-            bg="red.6"
+            bg="red.5"
           />
         </LiveProvider>
       </BorderBox>
@@ -42,7 +54,7 @@ function Code({className, children, live}) {
         {...defaultProps}
         code={children.trim()}
         language={language}
-        theme={theme}
+        theme={githubTheme}
       >
         {({className, style, tokens, getLineProps, getTokenProps}) => (
           <BorderBox
