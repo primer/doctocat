@@ -8,7 +8,7 @@ import Sidebar from './sidebar'
 
 const components = {
   a: Link,
-  pre: 'div',
+  pre: props => props.children,
   code: Code,
 }
 
