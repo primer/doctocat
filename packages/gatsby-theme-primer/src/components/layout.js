@@ -7,11 +7,13 @@ import Header from './header'
 import Sidebar from './sidebar'
 import Table from './table'
 import Image from './image'
+import InlineCode from './inline-code'
 
 const components = {
   a: Link,
   pre: props => props.children,
   code: Code,
+  inlineCode: InlineCode,
   table: Table,
   img: Image,
 }
