@@ -10,6 +10,7 @@ import Image from './image'
 import InlineCode from './inline-code'
 import Paragraph from './paragraph'
 import HorizontalRule from './horizontal-rule'
+import Blockquote from './blockquote'
 
 const components = {
   a: Link,
@@ -20,6 +21,7 @@ const components = {
   img: Image,
   p: Paragraph,
   hr: HorizontalRule,
+  blockquote: Blockquote,
 }
 
 function Layout({children, ...props}) {
