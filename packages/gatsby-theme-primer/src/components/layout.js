@@ -6,12 +6,14 @@ import Code from './code'
 import Header from './header'
 import Sidebar from './sidebar'
 import Table from './table'
+import Image from './image'
 
 const components = {
   a: Link,
   pre: props => props.children,
   code: Code,
   table: Table,
+  img: Image,
 }
 
 function Layout({children, ...props}) {
