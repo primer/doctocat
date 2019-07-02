@@ -5,11 +5,13 @@ import {ThemeProvider} from 'styled-components'
 import Code from './code'
 import Header from './header'
 import Sidebar from './sidebar'
+import Table from './table'
 
 const components = {
   a: Link,
   pre: props => props.children,
   code: Code,
+  table: Table,
 }
 
 function Layout({children, ...props}) {
