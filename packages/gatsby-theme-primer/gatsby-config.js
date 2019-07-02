@@ -4,6 +4,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-transformer-yaml',
+    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-mdx',
       options: {

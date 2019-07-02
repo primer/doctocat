@@ -1,5 +1,6 @@
 import {MDXProvider} from '@mdx-js/react'
 import {BaseStyles, Box, Flex, Heading, Link, theme} from '@primer/components'
+import '@primer/css/markdown/index.scss'
 import React from 'react'
 import {ThemeProvider} from 'styled-components'
 import Code from './code'
@@ -23,7 +24,13 @@ function Layout({children, ...props}) {
               <Flex minWidth={240}>
                 <Sidebar />
               </Flex>
-              <Box width="100%" maxWidth={960} p={5} mx="auto">
+              <Box
+                className="markdown-body"
+                width="100%"
+                maxWidth={960}
+                p={5}
+                mx="auto"
+              >
                 <Heading>{props.pageContext.frontmatter.title}</Heading>
                 {children}
               </Box>
