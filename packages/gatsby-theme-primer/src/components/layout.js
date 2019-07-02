@@ -9,6 +9,7 @@ import Table from './table'
 import Image from './image'
 import InlineCode from './inline-code'
 import Paragraph from './paragraph'
+import HorizontalRule from './horizontal-rule'
 
 const components = {
   a: Link,
@@ -18,6 +19,7 @@ const components = {
   table: Table,
   img: Image,
   p: Paragraph,
+  hr: HorizontalRule,
 }
 
 function Layout({children, ...props}) {
