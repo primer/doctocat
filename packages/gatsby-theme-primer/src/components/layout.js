@@ -1,17 +1,17 @@
 import {MDXProvider} from '@mdx-js/react'
-import {BaseStyles, Box, Flex, Heading, Link, theme} from '@primer/components'
+import {BaseStyles, Box, Flex, Link, theme} from '@primer/components'
 import React from 'react'
 import {ThemeProvider} from 'styled-components'
+import Blockquote from './blockquote'
 import Code from './code'
 import Header from './header'
-import Sidebar from './sidebar'
-import Table from './table'
+import {H1, H2, H3, H4, H5, H6} from './heading'
+import HorizontalRule from './horizontal-rule'
 import Image from './image'
 import InlineCode from './inline-code'
 import Paragraph from './paragraph'
-import HorizontalRule from './horizontal-rule'
-import Blockquote from './blockquote'
-import {H1, H2, H3, H4, H5, H6} from './heading'
+import Sidebar from './sidebar'
+import Table from './table'
 
 const components = {
   a: Link,
