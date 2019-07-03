@@ -11,6 +11,7 @@ import InlineCode from './inline-code'
 import Paragraph from './paragraph'
 import HorizontalRule from './horizontal-rule'
 import Blockquote from './blockquote'
+import {H1, H2, H3, H4, H5, H6} from './heading'
 
 const components = {
   a: Link,
@@ -22,6 +23,12 @@ const components = {
   p: Paragraph,
   hr: HorizontalRule,
   blockquote: Blockquote,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
 }
 
 function Layout({children, ...props}) {
@@ -36,7 +43,7 @@ function Layout({children, ...props}) {
                 <Sidebar />
               </Flex>
               <Box width="100%" maxWidth={960} p={5} mx="auto">
-                <Heading>{props.pageContext.frontmatter.title}</Heading>
+                <H1>{props.pageContext.frontmatter.title}</H1>
                 {children}
               </Box>
             </Flex>
