@@ -1,28 +1,34 @@
 import {Absolute, BorderBox, Relative, Text} from '@primer/components'
 import Highlight, {defaultProps} from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/github'
+import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
 import ClipboardCopy from './clipboard-copy'
+import LiveCode from './live-code'
 
-function Code({className, children}) {
-  const language = className ? className.replace(/language-/, '') : null
+function Code({className, children, live}) {
+  const language = className ? className.replace(/language-/, '') : ''
+  const code = children.trim()
+
+  if (live) {
+    return <LiveCode code={code} />
+  }
+
   return (
     <Relative>
       <Absolute top={0} right={0} p={2}>
-        <ClipboardCopy value={children} />
+        <ClipboardCopy value={code} />
       </Absolute>
       <Highlight
         {...defaultProps}
-        code={children.trim()}
+        code={code}
         language={language}
-        theme={theme}
+        theme={githubTheme}
       >
         {({className, style, tokens, getLineProps, getTokenProps}) => (
           <BorderBox
             as="pre"
             className={className}
             style={{...style, overflow: 'auto'}}
-            border={0}
           >
             <Text display="inline-block" p={3} fontFamily="mono" fontSize={1}>
               {tokens.map((line, i) => (
