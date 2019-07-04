@@ -14,6 +14,7 @@
     "react-dom": "16.8.x"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.14",
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "@primer/components": "^13.1.0",
@@ -24,11 +25,14 @@
     "gatsby-mdx": "^0.6.3",
     "gatsby-plugin-page-creator": "^2.1.1",
     "gatsby-plugin-styled-components": "^3.1.0",
+    "gatsby-plugin-theme-ui": "^0.2.5",
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-transformer-yaml": "^2.2.0",
+    "lodash.merge": "^4.6.1",
     "prism-react-renderer": "^0.1.7",
     "react-live": "^2.1.2",
     "sentence-case": "^2.1.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "theme-ui": "^0.2.5"
   }
 }

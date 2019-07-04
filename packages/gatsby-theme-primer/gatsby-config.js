@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  __experimentalThemes: ['gatsby-plugin-theme-ui'],
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-transformer-yaml',

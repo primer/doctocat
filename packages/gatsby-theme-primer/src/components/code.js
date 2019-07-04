@@ -6,7 +6,7 @@ import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
 
 function Code({className, children, live}) {
-  const language = className ? className.replace(/language-/, '') : ''
+  const language = getLanguage(className)
   const code = children.trim()
 
   if (live) {
@@ -44,6 +44,23 @@ function Code({className, children, live}) {
       </Highlight>
     </Relative>
   )
+}
+
+function getLanguage(className) {
+  if (!className) {
+    return null
+  }
+
+  const languageRegExp = new RegExp(/language-/)
+  const classNames = className.split(' ')
+
+  for (let i = 0; i < classNames.length; i++) {
+    if (languageRegExp.test(classNames[i])) {
+      return classNames[i].replace(languageRegExp, '')
+    }
+  }
+
+  return null
 }
 
 export default Code

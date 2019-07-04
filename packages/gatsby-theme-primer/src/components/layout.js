@@ -1,37 +1,29 @@
-import {MDXProvider} from '@mdx-js/react'
-import {BaseStyles, Box, Flex, Heading, Link, theme} from '@primer/components'
+import {BaseStyles, Box, Flex} from '@primer/components'
 import React from 'react'
 import {ThemeProvider} from 'styled-components'
-import Code from './code'
+import {Styled, useThemeUI} from 'theme-ui'
 import Header from './header'
 import Sidebar from './sidebar'
 
-const components = {
-  a: Link,
-  pre: props => props.children,
-  code: Code,
-}
-
 function Layout({children, ...props}) {
+  const {theme} = useThemeUI()
   return (
-    <MDXProvider components={components}>
-      <ThemeProvider theme={theme}>
-        <BaseStyles>
-          <Flex flexDirection="column" minHeight="100vh">
-            <Header />
-            <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
-              <Flex minWidth={240}>
-                <Sidebar />
-              </Flex>
-              <Box width="100%" maxWidth={960} p={5} mx="auto">
-                <Heading>{props.pageContext.frontmatter.title}</Heading>
-                {children}
-              </Box>
+    <ThemeProvider theme={theme}>
+      <BaseStyles>
+        <Flex flexDirection="column" minHeight="100vh">
+          <Header />
+          <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
+            <Flex minWidth={240}>
+              <Sidebar />
             </Flex>
+            <Box width="100%" maxWidth={960} p={5} mx="auto">
+              <Styled.h1>{props.pageContext.frontmatter.title}</Styled.h1>
+              {children}
+            </Box>
           </Flex>
-        </BaseStyles>
-      </ThemeProvider>
-    </MDXProvider>
+        </Flex>
+      </BaseStyles>
+    </ThemeProvider>
   )
 }
 
