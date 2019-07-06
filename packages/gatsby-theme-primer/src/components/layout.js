@@ -1,5 +1,14 @@
 import {MDXProvider} from '@mdx-js/react'
-import {BaseStyles, Box, Flex, Heading, Link, theme} from '@primer/components'
+import {
+  BaseStyles,
+  Box,
+  Flex,
+  Heading,
+  Link,
+  StyledOcticon,
+  theme,
+} from '@primer/components'
+import {Pencil} from '@primer/octicons-react'
 import React from 'react'
 import {ThemeProvider} from 'styled-components'
 import Code from './code'
@@ -12,7 +21,7 @@ const components = {
   code: Code,
 }
 
-function Layout({children, ...props}) {
+function Layout({children, pageContext}) {
   return (
     <MDXProvider components={components}>
       <ThemeProvider theme={theme}>
@@ -24,8 +33,14 @@ function Layout({children, ...props}) {
                 <Sidebar />
               </Flex>
               <Box width="100%" maxWidth={960} p={5} mx="auto">
-                <Heading>{props.pageContext.frontmatter.title}</Heading>
+                <Heading>{pageContext.frontmatter.title}</Heading>
                 {children}
+                <Box my={6}>
+                  <Link href={pageContext.editUrl}>
+                    <StyledOcticon icon={Pencil} mr={2} />
+                    Edit this page on GitHub
+                  </Link>
+                </Box>
               </Box>
             </Flex>
           </Flex>
