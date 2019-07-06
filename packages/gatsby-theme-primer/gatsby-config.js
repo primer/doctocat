@@ -27,5 +27,11 @@ module.exports = {
         path: path.resolve('./src/data/nav.yml'),
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: require.resolve('./src/images/favicon.png'),
+      },
+    },
   ],
 }
