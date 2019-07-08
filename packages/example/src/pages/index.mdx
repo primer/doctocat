@@ -2,6 +2,23 @@
 title: Primer CSS
 ---
 
+import {Header, Sidebar, Container, Main} from 'gatsby-theme-primer'
+import Hero from '../components/hero'
+import {Box, Flex} from '@primer/components'
+
+export default ({children}) => (
+  <Flex flexDirection="column" minHeight="100vh">
+    <Header />
+    <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
+      <Sidebar />
+      <Box width="100%">
+        <Hero />
+        <Container>{children}</Container>
+      </Box>
+    </Flex>
+  </Flex>
+)
+
 Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).
 
 There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
@@ -30,9 +47,9 @@ This is a code block following a header.
 
 #### Header 4
 
-* This is an unordered list following a header.
-* This is an unordered list following a header.
-* This is an unordered list following a header.
+- This is an unordered list following a header.
+- This is an unordered list following a header.
+- This is an unordered list following a header.
 
 ##### Header 5
 
@@ -42,23 +59,23 @@ This is a code block following a header.
 
 ###### Header 6
 
-| What      | Follows         |
-|-----------|-----------------|
-| A table   | A header        |
-| A table   | A header        |
-| A table   | A header        |
+| What    | Follows  |
+| ------- | -------- |
+| A table | A header |
+| A table | A header |
+| A table | A header |
 
-----------------
+---
 
 There's a horizontal rule above and below this.
 
-----------------
+---
 
 Here is an unordered list:
 
-* Salt-n-Pepa
-* Bel Biv DeVoe
-* Kid 'N Play
+- Salt-n-Pepa
+- Bel Biv DeVoe
+- Kid 'N Play
 
 And an ordered list:
 
@@ -80,14 +97,14 @@ And a "mixed" task list:
 
 And a nested list:
 
-* Jackson 5
-  * Michael
-  * Tito
-  * Jackie
-  * Marlon
-  * Jermaine
-* TMNT
-  * Leonardo
-  * Michelangelo
-  * Donatello
-  * Raphael
+- Jackson 5
+  - Michael
+  - Tito
+  - Jackie
+  - Marlon
+  - Jermaine
+- TMNT
+  - Leonardo
+  - Michelangelo
+  - Donatello
+  - Raphael
