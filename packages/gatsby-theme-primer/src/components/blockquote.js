@@ -5,7 +5,7 @@ const Blockquote = styled.blockquote`
   margin: 0 0 ${themeGet('space.3')}px;
   padding: 0 ${themeGet('space.3')}px;
   color: ${themeGet('colors.gray.5')};
-  border-left: ${themeGet('space.1')}px solid ${themeGet('colors.gray.2')};
+  border-left: 0.25em solid ${themeGet('colors.gray.2')};
 
   > :first-child {
     margin-top: 0;
