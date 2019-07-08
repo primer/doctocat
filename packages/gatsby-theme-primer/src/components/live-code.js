@@ -22,7 +22,7 @@ function LiveCode({code}) {
             padding={theme.space[3]}
             style={{
               fontFamily: theme.fonts.mono,
-              fontSize: theme.fontSizes[1],
+              fontSize: '85%',
             }}
           />
           <Absolute top={0} right={0} p={2}>
