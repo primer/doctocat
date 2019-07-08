@@ -1,17 +1,18 @@
-import {Flex, Heading} from '@primer/components'
+import {Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
 import Header from './header'
+import {H1} from './heading'
 import Sidebar from './sidebar'
 
-function Layout({children, ...props}) {
+function Layout({children, pageContext}) {
   return (
     <Flex flexDirection="column" minHeight="100vh">
       <Header />
       <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
         <Sidebar />
         <Container>
-          <Heading>{props.pageContext.frontmatter.title}</Heading>
+          <H1>{pageContext.frontmatter.title}</H1>
           {children}
         </Container>
       </Flex>
