@@ -4,7 +4,7 @@ import React from 'react'
 import {ThemeProvider} from 'styled-components'
 import Blockquote from './blockquote'
 import Code from './code'
-import DefinitionList from './definition-list'
+import DescriptionList from './description-list'
 import Header from './header'
 import {H1, H2, H3, H4, H5, H6} from './heading'
 import HorizontalRule from './horizontal-rule'
@@ -33,7 +33,7 @@ const components = {
   h6: H6,
   ul: List,
   ol: List.withComponent('ol'),
-  dl: DefinitionList,
+  dl: DescriptionList,
 }
 
 function Layout({children, ...props}) {

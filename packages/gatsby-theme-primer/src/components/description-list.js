@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import themeGet from '@styled-system/theme-get'
 
-const DefinitionList = styled.dl`
+const DescriptionList = styled.dl`
   padding: 0;
 
   dt {
@@ -18,4 +18,4 @@ const DefinitionList = styled.dl`
   }
 `
 
-export default DefinitionList
+export default DescriptionList
