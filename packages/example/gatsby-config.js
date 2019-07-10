@@ -1,4 +1,4 @@
 module.exports = {
-  __experimentalThemes: ['@primer/gatsby-theme-doctocat'],
+  __experimentalThemes: ['gatsby-theme-doctocat'],
   plugins: ['gatsby-plugin-sass'],
 }
