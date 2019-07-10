@@ -12,7 +12,7 @@
     "@primer/css": "^12.4.1",
     "gatsby": "^2.10.4",
     "gatsby-plugin-sass": "^2.1.0",
-    "gatsby-theme-doctocat": "*",
+    "@primer/gatsby-theme-doctocat": "*",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
