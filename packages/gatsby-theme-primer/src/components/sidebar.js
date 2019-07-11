@@ -1,4 +1,4 @@
-import {Flex} from '@primer/components'
+import {Flex, Position} from '@primer/components'
 import {themeGet} from '@styled-system/theme-get'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -19,23 +19,47 @@ const NavLink = styled.a`
   }
 `
 
-function Navigation({items, ...props}) {
+function NavItems({items, ...props}) {
   return items.map(item => (
     <Flex flexDirection="column" key={item.url} {...props}>
       <NavLink as={GatsbyLink} to={item.url} activeClassName="active">
         {item.title}
       </NavLink>
-      {item.items ? <Navigation items={item.items} pl={3} /> : null}
+      {item.items ? <NavItems items={item.items} pl={3} /> : null}
     </Flex>
   ))
 }
 
 function Sidebar() {
+  const rootElement = React.useRef(null)
+  const {top = 0} = useBoundingClientRect(rootElement)
+
   return (
-    <Flex flexDirection="column" width="100%" p={4} bg="gray.1">
-      <Navigation items={data} />
-    </Flex>
+    <Position
+      ref={rootElement}
+      position={['static', 'static', 'sticky']}
+      top={top}
+      height={['auto', 'auto', `calc(100vh - ${top}px)`]}
+      minWidth={240}
+      p={4}
+      bg="gray.1"
+      style={{overflow: 'auto'}}
+    >
+      <NavItems items={data} />
+    </Position>
   )
+}
+
+function useBoundingClientRect(ref) {
+  const [boundingClientRect, setBoundingClientRect] = React.useState({})
+
+  React.useEffect(() => {
+    if (ref.current) {
+      setBoundingClientRect(ref.current.getBoundingClientRect())
+    }
+  })
+
+  return boundingClientRect
 }
 
 export default Sidebar

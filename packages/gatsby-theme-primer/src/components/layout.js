@@ -44,9 +44,7 @@ function Layout({children, ...props}) {
           <Flex flexDirection="column" minHeight="100vh">
             <Header />
             <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
-              <Flex minWidth={240}>
-                <Sidebar />
-              </Flex>
+              <Sidebar />
               <Box width="100%" maxWidth={960} p={5} mx="auto">
                 <H1>{props.pageContext.frontmatter.title}</H1>
                 {children}
