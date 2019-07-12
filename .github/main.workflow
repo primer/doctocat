@@ -10,7 +10,7 @@ action "install" {
 }
 
 action "publish" {
-  uses = "primer/publish@folder-option"
+  uses = "primer/publish@master"
   needs = ["install"]
   secrets = ["GITHUB_TOKEN", "NPM_AUTH_TOKEN"]
   args = "--dir=packages/gatsby-theme-primer"
