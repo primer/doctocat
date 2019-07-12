@@ -2,12 +2,13 @@
 title: Primer CSS
 ---
 
-import {Header, Sidebar, Container, Main} from 'gatsby-theme-primer'
+import {Header, Sidebar, Container, Head} from 'gatsby-theme-primer'
 import Hero from '../components/hero'
 import {Box, Flex} from '@primer/components'
 
 export default ({children}) => (
   <Flex flexDirection="column" minHeight="100vh">
+    <Head title="Primer CSS" />
     <Header />
     <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
       <Sidebar />
