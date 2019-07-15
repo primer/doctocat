@@ -2,102 +2,47 @@
 title: Getting started
 ---
 
-Primer CSS is [open-sourced on GitHub](https://github.com/primer/primer) and [available on npm](https://www.npmjs.com/package/primer).
+Follow these steps to create a new site with Doctocat:
 
-## Installing via npm
+> Note: These steps assume that you have some familiarity with the command line, and have Node.js and npm installed locally. Check out [nodejs.org](https://nodejs.org) for more information. npm v5.2.0 or higher is required to use the [`npx`](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner) command in step 1.
 
-We recommend installing Primer CSS with npm: `npm install --save @primer/css`.
+### 1. Scaffold a new site
 
-### Before you start
+Use the [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/) and the [Doctocat starter](https://github.com/primer/doctocat-starter) to scaffold a new site:
 
-Primer CSS requires npm version 3 or above. You can check which version you have by running `npm -v`. If you have a version that's older than 3.0, you can update it with `npm install npm@latest -g`. For more info, read the [npm install docs](https://docs.npmjs.com/getting-started/installing-node).
-
-### Initialize npm project
-
-Begin by initializing your project with a `package.json` file. You can read more on how to do this [in the npm documentation](https://docs.npmjs.com/getting-started/using-a-package.json#creating-a-packagejson).
-
-### Install Primer CSS
-
-Install the Primer CSS npm package modules by running `npm install @primer/css`. This will install all of the SCSS source files into the `node_modules/@primer/css` directory.
-
-```
-npm install @primer/css --save
+```shell
+npx gatsby new my-site https://github.com/primer/doctocat-starter
 ```
 
-### Paths
-Here's what you need to know about how the files are structured in both git and in the published npm module:
+`my-site` is an arbitrary title — you can pick anything. The Gatsby CLI will place the code for your new site in a new directory called “my-site”. If you want to create a new site in an existing repository, be sure to run the `gatsby new` command from within that repository.
 
-* In git, all of the SCSS source files live in the `src/` directory.
-* When published, all of the files in `src/` are "hoisted" to the package root so that you can import, say, utilities with:
+### 2. Navigate into the site directory
 
-    ```scss
-    @import "@primer/css/utilities/index.scss";
-    ```
+Navigate into the newly created site directory using `cd`:
 
-* All bundle interdependencies within Primer CSS are defined as relative imports (e.g. with `../`), so everything should work fine as long as the `@primer/css` directory is in one of your Sass include paths (i.e. `node_modules`).
-
-
-### For a Jekyll site
-
-Make sure you have [Jekyll](https://jekyllrb.com/) version `3.3.1` or greater with:
-
-```
-jekyll -v
+```shell
+cd my-site
 ```
 
-If you have an older version, follow the instructions in the [upgrading docs](https://jekyllrb.com/docs/upgrading/).
+This directory contains a few important files and subdirectories:
 
-Once you have Jekyll up and running, you will need to add this configuration to your `_config.yml` file. This let's the sass compiler know where your code lives.
+- `gatsby-config.js`: This is the main configuration file for your Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more information.
+- `src/`: This directory will contain all of the code related to what you see on the frontend of your site (what you see in the browser).
+  - `pages/`: Components and MDX files under `src/pages` become pages automatically with paths based on their file name. Check out the [pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
+  - `@primer/gatsby-theme-doctocat/`: All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. Check out the [component shadowing docs](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) for more information.
+- `package.json`: This is a manifest file found in most, if not all, Node.js projects. This file includes metadata like the project's name and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
+- `now.json`: This file configures your site to be deployed with [Now](https://now.sh). Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
 
-```yml
-sass:
-  # Where you keep your scss files
-  sass_dir: assets/css/
-  # Where sass should look for other scss
-  load_paths:
-    - node_modules/
+### 3. Start the development server
+
+Use the `develop` npm script to start Gatsby's hot-reloading development environment:
+
+```shell
+npm run develop
 ```
 
-It's best practice to import all of this scss into one file, usually named `index.scss`. From this file you'll import one or more Primer CSS bundles and any other custom code you write.
+To view your site locally, navigate to http://localhost:8000 in your browser. Each page on the site corresponds to a file in the `src/pages` directory. Navigate to any page then try editing the corresponding MDX file. You should see the page update in real time.
 
-```scss
-@import "@primer/css/core/index.scss";
-// These files live in the same directory as the index file.
-@import "./custom-1.scss";
-@import "./custom-2.scss";
-```
+### What's next?
 
-Here's an example of how it might look if you installed only a few Primer CSS components with some custom variable overrides. The `$blue` uses the default primer blue in the text utilities, then the new blue in `"custom-that-uses-primer-variables.scss"` and `.foo`.
-
-```scss
-@import "@primer/css/utilities/index.scss";
-@import "primer-buttons/index.scss";
-
-// Import color variables for custom code
-@import "primer-support/index.scss";
-
-// Override default blue
-$blue: #0000ff;
-
-@import "./custom-that-uses-primer-variables.scss";
-
-.foo {
-  background: $blue;
-  font-size: $h2-size;
-  color: $text-gray;
-}
-```
-
-Don't forget to add the compiled CSS to the `<head>` section of your page.
-
-```html
-<link href="path/to/style.css" rel="stylesheet">
-```
-
-## Using Primer CSS on a static site
-
-You won't need to install any node modules or Sass compilers for a static site; you can use the built CSS. The best thing to do is to [download the built CSS](https://unpkg.com/@primer/css/dist/primer.css) from the [unpkg.com](https://unpkg.com) and host it yourself. If that's not an option, you can include a CDN link in your HTML:
-
-```html
-<link href="https://unpkg.com/primer/build/build.css" rel="stylesheet">
-```
+Check out the [guides](#) for more information about customizing and deploying your new site.
