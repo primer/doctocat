@@ -1,8 +1,10 @@
 - title: Getting started
   url: /getting-started
+- title: Guides
+  url: /guides
   items:
     - title: Gatsby CLI
-      url: /getting-started/gatsby-cli
+      url: /guides/gatsby-cli
 - title: Components
   url: /components
   items:
