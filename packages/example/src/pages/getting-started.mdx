@@ -2,21 +2,21 @@
 title: Getting started
 ---
 
-Follow these steps to create a new site with Doctocat:
+The quickest way to get started using Doctocat is to use the [Doctocat starter](https://github.com/primer/doctocat-starter). Follow these steps to create a new site using the starter:
 
-> Note: These steps assume that you have some familiarity with the command line, and have Node.js and npm installed locally. Check out [nodejs.org](https://nodejs.org) for more information. npm v5.2.0 or higher is required to use the [`npx`](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner) command in step 1.
+> Note: This guide assumes that you have some familiarity with the command line, and have Node.js and npm installed locally. Check out [nodejs.org](https://nodejs.org) for more information. You will need npm v5.2.0 or higher to use the [`npx`](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner) command in step 1.
 
-### 1. Scaffold a new site
+## 1. Scaffold a new site
 
-Use the [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/) and the [Doctocat starter](https://github.com/primer/doctocat-starter) to scaffold a new site:
+Use the [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/) and the Doctocat starter to scaffold a new site:
 
 ```shell
 npx gatsby new my-site https://github.com/primer/doctocat-starter
 ```
 
-`my-site` is an arbitrary title — you can pick anything. The Gatsby CLI will place the code for your new site in a new directory called “my-site”. If you want to create a new site in an existing repository, be sure to run the `gatsby new` command from within that repository.
+`my-site` is an arbitrary title — you can pick anything. Running the above command will place the code for your new site in a new directory called “my-site”. If you want to create a new site in an existing repository, be sure to run the `gatsby new` command from within that repository.
 
-### 2. Navigate into the site directory
+## 2. Navigate into the site directory
 
 Navigate into the newly created site directory using `cd`:
 
@@ -24,16 +24,16 @@ Navigate into the newly created site directory using `cd`:
 cd my-site
 ```
 
-This directory contains a few important files and subdirectories:
+This directory will contain a few important files and subdirectories:
 
 - `gatsby-config.js`: This is the main configuration file for your Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more information.
 - `src/`: This directory will contain all of the code related to what you see on the frontend of your site (what you see in the browser).
-  - `pages/`: Components and MDX files under `src/pages` become pages automatically with paths based on their file name. Check out the [pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
-  - `@primer/gatsby-theme-doctocat/`: All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. Check out the [component shadowing docs](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) for more information.
-- `package.json`: This is a manifest file found in most, if not all, Node.js projects. This file includes metadata like the project's name and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
-- `now.json`: This file configures your site to be deployed with [Now](https://now.sh). Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
+  - `pages/`: Components and MDX files in `src/pages` become pages automatically with paths based on their file name. Check out the [pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
+  - `@primer/gatsby-theme-doctocat/`: All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. Check out this [component shadowing blog post](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) for more information.
+- `package.json`: This manifest file contains metadata like the project's name, repository, and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
+- `now.json`: When using [Now](https://zeit.co/now), the configuration for your deployment is read from this file. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
 
-### 3. Start the development server
+## 3. Start the development server
 
 Use the `develop` npm script to start Gatsby's hot-reloading development environment:
 
@@ -41,8 +41,8 @@ Use the `develop` npm script to start Gatsby's hot-reloading development environ
 npm run develop
 ```
 
-To view your site locally, navigate to http://localhost:8000 in your browser. Each page on the site corresponds to a file in the `src/pages` directory. Navigate to any page then try editing the corresponding MDX file. You should see the page update in real time.
+To view your site locally, navigate to http://localhost:8000 in your browser. Each page of the site corresponds to a file in the `src/pages` directory. Navigate to any page then try editing the corresponding MDX file. You should see the page update in real time.
 
-### What's next?
+## What's next?
 
 Check out the [guides](#) for more information about customizing and deploying your new site.
