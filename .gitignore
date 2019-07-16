@@ -89,3 +89,6 @@ typings/
 
 # Gatsby
 public/
+
+# macOS
+.DS_Store

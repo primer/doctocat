@@ -12,6 +12,7 @@ import React from 'react'
 import {ThemeProvider} from 'styled-components'
 import Blockquote from './blockquote'
 import Code from './code'
+import Head from './head'
 import DescriptionList from './description-list'
 import Header from './header'
 import {H1, H2, H3, H4, H5, H6} from './heading'
@@ -49,6 +50,7 @@ function Layout({children, pageContext}) {
     <MDXProvider components={components}>
       <ThemeProvider theme={theme}>
         <BaseStyles>
+          <Head title={pageContext.frontmatter.title} />
           <Flex flexDirection="column" minHeight="100vh">
             <Header />
             <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
@@ -56,7 +58,7 @@ function Layout({children, pageContext}) {
                 <Sidebar />
               </Flex>
               <Box width="100%" maxWidth={960} p={5} mx="auto">
-                <H1>{props.pageContext.frontmatter.title}</H1>
+                <H1>{pageContext.frontmatter.title}</H1>
                 {children}
                 <Box my={6}>
                   <Link href={pageContext.editUrl}>
