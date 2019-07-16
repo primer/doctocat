@@ -60,12 +60,14 @@ function Layout({children, pageContext}) {
               <Box width="100%" maxWidth={960} p={5} mx="auto">
                 <H1>{pageContext.frontmatter.title}</H1>
                 {children}
-                <Box my={6}>
-                  <Link href={pageContext.editUrl}>
-                    <StyledOcticon icon={Pencil} mr={2} />
-                    Edit this page on GitHub
-                  </Link>
-                </Box>
+                {pageContext.editUrl ? (
+                  <Box my={6}>
+                    <Link href={pageContext.editUrl}>
+                      <StyledOcticon icon={Pencil} mr={2} />
+                      Edit this page on GitHub
+                    </Link>
+                  </Box>
+                ) : null}
               </Box>
             </Flex>
           </Flex>

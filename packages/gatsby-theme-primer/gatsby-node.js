@@ -1,25 +1,30 @@
 const path = require('path')
-const findUp = require('find-up')
 const readPkgUp = require('read-pkg-up')
 const getPkgRepo = require('get-pkg-repo')
 const memoize = require('lodash.memoize')
-
-const getRootPath = memoize(() => {
-  return path.parse(findUp.sync('.git', {type: 'directory'})).dir
-})
 
 const getRepo = memoize(() => {
   return getPkgRepo(readPkgUp.sync().package)
 })
 
-function getEditUrl(page) {
-  const {domain, user, project} = getRepo()
-  const relativePath = path.relative(getRootPath(), page.componentPath)
-  return `https://${domain}/${user}/${project}/edit/master/${relativePath}`
+function generateEditUrl(page, themeOptions) {
+  try {
+    const {domain, user, project} = getRepo()
+    const relativePath = path.relative(
+      themeOptions.repoRootPath,
+      page.componentPath,
+    )
+    return `https://${domain}/${user}/${project}/edit/master/${relativePath}`
+  } catch (error) {
+    console.warn(
+      `[warning] An edit url could not be generated for ${page.path}`,
+    )
+    return null
+  }
 }
 
-exports.onCreatePage = ({page, actions}) => {
-  const editUrl = getEditUrl(page)
+exports.onCreatePage = ({page, actions}, themeOptions) => {
+  const editUrl = generateEditUrl(page, themeOptions)
   actions.deletePage(page)
   actions.createPage({
     ...page,
