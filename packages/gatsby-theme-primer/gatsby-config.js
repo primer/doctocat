@@ -22,13 +22,6 @@ module.exports = themeOptions => {
         },
       },
       {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'nav',
-          path: path.resolve('./src/data/nav.yml'),
-        },
-      },
-      {
         resolve: 'gatsby-plugin-manifest',
         options: {
           icon: themeOptions.icon
