@@ -1,0 +1,109 @@
+---
+title: Getting started
+---
+
+This guide will walk you through creating, customizing, and deploying a new site with Doctocat. If you want to create a new site in an existing repository and have some experience with the command line, we recommend using the Gatsby CLI instead. Check out the [Gatsby CLI guide](/getting-started/gatsby-cli) for more information.
+
+## 1. Create a new repository from the template
+
+Use the [Doctocat template](https://github.com/primer/doctocat-starter) to create a new repository. Check out "[Creating a repository from a template](https://help.github.com/en/articles/creating-a-repository-from-a-template)" for more information about using template repos.
+
+![](https://help.github.com/assets/images/help/repository/use-this-template-button.png)
+
+Your new repository will contain a few important files and directories:
+
+- `gatsby-config.js`: This is the main configuration file for your Gatsby site. This is where you can specify information about your site like the title, description, and which Gatsby plugins you’d like to include. Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more information.
+- `src/`: This directory will contain all of the code related to what you see on the frontend of your site (what you see in the browser).
+  - `pages/`: Files in `src/pages` become pages automatically with paths based on their file name. Check out the [pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
+  - `@primer/gatsby-theme-doctocat/`: All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. You can use this directory to customize the look and behavior of the theme. Check out this "[What is Component Shadowing?](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/)" for more information.
+- `package.json`: This manifest file contains metadata like the project's name, repository, and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
+- `now.json`: When using [Now](https://zeit.co/now), the configuration for your deployment is read from this file. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
+
+## 2. Update your site metadata
+
+After you've created the repository, you'll want to customize the information about your site. Start by replacing the site metadata in the `gatsby-config.js` file:
+
+```js
+module.exports = {
+  siteMetadata: {
+    name: 'Doctocat Template',
+    description: 'My site description.',
+  },
+}
+```
+
+Next, open the `package.json` file and update the `name` and `repository` field:
+
+```json
+{
+  "name": "doctocat-template",
+  "repository": "primer/doctocat-template",
+  ...
+}
+```
+
+You'll also want to update the `name` field in the `now.json` file:
+
+```json
+{
+  "name": "doctocat-template"
+  ...
+}
+```
+
+## 4. Add your content
+
+Markdown files in `src/pages` automatically become pages with paths based on their file name. For example, if you create a `src/pages/components/box.mdx` file, Gatsby will use the content of that file to create a `/components/box` page. `src/pages` is where you'll put all the content for your site.
+
+## 5. Update navigation
+
+After you've added your content, you'll want to update the side navigation to reflect your changes. You can customize the links in your side navigation by editing the `src/@primer/gatsby-theme-doctocat/nav.yml` file:
+
+```yml
+- title: Example
+  url: '/example'
+  items:
+    - title: Example 2
+      url: '/example/example-2'
+```
+
+## 6. Deploy to Now
+
+After you've customized the content of your site, you're ready to deploy. There are many ways to deploy your site but we recommend using Now. The easiest way to deploy with Now is to use their GitHub integration. Check out the [Now for Github docs](https://zeit.co/docs/v2/integrations/now-for-github/) to learn how to set up the integration.
+
+Once the GitHub integration is set up, your site should be available from a special `.now.sh` subdomain.
+
+## 7. Set up primer.style path alias
+
+To make your site available from `primer.style/my-site`, you'll have to first add a `pathPrefix` field in your `gatsby-config.js` file:
+
+```js
+module.exports = {
+  ...
+  pathPrefix: '/my-site',
+}
+```
+
+Check out the [pathPrefix docs](https://www.gatsbyjs.org/docs/path-prefix/) for more information.
+
+After your `pathPrefix` is set up, open a pull request on the [primer/primer.style](https://github.com/primer/primer.style) repo to add your site to the [rules.json](https://github.com/primer/primer.style/blob/master/rules.json) file.
+
+```diff
+{
+  "rules": [
+    {"pathname": "/components**", "dest": "primer-components.now.sh"},
+    {"pathname": "/css**", "dest": "primer-css.now.sh"},
+    {"pathname": "/design**", "dest": "primer-design.now.sh"},
+    {"pathname": "/blueprints**", "dest": "primer-blueprints.now.sh"},
+    {"pathname": "/presentations**", "dest": "primer-presentations.now.sh"},
++   {"pathname": "/my-site**", "dest": "my-site.now.sh"},
+    {"dest": "primer-style.now.sh"}
+  ]
+}
+```
+
+Once your pull request is approved and merged, your site will be live at `primer.style/my-site` 🎉
+
+## What's next?
+
+Check out the [guides](#) for more information about customizing your new site.
