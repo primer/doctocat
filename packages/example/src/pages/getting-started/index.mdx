@@ -2,7 +2,7 @@
 title: Getting started
 ---
 
-This guide will walk you through creating, customizing, and deploying a new site with Doctocat. If you want to create a new site in an existing repository and have some experience with the command line, we recommend using the Gatsby CLI instead. Check out the [Gatsby CLI guide](/getting-started/gatsby-cli) for more information.
+This guide will walk you through creating, customizing, and deploying a new site with Doctocat using our template repository. If you want to create a new site in an existing repository and have some experience with the command line, we recommend using the Gatsby CLI instead. Check out the [Gatsby CLI guide](/getting-started/gatsby-cli) for more information.
 
 ## 1. Create a new repository from the template
 
@@ -16,8 +16,8 @@ Your new repository will contain a few important files and directories:
 - `src/`: This directory will contain all of the code related to what you see on the frontend of your site (what you see in the browser).
   - `pages/`: Files in `src/pages` become pages automatically with paths based on their file name. Check out the [pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
   - `@primer/gatsby-theme-doctocat/`: All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. You can use this directory to customize the look and behavior of the theme. Check out this "[What is Component Shadowing?](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/)" for more information.
-- `package.json`: This manifest file contains metadata like the project's name, repository, and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
-- `now.json`: When using [Now](https://zeit.co/now), the configuration for your deployment is read from this file. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
+- `package.json`: This file contains metadata like the project's name, repository, and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
+- `now.json`: When using [Now](https://zeit.co/now) to deploy, the configuration for your deployment is read from this file. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
 
 ## 2. Update your site metadata
 
@@ -57,7 +57,8 @@ Markdown files in `src/pages` automatically become pages with paths based on the
 
 ## 5. Update navigation
 
-After you've added your content, you'll want to update the side navigation to reflect your changes. You can customize the links in your side navigation by editing the `src/@primer/gatsby-theme-doctocat/nav.yml` file:
+Side navigation on Doctocats sites are generated from content in a `nav.yml` file. After you've added your content, you'll want to update the yaml file to reflect your changes:
+
 
 ```yml
 - title: Example
