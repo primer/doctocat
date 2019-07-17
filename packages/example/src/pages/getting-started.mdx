@@ -2,7 +2,7 @@
 title: Getting started
 ---
 
-This guide will walk you through creating, customizing, and deploying a new site with Doctocat using our [template repository](<](https://github.com/primer/doctocat-starter)>). If you want to create a new site in an existing repository and have some experience with the command line, we recommend using the Gatsby CLI instead. Check out the [Gatsby CLI guide](/guides/gatsby-cli) for more information.
+This guide will walk you through creating, customizing, and deploying a new site with Doctocat using our [template repository](<](https://github.com/primer/doctocat-starter)>). If you have an existing repository where you would like to create a new site, we recommend using the Gatsby CLI instead. Check out the [Gatsby CLI guide](/guides/gatsby-cli) for more information.
 
 ## 1. Create a new repository from the template
 
@@ -13,8 +13,8 @@ Use the [Doctocat template](https://github.com/primer/doctocat-starter) to creat
 Your new repository will contain a few important files and directories:
 
 - `gatsby-config.js`: This is the main configuration file for your Gatsby site. This is where you can specify information about your site like the title, description, and which Gatsby plugins you’d like to include. Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more information.
-- `src/`: This directory will contain all of the code related to what you see on the frontend of your site (what you see in the browser).
-  - `pages/`: This is where you will spend most of your time writing documentation. Markdown files (`.md`) in the `src/pages` directory will be interpreted as MDX. [MDX](https://mdxjs.com/) is file format that lets you seamlessly write JSX in your Markdown documents. All files in `src/pages` become pages automatically with paths based on their file name. Check out the [pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
+- `src/`: This directory will contain all of your site's content and any supporting files such as assets and custom React components.
+  - `pages/`: This is where you will spend most of your time writing documentation. Markdown files (`.md` or `.mdx`) in `src/pages/` will be interpreted as [MDX](https://mdxjs.com/), a combination of standard Markdown and [React JSX](https://reactjs.org/docs/jsx-in-depth.html). Each document becomes a page on your site with a URL based on its path relative to `src/pages/`. See [Gatsby's pages docs](https://www.gatsbyjs.org/docs/recipes/#creating-pages) for more information.
   - `@primer/gatsby-theme-doctocat/`: You can use this directory to customize the look and behavior of the theme. All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. Check out "[What is Component Shadowing?](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/)" for more information.
 - `package.json`: This file contains metadata like the project's name, repository, and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
 - `now.json`: When using [Now](https://zeit.co/now) to deploy, the configuration for your deployment is read from this file. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you do not plan to deploy your site with Now.
@@ -51,11 +51,11 @@ You'll also want to update the `name` field in the `now.json` file:
 }
 ```
 
-## 4. Add your content
+## 3. Add your content
 
 Markdown files in `src/pages` automatically become pages with paths based on their file name. For example, if you create a `src/pages/components/box.md` file, Gatsby will use the content of that file to create a `/components/box` page. `src/pages` is where you'll put all the content for your site.
 
-## 5. Update navigation
+## 4. Update navigation
 
 Side navigation for your site is generated from content in the `src/@primer/gatsby-theme-doctocat/nav.yml` file. After you've added your content, you'll want to update the yaml file to reflect your changes:
 
@@ -67,13 +67,13 @@ Side navigation for your site is generated from content in the `src/@primer/gats
       url: '/example/example-2'
 ```
 
-## 6. Deploy to Now
+## 5. Deploy to Now
 
 After you've customized the content of your site, you're ready to deploy. There are many ways to deploy your site but we recommend using Now. The easiest way to deploy with Now is to use their GitHub integration. Check out the [Now for Github docs](https://zeit.co/docs/v2/integrations/now-for-github/) to learn how to set up the integration.
 
 Once the GitHub integration is set up, you should be able to access your site from a prefixed `.now.sh` domain.
 
-## 7. Set up primer.style path alias
+## 6. Set up primer.style path alias
 
 To make your site available from `primer.style/my-site`, you'll have to first add a `pathPrefix` field in your `gatsby-config.js` file:
 
