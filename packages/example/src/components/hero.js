@@ -10,7 +10,7 @@ function Hero() {
         <Heading color="blue.4" fontSize={7} m={0}>
           Primer CSS
         </Heading>
-        <Text color="blue.2" fontSize={2}>
+        <Text as="p" m={0} color="blue.2" fontSize={2}>
           v{version}
         </Text>
       </Container>
