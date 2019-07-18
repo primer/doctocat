@@ -70,11 +70,11 @@ You'll also want to update the `name` field in the `now.json` file:
 
 ## 3. Add your content
 
-`src/pages` is where you'll put all the content for your site. Markdown files in `src/pages` automatically become pages with paths based on their file name. For example, if you create a `src/pages/components/box.md` file, Gatsby will use the content of that file to create a `/components/box` page.
+Next, go ahead and put your Markdown documents (`.md` or `.mdx`) in `src/pages/`. Documents in `src/pages/` automatically become pages with URLs based on ther path relative to `src/pages/`. For example, if you create a `src/pages/components/box.md` file, Gatsby will use the content of that file to create a `/components/box` page.
 
 ## 4. Update navigation
 
-Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. After you've put your documents in `src/pages/`, you'll want to update that `nav.yml` file:
+Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. After you've put your documents in `src/pages/`, update that `nav.yml` file accordingly:
 
 ```yml
 - title: Example
