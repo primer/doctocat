@@ -1,0 +1,6 @@
+# Users can shadow this file to define navigation items.
+- title: Page 1
+  url: '#'
+  items:
+    - title: Page 2
+      url: '#'
