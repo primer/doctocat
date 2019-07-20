@@ -5,6 +5,8 @@
   items:
     - title: Gatsby CLI
       url: /guides/gatsby-cli
+- title: Theme Options
+  url: /theme-options
 - title: Components
   url: /components
   items:
