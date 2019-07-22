@@ -1,6 +1,4 @@
----
-title: Contributing
----
+# Contributing
 
 If you've made it this far, thank you! We appreciate your contribution and hope that this document helps you along the way. If you have any questions or problems, don't hesitate to [file an issue](https://github.com/primer/gatsby-theme-primer/issues/new).
 
