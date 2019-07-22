@@ -6,3 +6,20 @@ title: Theme Options
 | -------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `repoRootPath` | Yes      |         | The absolute path to the root of your git repository. If your `gatsby-config.js` is located at the root of your git respository, set `repoRootPath` to [`process.cwd()`](https://nodejs.org/api/process.html#process_process_cwd). If your `gatsby-config.js` is located in a subdirectory, you can use [`path.resolve()`](https://nodejs.org/docs/latest/api/path.html#path_path_resolve_paths), `process.cwd()`, and the relative path to the root of your git repository to compute the absolute path. For example, if your `gatsby-config.js` is located in a `docs` directory set `repoRootpath` to `path.resolve(process.cwd(), '..')`. |
 | `icon`         | No       |         | The relative path to a custom icon. See "[Changing the Favicon](#)" for more information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+## Example usage
+
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: '@primer/gatsby-theme-doctocat',
+      options: {
+        repoRootPath: process.cwd(),
+        icon: './src/images/custom-icon-512.png',
+      },
+    },
+  ],
+}
+```
