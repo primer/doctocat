@@ -17,8 +17,8 @@ module.exports = {
 }
 ```
 
-Doctocat uses [`gatsby-plugin-manifest`](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/) to generate a pre-configured set of icons from your image. For best results, if you’re providing an icon for generation, it should be…
+Doctocat uses [`gatsby-plugin-manifest`](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/) to generate a pre-configured set of icons from your image. For best results, if you’re providing an icon for generation, it should be:
 
-- at least 512x512 pixels.
-- square. If it’s not, transparent bars will be added to make it square.
-- of one of the following formats: JPEG, PNG, WebP, TIFF, GIF or SVG.
+- 512x512 pixels or larger.
+- Square. If it’s not, the image will be [letterboxed](https://en.wikipedia.org/wiki/Letterboxing_(filming)) with a transparent background.
+- JPEG, PNG, WebP, TIFF, GIF, or SVG format.
