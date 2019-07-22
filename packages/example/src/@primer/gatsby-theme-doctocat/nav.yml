@@ -1,5 +1,14 @@
 - title: Getting started
   url: /getting-started
+- title: Guides
+  url: /guides
+  items:
+    - title: Gatsby CLI
+      url: /guides/gatsby-cli
+    - title: Changing the Favicon
+      url: /guides/changing-the-favicon
+- title: Theme Options
+  url: /theme-options
 - title: Components
   url: /components
   items:
