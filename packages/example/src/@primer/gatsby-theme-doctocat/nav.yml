@@ -5,6 +5,8 @@
   items:
     - title: Gatsby CLI
       url: /guides/gatsby-cli
+    - title: Changing the Favicon
+      url: /guides/changing-the-favicon
 - title: Components
   url: /components
   items:
