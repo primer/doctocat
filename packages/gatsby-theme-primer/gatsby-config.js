@@ -7,8 +7,9 @@ module.exports = themeOptions => {
       'gatsby-plugin-react-helmet',
       'gatsby-transformer-yaml',
       {
-        resolve: 'gatsby-mdx',
+        resolve: 'gatsby-plugin-mdx',
         options: {
+          extensions: ['.mdx', '.md'],
           defaultLayouts: {
             default: require.resolve('./src/components/layout.js'),
           },
