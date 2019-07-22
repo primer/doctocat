@@ -17,3 +17,5 @@
   items:
     - title: Padding
       url: /utilities/padding
+- title: Contributing
+  url: /contributing
