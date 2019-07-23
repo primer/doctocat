@@ -7,6 +7,8 @@
       url: /guides/gatsby-cli
     - title: Changing the Favicon
       url: /guides/changing-the-favicon
+    - title: Changing the sidenav
+      url: /guides/changing-the-sidenav
 - title: Theme Options
   url: /theme-options
 - title: Components

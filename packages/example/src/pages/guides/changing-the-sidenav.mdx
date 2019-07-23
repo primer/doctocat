@@ -1,0 +1,14 @@
+---
+title: Changing the sidenav
+---
+
+Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. Edit that file to change your sidenav. Each entry in `nav.yml` should have a `title`, `url`, and an optional `items` list to create nested navigation links:
+
+```yml
+# src/@primer/gatsby-theme-doctocat/nav.yml
+- title: Example
+  url: /example
+  items:
+    - title: Example 2
+      url: /example/example-2
+```
