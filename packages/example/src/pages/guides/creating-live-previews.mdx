@@ -1,0 +1,39 @@
+---
+title: Creating live previews
+---
+
+Doctocat can render fenced code blocks as live previews with editable code using [react-live](https://github.com/FormidableLabs/react-live). To make a code block render as an editable example, add a `live` attribute after the language:
+
+````markdown
+```jsx live
+<button>Hello, world!</button>
+```
+````
+
+Here's how the above example will render on a page:
+
+```jsx live
+<button>Hello, world!</button>
+```
+
+## Scope
+
+To make variables globally available within live previews, shadow `src/@primer/gatsby-theme-doctocat/live-code-scope.js`:
+
+```js
+// src/@primer/gatsby-theme-doctocat/live-code-scope.js
+import {Box} from '@primer/components'
+
+export default {
+  Box,
+  text: 'Hello, world!',
+}
+```
+
+Every property on the object exported by `live-code-scope.js` will be available as a variable in the code:
+
+````markdown
+```jsx live
+<Box p={3}>{text}</Box>
+```
+````

@@ -7,6 +7,8 @@
       url: /guides/gatsby-cli
     - title: Changing the Favicon
       url: /guides/changing-the-favicon
+    - title: Creating live previews
+      url: /guides/creating-live-previews
 - title: Theme Options
   url: /theme-options
 - title: Components
