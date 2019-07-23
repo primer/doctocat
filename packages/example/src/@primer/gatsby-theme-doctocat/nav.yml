@@ -5,11 +5,11 @@
   items:
     - title: Gatsby CLI
       url: /guides/gatsby-cli
-    - title: Changing the Favicon
+    - title: Changing the favicon
       url: /guides/changing-the-favicon
     - title: Creating live previews
       url: /guides/creating-live-previews
-- title: Theme Options
+- title: Theme options
   url: /theme-options
 - title: Components
   url: /components
