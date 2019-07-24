@@ -1,4 +1,5 @@
-import {Flex} from '@primer/components'
+import {Box, Flex, Link, StyledOcticon} from '@primer/components'
+import {Pencil} from '@primer/octicons-react'
 import React from 'react'
 import Container from './container'
 import Head from './head'
@@ -16,6 +17,14 @@ function Layout({children, pageContext}) {
         <Container>
           <H1>{pageContext.frontmatter.title}</H1>
           {children}
+          {pageContext.editUrl ? (
+            <Box my={6}>
+              <Link href={pageContext.editUrl}>
+                <StyledOcticon icon={Pencil} mr={2} />
+                Edit this page on GitHub
+              </Link>
+            </Box>
+          ) : null}
         </Container>
       </Flex>
     </Flex>
