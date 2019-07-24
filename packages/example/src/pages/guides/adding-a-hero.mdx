@@ -1,0 +1,32 @@
+---
+title: Adding a hero
+---
+
+To add a hero section to a page, you'll need to override the default layout component with Doctocat's `HeroLayout` component by exporting it from your MDX file:
+
+```markdown
+// index.mdx
+import {HeroLayout} from '@primer/gatsby-theme-doctocat'
+export default HeroLayout
+```
+
+`HeroLayout` will render Doctocat's default `Hero` component that references the `title` and `description` defined in the `siteMetadata` object from `gatsby-config.js`:
+
+```jsx live
+<Hero />
+```
+
+To use a custom hero component, shadow Doctocat's default `Hero` component by creating a `hero.js` file in `src/@primer/gatsby-theme-doctocat/components`:
+
+```jsx
+// src/@primer/gatsby-theme-doctocat/components/hero.js
+import {Box} from '@primer/components'
+
+export default function Hero() {
+  return (
+    <Box bg="black" p={5}>
+      My Custom Hero
+    </Box>
+  )
+}
+```
