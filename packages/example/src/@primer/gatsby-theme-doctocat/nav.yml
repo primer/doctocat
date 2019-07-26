@@ -9,5 +9,7 @@
       url: /guides/changing-the-favicon
     - title: Side navigation
       url: /guides/side-navigation
+    - title: Deployment
+      url: /guides/deployment
 - title: Theme Options
   url: /theme-options
