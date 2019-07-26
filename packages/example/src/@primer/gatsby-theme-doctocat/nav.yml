@@ -11,15 +11,3 @@
       url: /guides/side-navigation
 - title: Theme Options
   url: /theme-options
-- title: Components
-  url: /components
-  items:
-    - title: Alerts
-      url: /components/alerts
-    - title: Box
-      url: /components/box
-- title: Utilities
-  url: /utilities
-  items:
-    - title: Padding
-      url: /utilities/padding
