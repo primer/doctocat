@@ -9,10 +9,16 @@ function Frame({children}) {
     <FrameComponent style={{width: '100%', border: 0, height}}>
       <FrameContextConsumer>
         {({document}) => {
-          // TODO: explain why StyleSheetManager is necessary
+          // By default, styled-components injects styles in the head of the page.
+          // However, styles from the page's head don't apply inside iframes.
+          // We're using StyleSheetManager to make styled-components inject styles
+          // into the head of the iframe instead.
           return (
             <StyleSheetManager target={document.head}>
               <Measure
+                // iframes don't adjust to the height of their content by default.
+                // We're using Measure to calculate the size of the content
+                // and adjust the iframe's height dynamically.
                 bounds={true}
                 onResize={rect => setHeight(rect.bounds.height)}
               >
