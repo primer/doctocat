@@ -5,11 +5,13 @@
   items:
     - title: Gatsby CLI
       url: /guides/gatsby-cli
-    - title: Changing the Favicon
+    - title: Changing the favicon
       url: /guides/changing-the-favicon
     - title: Side navigation
       url: /guides/side-navigation
+    - title: Live code
+      url: /guides/live-code
     - title: Deployment
       url: /guides/deployment
-- title: Theme Options
+- title: Theme options
   url: /theme-options
