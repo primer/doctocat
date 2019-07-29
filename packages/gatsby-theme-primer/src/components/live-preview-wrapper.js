@@ -1,7 +1,8 @@
 import {BaseStyles, Box} from '@primer/components'
 import React from 'react'
 
-// TODO: explain the purpose of this component
+// Users can shadow this file to wrap live previews.
+// This is useful for applying global styles.
 function LivePreviewWrapper({children}) {
   return (
     <BaseStyles>
