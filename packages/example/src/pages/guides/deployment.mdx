@@ -1,0 +1,74 @@
+---
+title: Deployment
+---
+
+When you build your Doctocat site using [`gatsby build`](https://www.gatsbyjs.org/docs/gatsby-cli/#build), the output is static content: HTML, CSS, JavaScript, images, etc. Static content is incredibly easy and affordable to host with any deployment solution. We have landed on using [Now](https://zeit.co/now) for our deploys.
+
+## Deploying to Now
+
+If you started with the [Doctocat template](https://github.com/primer/doctocat-template), your site is already configured to deploy with Now. You're ready to set up the [Now for GitHub](https://zeit.co/github) integration. If you did _not_ start with the Doctocat template, before you set up the Now for Github integration, you'll need to create a `now.json` file and add a `now-build` script to `package.json`:
+
+```json
+// now.json
+{
+  "version": 2,
+  "name": "my-site",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {"distDir": "public"}
+    }
+  ]
+}
+```
+
+```json
+// package.json
+{
+  "scripts": {
+    ...
+    "build": "gatsby build",
+    "now-build": "npm run build"
+  }
+}
+```
+
+Once your site has the necessary configuration files and scripts, you can enable the Now for GitHub integration. You'll need to create a Now account, connect your GitHub account, then enable the integration for your repository. Check out the [Now for GitHub docs](https://zeit.co/docs/v2/integrations/now-for-github/) for more detailed instructions.
+
+After you have the GitHub integration set up, you should be able to access your site from a prefixed `.now.sh` domain.
+
+## Deploying to other providers
+
+Check out Gatsby's [Deploying and Hosting](https://www.gatsbyjs.org/docs/deploying-and-hosting/) guides for more information about deploying to other providers.
+
+## Adding a primer.style path alias
+
+To make your site available from `primer.style/my-site`, you'll have to first add a `pathPrefix` field in your `gatsby-config.js` file:
+
+```diff
+module.exports = {
+  ...
++ pathPrefix: '/my-site',
+}
+```
+
+Check out [Gatsby's pathPrefix docs](https://www.gatsbyjs.org/docs/path-prefix/) for more information.
+
+After your `pathPrefix` is set up, open a pull request on the [primer/primer.style](https://github.com/primer/primer.style) repository to add your site to the [rules.json](https://github.com/primer/primer.style/blob/master/rules.json) file:
+
+```diff
+{
+  "rules": [
+    {"pathname": "/components**", "dest": "primer-components.now.sh"},
+    {"pathname": "/css**", "dest": "primer-css.now.sh"},
+    {"pathname": "/design**", "dest": "primer-design.now.sh"},
+    {"pathname": "/blueprints**", "dest": "primer-blueprints.now.sh"},
+    {"pathname": "/presentations**", "dest": "primer-presentations.now.sh"},
++   {"pathname": "/my-site**", "dest": "my-site.now.sh"},
+    {"dest": "primer-style.now.sh"}
+  ]
+}
+```
+
+Once your pull request is approved and merged, you should be able to access your site from `primer.style/my-site`!
