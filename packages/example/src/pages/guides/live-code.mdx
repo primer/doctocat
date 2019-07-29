@@ -18,6 +18,13 @@ Here's how the above example will render on a page:
 
 ## Scope
 
+Before you can use components or other variables in live code blocks, you'll need to add them to the global scope of live previews. Otherwise, the live previews will display a `ReferenceError`, like this:
+
+```jsx live
+// `Foo` was not added to the global scope of live previews
+<Foo>Hello, world!</Foo>
+```
+
 You can add variables to the global scope of live previews by [shadowing](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) `src/@primer/gatsby-theme-doctocat/live-code-scope.js`:
 
 ```js
