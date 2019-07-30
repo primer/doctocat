@@ -18,10 +18,10 @@ Here's how the above example will render on a page:
 
 ## Scope
 
-Before you can use components or other variables in live code blocks, you'll need to add them to the global scope of live previews. Otherwise, the live previews will display a `ReferenceError`, like this:
+Before you can use components or other variables in live code examples, you'll need to add them to the global scope of live previews. Otherwise, the live previews will display a `ReferenceError`, like this:
 
 ```jsx live
-// `Foo` was not added to the global scope of live previews
+// `Foo` was not added to the global scope of live previews.
 <Foo>Hello, world!</Foo>
 ```
 
@@ -44,3 +44,32 @@ Every property on the object exported by `live-code-scope.js` will be available 
 <Box p={3}>{text}</Box>
 ```
 ````
+
+## Global styles
+
+Live previews are completely isolated from the rest of the page because they are rendered inside [iframes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). This means that you can apply global styles inside live previews without affecting the rest of the page:
+
+```jsx live
+<div>
+  <style>{`p { color: red; }`}</style>
+  <p>
+    This text should be red. All other text on the page should be unaffected.
+  </p>
+</div>
+```
+
+You can apply global styles to _all_ live previews on your site by [shadowing](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) `live-preview-wrapper.js` with a component that renders a `style` or `link` tag:
+
+```jsx
+// src/@primer/gatsby-theme-doctocat/components/live-preview-wrapper.js
+import React from 'react'
+
+export default function LivePreviewWrapper({children}) {
+  return (
+    <div>
+      <link href="https://unpkg.com/primer/build/build.css" rel="stylesheet" />
+      {children}
+    </div>
+  )
+}
+```
