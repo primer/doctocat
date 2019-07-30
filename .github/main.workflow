@@ -13,5 +13,5 @@ action "publish" {
   uses = "primer/publish@master"
   needs = ["install"]
   secrets = ["GITHUB_TOKEN", "NPM_AUTH_TOKEN"]
-  args = "--dir=packages/gatsby-theme-primer"
+  args = "--dir=theme"
 }

@@ -2,7 +2,7 @@
 title: Contributing
 ---
 
-If you've made it this far, thank you! We appreciate your contribution and hope that this document helps you along the way. If you have any questions or problems, don't hesitate to [file an issue](https://github.com/primer/gatsby-theme-primer/issues/new).
+We appreciate your contribution and hope that this document helps you along the way. If you have any questions or problems, don't hesitate to [file an issue](https://github.com/primer/gatsby-theme-primer/issues/new).
 
 ## Local development
 
@@ -18,8 +18,8 @@ cd gatsby-theme-primer
 # Install the dependencies
 yarn
 
-# Start the development server
-yarn workspace example develop
+# Start the development server for the documentation site
+yarn workspace docs develop
 
 # Navigate to http://localhost:8000 in your browser
 ```
@@ -28,24 +28,23 @@ yarn workspace example develop
 
 ```
 .
-├── packages
-│   ├── gatsby-theme-primer
-│   └── example
+├── theme/
+├── docs/
 ├── package.json
 └── now.json
 ```
 
-- `packages/gatsby-theme-primer/`: This directory contains the code for the [Gatsby Theme](https://www.gatsbyjs.org/docs/themes/what-are-gatsby-themes/) and is what gets published to npm.
-- `packages/example/`: This directory contains the code for the example site. The example site serves as the documentation site for Doctocat and can also be used to test changes to the theme locally.
+- `theme/`: This directory contains the code for the [Gatsby Theme](https://www.gatsbyjs.org/docs/themes/what-are-gatsby-themes/) and is what gets published to npm.
+- `docs/`: This directory contains the code for the documentation site for Doctocat. The documentation site can also be used to test changes to the theme locally.
 - `package.json`: This file defines the [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) for the project and is not meant to be published.
-- `now.json`: This file configures the deployment of the example site. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information.
+- `now.json`: This file configures the deployment of the documentation site. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information.
 
 ## Scripts
 
-The example site has a few [npm scripts](https://docs.npmjs.com/misc/scripts) for developing and building the site. You can run these scripts from the root directory using the [`yarn workspace`](https://yarnpkg.com/lang/en/docs/cli/workspace/) command:
+The documentation site has a few [npm scripts](https://docs.npmjs.com/misc/scripts) for developing and building the site. You can run these scripts from the root directory using the [`yarn workspace`](https://yarnpkg.com/lang/en/docs/cli/workspace/) command:
 
 ```shell
-yarn workspace example <script-name>
+yarn workspace docs <script-name>
 ```
 
 ### `develop`
@@ -61,8 +60,6 @@ Builds the site for deployment and places the output in `public/`.
 Builds the site for [Now](https://zeit.co/now) deployment. You will never have to run `now-build` manually. Check out the [`@now/static-build` docs](https://zeit.co/docs/v2/advanced/builders/static-build-now-static-build) for more information.
 
 ## Bug reports
-
-A bug is a _demonstrable problem_ that is caused by the code in this repository.
 
 Guidelines for bug reports:
 
@@ -144,8 +141,8 @@ Follow this process if you'd like your work considered for inclusion in the proj
 - Start Gatsby's hot-reloading development environment:
 
   ```shell
-  yarn workspace example develop
-  # The example site will now be accessible from http://localhost:8000
+  yarn workspace docs develop
+  # The documentation site will now be accessible from http://localhost:8000
   ```
 
 - Commit your changes in logical chunks. You can use Git's [interactive rebase](https://help.github.com/articles/interactive-rebase) feature to tidy up your commits before making them public.
