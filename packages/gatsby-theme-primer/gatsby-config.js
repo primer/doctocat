@@ -2,6 +2,10 @@ const path = require('path')
 
 module.exports = themeOptions => {
   return {
+    siteMetadata: {
+      title: 'Doctocat',
+      description: 'A Gatsby theme for creating Primer documentation sites',
+    },
     plugins: [
       'gatsby-plugin-styled-components',
       'gatsby-plugin-react-helmet',

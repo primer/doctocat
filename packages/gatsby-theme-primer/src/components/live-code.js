@@ -1,20 +1,29 @@
-import {Absolute, BorderBox, Box, Relative, Text} from '@primer/components'
+import {Absolute, BorderBox, Relative, Text, Flex} from '@primer/components'
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
 import {ThemeContext} from 'styled-components'
-import ClipboardCopy from './clipboard-copy'
 import scope from '../live-code-scope'
+import ClipboardCopy from './clipboard-copy'
+import Frame from './frame'
+import LivePreviewWrapper from './live-preview-wrapper'
 
 function LiveCode({code}) {
   const theme = React.useContext(ThemeContext)
 
   return (
-    <BorderBox mb={3} css={{overflow: 'hidden'}}>
+    <BorderBox
+      as={Flex}
+      flexDirection="column"
+      mb={3}
+      css={{overflow: 'hidden'}}
+    >
       <LiveProvider scope={scope} code={code}>
-        <Box p={3}>
-          <LivePreview />
-        </Box>
+        <Frame>
+          <LivePreviewWrapper>
+            <LivePreview />
+          </LivePreviewWrapper>
+        </Frame>
         <Relative>
           <LiveEditor
             theme={githubTheme}
