@@ -2,7 +2,7 @@
 title: Contributing
 ---
 
-We appreciate your contribution and hope that this document helps you along the way. If you have any questions or problems, don't hesitate to [file an issue](https://github.com/primer/gatsby-theme-primer/issues/new).
+We appreciate your contribution and hope that this document helps you along the way. If you have any questions or problems, don't hesitate to [file an issue](https://github.com/primer/doctocat/issues/new).
 
 ## Local development
 
@@ -12,8 +12,8 @@ _Note: These steps require [Node.js](https://nodejs.org) and [Yarn](https://yarn
 
 ```shell
 # Clone the repository
-git clone https://github.com/primer/gatsby-theme-primer.git
-cd gatsby-theme-primer
+git clone https://github.com/primer/doctocat.git
+cd doctocat
 
 # Install the dependencies
 yarn
@@ -110,13 +110,13 @@ Follow this process if you'd like your work considered for inclusion in the proj
 
   ```shell
   # Clone your fork of the repository
-  git clone https://github.com/<your-username>/gatsby-theme-primer
+  git clone https://github.com/<your-username>/doctocat
 
   # Navigate to the newly cloned directory
-  cd gatsby-theme-primer
+  cd doctocat
 
   # Assign the original repo to a remote called "upstream"
-  git remote add upstream https://github.com/primer/gatsby-theme-primer
+  git remote add upstream https://github.com/primer/doctocat
   ```
 
 - If you cloned a while ago, get the latest changes from upstream:
