@@ -4,10 +4,12 @@ import Fuse from 'fuse.js'
 import {navigate, useStaticQuery} from 'gatsby'
 import React from 'react'
 import SearchResults from './search-results'
+import useSiteMetadata from '../use-site-metadata'
 
 function Search() {
   const [query, setQuery] = React.useState('')
   const results = useSearch(query)
+  const siteMetadata = useSiteMetadata()
 
   return (
     <Downshift
@@ -31,17 +33,25 @@ function Search() {
         highlightedIndex,
         clearSelection,
       }) => (
-        <Position position="relative" {...getRootProps()}>
+        <Position {...getRootProps({position: 'relative', width: '100%'})}>
           <TextInput
             {...getInputProps({
               type: 'search',
-              placeholder: 'Search',
+              placeholder: `Search ${siteMetadata.title}...`,
+              width: '100%',
               onChange: () => clearSelection(),
             })}
           />
           {isOpen && inputValue ? (
-            <Position position="absolute" {...getMenuProps()}>
-              <BorderBox minWidth={300} boxShadow="medium" bg="white">
+            <Position {...getMenuProps({position: 'absolute', pt: 2})}>
+              <BorderBox
+                minWidth={300}
+                maxHeight="70vh"
+                pt={1}
+                boxShadow="medium"
+                bg="white"
+                style={{overflow: 'auto'}}
+              >
                 <SearchResults
                   results={results}
                   getItemProps={getItemProps}

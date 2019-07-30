@@ -1,12 +1,13 @@
-import {Flex, Position} from '@primer/components'
+import {BorderBox, Flex, Position} from '@primer/components'
 import {themeGet} from '@styled-system/theme-get'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import data from '../nav.yml'
+import Search from './search'
 
 const NavLink = styled.a`
-  padding: ${themeGet('space.1')}px 0;
+  padding: ${themeGet('space.2')}px 0;
   color: ${themeGet('colors.gray.7')};
   text-decoration: none;
 
@@ -40,12 +41,25 @@ function Sidebar() {
       position={['static', 'static', 'sticky']}
       top={top}
       height={['auto', 'auto', `calc(100vh - ${top}px)`]}
-      minWidth={240}
-      p={4}
-      bg="gray.1"
-      style={{overflow: 'auto'}}
+      minWidth={300}
+      bg="gray.0"
     >
-      <NavItems items={data} />
+      <BorderBox border={0} borderRight={1} borderRadius={0} height="100%">
+        <Flex flexDirection="column" height="100%">
+          <Flex p={4}>
+            <Search />
+          </Flex>
+          <Flex
+            flexDirection="column"
+            flex="1 1 auto"
+            px={4}
+            pb={4}
+            style={{overflow: 'auto'}}
+          >
+            <NavItems items={data} />
+          </Flex>
+        </Flex>
+      </BorderBox>
     </Position>
   )
 }
