@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "name": "gatsby-theme-primer-example",
+  "name": "doctocat",
+  "alias": "doctocat.now.sh",
   "builds": [
     {
       "src": "docs/package.json",
