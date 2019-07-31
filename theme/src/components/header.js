@@ -8,6 +8,7 @@ import {
   themeGet,
 } from '@primer/components'
 import {MarkGithub, ThreeBars, X} from '@primer/octicons-react'
+import {AnimatePresence, motion} from 'framer-motion'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
@@ -51,16 +52,27 @@ function Header() {
               </MenuButton>
             </Box>
           </Flex>
-          {isOpen ? (
-            <Flex
-              display={['flex', null, null, 'none']}
-              flexDirection="column"
-              flex="1 1 auto"
-              style={{overflow: 'auto '}}
-            >
-              <Sidebar />
-            </Flex>
-          ) : null}
+          <Flex
+            display={['flex', null, null, 'none']}
+            flexDirection="column"
+            flex="1 1 auto"
+            style={{
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            <AnimatePresence>
+              {isOpen ? (
+                <motion.div
+                  initial={{height: 0}}
+                  animate={{height: 'auto'}}
+                  exit={{height: 0}}
+                >
+                  <Sidebar />
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </Flex>
         </Flex>
       </BorderBox>
     </Sticky>

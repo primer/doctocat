@@ -22,6 +22,7 @@
     "copy-to-clipboard": "^3.2.0",
     "downshift": "^3.2.10",
     "find-up": "^4.1.0",
+    "framer-motion": "^1.4.2",
     "fuse.js": "^3.4.5",
     "gatsby-plugin-manifest": "^2.2.1",
     "gatsby-plugin-mdx": "^1.0.13",
