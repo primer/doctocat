@@ -36,7 +36,6 @@ function Search() {
         <Position {...getRootProps({position: 'relative', width: '100%'})}>
           <TextInput
             {...getInputProps({
-              type: 'search',
               placeholder: `Search ${siteMetadata.title}...`,
               width: '100%',
               onChange: () => clearSelection(),
