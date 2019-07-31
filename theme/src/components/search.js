@@ -43,7 +43,14 @@ function Search() {
             })}
           />
           {isOpen && inputValue ? (
-            <Position {...getMenuProps({position: 'absolute', pt: 2})}>
+            <Position
+              {...getMenuProps({
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                pt: 2,
+              })}
+            >
               <BorderBox
                 minWidth={300}
                 maxHeight="70vh"
