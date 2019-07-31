@@ -1,16 +1,26 @@
 import {
   BorderBox,
   Box,
-  Button,
   Flex,
   Link,
   Sticky,
   StyledOcticon,
+  themeGet,
 } from '@primer/components'
 import {MarkGithub, ThreeBars, X} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
+import styled from 'styled-components'
 import Sidebar from './sidebar'
+
+const MenuButton = styled.button`
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+  padding: ${themeGet('space.1')}px;
+  appearance: none;
+  cursor: pointer;
+`
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -31,14 +41,14 @@ function Header() {
             </Link>
             <Box mx="auto" />
             <Box display={['block', null, null, 'none']}>
-              <Button
+              <MenuButton
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Menu"
                 aria-haspop={true}
                 aria-expanded={isOpen}
               >
-                <StyledOcticon icon={isOpen ? X : ThreeBars} />
-              </Button>
+                <StyledOcticon icon={isOpen ? X : ThreeBars} size={24} />
+              </MenuButton>
             </Box>
           </Flex>
           {isOpen ? (
