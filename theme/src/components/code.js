@@ -30,9 +30,10 @@ function Code({className, children, live}) {
             className={className}
             mt={0}
             mb={3}
+            border={0}
             style={{...style, overflow: 'auto'}}
           >
-            <Text display="inline-block" p={3} fontFamily="mono" fontSize="85%">
+            <Text display="inline-block" p={3} fontFamily="mono" fontSize={1}>
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({line, key: i})}>
                   {line.map((token, key) => (
