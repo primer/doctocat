@@ -1,11 +1,10 @@
-import {TextInput} from '@primer/components'
+import {TextInput, themeGet} from '@primer/components'
 import {space, width} from 'styled-system'
 import styled from 'styled-components'
 
 const SearchInput = styled(TextInput)`
-  color: #fff;
+  color: ${themeGet('colors.white')};
   background-color: rgba(255, 255, 255, 0.07);
-  border: 1px;
   border: 1px solid transparent;
 
   &:focus,
