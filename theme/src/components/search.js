@@ -5,6 +5,7 @@ import {navigate, useStaticQuery} from 'gatsby'
 import React from 'react'
 import SearchResults from './search-results'
 import useSiteMetadata from '../use-site-metadata'
+import SearchInput from './search-input'
 
 function Search() {
   const [query, setQuery] = React.useState('')
@@ -33,11 +34,11 @@ function Search() {
         highlightedIndex,
         clearSelection,
       }) => (
-        <Position {...getRootProps({position: 'relative', width: '100%'})}>
-          <TextInput
+        <Position {...getRootProps({position: 'relative'})}>
+          <SearchInput
             {...getInputProps({
-              placeholder: `Search ${siteMetadata.title}...`,
-              width: '100%',
+              placeholder: `Search ${siteMetadata.title}`,
+              width: 240,
               onChange: () => clearSelection(),
             })}
           />

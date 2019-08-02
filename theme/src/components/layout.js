@@ -5,7 +5,7 @@ import Container from './container'
 import Head from './head'
 import Header from './header'
 import {H1} from './heading'
-import StickySidebar from './sticky-sidebar'
+import Sidebar from './sidebar'
 
 function Layout({children, pageContext}) {
   return (
@@ -14,7 +14,7 @@ function Layout({children, pageContext}) {
       <Header />
       <Flex flex="1 1 auto" flexDirection="row">
         <Box display={['none', null, null, 'block']}>
-          <StickySidebar />
+          <Sidebar />
         </Box>
         <Container>
           <H1>{pageContext.frontmatter.title}</H1>

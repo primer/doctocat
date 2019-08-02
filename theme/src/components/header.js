@@ -1,81 +1,96 @@
-import {
-  BorderBox,
-  Box,
-  Flex,
-  Link,
-  Sticky,
-  StyledOcticon,
-  themeGet,
-} from '@primer/components'
-import {MarkGithub, ThreeBars, X} from '@primer/octicons-react'
-import {AnimatePresence, motion} from 'framer-motion'
+import {Box, Flex, Link, Sticky, StyledOcticon} from '@primer/components'
+import {ChevronRight, MarkGithub, ThreeBars} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
-import styled from 'styled-components'
-import Sidebar from './sidebar'
-
-const MenuButton = styled.button`
-  color: inherit;
-  background-color: transparent;
-  border: 0;
-  padding: ${themeGet('space.1')}px;
-  appearance: none;
-  cursor: pointer;
-`
+import primerNavItems from '../primer-nav.yml'
+import useSiteMetadata from '../use-site-metadata'
+import NavDrawer from './nav-drawer'
+import NavItem from './nav-item'
+import Search from './search'
+import DarkButton from './dark-button'
+import NavDropdown from './nav-dropdown'
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const siteMetadata = useSiteMetadata()
   return (
     <Sticky>
-      <BorderBox border={0} borderRadius={0} boxShadow="medium">
-        <Flex flexDirection="column" maxHeight="100vh">
-          <Flex px={4} py={3} alignItems="center" color="blue.4" bg="gray.9">
-            <StyledOcticon icon={MarkGithub} size="medium" mr={3} />
-            <Link
-              as={GatsbyLink}
-              to="/"
-              mr={4}
-              color="inherit"
-              fontFamily="mono"
-            >
+      <Flex
+        px={4}
+        py={3}
+        alignItems="center"
+        justifyContent="space-between"
+        bg="gray.9"
+      >
+        <Flex alignItems="center">
+          <Link href="https://primer.style" color="blue.4" mr={3}>
+            <StyledOcticon icon={MarkGithub} size="medium" />
+          </Link>
+          <Flex display={['none', null, 'flex']} alignItems="center">
+            <Link href="https://primer.style" color="blue.4" fontFamily="mono">
               Primer
             </Link>
-            <Box mx="auto" />
-            <Box display={['block', null, null, 'none']}>
-              <MenuButton
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="Menu"
-                aria-haspop={true}
-                aria-expanded={isOpen}
-              >
-                <StyledOcticon icon={isOpen ? X : ThreeBars} size={24} />
-              </MenuButton>
-            </Box>
+            <StyledOcticon icon={ChevronRight} mx={2} color="blue.4" />
           </Flex>
-          <Flex
-            display={['flex', null, null, 'none']}
-            flexDirection="column"
-            flex="1 1 auto"
-            style={{
-              overflow: 'auto',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            <AnimatePresence>
-              {isOpen ? (
-                <motion.div
-                  initial={{height: 0}}
-                  animate={{height: 'auto'}}
-                  exit={{height: 0}}
-                >
-                  <Sidebar />
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
+          <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono" mr={4}>
+            {siteMetadata.title}
+          </Link>
+          <Box display={['none', null, null, 'block']}>
+            <Search />
+          </Box>
+        </Flex>
+        <Flex>
+          <Box display={['none', null, null, 'block']}>
+            <PrimerNavItems items={primerNavItems} />
+          </Box>
+          <Flex display={['flex', null, null, 'none']}>
+            <DarkButton
+              aria-label="Menu"
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen(true)}
+            >
+              <StyledOcticon icon={ThreeBars} />
+            </DarkButton>
+            <NavDrawer isOpen={isOpen} onDismiss={() => setIsOpen(false)} />
           </Flex>
         </Flex>
-      </BorderBox>
+      </Flex>
     </Sticky>
+  )
+}
+
+function PrimerNavItems({items}) {
+  return (
+    <Flex alignItems="center" color="blue.2">
+      {items.map((item, index) => {
+        if (item.children) {
+          return (
+            <Box ml={2}>
+              <NavDropdown title={item.title}>
+                {item.children.map(child => (
+                  <NavItem key={child.title} href={child.url} py={2} px={3}>
+                    {child.title}
+                  </NavItem>
+                ))}
+              </NavDropdown>
+            </Box>
+          )
+        }
+
+        return (
+          <Link
+            key={index}
+            href={item.url}
+            display="block"
+            color="inherit"
+            ml={2}
+            px={2}
+          >
+            {item.title}
+          </Link>
+        )
+      })}
+    </Flex>
   )
 }
 

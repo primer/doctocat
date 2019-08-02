@@ -5,7 +5,7 @@ import Container from './container'
 import Head from './head'
 import Header from './header'
 import Hero from './hero'
-import StickySidebar from './sticky-sidebar'
+import Sidebar from './sidebar'
 
 function HeroLayout({children, pageContext}) {
   return (
@@ -14,7 +14,7 @@ function HeroLayout({children, pageContext}) {
       <Header />
       <Flex flex="1 1 auto" flexDirection="row">
         <Box display={['none', null, null, 'block']}>
-          <StickySidebar />
+          <Sidebar />
         </Box>
         <Box width="100%">
           <Hero />
