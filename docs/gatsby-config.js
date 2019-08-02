@@ -3,6 +3,7 @@ const path = require('path')
 module.exports = {
   siteMetadata: {
     title: 'Doctocat',
+    shortName: 'Doctocat',
     description: 'A Gatsby theme for creating Primer documentation sites',
   },
   __experimentalThemes: [

@@ -33,7 +33,7 @@ function Header() {
             <StyledOcticon icon={ChevronRight} mx={2} color="blue.4" />
           </Flex>
           <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono" mr={4}>
-            {siteMetadata.title}
+            {siteMetadata.shortName}
           </Link>
           <Box display={['none', null, null, 'block']}>
             <Search />
