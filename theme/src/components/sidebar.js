@@ -5,7 +5,6 @@ import NavItems from './nav-items'
 
 function Sidebar() {
   const rootElement = React.useRef(null)
-  // TODO: explain this
   const {top = 0} = useBoundingClientRect(rootElement)
 
   return (
