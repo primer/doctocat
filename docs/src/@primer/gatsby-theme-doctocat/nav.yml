@@ -2,7 +2,7 @@
   url: /getting-started
 - title: Guides
   url: /guides
-  items:
+  children:
     - title: Gatsby CLI
       url: /guides/gatsby-cli
     - title: Changing the favicon
