@@ -4,6 +4,20 @@ import React from 'react'
 import FocusLock from 'react-focus-lock'
 
 function Drawer({isOpen, onDismiss, children}) {
+  function handleKeyDown(event) {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+      event.preventDefault()
+      onDismiss()
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   return (
     <AnimatePresence>
       {isOpen ? (
