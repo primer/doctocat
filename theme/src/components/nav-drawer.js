@@ -94,6 +94,7 @@ function PrimerNavItems({items}) {
               <Flex flexDirection="column">
                 {item.children.map(child => (
                   <DarkNavItem
+                    key={child.title}
                     href={child.url}
                     depth={1}
                     color="inherit"

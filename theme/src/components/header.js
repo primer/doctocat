@@ -65,7 +65,7 @@ function PrimerNavItems({items}) {
       {items.map((item, index) => {
         if (item.children) {
           return (
-            <Box ml={2}>
+            <Box ml={2} key={index}>
               <NavDropdown title={item.title}>
                 {item.children.map(child => (
                   <NavItem key={child.title} href={child.url} py={2} px={3}>
