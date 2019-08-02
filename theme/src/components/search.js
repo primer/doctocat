@@ -1,11 +1,11 @@
-import {BorderBox, Position, TextInput} from '@primer/components'
+import {BorderBox, Position} from '@primer/components'
 import Downshift from 'downshift'
 import Fuse from 'fuse.js'
 import {navigate, useStaticQuery} from 'gatsby'
 import React from 'react'
-import SearchResults from './search-results'
 import useSiteMetadata from '../use-site-metadata'
 import SearchInput from './search-input'
+import SearchResults from './search-results'
 
 function Search() {
   const [query, setQuery] = React.useState('')
