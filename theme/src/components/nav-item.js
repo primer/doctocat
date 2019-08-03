@@ -18,8 +18,9 @@ const NavItem = styled.a`
 
   &.active {
     color: ${themeGet('colors.blue.5')};
-    background-color: ${themeGet('colors.blue.1')};
+    box-shadow: inset 3px 0 ${themeGet('colors.blue.5')};
   }
+
   ${space};
   ${fontWeight};
 `
