@@ -16,9 +16,14 @@ function Sidebar() {
       minWidth={280}
       color="gray.8"
       bg="gray.0"
-      style={{overflow: 'auto'}}
     >
-      <BorderBox border={0} borderRight={1} borderRadius={0} height="100%">
+      <BorderBox
+        border={0}
+        borderRight={1}
+        borderRadius={0}
+        height="100%"
+        style={{overflow: 'auto'}}
+      >
         <Flex flexDirection="column" pt={3} pb={4}>
           <NavItems items={navItems} />
         </Flex>
