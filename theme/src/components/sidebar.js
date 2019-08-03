@@ -12,10 +12,11 @@ function Sidebar() {
       ref={rootElement}
       position="sticky"
       top={top}
-      height={['auto', 'auto', `calc(100vh - ${top}px)`]}
+      height={`calc(100vh - ${top}px)`}
       minWidth={280}
       color="gray.8"
       bg="gray.0"
+      style={{overflow: 'auto'}}
     >
       <BorderBox border={0} borderRight={1} borderRadius={0} height="100%">
         <Flex flexDirection="column" pt={3} pb={4}>
