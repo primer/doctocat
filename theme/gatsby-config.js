@@ -10,6 +10,7 @@ module.exports = themeOptions => {
     plugins: [
       'gatsby-plugin-styled-components',
       'gatsby-plugin-react-helmet',
+      'gatsby-plugin-remove-trailing-slashes',
       'gatsby-transformer-yaml',
       {
         resolve: 'gatsby-plugin-mdx',
