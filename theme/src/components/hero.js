@@ -1,3 +1,4 @@
+import {graphql} from "gatsby"
 import {Box, Heading, Text} from '@primer/components'
 import {Container} from '@primer/gatsby-theme-doctocat'
 import React from 'react'

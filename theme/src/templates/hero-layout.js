@@ -1,11 +1,12 @@
+import {graphql} from "gatsby"
 import {Box, Flex, Link, StyledOcticon} from '@primer/components'
 import {Pencil} from '@primer/octicons-react'
 import React from 'react'
-import Container from './container'
-import Head from './head'
-import Header from './header'
-import Hero from './hero'
-import Sidebar from './sidebar'
+import Container from '../components/container'
+import Head from '../components/head'
+import Header from '../components/header'
+import Hero from '../components/hero'
+import Sidebar from '../components/sidebar'
 
 function HeroLayout({children, pageContext}) {
   return (
@@ -34,3 +35,12 @@ function HeroLayout({children, pageContext}) {
 }
 
 export default HeroLayout
+
+export const pageQuery = graphql`
+  query {
+    mdx(frontmatter: {title: {eq: "Doctocat"}}) {
+      id
+      tableOfContents
+    }
+  }
+`
