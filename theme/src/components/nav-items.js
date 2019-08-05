@@ -1,39 +1,46 @@
-import {Link} from 'gatsby'
+import {BorderBox, Flex, Link, themeGet} from '@primer/components'
+import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
-import NavItem from './nav-item'
-import NavSubitem from './nav-subitem'
-import {BorderBox} from '@primer/components'
+import styled from 'styled-components'
 
-function NavItems({items, depth = 0}) {
+const NavLink = styled(Link)`
+  &.active {
+    font-weight: ${themeGet('fontWeights.bold')};
+    color: ${themeGet('colors.gray.8')};
+  }
+`
+
+function NavItems({items}) {
   return items.map(item => (
-    <BorderBox
-      key={item.title}
-      border={0}
-      borderRadius={0}
-      borderTop={1}
-      // pt={2}
-      pb={item.children ? 3 : 0}
-    >
-      <NavItem
-        as={Link}
-        to={item.url}
-        activeClassName="active"
-        partiallyActive={true}
-      >
-        {item.title}
-      </NavItem>
-      {item.children
-        ? item.children.map(child => (
-            <NavSubitem
-              key={child.title}
-              as={Link}
-              to={child.url}
-              activeClassName="active"
-            >
-              {child.title}
-            </NavSubitem>
-          ))
-        : null}
+    <BorderBox key={item.title} border={0} borderRadius={0} borderTop={1} p={4}>
+      <Flex flexDirection="column">
+        <NavLink
+          as={GatsbyLink}
+          to={item.url}
+          activeClassName="active"
+          partiallyActive={true}
+          color="inherit"
+        >
+          {item.title}
+        </NavLink>
+        {item.children ? (
+          <Flex flexDirection="column" mt={3}>
+            {item.children.map(child => (
+              <NavLink
+                py={2}
+                fontSize={1}
+                display="block"
+                key={child.title}
+                as={GatsbyLink}
+                to={child.url}
+                activeClassName="active"
+              >
+                {child.title}
+              </NavLink>
+            ))}
+          </Flex>
+        ) : null}
+      </Flex>
     </BorderBox>
   ))
 }

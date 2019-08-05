@@ -6,38 +6,16 @@ import {
   Link,
   StyledOcticon,
   Text,
-  themeGet,
 } from '@primer/components'
 import {ChevronDown, ChevronUp, X} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
-import styled from 'styled-components'
 import navItems from '../nav.yml'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
+import DarkButton from './dark-button'
 import Drawer from './drawer'
 import NavItems from './nav-items'
-import NavItem from './nav-item'
-import NavSubitem from './nav-subitem'
-import DarkButton from './dark-button'
-
-const DarkNavItem = styled(NavItem)`
-  color: ${themeGet('colors.blue.2')};
-
-  &:hover {
-    color: ${themeGet('colors.blue.2')};
-    background-color: ${themeGet('colors.gray.8')};
-  }
-`
-
-const DarkNavSubitem = styled(NavSubitem)`
-  color: ${themeGet('colors.blue.2')};
-
-  &:hover {
-    color: ${themeGet('colors.blue.2')};
-    background-color: ${themeGet('colors.gray.8')};
-  }
-`
 
 function NavDrawer({isOpen, onDismiss}) {
   const siteMetadata = useSiteMetadata()
@@ -93,38 +71,6 @@ function NavDrawer({isOpen, onDismiss}) {
 
 function PrimerNavItems({items}) {
   return items.map((item, index) => {
-    if (item.children) {
-      return (
-        <BorderBox
-          key={item.title}
-          border={0}
-          borderRadius={0}
-          borderTop={index !== 0 ? 1 : 0}
-          borderColor="gray.7"
-        >
-          <Details key={index}>
-            {({open, toggle}) => (
-              <>
-                <DarkNavItem as="summary" onClick={toggle}>
-                  <Flex alignItems="center" justifyContent="space-between">
-                    <Text fontWeight="bold">{item.title}</Text>
-                    <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
-                  </Flex>
-                </DarkNavItem>
-                <Flex flexDirection="column" pb={3}>
-                  {item.children.map(child => (
-                    <DarkNavSubitem key={child.title} href={child.url}>
-                      {child.title}
-                    </DarkNavSubitem>
-                  ))}
-                </Flex>
-              </>
-            )}
-          </Details>
-        </BorderBox>
-      )
-    }
-
     return (
       <BorderBox
         key={item.title}
@@ -132,10 +78,39 @@ function PrimerNavItems({items}) {
         borderRadius={0}
         borderTop={index !== 0 ? 1 : 0}
         borderColor="gray.7"
+        p={4}
       >
-        <DarkNavItem key={index} href={item.url} display="block">
-          {item.title}
-        </DarkNavItem>
+        {item.children ? (
+          <Details key={index}>
+            {({open, toggle}) => (
+              <>
+                <summary onClick={toggle} style={{cursor: 'pointer'}}>
+                  <Flex alignItems="center" justifyContent="space-between">
+                    <Text>{item.title}</Text>
+                    <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
+                  </Flex>
+                </summary>
+                <Flex flexDirection="column" mt={3}>
+                  {item.children.map(child => (
+                    <Link
+                      key={child.title}
+                      href={child.url}
+                      py={2}
+                      fontSize={1}
+                      color="inherit"
+                    >
+                      {child.title}
+                    </Link>
+                  ))}
+                </Flex>
+              </>
+            )}
+          </Details>
+        ) : (
+          <Link key={index} href={item.url} color="inherit" display="block">
+            {item.title}
+          </Link>
+        )}
       </BorderBox>
     )
   })

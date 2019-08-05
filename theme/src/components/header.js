@@ -4,11 +4,10 @@ import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
-import NavDrawer from './nav-drawer'
-import NavItem from './nav-item'
-import Search from './search'
 import DarkButton from './dark-button'
-import NavDropdown from './nav-dropdown'
+import NavDrawer from './nav-drawer'
+import NavDropdown, {NavDropdownItem} from './nav-dropdown'
+import Search from './search'
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -65,12 +64,12 @@ function PrimerNavItems({items}) {
       {items.map((item, index) => {
         if (item.children) {
           return (
-            <Box ml={2} key={index}>
+            <Box ml={4} key={index}>
               <NavDropdown title={item.title}>
                 {item.children.map(child => (
-                  <NavItem key={child.title} href={child.url} py={2} px={3}>
+                  <NavDropdownItem key={child.title} href={child.url}>
                     {child.title}
-                  </NavItem>
+                  </NavDropdownItem>
                 ))}
               </NavDropdown>
             </Box>
@@ -83,8 +82,7 @@ function PrimerNavItems({items}) {
             href={item.url}
             display="block"
             color="inherit"
-            ml={2}
-            px={2}
+            ml={4}
           >
             {item.title}
           </Link>
