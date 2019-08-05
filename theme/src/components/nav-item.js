@@ -8,6 +8,7 @@ const NavItem = styled.a`
   color: inherit;
   cursor: pointer;
   text-decoration: none;
+  font-weight: ${themeGet('fontWeights.bold')};
 
   &:hover {
     background-color: ${themeGet('colors.gray.1')};

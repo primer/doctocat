@@ -18,9 +18,16 @@ import useSiteMetadata from '../use-site-metadata'
 import Drawer from './drawer'
 import NavItems from './nav-items'
 import NavItem from './nav-item'
+import NavSubitem from './nav-subitem'
 import DarkButton from './dark-button'
 
 const DarkNavItem = styled(NavItem)`
+  &:hover {
+    background-color: ${themeGet('colors.gray.8')};
+  }
+`
+
+const DarkNavSubitem = styled(NavSubitem)`
   &:hover {
     background-color: ${themeGet('colors.gray.8')};
   }
@@ -100,15 +107,9 @@ function PrimerNavItems({items}) {
                 </DarkNavItem>
                 <Flex flexDirection="column" pb={3}>
                   {item.children.map(child => (
-                    <DarkNavItem
-                      key={child.title}
-                      href={child.url}
-                      depth={1}
-                      color="inherit"
-                      py={2}
-                    >
+                    <DarkNavSubitem key={child.title} href={child.url}>
                       {child.title}
-                    </DarkNavItem>
+                    </DarkNavSubitem>
                   ))}
                 </Flex>
               </>

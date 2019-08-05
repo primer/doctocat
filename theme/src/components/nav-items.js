@@ -16,11 +16,7 @@ function NavItems({items, depth = 0}) {
       <NavItem
         as={Link}
         to={item.url}
-        depth={depth}
         activeClassName="active"
-        py={depth === 0 ? 3 : 2}
-        fontWeight={depth === 0 ? 'bold' : 'normal'}
-        // fontSize={depth === 0 ? 2 : 1}
         partiallyActive={true}
       >
         {item.title}
