@@ -4,7 +4,7 @@ import {space, fontWeight, fontSize} from 'styled-system'
 
 const NavItem = styled.a`
   display: block;
-  padding: ${themeGet('space.3')}px ${themeGet('space.4')}px;
+  padding: ${themeGet('space.4')}px;
   color: inherit;
   cursor: pointer;
   text-decoration: none;
