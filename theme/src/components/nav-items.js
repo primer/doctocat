@@ -1,6 +1,7 @@
 import {Link} from 'gatsby'
 import React from 'react'
 import NavItem from './nav-item'
+import NavSubitem from './nav-subitem'
 import {BorderBox} from '@primer/components'
 
 function NavItems({items, depth = 0}) {
@@ -9,8 +10,8 @@ function NavItems({items, depth = 0}) {
       key={item.title}
       border={0}
       borderRadius={0}
-      borderTop={depth === 0 ? 1 : 0}
-      pb={depth === 0 && item.children ? 3 : 0}
+      borderTop={1}
+      pb={item.children ? 3 : 0}
     >
       <NavItem
         as={Link}
@@ -20,12 +21,22 @@ function NavItems({items, depth = 0}) {
         py={depth === 0 ? 3 : 2}
         fontWeight={depth === 0 ? 'bold' : 'normal'}
         // fontSize={depth === 0 ? 2 : 1}
+        partiallyActive={true}
       >
         {item.title}
       </NavItem>
-      {item.children ? (
-        <NavItems items={item.children} depth={depth + 1} />
-      ) : null}
+      {item.children
+        ? item.children.map(child => (
+            <NavSubitem
+              key={child.title}
+              as={Link}
+              to={child.url}
+              activeClassName="active"
+            >
+              {child.title}
+            </NavSubitem>
+          ))
+        : null}
     </BorderBox>
   ))
 }

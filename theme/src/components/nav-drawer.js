@@ -55,7 +55,7 @@ function NavDrawer({isOpen, onDismiss}) {
               </DarkButton>
             </Flex>
           </BorderBox>
-          <Flex flexDirection="column" pt={2} pb={3}>
+          <Flex flexDirection="column">
             <PrimerNavItems items={primerNavItems} />
           </Flex>
         </Flex>
@@ -67,7 +67,7 @@ function NavDrawer({isOpen, onDismiss}) {
             color="inherit"
             fontFamily="mono"
             mx={4}
-            mb={3}
+            mb={4}
           >
             {siteMetadata.title}
           </Link>
@@ -82,45 +82,60 @@ function PrimerNavItems({items}) {
   return items.map((item, index) => {
     if (item.children) {
       return (
-        <Details key={index}>
-          {({open, toggle}) => (
-            <>
-              <DarkNavItem as="summary" mt={2} onClick={toggle}>
-                <Flex alignItems="center" justifyContent="space-between">
-                  <Text fontWeight="bold">{item.title}</Text>
-                  <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
+        <BorderBox
+          key={item.title}
+          border={0}
+          borderRadius={0}
+          borderTop={index !== 0 ? 1 : 0}
+          borderColor="gray.7"
+        >
+          <Details key={index}>
+            {({open, toggle}) => (
+              <>
+                <DarkNavItem as="summary" onClick={toggle}>
+                  <Flex alignItems="center" justifyContent="space-between">
+                    <Text fontWeight="bold">{item.title}</Text>
+                    <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
+                  </Flex>
+                </DarkNavItem>
+                <Flex flexDirection="column" pb={3}>
+                  {item.children.map(child => (
+                    <DarkNavItem
+                      key={child.title}
+                      href={child.url}
+                      depth={1}
+                      color="inherit"
+                      py={2}
+                    >
+                      {child.title}
+                    </DarkNavItem>
+                  ))}
                 </Flex>
-              </DarkNavItem>
-              <Flex flexDirection="column">
-                {item.children.map(child => (
-                  <DarkNavItem
-                    key={child.title}
-                    href={child.url}
-                    depth={1}
-                    color="inherit"
-                    py={2}
-                  >
-                    {child.title}
-                  </DarkNavItem>
-                ))}
-              </Flex>
-            </>
-          )}
-        </Details>
+              </>
+            )}
+          </Details>
+        </BorderBox>
       )
     }
 
     return (
-      <DarkNavItem
-        key={index}
-        href={item.url}
-        display="block"
-        color="inherit"
-        fontWeight="bold"
-        mt={2}
+      <BorderBox
+        key={item.title}
+        border={0}
+        borderRadius={0}
+        borderTop={index !== 0 ? 1 : 0}
+        borderColor="gray.7"
       >
-        {item.title}
-      </DarkNavItem>
+        <DarkNavItem
+          key={index}
+          href={item.url}
+          display="block"
+          color="inherit"
+          fontWeight="bold"
+        >
+          {item.title}
+        </DarkNavItem>
+      </BorderBox>
     )
   })
 }
