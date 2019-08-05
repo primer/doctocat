@@ -22,13 +22,19 @@ import NavSubitem from './nav-subitem'
 import DarkButton from './dark-button'
 
 const DarkNavItem = styled(NavItem)`
+  color: ${themeGet('colors.blue.2')};
+
   &:hover {
+    color: ${themeGet('colors.blue.2')};
     background-color: ${themeGet('colors.gray.8')};
   }
 `
 
 const DarkNavSubitem = styled(NavSubitem)`
+  color: ${themeGet('colors.blue.2')};
+
   &:hover {
+    color: ${themeGet('colors.blue.2')};
     background-color: ${themeGet('colors.gray.8')};
   }
 `
@@ -127,13 +133,7 @@ function PrimerNavItems({items}) {
         borderTop={index !== 0 ? 1 : 0}
         borderColor="gray.7"
       >
-        <DarkNavItem
-          key={index}
-          href={item.url}
-          display="block"
-          color="inherit"
-          fontWeight="bold"
-        >
+        <DarkNavItem key={index} href={item.url} display="block">
           {item.title}
         </DarkNavItem>
       </BorderBox>

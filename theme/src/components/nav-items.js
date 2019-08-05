@@ -11,6 +11,7 @@ function NavItems({items, depth = 0}) {
       border={0}
       borderRadius={0}
       borderTop={1}
+      // pt={2}
       pb={item.children ? 3 : 0}
     >
       <NavItem

@@ -9,15 +9,16 @@ const NavSubitem = styled.a`
   color: inherit;
   cursor: pointer;
   text-decoration: none;
-//   color: ${themeGet('colors.blue.5')};
+  color: ${themeGet('colors.blue.5')};
 
   &:hover {
-    background-color: ${themeGet('colors.gray.1')};
+    color: ${themeGet('colors.gray.8')};
+    background-color: ${themeGet('colors.gray.2')};
   }
 
   &.active {
-    color: ${themeGet('colors.blue.5')};
-    // box-shadow: inset 3px 0 ${themeGet('colors.blue.5')};
+    color: ${themeGet('colors.gray.8')};
+    font-weight: ${themeGet('fontWeights.bold')};
   }
 
   ${space};
