@@ -67,7 +67,7 @@ function NavDrawer({isOpen, onDismiss}) {
             color="inherit"
             fontFamily="mono"
             mx={4}
-            mb={2}
+            mb={3}
           >
             {siteMetadata.title}
           </Link>

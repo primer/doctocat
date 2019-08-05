@@ -26,7 +26,7 @@ function Sidebar() {
             height="100%"
             style={{overflow: 'auto'}}
           >
-            <Flex flexDirection="column" pt={3} pb={4}>
+            <Flex flexDirection="column" pb={4}>
               <NavItems items={navItems} />
             </Flex>
           </BorderBox>

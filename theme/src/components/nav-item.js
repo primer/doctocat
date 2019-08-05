@@ -1,19 +1,17 @@
 import {themeGet} from '@primer/components'
 import styled from 'styled-components'
-import {space, fontWeight} from 'styled-system'
+import {space, fontWeight, fontSize} from 'styled-system'
 
 const NavItem = styled.a`
   display: block;
-  padding-top: ${themeGet('space.2')}px;
-  padding-bottom: ${themeGet('space.2')}px;
-  padding-left: calc(${props => props.depth * 16}px + ${themeGet('space.4')}px);
-  padding-right: ${themeGet('space.4')}px;
+  padding: ${themeGet('space.2')}px ${themeGet('space.4')}px;
   color: inherit;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    background-color: ${themeGet('colors.gray.2')};
+    background-color: ${themeGet('colors.gray.1')};
+    box-shadow: inset 3px 0 ${themeGet('colors.gray.4')};
   }
 
   &.active {
@@ -23,6 +21,7 @@ const NavItem = styled.a`
 
   ${space};
   ${fontWeight};
+  ${fontSize};
 `
 
 NavItem.defaultProps = {
