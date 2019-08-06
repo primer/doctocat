@@ -1,4 +1,4 @@
-import {graphql, useStaticQuery} from "gatsby"
+import {graphql, useStaticQuery} from 'gatsby'
 import {Box, Flex, Link, StyledOcticon} from '@primer/components'
 import {Pencil} from '@primer/octicons-react'
 import React from 'react'
@@ -8,23 +8,16 @@ import Header from '../components/header'
 import {H1} from '../components/heading'
 import Sidebar from '../components/sidebar'
 
-function Layout({children, pageContext}) {
-  // can't pass variables to useStaticQuery so used this page as an example
-  const data = useStaticQuery(graphql`query {
-    mdx(frontmatter: {title: {eq: "Doctocat"}}) {
-      id
-      tableOfContents
-    }
-  }`)
+function Layout({children, pageContext, data}) {
   console.log(data)
   return (
     <Flex flexDirection="column" minHeight="100vh">
-      <Head title={pageContext.frontmatter.title} />
+      <Head title={data.mdx.frontmatter.title} />
       <Header />
       <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
         <Sidebar />
         <Container>
-          <H1>{pageContext.frontmatter.title}</H1>
+          <H1>{data.mdx.frontmatter.title}</H1>
           {children}
           {pageContext.editUrl ? (
             <Box my={6}>
@@ -41,3 +34,15 @@ function Layout({children, pageContext}) {
 }
 
 export default Layout
+
+export const pageQuery = graphql`
+  query($title: String) {
+    mdx(frontmatter: {title: {eq: $title}}) {
+      id
+      tableOfContents
+      frontmatter {
+        title
+      }
+    }
+  }
+`

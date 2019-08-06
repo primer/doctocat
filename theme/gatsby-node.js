@@ -23,14 +23,48 @@ function generateEditUrl(page, themeOptions) {
   }
 }
 
-exports.onCreatePage = ({page, actions}, themeOptions) => {
-  const editUrl = generateEditUrl(page, themeOptions)
-  actions.deletePage(page)
-  actions.createPage({
-    ...page,
-    context: {
-      ...page.context,
-      editUrl,
-    },
+exports.createPages = async ({graphql, actions}, themeOptions) => {
+  const {createPage, deletePage} = actions
+  const docsTemplate = require.resolve(`./src/templates/layout.js`)
+
+  const MdxPages = await graphql(`
+    query {
+      allMdx {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+            }
+            fileAbsolutePath
+            parent {
+              id 
+              ... on File {
+                id
+                absolutePath
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  
+
+  MdxPages.data.allMdx.edges.forEach(({node}) => {
+    const relativePath = path.relative(
+      themeOptions.repoRootPath,
+      node.parent.absolutePath,
+    )
+
+    createPage({
+      path: relativePath,
+      component: docsTemplate,
+      context: {
+        editUrl: generateEditUrl(node.parent.absolutePath, themeOptions),
+        title: node.frontmatter.title
+      }
+    })
   })
 }

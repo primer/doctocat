@@ -1,4 +1,4 @@
-import {graphql} from "gatsby"
+import {graphql} from 'gatsby'
 import {BorderBox, Position, TextInput} from '@primer/components'
 import Downshift from 'downshift'
 import Fuse from 'fuse.js'
