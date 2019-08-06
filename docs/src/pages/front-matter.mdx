@@ -1,0 +1,50 @@
+---
+title: Front matter
+---
+
+import {StatusLabel} from '@primer/gatsby-theme-doctocat'
+
+In any markdown file (`.md` or `.mdx`) in `src/pages/`, you can add front matter to provide additional information about the page. The front matter must be the first thing in the file and must take the form of valid [YAML](https://yaml.org/) set between triple-dashed lines:
+
+```
+---
+title: Example title
+---
+```
+
+Between these triple-dashed lines, you can set predefined variables (see below for reference).
+
+## Title and description
+
+`title` is used to render the page heading and generate the [page title](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title). `description` is used to create a [meta description tag](https://moz.com/learn/seo/meta-description) which is important for SEO. We recommend setting `title` and `description` for every page:
+
+```markdown
+---
+title: My page title
+description: My page description
+---
+```
+
+## Status
+
+You can add a status label to any page by setting the `status` variable in the front matter:
+
+```markdown
+---
+status: Stable
+---
+```
+
+Doctocat comes with a few predefined statuses with that have colors associated with them:
+
+| Status         | Output                                |
+| -------------- | ------------------------------------- |
+| `Stable`       | <StatusLabel status="Stable" />       |
+| `New release`  | <StatusLabel status="New release" />  |
+| `Experimental` | <StatusLabel status="Experimental" /> |
+| `In review`    | <StatusLabel status="In review" />    |
+| `Deprecated`   | <StatusLabel status="Deprecated" />   |
+
+Custom statuses will render a gray dot:
+
+<StatusLabel status="My custom status" />
