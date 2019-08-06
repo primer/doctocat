@@ -8,6 +8,8 @@
       url: https://octicons.github.com
     - title: Prototyping
       url: https://primer.style/css/tools/prototyping
+    - title: Presentations
+      url: https://primer.style/presentations
 - title: Development
   children:
     - title: Primer CSS
