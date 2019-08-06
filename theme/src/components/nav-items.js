@@ -24,16 +24,17 @@ function NavItems({items}) {
           {item.title}
         </NavLink>
         {item.children ? (
-          <Flex flexDirection="column" mt={3}>
+          <Flex flexDirection="column" mt={2}>
             {item.children.map(child => (
               <NavLink
-                py={2}
-                fontSize={1}
-                display="block"
                 key={child.title}
                 as={GatsbyLink}
                 to={child.url}
                 activeClassName="active"
+                display="block"
+                py={1}
+                mt={2}
+                fontSize={1}
               >
                 {child.title}
               </NavLink>

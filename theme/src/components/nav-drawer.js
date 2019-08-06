@@ -95,12 +95,13 @@ function PrimerNavItems({items}) {
                     <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
                   </Flex>
                 </summary>
-                <Flex flexDirection="column" mt={3}>
+                <Flex flexDirection="column" mt={2}>
                   {item.children.map(child => (
                     <Link
                       key={child.title}
                       href={child.url}
-                      py={2}
+                      py={1}
+                      mt={2}
                       fontSize={1}
                       color="inherit"
                     >
