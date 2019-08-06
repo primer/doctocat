@@ -1,21 +1,13 @@
 - title: Getting started
   url: /getting-started
-- title: Guides
-  url: /guides
   items:
     - title: Gatsby CLI
-      url: /guides/gatsby-cli
-    - title: Changing the favicon
-      url: /guides/changing-the-favicon
-    - title: Adding a hero
-      url: /guides/adding-a-hero
-    - title: Side navigation
-      url: /guides/side-navigation
-    - title: Live code
-      url: /guides/live-code
-    - title: Deployment
-      url: /guides/deployment
-- title: Theme options
-  url: /theme-options
+      url: /getting-started/gatsby-cli
+- title: Customization
+  url: /customization
+- title: Live code
+  url: /live-code
+- title: Deployment
+  url: /deployment
 - title: Contributing
   url: /contributing
