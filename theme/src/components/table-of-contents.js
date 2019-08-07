@@ -11,6 +11,7 @@ function TableOfContents({items}) {
     </>
   )
 }
+
 function TableOfContentsItems({items}) {
   const {
     ul: List = 'ul',
@@ -21,7 +22,7 @@ function TableOfContentsItems({items}) {
   return (
     <List>
       {items.map(item => (
-        <ListItem>
+        <ListItem key={item.url}>
           <Link href={item.url}>{item.title}</Link>
           {item.items ? <TableOfContentsItems items={item.items} /> : null}
         </ListItem>
