@@ -55,6 +55,9 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       context: {
         editUrl,
         tableOfContents: node.tableOfContents,
+        // We don't need to add `frontmatter` to the page context here
+        // becuase gatsby-plugin-mdx automatically does that.
+        // Source: https://git.io/fjQDa
       },
     })
   })
