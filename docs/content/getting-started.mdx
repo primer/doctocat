@@ -15,17 +15,17 @@ Let's check out the directory structure of your new repository:
 ```
 .
 ├── gatsby-config.js
-├── src
-│   ├── pages
-│   └── @primer
-│       └── gatsby-theme-carbon
+├── content/
+├── src/
+│   └── @primer/
+│       └── gatsby-theme-doctocat
 ├── package.json
 └── now.json
 ```
 
 - `gatsby-config.js`: This is your [Gatsby configuration](https://www.gatsbyjs.org/docs/gatsby-config/), where you can specify information about your site (such as title and description), and any additional [Gatsby plugins](https://www.gatsbyjs.org/plugins/).
-- `src/`: This directory will contain all of your site's content and any supporting files such as assets and custom React components.
-  - `pages/`: This is where you will spend most of your time writing documentation. Markdown files (`.md` or `.mdx`) in `src/pages/` will be interpreted as [MDX](https://mdxjs.com/), a combination of standard Markdown and [React JSX](https://reactjs.org/docs/jsx-in-depth.html). Each document [becomes a page](https://www.gatsbyjs.org/docs/recipes/#creating-pages) on your site with a URL based on its path relative to `src/pages/`.
+- `content/`: This is where you will spend most of your time writing documentation. Markdown files (`.md` or `.mdx`) in `content/` will be interpreted as [MDX](https://mdxjs.com/), a combination of standard Markdown and [React JSX](https://reactjs.org/docs/jsx-in-depth.html). Each document [becomes a page](https://www.gatsbyjs.org/docs/recipes/#creating-pages) on your site with a URL based on its path relative to `content/`.
+- `src/`: This directory will contain any supporting files such as assets and custom React components.
   - `@primer/gatsby-theme-doctocat/`: You can use this directory to customize the look and behavior of the theme. All files placed in this directory will "shadow" files in the `src` directory of the Doctocat theme. Check out "[What is Component Shadowing?](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/)" for more information.
 - `package.json`: This file contains metadata like the project's name, repository, and a list of packages the project depends on. Check out the [package.json docs](https://docs.npmjs.com/files/package.json) for more information.
 - `now.json`: When using [Now](https://zeit.co/now) to deploy, the configuration for your deployment is read from this file. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information. Feel free to delete this file if you don't plan to deploy your site or want to use a different deployment service, like [Netlify](https://www.netlify.com/) or [Surge](https://surge.sh/).
@@ -72,11 +72,11 @@ You'll also want to update the `name` field in the `now.json` file:
 
 ## 3. Add your content
 
-Next, go ahead and put your Markdown documents (`.md` or `.mdx`) in `src/pages/`. Documents in `src/pages/` automatically become pages with URLs based on their path relative to `src/pages/`. For example, if you create a `src/pages/components/box.md` file, Gatsby will use the content of that file to create a `/components/box` page.
+Next, go ahead and put your Markdown documents (`.md` or `.mdx`) in `content/`. Documents in `content/` automatically become pages with URLs based on their path relative to `content/`. For example, if you create a `content/components/box.md` file, Doctocat will use that file to create a `/components/box` page.
 
 ## 4. Update your side navigation
 
-Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. After you've put your documents in `src/pages/`, update the `nav.yml` file accordingly:
+Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. After you've put your documents in `content/`, update the `nav.yml` file accordingly:
 
 ```yml
 - title: Example
