@@ -1,13 +1,16 @@
-import {BorderBox, Position, TextInput} from '@primer/components'
+import {BorderBox, Position} from '@primer/components'
 import Downshift from 'downshift'
 import Fuse from 'fuse.js'
 import {navigate, useStaticQuery} from 'gatsby'
 import React from 'react'
+import useSiteMetadata from '../use-site-metadata'
+import SearchInput from './search-input'
 import SearchResults from './search-results'
 
 function Search() {
   const [query, setQuery] = React.useState('')
   const results = useSearch(query)
+  const siteMetadata = useSiteMetadata()
 
   return (
     <Downshift
@@ -31,17 +34,31 @@ function Search() {
         highlightedIndex,
         clearSelection,
       }) => (
-        <Position position="relative" {...getRootProps()}>
-          <TextInput
+        <Position {...getRootProps({position: 'relative'})}>
+          <SearchInput
             {...getInputProps({
-              type: 'search',
-              placeholder: 'Search',
+              placeholder: `Search ${siteMetadata.title}`,
+              width: 240,
               onChange: () => clearSelection(),
             })}
           />
           {isOpen && inputValue ? (
-            <Position position="absolute" {...getMenuProps()}>
-              <BorderBox minWidth={300} boxShadow="medium" bg="white">
+            <Position
+              {...getMenuProps({
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                pt: 2,
+              })}
+            >
+              <BorderBox
+                minWidth={300}
+                maxHeight="70vh"
+                py={1}
+                boxShadow="medium"
+                bg="white"
+                style={{overflow: 'auto'}}
+              >
                 <SearchResults
                   results={results}
                   getItemProps={getItemProps}

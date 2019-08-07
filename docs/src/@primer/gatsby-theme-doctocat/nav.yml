@@ -1,15 +1,18 @@
 - title: Getting started
   url: /getting-started
-  items:
+  children:
     - title: Gatsby CLI
       url: /getting-started/gatsby-cli
-- title: Customization
-  url: /customization
-- title: Front matter
-  url: /front-matter
-- title: Live code
-  url: /live-code
-- title: Deployment
-  url: /deployment
+- title: Usage
+  url: /usage
+  children:
+    - title: Customization
+      url: /usage/customization
+    - title: Front matter
+      url: /usage/front-matter
+    - title: Live code
+      url: /usage/live-code
+    - title: Deployment
+      url: /usage/deployment
 - title: Contributing
   url: /contributing

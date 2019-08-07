@@ -1,0 +1,20 @@
+- title: What's new
+  url: https://primer.style/news
+- title: Design
+  children:
+    - title: Interface guidelines
+      url: https://primer.style/design
+    - title: Octicons
+      url: https://octicons.github.com
+    - title: Prototyping
+      url: https://primer.style/css/tools/prototyping
+    - title: Presentations
+      url: https://primer.style/presentations
+- title: Development
+  children:
+    - title: Primer CSS
+      url: https://primer.style/css
+    - title: Primer Components
+      url: https://primer.style/components
+- title: About
+  url: https://primer.style/team

@@ -1,21 +1,10 @@
 import {Box, Heading, Text} from '@primer/components'
 import {Container} from '@primer/gatsby-theme-doctocat'
 import React from 'react'
-import {useStaticQuery} from 'gatsby'
+import useSiteMetadata from '../use-site-metadata'
 
 function Hero() {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-          description
-        }
-      }
-    }
-  `)
-
-  const {title, description} = data.site.siteMetadata
+  const {title, description} = useSiteMetadata()
 
   return (
     <Box bg="black" py={6}>

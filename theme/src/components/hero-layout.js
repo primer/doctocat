@@ -12,8 +12,10 @@ function HeroLayout({children, pageContext}) {
     <Flex flexDirection="column" minHeight="100vh">
       <Head title={pageContext.frontmatter.title} />
       <Header />
-      <Flex flex="1 1 auto" flexDirection={['column', 'column', 'row']}>
-        <Sidebar />
+      <Flex flex="1 1 auto" flexDirection="row">
+        <Box display={['none', null, null, 'block']}>
+          <Sidebar />
+        </Box>
         <Box width="100%">
           <Hero />
           <Container>

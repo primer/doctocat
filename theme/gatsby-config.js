@@ -4,11 +4,13 @@ module.exports = themeOptions => {
   return {
     siteMetadata: {
       title: 'Doctocat',
+      shortName: 'Doctocat',
       description: 'A Gatsby theme for creating Primer documentation sites',
     },
     plugins: [
       'gatsby-plugin-styled-components',
       'gatsby-plugin-react-helmet',
+      'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-catch-links',
       'gatsby-transformer-yaml',
       {
