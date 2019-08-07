@@ -24,12 +24,15 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         flexDirection: 'column',
         px: 3,
         py: 2,
-        color: 'inherit',
-        bg: highlightedIndex === index ? 'gray.2' : 'transparent',
+        color: highlightedIndex === index ? 'white' : 'gray.8',
+        bg: highlightedIndex === index ? 'blue.5' : 'transparent',
         style: {textDecoration: 'none'},
       })}
     >
-      <Text fontSize={0} color="gray.7">
+      <Text
+        fontSize={0}
+        color={highlightedIndex === index ? 'blue.2' : 'gray.7'}
+      >
         {item.path
           .split('/')
           .filter(Boolean)

@@ -38,9 +38,11 @@ After you've created the repository, you'll want to customize the information ab
 module.exports = {
   siteMetadata: {
 -   title: 'Doctocat Template',
+-   shortName: 'Doctocat Template',
 -   description: 'A Doctocat template site.',
-+   title: 'My Site',
-+   description: 'My site description.',
++   title: 'My Site', // Used for the page titles and SEO
++   shortName: 'My Site', // Used in the header
++   description: 'My site description.', // Used for SEO
   },
   ...
 }
@@ -94,8 +96,8 @@ Once you have the GitHub integration set up, you should be able to access your s
 
 ## 6. Add a primer.style path alias
 
-To make your site available from `primer.style/my-site`, check out "[Adding a primer.style path alias](/deployment#adding-a-primerstyle-path-alias)" in the [Deployment](/deployment) guide.
+To make your site available from `primer.style/my-site`, check out "[Adding a primer.style path alias](/usage/deployment#adding-a-primer.style-path-alias)" in the [Deployment](/usage/deployment) guide.
 
 ## What's next?
 
-Check out the [customization](/customization) guide.
+Check out the [customization](/usage/customization) guide.

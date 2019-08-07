@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -16,18 +16,20 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
-    "@primer/components": "^13.1.0",
+    "@primer/components": "^13.2.0",
     "@primer/octicons-react": "^9.1.1",
     "@styled-system/theme-get": "^5.0.12",
     "copy-to-clipboard": "^3.2.0",
     "downshift": "^3.2.10",
     "find-up": "^4.1.0",
+    "framer-motion": "^1.4.2",
     "fuse.js": "^3.4.5",
     "gatsby-plugin-catch-links": "^2.1.2",
     "gatsby-plugin-manifest": "^2.2.1",
     "gatsby-plugin-mdx": "^1.0.13",
     "gatsby-plugin-page-creator": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.1.0",
+    "gatsby-plugin-remove-trailing-slashes": "^2.1.2",
     "gatsby-plugin-styled-components": "^3.1.0",
     "gatsby-source-filesystem": "^2.1.0",
     "gatsby-transformer-yaml": "^2.2.0",
@@ -36,12 +38,14 @@
     "pkg-up": "^3.1.0",
     "prism-react-renderer": "^0.1.7",
     "react-addons-text-content": "^0.0.4",
+    "react-focus-lock": "^2.0.5",
     "react-frame-component": "^4.1.1",
     "react-helmet": "^5.2.1",
     "react-live": "^2.1.2",
     "react-measure": "^2.3.0",
     "read-pkg-up": "^6.0.0",
     "sentence-case": "^2.1.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.0.18"
   }
 }

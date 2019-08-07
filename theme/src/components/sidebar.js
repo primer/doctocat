@@ -1,65 +1,39 @@
-import {Flex, Position} from '@primer/components'
-import {themeGet} from '@styled-system/theme-get'
-import {Link as GatsbyLink} from 'gatsby'
+import {BorderBox, Flex, Position} from '@primer/components'
 import React from 'react'
-import styled from 'styled-components'
-import data from '../nav.yml'
-
-const NavLink = styled.a`
-  padding: ${themeGet('space.1')}px 0;
-  color: ${themeGet('colors.gray.7')};
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &.active {
-    color: ${themeGet('colors.blue.5')};
-  }
-`
-
-function NavItems({items, ...props}) {
-  return items.map(item => (
-    <Flex flexDirection="column" key={item.url} {...props}>
-      <NavLink as={GatsbyLink} to={item.url} activeClassName="active">
-        {item.title}
-      </NavLink>
-      {item.items ? <NavItems items={item.items} pl={3} /> : null}
-    </Flex>
-  ))
-}
+import Measure from 'react-measure'
+import navItems from '../nav.yml'
+import NavItems from './nav-items'
 
 function Sidebar() {
-  const rootElement = React.useRef(null)
-  const {top = 0} = useBoundingClientRect(rootElement)
+  const [top, setTop] = React.useState(0)
 
   return (
-    <Position
-      ref={rootElement}
-      position={['static', 'static', 'sticky']}
-      top={top}
-      height={['auto', 'auto', `calc(100vh - ${top}px)`]}
-      minWidth={240}
-      p={4}
-      bg="gray.1"
-      style={{overflow: 'auto'}}
-    >
-      <NavItems items={data} />
-    </Position>
+    <Measure bounds={true} onResize={rect => setTop(rect.bounds.top)}>
+      {({measureRef}) => (
+        <Position
+          ref={measureRef}
+          position="sticky"
+          top={top}
+          height={`calc(100vh - ${top}px)`}
+          minWidth={260}
+          color="gray.8"
+          bg="gray.0"
+        >
+          <BorderBox
+            border={0}
+            borderRight={1}
+            borderRadius={0}
+            height="100%"
+            style={{overflow: 'auto'}}
+          >
+            <Flex flexDirection="column">
+              <NavItems items={navItems} />
+            </Flex>
+          </BorderBox>
+        </Position>
+      )}
+    </Measure>
   )
-}
-
-function useBoundingClientRect(ref) {
-  const [boundingClientRect, setBoundingClientRect] = React.useState({})
-
-  React.useEffect(() => {
-    if (ref.current) {
-      setBoundingClientRect(ref.current.getBoundingClientRect())
-    }
-  })
-
-  return boundingClientRect
 }
 
 export default Sidebar
