@@ -1,8 +1,9 @@
 import {Heading, Link, StyledOcticon} from '@primer/components'
 import {Link as LinkIcon} from '@primer/octicons-react'
 import themeGet from '@styled-system/theme-get'
+import GithubSlugger from 'github-slugger'
 import React from 'react'
-import slugify from 'slugify'
+import textContent from 'react-addons-text-content'
 import styled from 'styled-components'
 
 const StyledHeading = styled(Heading)`
@@ -20,9 +21,8 @@ const StyledHeading = styled(Heading)`
 `
 
 function MarkdownHeading({children, ...props}) {
-  const id = children
-    ? slugify(children.toString(), {lower: true, remove: /[*+~.()'"!:@?]/g})
-    : ''
+  const slugger = new GithubSlugger()
+  const id = children ? slugger.slug(textContent(children)) : ''
 
   return (
     <StyledHeading id={id} {...props}>
