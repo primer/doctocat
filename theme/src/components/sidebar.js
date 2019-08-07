@@ -15,7 +15,7 @@ function Sidebar() {
           position="sticky"
           top={top}
           height={`calc(100vh - ${top}px)`}
-          minWidth={280}
+          minWidth={260}
           color="gray.8"
           bg="gray.0"
         >
