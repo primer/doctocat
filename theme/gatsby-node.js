@@ -26,9 +26,6 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       allMdx {
         nodes {
           fileAbsolutePath
-          frontmatter {
-            title
-          }
           tableOfContents
           parent {
             ... on File {
@@ -56,7 +53,6 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       path: pagePath,
       component: node.fileAbsolutePath,
       context: {
-        frontmatter: node.frontmatter,
         editUrl,
         tableOfContents: node.tableOfContents,
       },
