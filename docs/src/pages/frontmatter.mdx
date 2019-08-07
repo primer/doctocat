@@ -1,10 +1,10 @@
 ---
-title: Front matter
+title: Frontmatter
 ---
 
 import {StatusLabel} from '@primer/gatsby-theme-doctocat'
 
-In any markdown file (`.md` or `.mdx`) in `src/pages/`, you can add front matter to provide additional information about the page. The front matter must start on the first line of the file and must take the form of valid [YAML](https://yaml.org/) set between lines of three hyphens (`---`):
+When you create a Markdown file (`.md` or `.mdx`) in `src/pages/`, you can include a set of key-value pairs that provide additional information about that page. This information is called frontmatter and is set between triple dashes starting on the first line of the file:
 
 ```
 ---
@@ -12,7 +12,7 @@ title: Example title
 ---
 ```
 
-Between these triple-dashed lines, you can set predefined variables (see below for reference).
+Doctocat supports a few special frontmatter key-value pairs described below.
 
 ## Title and description
 
@@ -27,7 +27,7 @@ description: My page description
 
 ## Status
 
-You can add a status label to any page by setting the `status` variable in the front matter:
+You can add a status label to any page by setting a `status` key in the frontmatter:
 
 ```markdown
 ---
@@ -35,7 +35,7 @@ status: Stable
 ---
 ```
 
-Doctocat comes with a few predefined statuses with that have colors associated with them:
+Doctocat comes with a few predefined statuses that have colors associated with them:
 
 | Status         | Output                                |
 | -------------- | ------------------------------------- |
