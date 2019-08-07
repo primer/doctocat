@@ -7,6 +7,7 @@ import Head from './head'
 import Header from './header'
 import Sidebar from './sidebar'
 import TableOfContents from './table-of-contents'
+import StatusLabel from './status-label'
 
 function Layout({children, pageContext}) {
   const {h1: H1 = 'h1'} = React.useContext(MDXContext)
@@ -19,10 +20,19 @@ function Layout({children, pageContext}) {
         <Sidebar />
         <Container>
           <H1>{pageContext.frontmatter.title}</H1>
+
+          {pageContext.frontmatter.status ? (
+            <Box mb={4}>
+              <StatusLabel status={pageContext.frontmatter.status} />
+            </Box>
+          ) : null}
+
           {pageContext.tableOfContents.items ? (
             <TableOfContents items={pageContext.tableOfContents.items} />
           ) : null}
+
           {children}
+
           {pageContext.editUrl ? (
             <Box my={6}>
               <Link href={pageContext.editUrl}>

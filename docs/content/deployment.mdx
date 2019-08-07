@@ -6,7 +6,7 @@ When you build your Doctocat site using [`gatsby build`](https://www.gatsbyjs.or
 
 ## Deploying to Now
 
-If you started with the [Doctocat template](https://github.com/primer/doctocat-template), your site is already configured to deploy with Now. You're ready to set up the [Now for GitHub](https://zeit.co/github) integration. If you did _not_ start with the Doctocat template, before you set up the Now for Github integration, you'll need to create a `now.json` file and add a `now-build` script to `package.json`:
+If you started with the [Doctocat template](https://github.com/primer/doctocat-template), your site is already configured to deploy with Now. You're ready to set up the [Now for GitHub](https://zeit.co/github) integration. If you did not start with the Doctocat template, before you set up the Now for Github integration, you'll need to create a `now.json` file and add a `now-build` script to `package.json`:
 
 ```json
 // now.json
@@ -47,6 +47,7 @@ Check out Gatsby's [Deploying and Hosting](https://www.gatsbyjs.org/docs/deployi
 To make your site available from `primer.style/my-site`, you'll have to first add a `pathPrefix` field in your `gatsby-config.js` file:
 
 ```diff
+// gatsby-config.js
 module.exports = {
   ...
 + pathPrefix: '/my-site',
@@ -58,6 +59,7 @@ Check out [Gatsby's pathPrefix docs](https://www.gatsbyjs.org/docs/path-prefix/)
 After your `pathPrefix` is set up, open a pull request on the [primer/primer.style](https://github.com/primer/primer.style) repository to add your site to the `routes` list in [now.json](https://github.com/primer/primer.style/blob/master/now.json):
 
 ```diff
+// now.json
 {
   "routes": [
     {"src": "/components(/.*)?", "dest": "https://primer-components.now.sh"},
@@ -67,6 +69,7 @@ After your `pathPrefix` is set up, open a pull request on the [primer/primer.sty
 +   {"src": "/my-site(/.*)?", "dest": "https://my-site.now.sh"},
     {"src": "/presentations(/.*)?", "dest": "https://primer-presentations.now.sh"}
   ]}
+}
 ```
 
-Once your pull request is approved and merged, you should be able to access your site from `primer.style/my-site`!
+Once your pull request is approved and merged, you should be able to access your site from `primer.style/my-site`.
