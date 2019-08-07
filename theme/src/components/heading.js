@@ -20,7 +20,10 @@ const StyledHeading = styled(Heading)`
 `
 
 function MarkdownHeading({children, ...props}) {
-  const id = children ? slugify(children.toString(), {lower: true}) : ''
+  const id = children
+    ? slugify(children.toString(), {lower: true, remove: /[*+~.()'"!:@?]/g})
+    : ''
+
   return (
     <StyledHeading id={id} {...props}>
       <Link href={`#${id}`} p={2} ml={-32} color="gray.8">

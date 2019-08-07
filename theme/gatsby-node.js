@@ -7,30 +7,59 @@ const getRepo = memoize(() => {
   return getPkgRepo(readPkgUp.sync().package)
 })
 
-function generateEditUrl(page, themeOptions) {
+function generateEditUrl(rootPath, absolutePath) {
   try {
     const {domain, user, project} = getRepo()
-    const relativePath = path.relative(
-      themeOptions.repoRootPath,
-      page.componentPath,
-    )
+    const relativePath = path.relative(rootPath, absolutePath)
     return `https://${domain}/${user}/${project}/edit/master/${relativePath}`
   } catch (error) {
     console.warn(
-      `[warning] An edit url could not be generated for ${page.path}`,
+      `[warning] An edit url could not be generated for ${absolutePath}`,
     )
     return null
   }
 }
 
-exports.onCreatePage = ({page, actions}, themeOptions) => {
-  const editUrl = generateEditUrl(page, themeOptions)
-  actions.deletePage(page)
-  actions.createPage({
-    ...page,
-    context: {
-      ...page.context,
-      editUrl,
-    },
+exports.createPages = async ({graphql, actions}, themeOptions) => {
+  const {data} = await graphql(`
+    {
+      allMdx {
+        nodes {
+          fileAbsolutePath
+          frontmatter {
+            title
+          }
+          tableOfContents
+          parent {
+            ... on File {
+              relativeDirectory
+              name
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  data.allMdx.nodes.forEach(node => {
+    const pagePath = path.join(
+      node.parent.relativeDirectory,
+      node.parent.name === 'index' ? '/' : node.parent.name,
+    )
+
+    const editUrl = generateEditUrl(
+      themeOptions.repoRootPath,
+      node.fileAbsolutePath,
+    )
+
+    actions.createPage({
+      path: pagePath,
+      component: node.fileAbsolutePath,
+      context: {
+        frontmatter: node.frontmatter,
+        editUrl,
+        tableOfContents: node.tableOfContents,
+      },
+    })
   })
 }

@@ -2,6 +2,7 @@ import {BorderBox, Position, TextInput} from '@primer/components'
 import Downshift from 'downshift'
 import Fuse from 'fuse.js'
 import {navigate, useStaticQuery} from 'gatsby'
+import path from 'path'
 import React from 'react'
 import SearchResults from './search-results'
 
@@ -66,34 +67,28 @@ function useSearch(query) {
             title
           }
           rawBody
-        }
-      }
-      allSitePage {
-        nodes {
-          componentPath
-          path
+          parent {
+            ... on File {
+              relativeDirectory
+              name
+            }
+          }
         }
       }
     }
   `)
 
-  const pages = React.useMemo(
-    () =>
-      data.allSitePage.nodes.reduce((acc, node) => {
-        acc[node.componentPath] = node
-        return acc
-      }, {}),
-    [data],
-  )
-
   const list = React.useMemo(
     () =>
       data.allMdx.nodes.map(node => ({
-        path: pages[node.fileAbsolutePath].path,
+        path: path.join(
+          node.parent.relativeDirectory,
+          node.parent.name === 'index' ? '/' : node.parent.name,
+        ),
         title: node.frontmatter.title,
         rawBody: node.rawBody,
       })),
-    [data, pages],
+    [data],
   )
 
   const fuse = new Fuse(list, {
