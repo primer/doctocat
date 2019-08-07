@@ -1,0 +1,120 @@
+---
+title: Customization
+---
+
+Here are a few ways you can customize your Doctocat site:
+
+## Site metadata
+
+You can customize your site's metdata via the `siteMetadata` object in `gatsby-config.js`:
+
+```js
+// gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    // Used for page titles and SEO
+    title: 'My Site',
+    // Used in the header
+    shortName: 'My Site',
+    // Used for SEO
+    description: 'My site description',
+  },
+}
+```
+
+## Side navigation
+
+Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. Edit that file to customize your side navigation. Each entry in `nav.yml` should have a `title`, `url`, and an optional `children` list to create nested navigation links:
+
+```yml
+# src/@primer/gatsby-theme-doctocat/nav.yml
+- title: Example
+  url: /example
+  children:
+    - title: Example 2
+      url: /example/example-2
+```
+
+_Note: Doctocat only supports one level of nesting._
+
+## Edit on GitHub link
+
+To add an "Edit this page on GitHub" link to the bottom of every page, add a [`repository`](https://docs.npmjs.com/files/package.json#repository) field in `package.json` and a `repoRootPath` theme option in `gatsby-config.js`:
+
+```json
+// package.json
+{
+  "repository": "my-username/my-site"
+}
+```
+
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: '@primer/gatsby-theme-doctocat',
+      options: {
+        repoRootPath: process.cwd(),
+      },
+    },
+  ],
+}
+```
+
+The `repoRootPath` option specifies the absolute path to the root of your git repository. If your `gatsby-config.js` is located at the root of your git respository, set `repoRootPath` to [`process.cwd()`](https://nodejs.org/api/process.html#process_process_cwd). If your `gatsby-config.js` is located in a subdirectory, you can use [`path.resolve()`](https://nodejs.org/docs/latest/api/path.html#path_path_resolve_paths), `process.cwd()`, and the relative path to the root of your git repository to compute the absolute path. For example, if your `gatsby-config.js` is located in a `docs` directory set `repoRootpath` to `path.resolve(process.cwd(), '..')`.
+
+## Hero
+
+To add a hero section to a page, you'll need to override the default layout component with Doctocat's `HeroLayout` component by exporting it from your MDX file:
+
+```markdown
+// index.mdx
+import {HeroLayout} from '@primer/gatsby-theme-doctocat'
+export default HeroLayout
+```
+
+`HeroLayout` is similar to the default layout component except it also renders a `Hero` component displaying the `title` and `description` defined in the `siteMetadata` object from `gatsby-config.js`:
+
+```jsx live
+<Hero />
+```
+
+To use a custom hero component, [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) Doctocat's default `Hero` component by creating a `hero.js` file in `src/@primer/gatsby-theme-doctocat/components`:
+
+```jsx
+// src/@primer/gatsby-theme-doctocat/components/hero.js
+import {Box} from '@primer/components'
+
+export default function Hero() {
+  return (
+    <Box bg="black" p={5}>
+      My Custom Hero
+    </Box>
+  )
+}
+```
+
+## Favicon
+
+If you want to override the default favicon, you can pass a relative path to a custom icon as a theme option in your `gatsby-config.js`:
+
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: '@primer/gatsby-theme-doctocat',
+      options: {
+        icon: './src/images/custom-icon-512.png', // This path is relative to the root of the site.
+      },
+    },
+  ],
+}
+```
+
+Doctocat uses [`gatsby-plugin-manifest`](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/) to generate a pre-configured set of icons from your image. For best results, if you’re providing an icon for generation, it should be:
+
+- 512x512 pixels or larger.
+- Square. If it’s not, the image will be [letterboxed](<https://en.wikipedia.org/wiki/Letterboxing_(filming)>) with a transparent background.
+- JPEG, PNG, WebP, TIFF, GIF, or SVG format.
