@@ -4,9 +4,9 @@ import React from 'react'
 
 const STATUS_COLORS = {
   stable: 'green.6',
-  'new release': 'green.6',
+  new: 'green.6',
   experimental: 'yellow.7',
-  'in review': 'yellow.7',
+  review: 'yellow.7',
   deprecated: 'red.6',
 }
 
