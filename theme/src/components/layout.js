@@ -1,14 +1,16 @@
+import {MDXContext} from '@mdx-js/react'
 import {Box, Flex, Link, StyledOcticon} from '@primer/components'
 import {Pencil} from '@primer/octicons-react'
 import React from 'react'
 import Container from './container'
 import Head from './head'
 import Header from './header'
-import {H1} from './heading'
 import Sidebar from './sidebar'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
+  const {h1: H1 = 'h1'} = React.useContext(MDXContext)
+
   return (
     <Flex flexDirection="column" minHeight="100vh">
       <Head title={pageContext.frontmatter.title} />
