@@ -54,7 +54,7 @@ function Search() {
               <BorderBox
                 minWidth={300}
                 maxHeight="70vh"
-                pt={1}
+                py={1}
                 boxShadow="medium"
                 bg="white"
                 style={{overflow: 'auto'}}

@@ -2,7 +2,6 @@ import {
   Absolute,
   BorderBox,
   Details,
-  Flex,
   StyledOcticon,
   Text,
   themeGet,
@@ -44,7 +43,8 @@ export const NavDropdownItem = styled.a`
   text-decoration: none;
 
   &:hover {
-    background-color: ${themeGet('colors.gray.2')};
+    color: ${themeGet('colors.white')};
+    background-color: ${themeGet('colors.blue.5')};
   }
 `
 
