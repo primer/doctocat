@@ -5,6 +5,8 @@
       url: /getting-started/gatsby-cli
 - title: Customization
   url: /customization
+- title: Front matter
+  url: /front-matter
 - title: Live code
   url: /live-code
 - title: Deployment
