@@ -10,7 +10,7 @@ import Sidebar from './sidebar'
 function HeroLayout({children, pageContext}) {
   return (
     <Flex flexDirection="column" minHeight="100vh">
-      <Head title={pageContext.frontmatter.title} />
+      <Head />
       <Header />
       <Flex flex="1 1 auto" flexDirection="row">
         <Box display={['none', null, null, 'block']}>

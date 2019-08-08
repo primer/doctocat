@@ -14,7 +14,10 @@ function Layout({children, pageContext}) {
 
   return (
     <Flex flexDirection="column" minHeight="100vh">
-      <Head title={pageContext.frontmatter.title} />
+      <Head
+        title={pageContext.frontmatter.title}
+        description={pageContext.frontmatter.description}
+      />
       <Header />
       <Flex flex="1 1 auto" flexDirection="row">
         <Box display={['none', null, null, 'block']}>
