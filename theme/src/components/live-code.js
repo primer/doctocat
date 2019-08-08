@@ -1,4 +1,5 @@
-import {Absolute, BorderBox, Relative, Text, Flex} from '@primer/components'
+import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
+import HtmlToJsx from 'html-2-jsx'
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
@@ -8,7 +9,18 @@ import ClipboardCopy from './clipboard-copy'
 import Frame from './frame'
 import LivePreviewWrapper from './live-preview-wrapper'
 
-function LiveCode({code}) {
+const htmlToJsxConverter = new HtmlToJsx({
+  createClass: false,
+})
+
+const wrapWithFragment = code => `<React.Fragment>${code}</React.Fragment>`
+
+const languageTransformers = {
+  html: html => wrapWithFragment(htmlToJsxConverter.convert(html)),
+  jsx: jsx => wrapWithFragment(jsx),
+}
+
+function LiveCode({code, language}) {
   const theme = React.useContext(ThemeContext)
 
   return (
@@ -18,7 +30,11 @@ function LiveCode({code}) {
       mb={3}
       css={{overflow: 'hidden'}}
     >
-      <LiveProvider scope={scope} code={code}>
+      <LiveProvider
+        scope={scope}
+        code={code}
+        transformCode={languageTransformers[language]}
+      >
         <Frame>
           <LivePreviewWrapper>
             <LivePreview />

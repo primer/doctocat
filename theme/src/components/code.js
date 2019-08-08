@@ -10,7 +10,7 @@ function Code({className, children, live}) {
   const code = children.trim()
 
   if (live) {
-    return <LiveCode code={code} />
+    return <LiveCode code={code} language={language} />
   }
 
   return (
