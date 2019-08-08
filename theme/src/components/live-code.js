@@ -1,7 +1,8 @@
 import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
-import HtmlToJsx from 'html-2-jsx'
+import {Parser as HtmlToReactParser} from 'html-to-react'
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
+import reactElementToJsxString from 'react-element-to-jsx-string'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
 import {ThemeContext} from 'styled-components'
 import scope from '../live-code-scope'
@@ -9,15 +10,22 @@ import ClipboardCopy from './clipboard-copy'
 import Frame from './frame'
 import LivePreviewWrapper from './live-preview-wrapper'
 
-const htmlToJsxConverter = new HtmlToJsx({
-  createClass: false,
-})
-
-const wrapWithFragment = code => `<React.Fragment>${code}</React.Fragment>`
-
 const languageTransformers = {
-  html: html => wrapWithFragment(htmlToJsxConverter.convert(html)),
+  html: html => htmlToJsx(html),
   jsx: jsx => wrapWithFragment(jsx),
+}
+
+function htmlToJsx(html) {
+  const htmlToReactParser = new HtmlToReactParser()
+  const reactElement = htmlToReactParser.parse(html)
+  // The output of htmlToReactParser could be a single React element
+  // or an array of React elements. reactElementToJsxString does not accept arrays
+  // so we have to wrap the output in React fragment.
+  return reactElementToJsxString(<>{reactElement}</>)
+}
+
+function wrapWithFragment(jsx) {
+  return `<React.Fragment>${jsx}</React.Fragment>`
 }
 
 function LiveCode({code, language}) {
