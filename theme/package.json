@@ -35,7 +35,7 @@
     "gatsby-transformer-yaml": "^2.2.0",
     "get-pkg-repo": "^4.1.0",
     "github-slugger": "^1.2.1",
-    "html-to-react": "^1.4.0",
+    "html-react-parser": "^0.9.1",
     "pkg-up": "^3.1.0",
     "prism-react-renderer": "^0.1.7",
     "react-addons-text-content": "^0.0.4",

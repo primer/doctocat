@@ -1,5 +1,5 @@
 import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
-import {Parser as HtmlToReactParser} from 'html-to-react'
+import htmlReactParser from 'html-react-parser'
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
 import reactElementToJsxString from 'react-element-to-jsx-string'
@@ -16,12 +16,15 @@ const languageTransformers = {
 }
 
 function htmlToJsx(html) {
-  const htmlToReactParser = new HtmlToReactParser()
-  const reactElement = htmlToReactParser.parse(html)
-  // The output of htmlToReactParser could be a single React element
+  const reactElement = htmlReactParser(removeNewlines(html))
+  // The output of htmlReactParser could be a single React element
   // or an array of React elements. reactElementToJsxString does not accept arrays
   // so we have to wrap the output in React fragment.
   return reactElementToJsxString(<>{reactElement}</>)
+}
+
+function removeNewlines(string) {
+  return string.replace(/(\r\n|\n|\r)/gm, '')
 }
 
 function wrapWithFragment(jsx) {
