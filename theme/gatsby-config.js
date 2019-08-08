@@ -25,8 +25,8 @@ module.exports = themeOptions => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          name: 'pages',
-          path: path.resolve('./src/pages'),
+          name: 'content',
+          path: path.resolve('./content'),
         },
       },
       {
