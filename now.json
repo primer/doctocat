@@ -9,5 +9,12 @@
       "config": {"distDir": "public"}
     }
   ],
-  "routes": [{"src": "/doctocat(/.*)?", "dest": "/docs$1"}]
+  "routes": [
+    {"src": "/doctocat(/.*)?", "dest": "/docs$1"},
+    {
+      "src": "/",
+      "status": 301,
+      "headers": {"Location": "/doctocat"}
+    }
+  ]
 }
