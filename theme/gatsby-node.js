@@ -7,14 +7,14 @@ const getRepo = memoize(() => {
   return getPkgRepo(readPkgUp.sync().package)
 })
 
-function generateEditUrl(rootPath, absolutePath) {
+function generateEditUrl(rootAbsolutePath, fileAbsolutePath) {
   try {
     const {domain, user, project} = getRepo()
-    const relativePath = path.relative(rootPath, absolutePath)
-    return `https://${domain}/${user}/${project}/edit/master/${relativePath}`
+    const fileRelativePath = path.relative(rootAbsolutePath, fileAbsolutePath)
+    return `https://${domain}/${user}/${project}/edit/master/${fileRelativePath}`
   } catch (error) {
     console.warn(
-      `[warning] An edit url could not be generated for ${absolutePath}`,
+      `[warning] An edit url could not be generated for ${fileAbsolutePath}`,
     )
     return null
   }
@@ -44,10 +44,12 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       node.parent.name === 'index' ? '/' : node.parent.name,
     )
 
-    const editUrl = generateEditUrl(
-      themeOptions.repoRootPath,
-      node.fileAbsolutePath,
+    const rootAbsolutePath = path.resolve(
+      process.cwd(),
+      themeOptions.repoRootPath || '.',
     )
+
+    const editUrl = generateEditUrl(rootAbsolutePath, node.fileAbsolutePath)
 
     actions.createPage({
       path: pagePath,
