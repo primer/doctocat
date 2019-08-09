@@ -20,7 +20,10 @@ function generateEditUrl(rootPath, absolutePath) {
   }
 }
 
-exports.createPages = async ({graphql, actions}, themeOptions) => {
+exports.createPages = async (
+  {graphql, actions},
+  {repoRootPath = process.cwd(), pathPrefix = '/'},
+) => {
   const {data} = await graphql(`
     {
       allMdx {
@@ -40,14 +43,13 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
 
   data.allMdx.nodes.forEach(node => {
     const pagePath = path.join(
+      // We only want to prefix paths when depolying to production.
+      process.env.NODE_ENV === 'production' ? pathPrefix : '',
       node.parent.relativeDirectory,
       node.parent.name === 'index' ? '/' : node.parent.name,
     )
 
-    const editUrl = generateEditUrl(
-      themeOptions.repoRootPath,
-      node.fileAbsolutePath,
-    )
+    const editUrl = generateEditUrl(repoRootPath, node.fileAbsolutePath)
 
     actions.createPage({
       path: pagePath,

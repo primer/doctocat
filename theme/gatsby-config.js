@@ -9,6 +9,7 @@ module.exports = themeOptions => {
       imageUrl:
         'https://user-images.githubusercontent.com/10384315/53922681-2f6d3100-402a-11e9-9719-5d1811c8110a.png',
     },
+    pathPrefix: themeOptions.pathPrefix,
     plugins: [
       'gatsby-plugin-styled-components',
       'gatsby-plugin-react-helmet',
