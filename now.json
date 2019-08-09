@@ -9,5 +9,5 @@
       "config": {"distDir": "public"}
     }
   ],
-  "routes": [{"src": "/(.*)", "dest": "/docs/$1"}]
+  "routes": [{"src": "/doctocat(/.*)?", "dest": "/docs/$1"}]
 }
