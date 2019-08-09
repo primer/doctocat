@@ -44,32 +44,70 @@ Check out Gatsby's [Deploying and Hosting](https://www.gatsbyjs.org/docs/deployi
 
 ## Adding a primer.style path alias
 
-To make your site available from `primer.style/my-site`, you'll have to first add a `pathPrefix` field in your `gatsby-config.js` file:
+To make your site available from `primer.style/my-site`, start by setting a [`pathPrefix`](https://www.gatsbyjs.org/docs/path-prefix/) in your `gatsby-config.js`:
 
 ```diff
 // gatsby-config.js
 module.exports = {
-  ...
 + pathPrefix: '/my-site',
 }
 ```
 
-Check out [Gatsby's pathPrefix docs](https://www.gatsbyjs.org/docs/path-prefix/) for more information.
+Next, make sure your `build` script runs `gatsby build` with the `--prefix-paths` flag. If this flag is not set, Gatsby will ignore your `pathPrefix`:
 
-After your `pathPrefix` is set up, open a pull request on the [primer/primer.style](https://github.com/primer/primer.style) repository to add your site to the `routes` list in [now.json](https://github.com/primer/primer.style/blob/master/now.json):
+```diff
+// package.json
+{
+  "scripts": {
+-   "build": "gatsby build",
++   "build": "gatsby build --prefix-paths",
+    "now-build": "npm run build"
+  }
+}
+```
+
+The `--prefix-paths` flag tells Gatsby to prefix paths used in the [`Link`](https://www.gatsbyjs.org/docs/gatsby-link/) component and [`navigate`](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) helper with the `pathPrefix` value assigned in your `gatsby-config.js` file. However, `--prefix-paths` doesn't change where built files get stored in the [`public`](https://www.gatsbyjs.org/docs/glossary#public) directory. This creates a mismatch between the links on your site and the actual paths to your files.
+
+To fix this issue, you need to define a couple `routes` in your [`now.json`](https://zeit.co/docs/v2/advanced/routes). You'll need to define a route that proxies `/my-site/*` to `/*` so that behind the scenes a path like `/my-site/getting-started` will be treated as `/getting-started`. You'll also want to define a route that redirects traffic from `/` to `/my-site` so that if a user goes to `/` they don't get a 404 error. Here's what your `now.json` should look like:
 
 ```diff
 // now.json
+{
++ "routes": [
++   {"src": "/my-site(/.*)?", "dest": "$1"},
++   {
++     "src": "/",
++     "status": 301,
++     "headers": {"Location": "/my-site"}
++   }
++ ]
+}
+```
+
+If your site is located in a subdirectory, make sure the destination (`dest`) of your proxy route is the path to that subdirectory followed by `$1`:
+
+```json
+{
+  "routes": [{"src": "/my-site(/.*)?", "dest": "docs$1"}]
+}
+```
+
+Check out Now's [routes documentation](https://zeit.co/docs/v2/advanced/routes) for more information.
+
+After everything is set up in your repository, open a pull request on the [primer/primer.style](https://github.com/primer/primer.style) repository to add your site to the `routes` list in [now.json](https://github.com/primer/primer.style/blob/master/now.json):
+
+```diff
+// now.json in primer/primer.style
 {
   "routes": [
     {"src": "/components(/.*)?", "dest": "https://primer-components.now.sh"},
     {"src": "/css(/.*)?", "dest": "https://primer-css.now.sh"},
     {"src": "/design(/.*)?", "dest": "https://primer-design.now.sh"},
     {"src": "/blueprints(/.*)?", "dest": "https://primer-blueprints.now.sh"},
-+   {"src": "/my-site(/.*)?", "dest": "https://my-site.now.sh"},
-    {"src": "/presentations(/.*)?", "dest": "https://primer-presentations.now.sh"}
-  ]}
+    {"src": "/presentations(/.*)?", "dest": "https://primer-presentations.now.sh"},
++   {"src": "/my-site(/.*)?", "dest": "https://my-site.now.sh"}
+  ]
 }
 ```
 
-Once your pull request is approved and merged, you should be able to access your site from `primer.style/my-site`.
+You'll able to access your site from `primer.style/my-site` once your pull request is approved and merged.
