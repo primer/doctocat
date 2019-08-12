@@ -18,6 +18,8 @@ module.exports = {
     shortName: 'My Site',
     // Used for SEO
     description: 'My site description',
+    // Used for social previews
+    imageUrl: 'https://user-images.githubusercontent.com/example-image.png',
   },
 }
 ```
@@ -39,7 +41,7 @@ _Note: Doctocat only supports one level of nesting._
 
 ## Edit on GitHub link
 
-To add an "Edit this page on GitHub" link to the bottom of every page, add a [`repository`](https://docs.npmjs.com/files/package.json#repository) field in `package.json` and a `repoRootPath` theme option in `gatsby-config.js`:
+To add an "Edit this page on GitHub" link to the bottom of every page, you'll need to specify your site's [`repository`](https://docs.npmjs.com/files/package.json#repository) in `package.json`:
 
 ```json
 // package.json
@@ -48,6 +50,8 @@ To add an "Edit this page on GitHub" link to the bottom of every page, add a [`r
 }
 ```
 
+If your site is located in a subdirectory of a repository, you'll also need to provide the relative path to the root of your git respository via the `repoRootPath` option in `gatsby-config.js`:
+
 ```js
 // gatsby-config.js
 module.exports = {
@@ -55,14 +59,12 @@ module.exports = {
     {
       resolve: '@primer/gatsby-theme-doctocat',
       options: {
-        repoRootPath: process.cwd(),
+        repoRootPath: '..', // defaults to '.'
       },
     },
   ],
 }
 ```
-
-The `repoRootPath` option specifies the absolute path to the root of your git repository. If your `gatsby-config.js` is located at the root of your git respository, set `repoRootPath` to [`process.cwd()`](https://nodejs.org/api/process.html#process_process_cwd). If your `gatsby-config.js` is located in a subdirectory, you can use [`path.resolve()`](https://nodejs.org/docs/latest/api/path.html#path_path_resolve_paths), `process.cwd()`, and the relative path to the root of your git repository to compute the absolute path. For example, if your `gatsby-config.js` is located in a `docs` directory set `repoRootpath` to `path.resolve(process.cwd(), '..')`.
 
 ## Hero
 

@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
   siteMetadata: {
     title: 'Doctocat',
@@ -10,7 +8,7 @@ module.exports = {
     {
       resolve: '@primer/gatsby-theme-doctocat',
       options: {
-        repoRootPath: path.resolve(process.cwd(), '../..'),
+        repoRootPath: '..',
       },
     },
   ],

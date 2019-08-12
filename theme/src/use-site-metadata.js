@@ -8,6 +8,7 @@ function useSiteMetadata() {
           title
           shortName
           description
+          imageUrl
         }
       }
     }

@@ -1,7 +1,7 @@
 import {Box, Heading, Text} from '@primer/components'
-import {Container} from '@primer/gatsby-theme-doctocat'
 import React from 'react'
 import useSiteMetadata from '../use-site-metadata'
+import Container from './container'
 
 function Hero() {
   const {title, description} = useSiteMetadata()
