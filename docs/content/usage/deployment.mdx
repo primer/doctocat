@@ -68,7 +68,7 @@ Next, make sure your `build` script runs `gatsby build` with the `--prefix-paths
 
 The `--prefix-paths` flag tells Gatsby to prefix paths used in the [`Link`](https://www.gatsbyjs.org/docs/gatsby-link/) component and [`navigate`](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) helper with the `pathPrefix` value assigned in your `gatsby-config.js` file. However, `--prefix-paths` doesn't change where built files get stored in the [`public`](https://www.gatsbyjs.org/docs/glossary#public) directory. This creates a mismatch between the links on your site and the actual paths to your files.
 
-To fix this issue, you need to define a couple `routes` in your [`now.json`](https://zeit.co/docs/v2/advanced/routes). You'll need to define a route that proxies `/my-site/*` to `/*` so that behind the scenes a path like `/my-site/getting-started` will be treated as `/getting-started`. You'll also want to define a route that redirects traffic from `/` to `/my-site` so that if a user goes to `/` they don't get a 404 error. Here's what your `now.json` should look like:
+To fix this issue, you'll need to define a couple [`routes`](https://zeit.co/docs/v2/advanced/routes) in your `now.json` file. First, define a route that proxies `/my-site/*` to `/*` so that behind the scenes a path like `/my-site/getting-started` will be treated as `/getting-started`. Next, define a route that redirects traffic from `/` to `/my-site` so that if a user goes to `/` they don't get a 404 error. Here's what your `now.json` should look like:
 
 ```json
 // now.json
