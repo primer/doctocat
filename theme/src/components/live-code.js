@@ -16,11 +16,15 @@ const languageTransformers = {
 }
 
 function htmlToJsx(html) {
-  const reactElement = htmlReactParser(removeNewlines(html))
-  // The output of htmlReactParser could be a single React element
-  // or an array of React elements. reactElementToJsxString does not accept arrays
-  // so we have to wrap the output in React fragment.
-  return reactElementToJsxString(<>{reactElement}</>)
+  try {
+    const reactElement = htmlReactParser(removeNewlines(html))
+    // The output of htmlReactParser could be a single React element
+    // or an array of React elements. reactElementToJsxString does not accept arrays
+    // so we have to wrap the output in React fragment.
+    return reactElementToJsxString(<>{reactElement}</>)
+  } catch (error) {
+    return wrapWithFragment(html)
+  }
 }
 
 function removeNewlines(string) {
