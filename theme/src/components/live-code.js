@@ -1,6 +1,8 @@
-import {Absolute, BorderBox, Relative, Text, Flex} from '@primer/components'
+import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
+import htmlReactParser from 'html-react-parser'
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
+import reactElementToJsxString from 'react-element-to-jsx-string'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
 import {ThemeContext} from 'styled-components'
 import scope from '../live-code-scope'
@@ -8,7 +10,32 @@ import ClipboardCopy from './clipboard-copy'
 import Frame from './frame'
 import LivePreviewWrapper from './live-preview-wrapper'
 
-function LiveCode({code}) {
+const languageTransformers = {
+  html: html => htmlToJsx(html),
+  jsx: jsx => wrapWithFragment(jsx),
+}
+
+function htmlToJsx(html) {
+  try {
+    const reactElement = htmlReactParser(removeNewlines(html))
+    // The output of htmlReactParser could be a single React element
+    // or an array of React elements. reactElementToJsxString does not accept arrays
+    // so we have to wrap the output in React fragment.
+    return reactElementToJsxString(<>{reactElement}</>)
+  } catch (error) {
+    return wrapWithFragment(html)
+  }
+}
+
+function removeNewlines(string) {
+  return string.replace(/(\r\n|\n|\r)/gm, '')
+}
+
+function wrapWithFragment(jsx) {
+  return `<React.Fragment>${jsx}</React.Fragment>`
+}
+
+function LiveCode({code, language}) {
   const theme = React.useContext(ThemeContext)
 
   return (
@@ -18,7 +45,11 @@ function LiveCode({code}) {
       mb={3}
       css={{overflow: 'hidden'}}
     >
-      <LiveProvider scope={scope} code={code}>
+      <LiveProvider
+        scope={scope}
+        code={code}
+        transformCode={languageTransformers[language]}
+      >
         <Frame>
           <LivePreviewWrapper>
             <LivePreview />
