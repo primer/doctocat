@@ -4,4 +4,4 @@
 
 **⚠️ WARNING! Doctocat is still experimental.**
 
-Doctocat is a [Gatsby theme](https://www.gatsbyjs.org/docs/themes/what-are-gatsby-themes/) for creating Primer documentation sites. Check out the [documentation site](https://doctocat.now.sh) to get started.
+Doctocat makes it easy to set up a documentation site so you can focus on what's important: _writing docs_. Check out [primer.style/doctocat](https://primer.style/doctocat) to get started.
