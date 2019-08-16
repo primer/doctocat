@@ -1,0 +1,17 @@
+name: Publish
+on: [push]
+jobs:
+  all:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          version: 10
+      - run: yarn install
+      - uses: primer/publish@master
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        with:
+          args: "--dir=theme"
