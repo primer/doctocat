@@ -913,10 +913,10 @@
     hey-listen "^1.0.8"
     style-value-types "^3.1.6"
 
-"@primer/components@^13.2.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@primer/components/-/components-13.3.0.tgz#79183735b4a52feca9ccb4e1aef93605160ceac2"
-  integrity sha512-Vikz8a1vv0+h5x8shwpqehEwtoKtROEMvwtvl54kePN0mo/vd/sheO9esdwRVZ1IafLncP2GVyRV1qZSdC+jPQ==
+"@primer/components@^13.3.1":
+  version "13.3.1"
+  resolved "https://registry.yarnpkg.com/@primer/components/-/components-13.3.1.tgz#1b68596b914c2c42ba0153c762ee28a280dcc4b3"
+  integrity sha512-WOT7sbrbaPl+PODIzArHPfs0jiJVfvZsMj+Ea4gStSF//h1EVkT4JiDqpOqrZr7ihwaAa32Evtsbw0KGNHG5pg==
   dependencies:
     "@primer/octicons-react" "9.0.0"
     "@reach/dialog" "0.2.9"
@@ -3636,6 +3636,11 @@ detab@2.0.2, detab@^2.0.0:
   integrity sha512-Q57yPrxScy816TTE1P/uLRXLDKjXhvYTbfxS/e6lPD+YrqghbsMlGB9nQzj/zVtSPaF0DFPSdO916EWO4sQUyQ==
   dependencies:
     repeat-string "^1.5.4"
+
+details-element-polyfill@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/details-element-polyfill/-/details-element-polyfill-2.4.0.tgz#e0622adef7902662faf27b4ab8acba5dc4e3a6e6"
+  integrity sha512-jnZ/m0+b1gz3EcooitqL7oDEkKHEro659dt8bWB/T/HjiILucoQhHvvi5MEOAIFJXxxO+rIYJ/t3qCgfUOSU5g==
 
 detect-indent@^5.0.0:
   version "5.0.0"

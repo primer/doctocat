@@ -16,10 +16,11 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
-    "@primer/components": "^13.2.0",
+    "@primer/components": "^13.3.1",
     "@primer/octicons-react": "^9.1.1",
     "@styled-system/theme-get": "^5.0.12",
     "copy-to-clipboard": "^3.2.0",
+    "details-element-polyfill": "^2.4.0",
     "downshift": "^3.2.10",
     "find-up": "^4.1.0",
     "framer-motion": "^1.4.2",
