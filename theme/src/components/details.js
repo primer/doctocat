@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 // The <details> element is not yet supported in Edge so we have to use a polyfill.
+// We have to check if window is defined before importing the polyfill
+// so the code doesn’t run while Gatsby is building.
 if (typeof window !== 'undefined') {
   import('details-element-polyfill')
 }
 
 // TODO: Replace this Details component with the one from @primer/components when 14.0.0 is released.
-// Reference: https://github.com/primer/components/pull/49
+// Reference: https://github.com/primer/components/pull/499
 
 const DetailsReset = styled.details`
   & > summary {
@@ -22,6 +24,7 @@ const DetailsReset = styled.details`
     display: none;
   }
 `
+
 function getRenderer(children) {
   return typeof children === 'function' ? children : () => children
 }
