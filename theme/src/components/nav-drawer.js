@@ -1,7 +1,6 @@
 import {
   BorderBox,
   Box,
-  Details,
   Flex,
   Link,
   StyledOcticon,
@@ -14,6 +13,7 @@ import navItems from '../nav.yml'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
 import DarkButton from './dark-button'
+import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
 
