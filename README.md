@@ -1,6 +1,7 @@
 # Doctocat
 
 [![npm](https://img.shields.io/npm/v/@primer/gatsby-theme-doctocat)](https://www.npmjs.com/package/@primer/gatsby-theme-doctocat)
+[![Publish workflow](https://github.com/primer/doctocat/workflows/Publish/badge.svg)](https://github.com/primer/doctocat/actions)
 
 **⚠️ WARNING! Doctocat is still experimental.**
 
