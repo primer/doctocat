@@ -1,5 +1,10 @@
 import {Box, Flex, Link, Sticky, StyledOcticon} from '@primer/components'
-import {ChevronRight, MarkGithub, ThreeBars} from '@primer/octicons-react'
+import {
+  ChevronRight,
+  MarkGithub,
+  ThreeBars,
+  Search as SearchIcon,
+} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'
@@ -8,9 +13,11 @@ import DarkButton from './dark-button'
 import NavDrawer from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
+import MobileSearch from './mobile-search'
 
 function Header() {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false)
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
     <Sticky>
@@ -25,7 +32,7 @@ function Header() {
           <Link href="https://primer.style" color="blue.4" mr={3}>
             <StyledOcticon icon={MarkGithub} size="medium" />
           </Link>
-          <Flex display={['none', null, 'flex']} alignItems="center">
+          <Flex display={['none', null, null, 'flex']} alignItems="center">
             <Link href="https://primer.style" color="blue.4" fontFamily="mono">
               Primer
             </Link>
@@ -44,13 +51,28 @@ function Header() {
           </Box>
           <Flex display={['flex', null, null, 'none']}>
             <DarkButton
+              aria-label="Search"
+              aria-expanded={isMobileSearchOpen}
+              onClick={() => setIsMobileSearchOpen(true)}
+            >
+              <StyledOcticon icon={SearchIcon} />
+            </DarkButton>
+            <MobileSearch
+              isOpen={isMobileSearchOpen}
+              onDismiss={() => setIsMobileSearchOpen(false)}
+            />
+            <DarkButton
               aria-label="Menu"
-              aria-expanded={isOpen}
-              onClick={() => setIsOpen(true)}
+              aria-expanded={isMobileNavOpen}
+              onClick={() => setIsMobileNavOpen(true)}
+              ml={3}
             >
               <StyledOcticon icon={ThreeBars} />
             </DarkButton>
-            <NavDrawer isOpen={isOpen} onDismiss={() => setIsOpen(false)} />
+            <NavDrawer
+              isOpen={isMobileNavOpen}
+              onDismiss={() => setIsMobileNavOpen(false)}
+            />
           </Flex>
         </Flex>
       </Flex>
