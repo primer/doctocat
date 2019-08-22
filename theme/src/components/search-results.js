@@ -1,5 +1,4 @@
 import {Box, Flex, Text} from '@primer/components'
-import {Link} from 'gatsby'
 import React from 'react'
 import sentenceCase from 'sentence-case'
 import useSiteMetadata from '../use-site-metadata'
@@ -19,17 +18,13 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
     <Flex
       {...getItemProps({
         key: item.ref,
-        index,
         item,
-        as: Link,
-        to: item.path,
-        tabIndex: -1,
         flexDirection: 'column',
         px: 3,
         py: 2,
         color: highlightedIndex === index ? 'white' : 'gray.8',
         bg: highlightedIndex === index ? 'blue.5' : 'transparent',
-        style: {textDecoration: 'none'},
+        style: {cursor: 'pointer'},
       })}
     >
       <Text
