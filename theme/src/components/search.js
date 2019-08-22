@@ -1,9 +1,8 @@
 import {BorderBox, Position} from '@primer/components'
 import Downshift from 'downshift'
-import Fuse from 'fuse.js'
-import {navigate, useStaticQuery} from 'gatsby'
-import path from 'path'
+import {navigate} from 'gatsby'
 import React from 'react'
+import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
 import DarkTextInput from './dark-text-input'
 import SearchResults from './search-results'
@@ -72,55 +71,6 @@ function Search() {
       )}
     </Downshift>
   )
-}
-
-function useSearch(query) {
-  const data = useStaticQuery(graphql`
-    {
-      allMdx {
-        nodes {
-          fileAbsolutePath
-          frontmatter {
-            title
-          }
-          rawBody
-          parent {
-            ... on File {
-              relativeDirectory
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const list = React.useMemo(
-    () =>
-      data.allMdx.nodes.map(node => ({
-        path: path.join(
-          node.parent.relativeDirectory,
-          node.parent.name === 'index' ? '/' : node.parent.name,
-        ),
-        title: node.frontmatter.title,
-        rawBody: node.rawBody,
-      })),
-    [data],
-  )
-
-  const fuse = new Fuse(list, {
-    threshold: 0.2,
-    keys: ['title', 'rawBody'],
-    tokenize: true,
-  })
-
-  const [results, setResults] = React.useState([])
-
-  React.useEffect(() => {
-    setResults(fuse.search(query))
-  }, [query])
-
-  return results
 }
 
 export default Search
