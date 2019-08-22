@@ -5,7 +5,7 @@ import {navigate, useStaticQuery} from 'gatsby'
 import path from 'path'
 import React from 'react'
 import useSiteMetadata from '../use-site-metadata'
-import SearchInput from './search-input'
+import DarkTextInput from './dark-text-input'
 import SearchResults from './search-results'
 
 function Search() {
@@ -36,7 +36,7 @@ function Search() {
         clearSelection,
       }) => (
         <Position {...getRootProps({position: 'relative'})}>
-          <SearchInput
+          <DarkTextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
               width: 240,
