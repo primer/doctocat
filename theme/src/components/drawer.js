@@ -1,7 +1,7 @@
 import {Fixed} from '@primer/components'
 import {AnimatePresence, motion} from 'framer-motion'
 import React from 'react'
-import FocusLock from 'react-focus-lock'
+import {FocusOn} from 'react-focus-on'
 
 function Drawer({isOpen, onDismiss, children}) {
   function handleKeyDown(event) {
@@ -21,7 +21,7 @@ function Drawer({isOpen, onDismiss, children}) {
   return (
     <AnimatePresence>
       {isOpen ? (
-        <>
+        <FocusOn returnFocus={true}>
           <Fixed
             key="overlay"
             as={motion.div}
@@ -51,9 +51,9 @@ function Drawer({isOpen, onDismiss, children}) {
             bg="gray.0"
             style={{zIndex: 1}}
           >
-            <FocusLock returnFocus={true}>{children}</FocusLock>
+            {children}
           </Fixed>
-        </>
+        </FocusOn>
       ) : null}
     </AnimatePresence>
   )
