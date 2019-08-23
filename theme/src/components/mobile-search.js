@@ -87,7 +87,7 @@ function MobileSearch({isOpen, onDismiss}) {
                         as: motion.input,
                         initial: {scaleX: 0},
                         animate: {scaleX: 1},
-                        exit: {scaleX: 0},
+                        exit: {scaleX: 0, transition: {duration: 0.1}},
                         transition: {type: 'tween', duration: 0.2},
                         autoFocus: true,
                         placeholder: `Search`,
