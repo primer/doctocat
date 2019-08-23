@@ -22,8 +22,8 @@ function NavDrawer({isOpen, onDismiss}) {
   return (
     <Drawer isOpen={isOpen} onDismiss={onDismiss}>
       <Box
-        maxHeight="100vh"
-        bg="gray.9"
+        maxHeight="100%"
+        bg="gray.0"
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
       >
         <Flex flexDirection="column" color="blue.2" bg="gray.9">
@@ -55,15 +55,14 @@ function NavDrawer({isOpen, onDismiss}) {
             <PrimerNavItems items={primerNavItems} />
           </Flex>
         </Flex>
-        <Flex flexDirection="column" py={4} color="gray.7" bg="gray.0">
+        <Flex flexDirection="column" color="gray.7" bg="gray.0">
           <Link
             as={GatsbyLink}
             to="/"
             display="inline-block"
             color="inherit"
             fontFamily="mono"
-            mx={4}
-            mb={4}
+            m={4}
           >
             {siteMetadata.title}
           </Link>
