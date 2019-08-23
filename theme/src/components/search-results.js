@@ -20,6 +20,7 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         key: item.ref,
         item,
         flexDirection: 'column',
+        flex: '0 0 auto',
         px: 3,
         py: 2,
         color: highlightedIndex === index ? 'white' : 'gray.8',

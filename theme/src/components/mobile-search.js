@@ -81,7 +81,7 @@ function MobileSearch({isOpen, onDismiss}) {
                     height: isMenuOpen ? '100vh' : 'auto',
                   })}
                 >
-                  <Flex bg="gray.9" color="white" p={3}>
+                  <Flex bg="gray.9" color="white" p={3} flex="0 0 auto">
                     <DarkTextInput
                       {...getInputProps({
                         as: motion.input,
