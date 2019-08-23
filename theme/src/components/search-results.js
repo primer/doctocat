@@ -8,9 +8,9 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
 
   if (results.length === 0) {
     return (
-      <Box px={3} py={2}>
+      <Text as="div" p={3} fontSize={1} color="gray.7" width="100%">
         No results
-      </Box>
+      </Text>
     )
   }
 
