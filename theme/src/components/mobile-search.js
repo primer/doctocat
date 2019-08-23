@@ -85,9 +85,9 @@ function MobileSearch({isOpen, onDismiss}) {
                     <DarkTextInput
                       {...getInputProps({
                         as: motion.input,
-                        initial: {scaleX: 0},
+                        initial: {scaleX: 0.1},
                         animate: {scaleX: 1},
-                        exit: {scaleX: 0, transition: {duration: 0.1}},
+                        exit: {scaleX: 0.1, transition: {duration: 0.1}},
                         transition: {type: 'tween', duration: 0.2},
                         autoFocus: true,
                         placeholder: `Search`,
