@@ -46,7 +46,7 @@ function useSearch(query) {
   const [results, setResults] = React.useState([])
 
   React.useEffect(() => {
-    setResults(fuse.search(query))
+    setResults(fuse.search(query).slice(0, 20))
   }, [query])
 
   return results
