@@ -54,85 +54,86 @@ function MobileSearch({isOpen, onDismiss}) {
               zIndex={-1}
               onClick={handleDismiss}
             />
-            <Flex flexDirection="column" height="100%">
-              <Downshift
-                inputValue={query}
-                onInputValueChange={inputValue => setQuery(inputValue)}
-                selectedItem={null}
-                onSelect={item => {
-                  if (item) {
-                    navigate(item.path)
-                    setQuery('')
-                    onDismiss()
-                  }
-                }}
-                itemToString={item => (item ? item.title : '')}
-                stateReducer={stateReducer}
-              >
-                {({
-                  getInputProps,
-                  getItemProps,
-                  getMenuProps,
-                  getRootProps,
-                  isOpen: isMenuOpen,
-                  highlightedIndex,
-                }) => (
+            <Downshift
+              inputValue={query}
+              onInputValueChange={inputValue => setQuery(inputValue)}
+              selectedItem={null}
+              onSelect={item => {
+                if (item) {
+                  navigate(item.path)
+                  setQuery('')
+                  onDismiss()
+                }
+              }}
+              itemToString={item => (item ? item.title : '')}
+              stateReducer={stateReducer}
+            >
+              {({
+                getInputProps,
+                getItemProps,
+                getMenuProps,
+                getRootProps,
+                isOpen: isMenuOpen,
+                highlightedIndex,
+              }) => (
+                <Flex
+                  {...getRootProps({
+                    flexDirection: 'column',
+                    height: isMenuOpen ? '100vh' : 'auto',
+                  })}
+                >
                   <Flex
-                    {...getRootProps({flexDirection: 'column', height: '100%'})}
+                    as={motion.div}
+                    initial={{x: '25%', opacity: 0}}
+                    animate={{x: 0, opacity: 1}}
+                    exit={{x: '25%', opacity: 0}}
+                    transition={{type: 'tween', duration: 0.2}}
+                    bg="gray.9"
+                    color="white"
+                    p={3}
                   >
-                    <Flex
-                      as={motion.div}
-                      initial={{x: '25%', opacity: 0}}
-                      animate={{x: 0, opacity: 1}}
-                      exit={{x: '25%', opacity: 0}}
-                      transition={{type: 'tween', duration: 0.2}}
-                      bg="gray.9"
-                      color="white"
-                      p={3}
+                    <DarkTextInput
+                      {...getInputProps({
+                        autoFocus: true,
+                        placeholder: `Search`,
+                        width: '100%',
+                      })}
+                    />
+                    <DarkButton
+                      ml={3}
+                      aria-label="Cancel"
+                      onClick={handleDismiss}
                     >
-                      <DarkTextInput
-                        {...getInputProps({
-                          autoFocus: true,
-                          placeholder: `Search`,
-                          width: '100%',
-                        })}
-                      />
-                      <DarkButton
-                        ml={3}
-                        aria-label="Cancel"
-                        onClick={handleDismiss}
-                      >
-                        <StyledOcticon icon={X} />
-                      </DarkButton>
-                    </Flex>
-                    {isMenuOpen ? (
-                      <Flex
-                        {...getMenuProps({
-                          as: motion.div,
-                          animate: {opacity: 1},
-                          exit: {opacity: 0},
-                          transition: {type: 'tween'},
-                          bg: 'white',
-                          py: 1,
-                          flexDirection: 'column',
-                          flex: '1 1 auto',
-                          style: {
-                            overflow: 'auto',
-                            WebkitOverflowScrolling: 'touch',
-                          },
-                        })}
-                      >
-                        <SearchResults
-                          results={results}
-                          getItemProps={getItemProps}
-                          highlightedIndex={highlightedIndex}
-                        />
-                      </Flex>
-                    ) : null}
+                      <StyledOcticon icon={X} />
+                    </DarkButton>
                   </Flex>
-                )}
-              </Downshift>
-            </Flex>
+                  {isMenuOpen ? (
+                    <Flex
+                      {...getMenuProps({
+                        as: motion.div,
+                        animate: {opacity: 1},
+                        exit: {opacity: 0},
+                        transition: {type: 'tween'},
+                        bg: 'white',
+                        py: 1,
+                        flexDirection: 'column',
+                        flex: '1 1 auto',
+                        style: {
+                          overflow: 'auto',
+                          WebkitOverflowScrolling: 'touch',
+                        },
+                      })}
+                    >
+                      <SearchResults
+                        results={results}
+                        getItemProps={getItemProps}
+                        highlightedIndex={highlightedIndex}
+                      />
+                    </Flex>
+                  ) : null}
+                </Flex>
+              )}
+            </Downshift>
           </Fixed>
         </FocusOn>
       ) : null}
