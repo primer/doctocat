@@ -22,14 +22,19 @@ function Header() {
   return (
     <Sticky>
       <Flex
-        px={4}
         py={3}
+        px={[3, null, null, 4]}
         alignItems="center"
         justifyContent="space-between"
         bg="gray.9"
       >
         <Flex alignItems="center">
-          <Link href="https://primer.style" color="blue.4" mr={3}>
+          <Link
+            href="https://primer.style"
+            color="blue.4"
+            mr={3}
+            lineHeight="condensedUltra"
+          >
             <StyledOcticon icon={MarkGithub} size="medium" />
           </Link>
           <Flex display={['none', null, null, 'flex']} alignItems="center">

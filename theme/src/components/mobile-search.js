@@ -45,7 +45,6 @@ function MobileSearch({isOpen, onDismiss}) {
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
-              transition={{type: 'tween'}}
               top={0}
               left={0}
               right={0}
@@ -82,21 +81,18 @@ function MobileSearch({isOpen, onDismiss}) {
                     height: isMenuOpen ? '100vh' : 'auto',
                   })}
                 >
-                  <Flex
-                    as={motion.div}
-                    initial={{x: '25%', opacity: 0}}
-                    animate={{x: 0, opacity: 1}}
-                    exit={{x: '25%', opacity: 0}}
-                    transition={{type: 'tween', duration: 0.2}}
-                    bg="gray.9"
-                    color="white"
-                    p={3}
-                  >
+                  <Flex bg="gray.9" color="white" p={3}>
                     <DarkTextInput
                       {...getInputProps({
+                        as: motion.input,
+                        initial: {scaleX: 0},
+                        animate: {scaleX: 1},
+                        exit: {scaleX: 0},
+                        transition: {type: 'tween', duration: 0.2},
                         autoFocus: true,
                         placeholder: `Search`,
                         width: '100%',
+                        style: {originX: '100%'},
                       })}
                     />
                     <DarkButton
@@ -113,7 +109,6 @@ function MobileSearch({isOpen, onDismiss}) {
                         as: motion.div,
                         animate: {opacity: 1},
                         exit: {opacity: 0},
-                        transition: {type: 'tween'},
                         bg: 'white',
                         py: 1,
                         flexDirection: 'column',
