@@ -106,9 +106,6 @@ function MobileSearch({isOpen, onDismiss}) {
                   {isMenuOpen ? (
                     <Flex
                       {...getMenuProps({
-                        as: motion.div,
-                        animate: {opacity: 1},
-                        exit: {opacity: 0},
                         bg: 'white',
                         py: 1,
                         flexDirection: 'column',
