@@ -5,6 +5,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import {navigate} from 'gatsby'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
+import useOnEscape from '../use-on-escape'
 import useSearch from '../use-search'
 import DarkButton from './dark-button'
 import DarkTextInput from './dark-text-input'
@@ -34,6 +35,11 @@ function MobileSearch({isOpen, onDismiss}) {
     setQuery('')
     onDismiss()
   }
+
+  useOnEscape(event => {
+    event.preventDefault()
+    handleDismiss()
+  })
 
   return (
     <AnimatePresence>

@@ -2,21 +2,13 @@ import {Fixed} from '@primer/components'
 import {AnimatePresence, motion} from 'framer-motion'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
+import useOnEscape from '../use-on-escape'
 
 function Drawer({isOpen, onDismiss, children}) {
-  function handleKeyDown(event) {
-    if (event.key === 'Escape' || event.key === 'Esc') {
-      event.preventDefault()
-      onDismiss()
-    }
-  }
-
-  React.useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
+  useOnEscape(event => {
+    event.preventDefault()
+    onDismiss()
+  })
 
   return (
     <AnimatePresence>
