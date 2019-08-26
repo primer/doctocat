@@ -42,17 +42,17 @@ function useSearch(query) {
     keys: ['title', 'rawBody'],
     tokenize: true,
   })
-
-  const [isLoading, setIsLoading] = React.useState(false)
-  const [results, setResults] = React.useState([])
+  const [results, setResults] = React.useState(list)
 
   React.useEffect(() => {
-    setIsLoading(true)
-    setResults(fuse.search(query).slice(0, 20))
-    setIsLoading(false)
+    if (query) {
+      setResults(fuse.search(query).slice(0, 20)) // Return top 20 results
+    } else {
+      setResults(list)
+    }
   }, [query])
 
-  return {results, isLoading}
+  return results
 }
 
 export default useSearch

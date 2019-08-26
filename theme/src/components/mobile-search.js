@@ -29,7 +29,7 @@ function stateReducer(state, changes) {
 
 function MobileSearch({isOpen, onDismiss}) {
   const [query, setQuery] = React.useState('')
-  const {results, isLoading} = useSearch(query)
+  const results = useSearch(query)
 
   function handleDismiss() {
     setQuery('')
@@ -120,15 +120,11 @@ function MobileSearch({isOpen, onDismiss}) {
                         },
                       })}
                     >
-                      {isLoading && results.length === 0 ? (
-                        <Text>Loading...</Text>
-                      ) : (
-                        <SearchResults
-                          results={results}
-                          getItemProps={getItemProps}
-                          highlightedIndex={highlightedIndex}
-                        />
-                      )}
+                      <SearchResults
+                        results={results}
+                        getItemProps={getItemProps}
+                        highlightedIndex={highlightedIndex}
+                      />
                     </Flex>
                   ) : null}
                 </Flex>
