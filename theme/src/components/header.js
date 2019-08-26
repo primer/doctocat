@@ -16,7 +16,7 @@ import Search from './search'
 import MobileSearch from './mobile-search'
 
 function Header() {
-  const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false)
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = React.useState(false)
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
@@ -68,15 +68,15 @@ function Header() {
             />
             <DarkButton
               aria-label="Menu"
-              aria-expanded={isMobileNavOpen}
-              onClick={() => setIsMobileNavOpen(true)}
+              aria-expanded={isNavDrawerOpen}
+              onClick={() => setIsNavDrawerOpen(true)}
               ml={3}
             >
               <StyledOcticon icon={ThreeBars} />
             </DarkButton>
             <NavDrawer
-              isOpen={isMobileNavOpen}
-              onDismiss={() => setIsMobileNavOpen(false)}
+              isOpen={isNavDrawerOpen}
+              onDismiss={() => setIsNavDrawerOpen(false)}
             />
           </Flex>
         </Flex>
