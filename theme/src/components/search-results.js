@@ -16,8 +16,8 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
 
   return results.map((item, index) => (
     <Flex
+      key={item.path}
       {...getItemProps({
-        key: item.ref,
         item,
         flexDirection: 'column',
         flex: '0 0 auto',
