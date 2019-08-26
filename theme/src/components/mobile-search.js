@@ -83,7 +83,7 @@ function MobileSearch({isOpen, onDismiss}) {
                 <Flex
                   {...getRootProps({
                     flexDirection: 'column',
-                    height: isMenuOpen ? '100vh' : 'auto',
+                    height: isMenuOpen ? '100%' : 'auto',
                   })}
                 >
                   <Flex bg="gray.9" color="white" p={3} flex="0 0 auto">
