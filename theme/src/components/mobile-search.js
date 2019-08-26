@@ -66,8 +66,7 @@ function MobileSearch({isOpen, onDismiss}) {
               onSelect={item => {
                 if (item) {
                   navigate(item.path)
-                  setQuery('')
-                  onDismiss()
+                  handleDismiss()
                 }
               }}
               itemToString={item => (item ? item.title : '')}
