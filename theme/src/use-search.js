@@ -43,13 +43,16 @@ function useSearch(query) {
     tokenize: true,
   })
 
+  const [isLoading, setIsLoading] = React.useState(false)
   const [results, setResults] = React.useState([])
 
   React.useEffect(() => {
+    setIsLoading(true)
     setResults(fuse.search(query).slice(0, 20))
+    setIsLoading(false)
   }, [query])
 
-  return results
+  return {results, isLoading}
 }
 
 export default useSearch

@@ -1,4 +1,4 @@
-import {Absolute, Fixed, Flex, StyledOcticon} from '@primer/components'
+import {Absolute, Fixed, Flex, StyledOcticon, Text} from '@primer/components'
 import {X} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
@@ -29,7 +29,7 @@ function stateReducer(state, changes) {
 
 function MobileSearch({isOpen, onDismiss}) {
   const [query, setQuery] = React.useState('')
-  const results = useSearch(query)
+  const {results, isLoading} = useSearch(query)
 
   function handleDismiss() {
     setQuery('')
@@ -120,11 +120,15 @@ function MobileSearch({isOpen, onDismiss}) {
                         },
                       })}
                     >
-                      <SearchResults
-                        results={results}
-                        getItemProps={getItemProps}
-                        highlightedIndex={highlightedIndex}
-                      />
+                      {isLoading && results.length === 0 ? (
+                        <Text>Loading...</Text>
+                      ) : (
+                        <SearchResults
+                          results={results}
+                          getItemProps={getItemProps}
+                          highlightedIndex={highlightedIndex}
+                        />
+                      )}
                     </Flex>
                   ) : null}
                 </Flex>
