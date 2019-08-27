@@ -19,7 +19,7 @@ function Header({isSearchEnabled}) {
         px={[3, null, null, 4]}
         alignItems="center"
         justifyContent="space-between"
-        bg="gray.9"
+        bg="black"
       >
         <Flex alignItems="center">
           <Link href="https://primer.style" color="blue.4" mr={3}>
