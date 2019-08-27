@@ -21,7 +21,8 @@ function NavDrawer({isOpen, onDismiss}) {
   const siteMetadata = useSiteMetadata()
   return (
     <Drawer isOpen={isOpen} onDismiss={onDismiss}>
-      <Box
+      <Flex
+        flexDirection="column"
         height="100%"
         bg="gray.9"
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
@@ -56,7 +57,12 @@ function NavDrawer({isOpen, onDismiss}) {
           </Flex>
         </Flex>
         {navItems.length > 0 ? (
-          <Flex flexDirection="column" py={4} color="gray.7" bg="gray.0">
+          <Flex
+            flexDirection="column"
+            flex="1 1 auto"
+            color="gray.7"
+            bg="gray.0"
+          >
             <Link
               as={GatsbyLink}
               to="/"
@@ -64,14 +70,14 @@ function NavDrawer({isOpen, onDismiss}) {
               color="inherit"
               fontFamily="mono"
               mx={4}
-              mb={4}
+              my={4}
             >
               {siteMetadata.title}
             </Link>
             <NavItems items={navItems} />
           </Flex>
         ) : null}
-      </Box>
+      </Flex>
     </Drawer>
   )
 }
