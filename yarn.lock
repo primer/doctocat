@@ -1545,6 +1545,13 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+aria-hidden@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.1.1.tgz#0c356026d3f65e2bd487a3adb73f0c586be2c37e"
+  integrity sha512-M7zYxCcOQPOaxGHoMTKUFD2UNcVFTp9ycrdStLcTPLf8zgTXC3+YcGe+UuzSh5X1BX/0/PtS8xTNy4xyH/6xtw==
+  dependencies:
+    tslib "^1.0.0"
+
 aria-query@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-3.0.0.tgz#65b3fcc1ca1155a8c9ae64d6eee297f15d5133cc"
@@ -9601,7 +9608,7 @@ react-focus-lock@^1.17.7:
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.0"
 
-react-focus-lock@^2.0.5:
+react-focus-lock@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.0.5.tgz#2556a9714722c0a3f9d63542784ace01aa994907"
   integrity sha512-Jh5QV9KEgAXYAPSF0NMlqxFuX2BBPvLP6spQLsPIVHkITyaOYapxfNIFm/piOk1skghXWsufPDInyY53n8sUMw==
@@ -9610,6 +9617,17 @@ react-focus-lock@^2.0.5:
     focus-lock "^0.6.5"
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.2"
+    use-sidecar "^1.0.1"
+
+react-focus-on@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/react-focus-on/-/react-focus-on-3.0.6.tgz#71474023abd85b3e5793a5268025f6d62cbb485f"
+  integrity sha512-JCELlvwBBBQh+QIDYU0dvcSLObcFp6oTSWJyxt4puR2PqsU9E/yy0wjy3JhSc/2lPpQDXJ1gAeqmx6SFrkTorw==
+  dependencies:
+    aria-hidden "^1.1.1"
+    react-focus-lock "^2.0.3"
+    react-remove-scroll "^2.0.4"
+    react-style-singleton "^2.0.0"
     use-sidecar "^1.0.1"
 
 react-frame-component@^4.1.1:
@@ -9698,6 +9716,14 @@ react-remove-scroll-bar@^1.1.5:
     react-style-singleton "^1.1.0"
     tslib "^1.0.0"
 
+react-remove-scroll-bar@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.0.0.tgz#94437a7f3dbda99817ff64b928ee206e298ba157"
+  integrity sha512-HSdWZ+6vV6X1btLRhQlIcFulaMePCyg0Un2oXMmDdq8lK9KPUMSnWYINYWVCdgT35em9hiUaR8frBN1PYYLLpQ==
+  dependencies:
+    react-style-singleton "^2.0.0"
+    tslib "^1.0.0"
+
 react-remove-scroll@^1.0.2:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-1.0.8.tgz#a5aadc56368345a51ba524582c842a773849f609"
@@ -9705,6 +9731,16 @@ react-remove-scroll@^1.0.2:
   dependencies:
     react-remove-scroll-bar "^1.1.5"
     tslib "^1.0.0"
+
+react-remove-scroll@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.0.4.tgz#0f8677dbda3bfdd4471e753873c2457a8b721d12"
+  integrity sha512-Y1MTCsePsXF2H32qJ5RtZQJRkNycys2E7SPljDza4NwLeYFZAosjazz94D3J9KE7X37yOAJM0AbUq1BFmc+gjA==
+  dependencies:
+    react-remove-scroll-bar "^2.0.0"
+    react-style-singleton "^2.0.0"
+    tslib "^1.0.0"
+    use-sidecar "^1.0.1"
 
 react-side-effect@^1.1.0:
   version "1.1.5"
@@ -9723,6 +9759,14 @@ react-style-singleton@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-1.1.1.tgz#b2b698765519da812b80f55ab3c5fc5d849a2e63"
   integrity sha512-0JD+XC5veR3oxf7GzIXipr89sM8R3rWnOR/gpzIV0DnoRBrcTvvkqyMu9icDYqM/6CWJhYcH5Jdy6Nim7PmoTQ==
+  dependencies:
+    invariant "^2.2.4"
+    tslib "^1.0.0"
+
+react-style-singleton@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.0.0.tgz#fdc9ff3a82674c256f0033d140b7b1d9d37e7f17"
+  integrity sha512-1Kw9G/b7EqLspjtiKsC9jtoqkx+RAti+8PmBe47ioKTcdhB3gtaKw2Lc3Hsud/VrXh+QECZKmr2yDCwR7ObNtA==
   dependencies:
     invariant "^2.2.4"
     tslib "^1.0.0"
