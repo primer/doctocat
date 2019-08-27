@@ -21,7 +21,7 @@ function Drawer({isOpen, onDismiss, children}) {
   return (
     <AnimatePresence>
       {isOpen ? (
-        <>
+        <FocusLock returnFocus={true}>
           <Fixed
             key="overlay"
             as={motion.div}
@@ -51,9 +51,9 @@ function Drawer({isOpen, onDismiss, children}) {
             bg="gray.0"
             style={{zIndex: 1}}
           >
-            <FocusLock returnFocus={true}>{children}</FocusLock>
+            {children}
           </Fixed>
-        </>
+        </FocusLock>
       ) : null}
     </AnimatePresence>
   )
