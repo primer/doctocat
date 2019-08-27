@@ -36,7 +36,8 @@ function NavDrawer({isOpen, onDismiss}) {
           >
             <Flex
               py={3}
-              px={4}
+              pl={4}
+              pr={3}
               alignItems="center"
               justifyContent="space-between"
             >
