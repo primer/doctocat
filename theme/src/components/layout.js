@@ -1,13 +1,14 @@
 import {MDXContext} from '@mdx-js/react'
-import {Box, Flex, Link, StyledOcticon} from '@primer/components'
+import {BorderBox, Box, Flex, Link, StyledOcticon} from '@primer/components'
 import {Pencil} from '@primer/octicons-react'
 import React from 'react'
 import Container from './container'
+import Contribitors from './contributors'
 import Head from './head'
 import Header from './header'
 import Sidebar from './sidebar'
-import TableOfContents from './table-of-contents'
 import StatusLabel from './status-label'
+import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
   const {h1: H1 = 'h1'} = React.useContext(MDXContext)
@@ -38,14 +39,13 @@ function Layout({children, pageContext}) {
 
           {children}
 
-          {pageContext.editUrl ? (
-            <Box my={6}>
-              <Link href={pageContext.editUrl}>
-                <StyledOcticon icon={Pencil} mr={2} />
-                Edit this page on GitHub
-              </Link>
-            </Box>
-          ) : null}
+          <BorderBox border={0} borderRadius={0} borderTop={1} mt={8} py={4}>
+            <Link href={pageContext.editUrl} mb={4}>
+              <StyledOcticon icon={Pencil} mr={2} />
+              Edit this page on GitHub
+            </Link>
+            <Contribitors contributors={pageContext.contributors} />
+          </BorderBox>
         </Container>
       </Flex>
     </Flex>
