@@ -2,7 +2,7 @@ const path = require('path')
 const readPkgUp = require('read-pkg-up')
 const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
-const uniqBy = require('lodash.uniqBy')
+const uniqBy = require('lodash.uniqby')
 
 exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
