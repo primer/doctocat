@@ -3,6 +3,8 @@ import {format} from 'date-fns'
 import pluralize from 'pluralize'
 import React from 'react'
 
+// The `contributors` array is fetched in gatsby-node.js at build-time.
+
 function Contributors({contributors}) {
   const latestContributor = contributors[0]
   return (
