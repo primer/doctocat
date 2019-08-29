@@ -14,5 +14,11 @@
       url: /usage/live-code
     - title: Deployment
       url: /usage/deployment
+- title: Components
+  url: /components
+  children:
+    - title: Caption
+      url: /components/caption
+
 - title: Contributing
   url: /contributing
