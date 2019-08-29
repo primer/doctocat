@@ -2,18 +2,29 @@
 title: Do/Don't
 ---
 
-The Do / Don't set of components is used for providing good & bad examples within documentation. These examples appear side by side on desktop, and vertically stacked on mobile.
+The Do / Don't set of components are used for providing good & bad examples within documentation.
 
 ### Usage
-Use the `DoDontWrapper` to wrap `Do` and `Dont` components. The `DoDontWrapper` is necessary to provide layout styling.
+#### Side-by-side
+To create a side-by-side Do / Don't example, wrap `Do` and `Don't` component with the following `Grid` component:
+
+`<Grid gridTemplateColumns={['1fr', '1fr', '1fr 1fr']} gridGap={3}>`
 
 ```jsx live
-<DoDontWrapper>
+<Grid gridTemplateColumns={['1fr', '1fr', '1fr 1fr']} gridGap={3}>
   <Do src="https://user-images.githubusercontent.com/586552/63106528-06de5100-bf51-11e9-8a5e-98583ed74874.png">
     Use brief and direct communication
   </Do>
   <Dont src="https://user-images.githubusercontent.com/586552/63106527-06de5100-bf51-11e9-858c-72de6a5c728a.png">
     Don't use wordy and redundant copy
   </Dont>
-</DoDontWrapper>
+</Grid>
+```
+
+#### Usage in isolation
+
+```jsx live
+  <Do src="https://user-images.githubusercontent.com/586552/63106528-06de5100-bf51-11e9-8a5e-98583ed74874.png">
+    Use brief and direct communication
+  </Do>
 ```
