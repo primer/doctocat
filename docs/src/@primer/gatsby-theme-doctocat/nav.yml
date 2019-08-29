@@ -20,7 +20,6 @@
     - title: Caption
       url: /components/caption
     - title: Do/Dont
-      url: /components/dodont
-
+      url: /components/do-dont
 - title: Contributing
   url: /contributing
