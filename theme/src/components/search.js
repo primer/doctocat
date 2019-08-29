@@ -1,12 +1,24 @@
 import {BorderBox, Position} from '@primer/components'
 import Downshift from 'downshift'
-import Fuse from 'fuse.js'
-import {navigate, useStaticQuery} from 'gatsby'
-import path from 'path'
+import {navigate} from 'gatsby'
 import React from 'react'
+import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
-import SearchInput from './search-input'
+import DarkTextInput from './dark-text-input'
 import SearchResults from './search-results'
+
+function stateReducer(state, changes) {
+  switch (changes.type) {
+    case Downshift.stateChangeTypes.changeInput:
+      if (!changes.inputValue) {
+        // Close the menu if the input is empty.
+        return {...changes, isOpen: false}
+      }
+      return changes
+    default:
+      return changes
+  }
+}
 
 function Search() {
   const [query, setQuery] = React.useState('')
@@ -17,13 +29,19 @@ function Search() {
     <Downshift
       inputValue={query}
       onInputValueChange={inputValue => setQuery(inputValue)}
+      // We don't need Downshift to keep track of a selected item because as
+      // soon as an item is selected we navigate to a new page.
+      // Let's avoid any unexpected states related to the selected item
+      // by setting it to always be `null`.
+      selectedItem={null}
       onSelect={item => {
         if (item) {
-          setQuery('')
           navigate(item.path)
+          setQuery('')
         }
       }}
       itemToString={item => (item ? item.title : '')}
+      stateReducer={stateReducer}
     >
       {({
         getInputProps,
@@ -31,19 +49,16 @@ function Search() {
         getMenuProps,
         getRootProps,
         isOpen,
-        inputValue,
         highlightedIndex,
-        clearSelection,
       }) => (
         <Position {...getRootProps({position: 'relative'})}>
-          <SearchInput
+          <DarkTextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
               width: 240,
-              onChange: () => clearSelection(),
             })}
           />
-          {isOpen && inputValue ? (
+          {isOpen ? (
             <Position
               {...getMenuProps({
                 position: 'absolute',
@@ -72,55 +87,6 @@ function Search() {
       )}
     </Downshift>
   )
-}
-
-function useSearch(query) {
-  const data = useStaticQuery(graphql`
-    {
-      allMdx {
-        nodes {
-          fileAbsolutePath
-          frontmatter {
-            title
-          }
-          rawBody
-          parent {
-            ... on File {
-              relativeDirectory
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const list = React.useMemo(
-    () =>
-      data.allMdx.nodes.map(node => ({
-        path: path.join(
-          node.parent.relativeDirectory,
-          node.parent.name === 'index' ? '/' : node.parent.name,
-        ),
-        title: node.frontmatter.title,
-        rawBody: node.rawBody,
-      })),
-    [data],
-  )
-
-  const fuse = new Fuse(list, {
-    threshold: 0.2,
-    keys: ['title', 'rawBody'],
-    tokenize: true,
-  })
-
-  const [results, setResults] = React.useState([])
-
-  React.useEffect(() => {
-    setResults(fuse.search(query))
-  }, [query])
-
-  return results
 }
 
 export default Search

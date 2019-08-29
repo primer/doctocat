@@ -1,27 +1,19 @@
 import {Fixed} from '@primer/components'
 import {AnimatePresence, motion} from 'framer-motion'
 import React from 'react'
-import FocusLock from 'react-focus-lock'
+import {FocusOn} from 'react-focus-on'
+import useOnEscape from '../use-on-escape'
 
 function Drawer({isOpen, onDismiss, children}) {
-  function handleKeyDown(event) {
-    if (event.key === 'Escape' || event.key === 'Esc') {
-      event.preventDefault()
-      onDismiss()
-    }
-  }
-
-  React.useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
+  useOnEscape(event => {
+    event.preventDefault()
+    onDismiss()
+  })
 
   return (
     <AnimatePresence>
       {isOpen ? (
-        <FocusLock returnFocus={true}>
+        <FocusOn returnFocus={true}>
           <Fixed
             key="overlay"
             as={motion.div}
@@ -43,7 +35,7 @@ function Drawer({isOpen, onDismiss, children}) {
             initial={{x: '100%'}}
             animate={{x: 0}}
             exit={{x: '100%'}}
-            transition={{type: 'tween'}}
+            transition={{type: 'tween', duration: 0.2}}
             width={300}
             top={0}
             right={0}
@@ -53,7 +45,7 @@ function Drawer({isOpen, onDismiss, children}) {
           >
             {children}
           </Fixed>
-        </FocusLock>
+        </FocusOn>
       ) : null}
     </AnimatePresence>
   )

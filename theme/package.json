@@ -41,7 +41,7 @@
     "prism-react-renderer": "^0.1.7",
     "react-addons-text-content": "^0.0.4",
     "react-element-to-jsx-string": "^14.0.3",
-    "react-focus-lock": "^2.0.5",
+    "react-focus-on": "^3.0.6",
     "react-frame-component": "^4.1.1",
     "react-helmet": "^5.2.1",
     "react-live": "^2.1.2",
