@@ -1,7 +1,7 @@
-import {Box, Flex, Link, StyledOcticon} from '@primer/components'
-import {Pencil} from '@primer/octicons-react'
+import {Box, Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
+import PageFooter from './page-footer'
 import Head from './head'
 import Header from './header'
 import Hero from './hero'
@@ -20,13 +20,11 @@ function HeroLayout({children, pageContext}) {
           <Hero />
           <Container>
             {children}
-            {pageContext.editUrl ? (
-              <Box my={6}>
-                <Link href={pageContext.editUrl}>
-                  <StyledOcticon icon={Pencil} mr={2} />
-                  Edit this page on GitHub
-                </Link>
-              </Box>
+            {pageContext.editUrl || pageContext.contributors ? (
+              <PageFooter
+                editUrl={pageContext.editUrl}
+                contributors={pageContext.contributors}
+              />
             ) : null}
           </Container>
         </Box>

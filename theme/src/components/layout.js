@@ -1,9 +1,8 @@
 import {MDXContext} from '@mdx-js/react'
-import {BorderBox, Box, Flex, Link, StyledOcticon} from '@primer/components'
-import {Pencil} from '@primer/octicons-react'
+import {Box, Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
-import Contribitors from './contributors'
+import PageFooter from './page-footer'
 import Head from './head'
 import Header from './header'
 import Sidebar from './sidebar'
@@ -39,13 +38,12 @@ function Layout({children, pageContext}) {
 
           {children}
 
-          <BorderBox border={0} borderRadius={0} borderTop={1} mt={8} py={4}>
-            <Link href={pageContext.editUrl} mb={4}>
-              <StyledOcticon icon={Pencil} mr={2} />
-              Edit this page on GitHub
-            </Link>
-            <Contribitors contributors={pageContext.contributors} />
-          </BorderBox>
+          {pageContext.editUrl || pageContext.contributors ? (
+            <PageFooter
+              editUrl={pageContext.editUrl}
+              contributors={pageContext.contributors}
+            />
+          ) : null}
         </Container>
       </Flex>
     </Flex>

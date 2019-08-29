@@ -6,7 +6,7 @@ function Contributors({contributors}) {
   return (
     <div>
       <Flex alignItems="center" mb={1}>
-        <Text mr={3}>{contributors.length} contributors</Text>
+        <Text mr={2}>{contributors.length} contributors</Text>
         {contributors.map(contributor => (
           <Link
             href={`https://github.com/${contributor.login}`}
