@@ -1,11 +1,4 @@
-import {
-  BorderBox,
-  Box,
-  Flex,
-  Link,
-  StyledOcticon,
-  Text,
-} from '@primer/components'
+import {BorderBox, Flex, Link, StyledOcticon, Text} from '@primer/components'
 import {ChevronDown, ChevronUp, X} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
