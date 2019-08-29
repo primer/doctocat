@@ -20,7 +20,10 @@ function Contributors({contributors}) {
             mr={2}
           >
             <Tooltip key={contributor.login} aria-label={contributor.login}>
-              <Avatar src={contributor.avatarUrl} alt={contributor.login} />
+              <Avatar
+                src={`https://github.com/${contributor.login}.png?size=40`}
+                alt={contributor.login}
+              />
             </Tooltip>
           </Link>
         ))}

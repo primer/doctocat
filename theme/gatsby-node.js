@@ -76,7 +76,6 @@ function fetchContributors(repo, filePath) {
     .then(commits =>
       commits.map(commit => ({
         login: commit.author.login,
-        avatarUrl: commit.author.avatar_url,
         latestCommit: {
           date: commit.commit.author.date,
           url: commit.html_url,
