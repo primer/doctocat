@@ -11,24 +11,27 @@ import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
   const {h1: H1 = 'h1'} = React.useContext(MDXContext)
+  const {
+    title,
+    description,
+    status,
+    additionalContributors = [],
+  } = pageContext.frontmatter
 
   return (
     <Flex flexDirection="column" minHeight="100vh">
-      <Head
-        title={pageContext.frontmatter.title}
-        description={pageContext.frontmatter.description}
-      />
+      <Head title={title} description={description} />
       <Header />
       <Flex flex="1 1 auto" flexDirection="row">
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
         <Container>
-          <H1>{pageContext.frontmatter.title}</H1>
+          <H1>{title}</H1>
 
-          {pageContext.frontmatter.status ? (
+          {status ? (
             <Box mb={4}>
-              <StatusLabel status={pageContext.frontmatter.status} />
+              <StatusLabel status={status} />
             </Box>
           ) : null}
 
@@ -40,7 +43,9 @@ function Layout({children, pageContext}) {
 
           <PageFooter
             editUrl={pageContext.editUrl}
-            contributors={pageContext.contributors}
+            contributors={pageContext.contributors.concat(
+              additionalContributors.map(login => ({login})),
+            )}
           />
         </Container>
       </Flex>

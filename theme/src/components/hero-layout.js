@@ -8,6 +8,8 @@ import Hero from './hero'
 import Sidebar from './sidebar'
 
 function HeroLayout({children, pageContext}) {
+  const {additionalContributors = []} = pageContext.frontmatter
+
   return (
     <Flex flexDirection="column" minHeight="100vh">
       <Head />
@@ -22,7 +24,9 @@ function HeroLayout({children, pageContext}) {
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
-              contributors={pageContext.contributors}
+              contributors={pageContext.contributors.concat(
+                additionalContributors.map(login => ({login})),
+              )}
             />
           </Container>
         </Box>
