@@ -1,6 +1,7 @@
-import React from 'react'
-import {Text, Link, Avatar, Flex, Tooltip} from '@primer/components'
+import {Avatar, Flex, Link, Text, Tooltip} from '@primer/components'
+import {format} from 'date-fns'
 import pluralize from 'pluralize'
+import React from 'react'
 
 function Contributors({contributors}) {
   const latestContributor = contributors[0]
@@ -30,7 +31,7 @@ function Contributors({contributors}) {
         </Link>{' '}
         on{' '}
         <Link href={latestContributor.latestCommit.url}>
-          {latestContributor.latestCommit.date}
+          {format(new Date(latestContributor.latestCommit.date), 'MMMM d, y')}
         </Link>
       </Text>
     </div>
