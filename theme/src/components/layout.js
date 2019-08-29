@@ -38,12 +38,10 @@ function Layout({children, pageContext}) {
 
           {children}
 
-          {pageContext.editUrl || pageContext.contributors ? (
-            <PageFooter
-              editUrl={pageContext.editUrl}
-              contributors={pageContext.contributors}
-            />
-          ) : null}
+          <PageFooter
+            editUrl={pageContext.editUrl}
+            contributors={pageContext.contributors}
+          />
         </Container>
       </Flex>
     </Flex>

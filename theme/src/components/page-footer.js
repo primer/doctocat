@@ -4,7 +4,8 @@ import React from 'react'
 import Contributors from './contributors'
 
 function PageFooter({editUrl, contributors}) {
-  return (
+  return pageContext.editUrl ||
+    (pageContext.contributors && pageContext.contributors.length > 0) ? (
     <BorderBox border={0} borderRadius={0} borderTop={1} mt={8} py={6}>
       <Grid gridGap={4}>
         {editUrl ? (
@@ -17,7 +18,7 @@ function PageFooter({editUrl, contributors}) {
         {contributors ? <Contributors contributors={contributors} /> : null}
       </Grid>
     </BorderBox>
-  )
+  ) : null
 }
 
 export default PageFooter
