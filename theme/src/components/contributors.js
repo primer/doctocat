@@ -1,12 +1,15 @@
 import React from 'react'
 import {Text, Link, Avatar, Flex, Tooltip} from '@primer/components'
+import pluralize from 'pluralize'
 
 function Contributors({contributors}) {
   const latestContributor = contributors[0]
   return (
     <div>
       <Flex alignItems="center" mb={1}>
-        <Text mr={2}>{contributors.length} contributors</Text>
+        <Text mr={2}>
+          {contributors.length} {pluralize('contributor', contributors.length)}
+        </Text>
         {contributors.map(contributor => (
           <Link
             href={`https://github.com/${contributor.login}`}
