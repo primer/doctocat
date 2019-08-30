@@ -1,19 +1,23 @@
 import {Avatar, Flex, Link, Text, Tooltip} from '@primer/components'
 import {format} from 'date-fns'
+import uniqBy from 'lodash.uniqby'
 import pluralize from 'pluralize'
 import React from 'react'
 
 // The `contributors` array is fetched in gatsby-node.js at build-time.
 
 function Contributors({contributors}) {
-  const latestContributor = contributors[0] || {}
+  const uniqueContributors = uniqBy(contributors, 'login')
+  const latestContributor = uniqueContributors[0] || {}
+
   return (
     <div>
       <Flex alignItems="center">
         <Text mr={2}>
-          {contributors.length} {pluralize('contributor', contributors.length)}
+          {uniqueContributors.length}{' '}
+          {pluralize('contributor', uniqueContributors.length)}
         </Text>
-        {contributors.map(contributor => (
+        {uniqueContributors.map(contributor => (
           <Link
             key={contributor.login}
             href={`https://github.com/${contributor.login}`}
