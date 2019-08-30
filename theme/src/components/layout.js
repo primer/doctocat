@@ -1,34 +1,37 @@
 import {MDXContext} from '@mdx-js/react'
-import {Box, Flex, Link, StyledOcticon} from '@primer/components'
-import {Pencil} from '@primer/octicons-react'
+import {Box, Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
+import PageFooter from './page-footer'
 import Head from './head'
 import Header from './header'
 import Sidebar from './sidebar'
-import TableOfContents from './table-of-contents'
 import StatusLabel from './status-label'
+import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
   const {h1: H1 = 'h1'} = React.useContext(MDXContext)
+  const {
+    title,
+    description,
+    status,
+    additionalContributors = [],
+  } = pageContext.frontmatter
 
   return (
     <Flex flexDirection="column" minHeight="100vh">
-      <Head
-        title={pageContext.frontmatter.title}
-        description={pageContext.frontmatter.description}
-      />
+      <Head title={title} description={description} />
       <Header />
       <Flex flex="1 1 auto" flexDirection="row">
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
         <Container>
-          <H1>{pageContext.frontmatter.title}</H1>
+          <H1>{title}</H1>
 
-          {pageContext.frontmatter.status ? (
+          {status ? (
             <Box mb={4}>
-              <StatusLabel status={pageContext.frontmatter.status} />
+              <StatusLabel status={status} />
             </Box>
           ) : null}
 
@@ -38,14 +41,12 @@ function Layout({children, pageContext}) {
 
           {children}
 
-          {pageContext.editUrl ? (
-            <Box my={6}>
-              <Link href={pageContext.editUrl}>
-                <StyledOcticon icon={Pencil} mr={2} />
-                Edit this page on GitHub
-              </Link>
-            </Box>
-          ) : null}
+          <PageFooter
+            editUrl={pageContext.editUrl}
+            contributors={pageContext.contributors.concat(
+              additionalContributors.map(login => ({login})),
+            )}
+          />
         </Container>
       </Flex>
     </Flex>
