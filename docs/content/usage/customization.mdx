@@ -2,6 +2,9 @@
 title: Customization
 ---
 
+import {BorderBox} from '@primer/components'
+import {Contributors} from '@primer/gatsby-theme-doctocat'
+
 Here are a few ways you can customize your Doctocat site:
 
 ## Site metadata
@@ -65,6 +68,33 @@ module.exports = {
   ],
 }
 ```
+
+## Contributors
+
+If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` set up correctly (as described [above](#edit-on-github-link)), Doctocat will automatically display contributors on the bottom of every page, like so:
+
+<BorderBox p={4} mb={3}>
+  <Contributors
+    contributors={[
+      {
+        login: 'colebemis',
+        latestCommit: {
+          url: '#',
+          date: '2019-08-15T23:40:19Z',
+        },
+      },
+      {
+        login: 'emplums',
+        latestCommit: {
+          url: '#',
+          date: '2019-08-14T00:19:54Z',
+        },
+      },
+    ]}
+  />
+</BorderBox>
+
+These contributors are determined by commits. However, we know that commits aren't the only way to contribute. You can use [front matter](/usage/front-matter#additional-contributors) to give credit to people who aren't listed in the commit history but still contributed.
 
 ## Hero
 
