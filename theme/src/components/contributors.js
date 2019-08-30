@@ -6,7 +6,7 @@ import React from 'react'
 // The `contributors` array is fetched in gatsby-node.js at build-time.
 
 function Contributors({contributors}) {
-  const latestContributor = contributors[0]
+  const latestContributor = contributors[0] || {}
   return (
     <div>
       <Flex alignItems="center">
