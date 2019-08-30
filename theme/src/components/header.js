@@ -1,5 +1,10 @@
 import {Box, Flex, Link, Sticky, StyledOcticon} from '@primer/components'
-import {ChevronRight, MarkGithub, ThreeBars} from '@primer/octicons-react'
+import {
+  ChevronRight,
+  MarkGithub,
+  ThreeBars,
+  Search as SearchIcon,
+} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'
@@ -8,35 +13,61 @@ import DarkButton from './dark-button'
 import NavDrawer from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
+import MobileSearch from './mobile-search'
 
-function Header() {
-  const [isOpen, setIsOpen] = React.useState(false)
+function Header({isSearchEnabled}) {
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = React.useState(false)
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
     <Sticky>
       <Flex
-        px={4}
         py={3}
+        px={[3, null, null, 4]}
         alignItems="center"
         justifyContent="space-between"
-        bg="gray.9"
+        bg="black"
       >
         <Flex alignItems="center">
-          <Link href="https://primer.style" color="blue.4" mr={3}>
+          <Link
+            href="https://primer.style"
+            color="blue.4"
+            mr={3}
+            lineHeight="condensedUltra"
+          >
             <StyledOcticon icon={MarkGithub} size="medium" />
           </Link>
-          <Flex display={['none', null, 'flex']} alignItems="center">
-            <Link href="https://primer.style" color="blue.4" fontFamily="mono">
-              Primer
-            </Link>
-            <StyledOcticon icon={ChevronRight} mx={2} color="blue.4" />
-          </Flex>
-          <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono" mr={4}>
-            {siteMetadata.shortName}
+          <Link
+            display={[
+              // We only hide "Primer" on small viewports if a shortName is defined.
+              siteMetadata.shortName ? 'none' : 'inline-block',
+              null,
+              null,
+              'inline-block',
+            ]}
+            href="https://primer.style"
+            color="blue.4"
+            fontFamily="mono"
+          >
+            Primer
           </Link>
-          <Box display={['none', null, null, 'block']}>
-            <Search />
-          </Box>
+
+          {siteMetadata.shortName ? (
+            <>
+              <Box display={['none', null, null, 'inline-block']} mx={2}>
+                <StyledOcticon icon={ChevronRight} color="blue.4" />
+              </Box>
+              <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono">
+                {siteMetadata.shortName}
+              </Link>
+            </>
+          ) : null}
+
+          {isSearchEnabled ? (
+            <Box display={['none', null, null, 'block']} ml={4}>
+              <Search />
+            </Box>
+          ) : null}
         </Flex>
         <Flex>
           <Box display={['none', null, null, 'block']}>
@@ -44,18 +75,37 @@ function Header() {
           </Box>
           <Flex display={['flex', null, null, 'none']}>
             <DarkButton
+              aria-label="Search"
+              aria-expanded={isMobileSearchOpen}
+              onClick={() => setIsMobileSearchOpen(true)}
+            >
+              <StyledOcticon icon={SearchIcon} />
+            </DarkButton>
+            <MobileSearch
+              isOpen={isMobileSearchOpen}
+              onDismiss={() => setIsMobileSearchOpen(false)}
+            />
+            <DarkButton
               aria-label="Menu"
-              aria-expanded={isOpen}
-              onClick={() => setIsOpen(true)}
+              aria-expanded={isNavDrawerOpen}
+              onClick={() => setIsNavDrawerOpen(true)}
+              ml={3}
             >
               <StyledOcticon icon={ThreeBars} />
             </DarkButton>
-            <NavDrawer isOpen={isOpen} onDismiss={() => setIsOpen(false)} />
+            <NavDrawer
+              isOpen={isNavDrawerOpen}
+              onDismiss={() => setIsNavDrawerOpen(false)}
+            />
           </Flex>
         </Flex>
       </Flex>
     </Sticky>
   )
+}
+
+Header.defaultProps = {
+  isSearchEnabled: true,
 }
 
 function PrimerNavItems({items}) {
