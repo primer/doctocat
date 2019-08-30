@@ -19,7 +19,7 @@
   children:
     - title: Caption
       url: /components/caption
-    - title: Do/Dont
+    - title: Do/Don't
       url: /components/do-dont
 - title: Contributing
   url: /contributing
