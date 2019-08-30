@@ -1,11 +1,10 @@
-import {Absolute, Fixed, Flex, StyledOcticon, Text} from '@primer/components'
+import {Absolute, Fixed, Flex, StyledOcticon} from '@primer/components'
 import {X} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
 import {navigate} from 'gatsby'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
-import useOnEscape from '../use-on-escape'
 import useSearch from '../use-search'
 import DarkButton from './dark-button'
 import DarkTextInput from './dark-text-input'
@@ -36,15 +35,10 @@ function MobileSearch({isOpen, onDismiss}) {
     onDismiss()
   }
 
-  useOnEscape(event => {
-    event.preventDefault()
-    handleDismiss()
-  })
-
   return (
     <AnimatePresence>
       {isOpen ? (
-        <FocusOn returnFocus={true}>
+        <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
           <Fixed top={0} left={0} right={0} bottom={0} zIndex={1}>
             <Absolute
               as={motion.div}
