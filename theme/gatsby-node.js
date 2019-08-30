@@ -66,21 +66,27 @@ function getEditUrl(repo, filePath) {
   return `https://github.com/${repo.user}/${repo.project}/edit/master/${filePath}`
 }
 
-// TODO: Add error checking
-function fetchContributors(repo, filePath) {
-  return axios
-    .get(
+async function fetchContributors(repo, filePath) {
+  try {
+    const {data} = await axios.get(
       `https://api.github.com/repos/${repo.user}/${repo.project}/commits?path=${filePath}`,
     )
-    .then(response => response.data)
-    .then(commits =>
-      commits.map(commit => ({
-        login: commit.author.login,
+
+    const commits = data
+      .map(commit => ({
+        login: commit.author && commit.author.login,
         latestCommit: {
           date: commit.commit.author.date,
           url: commit.html_url,
         },
-      })),
+      }))
+      .filter(contributor => Boolean(contributor.login))
+
+    return uniqBy(commits, 'login')
+  } catch (error) {
+    console.error(
+      `[ERROR] Unable to fetch contributors for ${filePath}. ${error.message}`,
     )
-    .then(data => uniqBy(data, 'login'))
+    return []
+  }
 }

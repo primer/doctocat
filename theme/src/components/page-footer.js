@@ -14,7 +14,9 @@ function PageFooter({editUrl, contributors}) {
           </Link>
         ) : null}
 
-        {contributors ? <Contributors contributors={contributors} /> : null}
+        {contributors && contributors.length > 0 ? (
+          <Contributors contributors={contributors} />
+        ) : null}
       </Grid>
     </BorderBox>
   ) : null
