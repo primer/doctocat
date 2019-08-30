@@ -36,7 +36,7 @@ function Drawer({isOpen, onDismiss, children}) {
               initial={{x: '100%'}}
               animate={{x: 0}}
               exit={{x: '100%'}}
-              transition={{type: 'tween'}}
+              transition={{type: 'tween', duration: 0.2}}
               width={300}
               top={0}
               right={0}
