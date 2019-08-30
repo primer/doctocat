@@ -5,7 +5,7 @@ import Contributors from './contributors'
 
 function PageFooter({editUrl, contributors}) {
   return editUrl || contributors.length > 0 ? (
-    <BorderBox border={0} borderRadius={0} borderTop={1} mt={8} py={6}>
+    <BorderBox border={0} borderRadius={0} borderTop={1} mt={8} py={5}>
       <Grid gridGap={4}>
         {editUrl ? (
           <Link href={editUrl}>
