@@ -48,3 +48,15 @@ Doctocat comes with a few predefined statuses that have colors associated with t
 Custom statuses will render a gray dot:
 
 <StatusLabel status="My custom status" />
+
+## Additional contributors
+
+If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` setup correctly (as desribed in the [customization](/usage/customization#contributors) guide), Doctocat will automatically display contributors on the bottom of every page. These contributors are determined by commits. However, we know that commits aren't the only way to contribute. To give credit to people who aren't listed in the commit history but still contributed, use the `additionalContributors` front matter variable to list their GitHub usernames, for example:
+
+```markdown
+---
+additionalContributors:
+  - ashygee
+  - emplums
+---
+```
