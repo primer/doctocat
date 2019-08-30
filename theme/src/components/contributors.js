@@ -15,6 +15,7 @@ function Contributors({contributors}) {
         </Text>
         {contributors.map(contributor => (
           <Link
+            key={contributor.login}
             href={`https://github.com/${contributor.login}`}
             lineHeight="condensedUltra"
             mr={2}
