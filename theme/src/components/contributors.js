@@ -9,7 +9,7 @@ function Contributors({contributors}) {
   const latestContributor = contributors[0]
   return (
     <div>
-      <Flex alignItems="center" mb={1}>
+      <Flex alignItems="center">
         <Text mr={2}>
           {contributors.length} {pluralize('contributor', contributors.length)}
         </Text>
@@ -29,16 +29,18 @@ function Contributors({contributors}) {
         ))}
       </Flex>
 
-      <Text fontSize={1} color="gray.7">
-        Last edited by{' '}
-        <Link href={`https://github.com/${latestContributor.login}`}>
-          {latestContributor.login}
-        </Link>{' '}
-        on{' '}
-        <Link href={latestContributor.latestCommit.url}>
-          {format(new Date(latestContributor.latestCommit.date), 'MMMM d, y')}
-        </Link>
-      </Text>
+      {latestContributor.latestCommit ? (
+        <Text fontSize={1} color="gray.7" mt={1}>
+          Last edited by{' '}
+          <Link href={`https://github.com/${latestContributor.login}`}>
+            {latestContributor.login}
+          </Link>{' '}
+          on{' '}
+          <Link href={latestContributor.latestCommit.url}>
+            {format(new Date(latestContributor.latestCommit.date), 'MMMM d, y')}
+          </Link>
+        </Text>
+      ) : null}
     </div>
   )
 }
