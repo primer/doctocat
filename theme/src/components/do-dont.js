@@ -1,7 +1,23 @@
-import {CircleOcticon, Flex, Text} from '@primer/components'
+import {CircleOcticon, Flex, Text, Grid} from '@primer/components'
 import {Check, X} from '@primer/octicons-react'
 import React from 'react'
 import Caption from './caption'
+
+export function DoDont({stacked, children}) {
+  return (
+    <Grid
+      gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']}
+      gridGap={3}
+      mb={3}
+    >
+      {children}
+    </Grid>
+  )
+}
+
+DoDont.defaultProps = {
+  stacked: false,
+}
 
 export function Do({src, children}) {
   return (
@@ -20,7 +36,7 @@ export function Do({src, children}) {
         </Text>
       </Flex>
       <img src={src} width="100%" />
-      <Caption>{children}</Caption>
+      <Caption mb={0}>{children}</Caption>
     </Flex>
   )
 }
@@ -42,7 +58,7 @@ export function Dont({src, children}) {
         </Text>
       </Flex>
       <img src={src} width="100%" />
-      <Caption>{children}</Caption>
+      <Caption mb={0}>{children}</Caption>
     </Flex>
   )
 }

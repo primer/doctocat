@@ -1,4 +1,4 @@
-import * as components from '@primer/components'
-import {Hero, Caption, Do, Dont} from '@primer/gatsby-theme-doctocat'
+import * as primerComponents from '@primer/components'
+import * as doctocatComponents from '@primer/gatsby-theme-doctocat'
 
-export default {...components, Hero, Caption, Do, Dont}
+export default {...primerComponents, ...doctocatComponents}
