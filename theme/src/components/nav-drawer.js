@@ -20,7 +20,7 @@ function NavDrawer({isOpen, onDismiss}) {
         bg="gray.9"
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
       >
-        <Flex flexDirection="column" color="blue.2" bg="gray.9">
+        <Flex flexDirection="column" flex="1 0 auto" color="blue.2" bg="gray.9">
           <BorderBox
             border={0}
             borderRadius={0}
@@ -53,7 +53,7 @@ function NavDrawer({isOpen, onDismiss}) {
         {navItems.length > 0 ? (
           <Flex
             flexDirection="column"
-            flex="1 1 auto"
+            flex="1 0 auto"
             color="gray.7"
             bg="gray.0"
           >
