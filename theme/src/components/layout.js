@@ -2,10 +2,11 @@ import {MDXContext} from '@mdx-js/react'
 import {Box, Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
-import PageFooter from './page-footer'
 import Head from './head'
 import Header from './header'
+import PageFooter from './page-footer'
 import Sidebar from './sidebar'
+import SourceLink from './source-link'
 import StatusLabel from './status-label'
 import TableOfContents from './table-of-contents'
 
@@ -15,6 +16,7 @@ function Layout({children, pageContext}) {
     title,
     description,
     status,
+    source,
     additionalContributors = [],
   } = pageContext.frontmatter
 
@@ -29,10 +31,12 @@ function Layout({children, pageContext}) {
         <Container>
           <H1>{title}</H1>
 
-          {status ? (
-            <Box mb={4}>
-              <StatusLabel status={status} />
-            </Box>
+          {status || source ? (
+            <Flex mb={4} alignItems="center">
+              {status ? <StatusLabel status={status} /> : null}
+              <Box mx="auto" />
+              {source ? <SourceLink href={source} /> : null}
+            </Flex>
           ) : null}
 
           {pageContext.tableOfContents.items ? (
