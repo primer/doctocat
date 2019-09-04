@@ -42,14 +42,20 @@ Side navigation for your site is generated from the content in `src/@primer/gats
 
 _Note: Doctocat only supports one level of nesting._
 
-## Edit on GitHub link
+## Repository
 
-To add an "Edit this page on GitHub" link to the bottom of every page, you'll need to specify your site's [`repository`](https://docs.npmjs.com/files/package.json#repository) in `package.json`:
+Doctocat has a few features that rely on information about your repository, including:
+
+- "Edit this page on GitHub" links on the bottom of every page
+- Contributors on the bottom of every page
+- Repository link in the sidebar
+
+To enable these features, you'll need to specify your site's [`repository`](https://docs.npmjs.com/files/package.json#repository) in `package.json`:
 
 ```json
 // package.json
 {
-  "repository": "my-username/my-site"
+  "repository": "repo-owner/repo-name"
 }
 ```
 
