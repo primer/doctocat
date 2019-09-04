@@ -4,7 +4,7 @@ const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 
-exports.sourceNodes = async ({actions, createContentDigest}) => {
+exports.sourceNodes = ({actions, createContentDigest}) => {
   // Make the repository URL accessible through Gatsby's GraphQL API.
   const repo = getRepo()
   const url = `https://github.com/${repo.user}/${repo.project}`
