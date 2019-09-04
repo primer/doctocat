@@ -4,8 +4,27 @@ const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 
+exports.sourceNodes = ({actions, createContentDigest}) => {
+  // Make the repository URL accessible through Gatsby's GraphQL API.
+  const repo = getRepo()
+  const url = `https://github.com/${repo.user}/${repo.project}`
+  const node = {
+    url,
+    id: `repository`,
+    parent: null,
+    children: [],
+    internal: {
+      type: 'Repository',
+      mediaType: 'application/json',
+      content: JSON.stringify({url}),
+      contentDigest: createContentDigest({url}),
+    },
+  }
+  actions.createNode(node)
+}
+
 exports.createPages = async ({graphql, actions}, themeOptions) => {
-  const repo = getPkgRepo(readPkgUp.sync().package)
+  const repo = getRepo()
 
   const {data} = await graphql(`
     {
@@ -60,6 +79,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       })
     }),
   )
+}
+
+function getRepo() {
+  return getPkgRepo(readPkgUp.sync().package)
 }
 
 function getEditUrl(repo, filePath) {
