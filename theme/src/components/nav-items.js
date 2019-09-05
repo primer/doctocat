@@ -6,9 +6,10 @@ import {
   themeGet,
 } from '@primer/components'
 import {LinkExternal} from '@primer/octicons-react'
-import {graphql, Link as GatsbyLink, useStaticQuery} from 'gatsby'
+import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import RepositoryContext from './repository-context'
 
 const NavLink = styled(Link)`
   &.active {
@@ -67,16 +68,10 @@ function NavItems({items}) {
 }
 
 function GithubLink() {
-  const data = useStaticQuery(graphql`
-    {
-      repository {
-        url
-      }
-    }
-  `)
+  const repository = React.useContext(RepositoryContext)
 
   return (
-    <Link href={data.repository.url} color="inherit">
+    <Link href={repository.url} color="inherit">
       <Flex justifyContent="space-between" alignItems="center">
         GitHub
         <StyledOcticon icon={LinkExternal} color="gray.7"></StyledOcticon>
