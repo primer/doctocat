@@ -51,7 +51,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           node.parent.relativeDirectory,
           node.parent.name === 'index' ? '/' : node.parent.name,
         )
-        .replace(/\\/g, '/') // Needed to fix paths on windows file systems
+        .replace(/\\/g, '/') // Convert Windows backslash paths to forward slash paths: foo\\bar → foo/bar
 
       const rootAbsolutePath = path.resolve(
         process.cwd(),
