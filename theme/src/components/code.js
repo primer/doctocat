@@ -30,18 +30,22 @@ function Code({className, children, live}) {
             className={className}
             mt={0}
             mb={3}
+            p={3}
             border={0}
             style={{...style, overflow: 'auto'}}
           >
-            <Text display="inline-block" p={3} fontFamily="mono" fontSize={1}>
-              {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({line, key: i})}>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({token, key})} />
-                  ))}
-                </div>
-              ))}
-            </Text>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({line, key: i})}>
+                {line.map((token, key) => (
+                  <Text
+                    key={key}
+                    fontFamily="mono"
+                    fontSize={1}
+                    {...getTokenProps({token, key})}
+                  />
+                ))}
+              </div>
+            ))}
           </BorderBox>
         )}
       </Highlight>
