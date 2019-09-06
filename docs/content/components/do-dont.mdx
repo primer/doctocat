@@ -11,37 +11,37 @@ The `Do` and `Dont` components are used for providing good and bad examples with
 To use these components in your MDX files, import them like so:
 
 ```js
-import {DoDont, Do, Dont} from '@primer/gatsby-theme-doctocat'
+import {DoDontContainer, Do, Dont} from '@primer/gatsby-theme-doctocat'
 ```
 
 ### Side-by-side
 
-To create a side-by-side Do/Don't example, wrap the `Do` and `Dont` components with the `DoDont` component:
+To create a side-by-side Do/Don't example, wrap the `Do` and `Dont` components with the `DoDontContainer` component:
 
 ```jsx live
-<DoDont>
+<DoDontContainer>
   <Do src="https://user-images.githubusercontent.com/586552/63106528-06de5100-bf51-11e9-8a5e-98583ed74874.png">
     Use brief and direct communication
   </Do>
   <Dont src="https://user-images.githubusercontent.com/586552/63106527-06de5100-bf51-11e9-858c-72de6a5c728a.png">
     Don't use wordy and redundant copy
   </Dont>
-</DoDont>
+</DoDontContainer>
 ```
 
 _Note: Caption text should describe the image and be able to stand on its own. The `alt` prop should be used if a more detailed description of the image is needed._
 
 ### Stacked
 
-The `DoDont` component also accepts a `stacked` prop to create stacked Do/Don't examples:
+The `DoDontContainer` component also accepts a `stacked` prop to create stacked Do/Don't examples:
 
 ```jsx live
-<DoDont stacked>
+<DoDontContainer stacked>
   <Do src="https://user-images.githubusercontent.com/586552/63046880-46e5fb00-bea1-11e9-836d-be1b1c7d963f.png">
     Use a container class to give the text a max-width
   </Do>
   <Dont src="https://user-images.githubusercontent.com/586552/63046881-46e5fb00-bea1-11e9-87ee-80dbeb0bea1c.png">
     Don't let the text span the entire width of the window
   </Dont>
-</DoDont>
+</DoDontContainer>
 ```

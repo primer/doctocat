@@ -3,7 +3,7 @@ import {Check, X} from '@primer/octicons-react'
 import React from 'react'
 import Caption from './caption'
 
-export function DoDont({stacked, children}) {
+export function DoDontContainer({stacked, children}) {
   return (
     <Grid
       gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']}
@@ -15,7 +15,7 @@ export function DoDont({stacked, children}) {
   )
 }
 
-DoDont.defaultProps = {
+DoDontContainer.defaultProps = {
   stacked: false,
 }
 
