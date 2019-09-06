@@ -74,17 +74,21 @@ function Header({isSearchEnabled}) {
             <PrimerNavItems items={primerNavItems} />
           </Box>
           <Flex display={['flex', null, null, 'none']}>
-            <DarkButton
-              aria-label="Search"
-              aria-expanded={isMobileSearchOpen}
-              onClick={() => setIsMobileSearchOpen(true)}
-            >
-              <StyledOcticon icon={SearchIcon} />
-            </DarkButton>
-            <MobileSearch
-              isOpen={isMobileSearchOpen}
-              onDismiss={() => setIsMobileSearchOpen(false)}
-            />
+            {isSearchEnabled ? (
+              <>
+                <DarkButton
+                  aria-label="Search"
+                  aria-expanded={isMobileSearchOpen}
+                  onClick={() => setIsMobileSearchOpen(true)}
+                >
+                  <StyledOcticon icon={SearchIcon} />
+                </DarkButton>
+                <MobileSearch
+                  isOpen={isMobileSearchOpen}
+                  onDismiss={() => setIsMobileSearchOpen(false)}
+                />
+              </>
+            ) : null}
             <DarkButton
               aria-label="Menu"
               aria-expanded={isNavDrawerOpen}
