@@ -35,7 +35,7 @@ export function Do({src, alt, children}) {
           Do
         </Text>
       </Flex>
-      <img src={src} alt={alt} width="100%" />
+      <img src={src} alt={alt || ''} width="100%" />
       <Caption mb={0}>{children}</Caption>
     </Flex>
   )
@@ -57,7 +57,7 @@ export function Dont({src, alt, children}) {
           Don't
         </Text>
       </Flex>
-      <img src={src} alt={alt} width="100%" />
+      <img src={src} alt={alt || ''} width="100%" />
       <Caption mb={0}>{children}</Caption>
     </Flex>
   )
