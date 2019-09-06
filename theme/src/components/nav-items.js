@@ -11,6 +11,7 @@ import preval from 'preval.macro'
 import React from 'react'
 import styled from 'styled-components'
 
+// This code needs to run at build-time so it can access the file system.
 const repositoryUrl = preval`
   const readPkgUp = require('read-pkg-up')
   const getPkgRepo = require('get-pkg-repo')
