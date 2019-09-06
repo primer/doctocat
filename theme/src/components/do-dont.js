@@ -19,7 +19,7 @@ DoDont.defaultProps = {
   stacked: false,
 }
 
-export function Do({src, children}) {
+export function Do({src, alt, children}) {
   return (
     <Flex flexDirection="column">
       <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
@@ -35,13 +35,13 @@ export function Do({src, children}) {
           Do
         </Text>
       </Flex>
-      <img src={src} width="100%" />
+      <img src={src} alt={alt} width="100%" />
       <Caption mb={0}>{children}</Caption>
     </Flex>
   )
 }
 
-export function Dont({src, children}) {
+export function Dont({src, alt, children}) {
   return (
     <Flex flexDirection="column">
       <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
@@ -57,7 +57,7 @@ export function Dont({src, children}) {
           Don't
         </Text>
       </Flex>
-      <img src={src} width="100%" />
+      <img src={src} alt={alt} width="100%" />
       <Caption mb={0}>{children}</Caption>
     </Flex>
   )
