@@ -22,11 +22,18 @@ const StyledHeading = styled(Heading)`
 
 function MarkdownHeading({children, ...props}) {
   const slugger = new GithubSlugger()
-  const id = children ? slugger.slug(textContent(children)) : ''
+  const text = children ? textContent(children) : ''
+  const id = text ? slugger.slug(text) : ''
 
   return (
     <StyledHeading id={id} {...props}>
-      <Link href={`#${id}`} p={2} ml={-32} color="gray.8">
+      <Link
+        href={`#${id}`}
+        p={2}
+        ml={-32}
+        color="gray.8"
+        aria-label={`${text} permalink`}
+      >
         <StyledOcticon
           className="octicon-link"
           icon={LinkIcon}
