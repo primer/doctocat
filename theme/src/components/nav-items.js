@@ -6,9 +6,22 @@ import {
   themeGet,
 } from '@primer/components'
 import {LinkExternal} from '@primer/octicons-react'
-import {graphql, Link as GatsbyLink, useStaticQuery} from 'gatsby'
+import {Link as GatsbyLink} from 'gatsby'
+import preval from 'preval.macro'
 import React from 'react'
 import styled from 'styled-components'
+
+// This code needs to run at build-time so it can access the file system.
+const repositoryUrl = preval`
+  const readPkgUp = require('read-pkg-up')
+  const getPkgRepo = require('get-pkg-repo')
+  try {
+    const repo = getPkgRepo(readPkgUp.sync().package)
+    module.exports = \`https://github.com/\${repo.user}/\${repo.project}\`
+  } catch (error) {
+    module.exports = ''
+  }
+`
 
 const NavLink = styled(Link)`
   &.active {
@@ -59,29 +72,17 @@ function NavItems({items}) {
           </Flex>
         </BorderBox>
       ))}
-      <BorderBox border={0} borderRadius={0} borderTop={1} p={4}>
-        <GithubLink />
-      </BorderBox>
+      {repositoryUrl ? (
+        <BorderBox border={0} borderRadius={0} borderTop={1} p={4}>
+          <Link href={repositoryUrl} color="inherit">
+            <Flex justifyContent="space-between" alignItems="center">
+              GitHub
+              <StyledOcticon icon={LinkExternal} color="gray.7"></StyledOcticon>
+            </Flex>
+          </Link>
+        </BorderBox>
+      ) : null}
     </>
-  )
-}
-
-function GithubLink() {
-  const data = useStaticQuery(graphql`
-    {
-      repository {
-        url
-      }
-    }
-  `)
-
-  return (
-    <Link href={data.repository.url} color="inherit">
-      <Flex justifyContent="space-between" alignItems="center">
-        GitHub
-        <StyledOcticon icon={LinkExternal} color="gray.7"></StyledOcticon>
-      </Flex>
-    </Link>
   )
 }
 
