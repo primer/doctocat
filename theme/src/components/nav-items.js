@@ -14,8 +14,12 @@ import styled from 'styled-components'
 const repositoryUrl = preval`
   const readPkgUp = require('read-pkg-up')
   const getPkgRepo = require('get-pkg-repo')
-  const repo = getPkgRepo(readPkgUp.sync().package)
-  module.exports = \`https://github.com/\${repo.user}/\${repo.project}\`
+  try {
+    const repo = getPkgRepo(readPkgUp.sync().package)
+    module.exports = \`https://github.com/\${repo.user}/\${repo.project}\`
+  } catch (error) {
+    module.exports = ''
+  }
 `
 
 const NavLink = styled(Link)`
