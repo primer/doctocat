@@ -72,14 +72,16 @@ function NavItems({items}) {
           </Flex>
         </BorderBox>
       ))}
-      <BorderBox border={0} borderRadius={0} borderTop={1} p={4}>
-        <Link href={repositoryUrl} color="inherit">
-          <Flex justifyContent="space-between" alignItems="center">
-            GitHub
-            <StyledOcticon icon={LinkExternal} color="gray.7"></StyledOcticon>
-          </Flex>
-        </Link>
-      </BorderBox>
+      {repositoryUrl ? (
+        <BorderBox border={0} borderRadius={0} borderTop={1} p={4}>
+          <Link href={repositoryUrl} color="inherit">
+            <Flex justifyContent="space-between" alignItems="center">
+              GitHub
+              <StyledOcticon icon={LinkExternal} color="gray.7"></StyledOcticon>
+            </Flex>
+          </Link>
+        </BorderBox>
+      ) : null}
     </>
   )
 }
