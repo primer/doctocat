@@ -1,6 +1,6 @@
 import {BaseStyles} from '@primer/components'
 import React from 'react'
-import {RepositoryProvider} from './repository-context'
+import RepositoryProvider from './repository-provider'
 
 function wrapPageElement({element}) {
   return (

@@ -1,9 +1,8 @@
-import {graphql, useStaticQuery} from 'gatsby'
 import React from 'react'
+import {graphql, useStaticQuery} from 'gatsby'
+import RepositoryContext from '../repository-context'
 
-const RepositoryContext = React.createContext({url: ''})
-
-export function RepositoryProvider({children}) {
+function RepositoryProvider({children}) {
   const data = useStaticQuery(graphql`
     {
       repository {
@@ -19,4 +18,4 @@ export function RepositoryProvider({children}) {
   )
 }
 
-export default RepositoryContext
+export default RepositoryProvider

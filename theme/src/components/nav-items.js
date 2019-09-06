@@ -9,7 +9,7 @@ import {LinkExternal} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import RepositoryContext from './repository-context'
+import RepositoryContext from '../repository-context'
 
 const NavLink = styled(Link)`
   &.active {
