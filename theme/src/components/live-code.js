@@ -50,11 +50,9 @@ function LiveCode({code, language}) {
         code={code}
         transformCode={languageTransformers[language]}
       >
-        <Frame>
-          <LivePreviewWrapper>
-            <LivePreview />
-          </LivePreviewWrapper>
-        </Frame>
+        <LivePreviewWrapper>
+          <LivePreview />
+        </LivePreviewWrapper>
         <Relative>
           <LiveEditor
             theme={githubTheme}
