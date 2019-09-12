@@ -7,7 +7,6 @@ import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
 import {ThemeContext} from 'styled-components'
 import scope from '../live-code-scope'
 import ClipboardCopy from './clipboard-copy'
-import Frame from './frame'
 import LivePreviewWrapper from './live-preview-wrapper'
 
 const languageTransformers = {
