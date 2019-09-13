@@ -1,6 +1,7 @@
 import {Box, Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
+import Main from './main'
 import PageFooter from './page-footer'
 import Head from './head'
 import Header from './header'
@@ -18,7 +19,7 @@ function HeroLayout({children, pageContext}) {
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
-        <Box width="100%">
+        <Main>
           <Hero />
           <Container>
             {children}
@@ -29,7 +30,7 @@ function HeroLayout({children, pageContext}) {
               )}
             />
           </Container>
-        </Box>
+        </Main>
       </Flex>
     </Flex>
   )

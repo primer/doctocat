@@ -2,6 +2,7 @@ import {MDXContext} from '@mdx-js/react'
 import {Box, Flex} from '@primer/components'
 import React from 'react'
 import Container from './container'
+import Main from './main'
 import Head from './head'
 import Header from './header'
 import PageFooter from './page-footer'
@@ -28,7 +29,7 @@ function Layout({children, pageContext}) {
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
-        <Container>
+        <Container as={Main}>
           <H1>{title}</H1>
 
           {status || source ? (
