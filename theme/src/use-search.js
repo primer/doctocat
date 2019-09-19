@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js'
-import {useStaticQuery} from 'gatsby'
+import {graphql, useStaticQuery} from 'gatsby'
 import path from 'path'
 import React from 'react'
 
@@ -37,11 +37,16 @@ function useSearch(query) {
     [data],
   )
 
-  const fuse = new Fuse(list, {
-    threshold: 0.2,
-    keys: ['title', 'rawBody'],
-    tokenize: true,
-  })
+  const fuse = React.useMemo(
+    () =>
+      new Fuse(list, {
+        threshold: 0.2,
+        keys: ['title', 'rawBody'],
+        tokenize: true,
+      }),
+    [list],
+  )
+
   const [results, setResults] = React.useState(list)
 
   React.useEffect(() => {
@@ -50,7 +55,7 @@ function useSearch(query) {
     } else {
       setResults(list)
     }
-  }, [query])
+  }, [query, fuse, list])
 
   return results
 }
