@@ -3,7 +3,7 @@ import {Check, X} from '@primer/octicons-react'
 import React from 'react'
 import Caption from './caption'
 
-export function DoDont({stacked, children}) {
+export function DoDontContainer({stacked, children}) {
   return (
     <Grid
       gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']}
@@ -15,50 +15,40 @@ export function DoDont({stacked, children}) {
   )
 }
 
-DoDont.defaultProps = {
+DoDontContainer.defaultProps = {
   stacked: false,
 }
 
-export function Do({src, children}) {
+export function Do(props) {
+  return <DoDontBase {...props} text="Do" icon={Check} iconBg="green.5" />
+}
+
+export function Dont(props) {
+  return <DoDontBase {...props} text="Don't" icon={X} iconBg="red.5" />
+}
+
+function DoDontBase({src, alt, children, text, icon, iconBg}) {
   return (
     <Flex flexDirection="column">
       <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
         <CircleOcticon
-          icon={Check}
+          icon={icon}
           size={16}
-          bg="green.5"
+          bg={iconBg}
           color="white"
           mr="2"
           p="1"
         />
         <Text fontWeight="bold" color="gray.9" ml="1">
-          Do
+          {text}
         </Text>
       </Flex>
-      <img src={src} width="100%" alt="" />
+      <img src={src} alt={alt} width="100%" />
       <Caption mb={0}>{children}</Caption>
     </Flex>
   )
 }
 
-export function Dont({src, children}) {
-  return (
-    <Flex flexDirection="column">
-      <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
-        <CircleOcticon
-          icon={X}
-          size={16}
-          bg="red.5"
-          color="white"
-          mr="2"
-          p="1"
-        />
-        <Text fontWeight="bold" color="gray.9" ml="1">
-          Don't
-        </Text>
-      </Flex>
-      <img src={src} width="100%" alt="" />
-      <Caption mb={0}>{children}</Caption>
-    </Flex>
-  )
+DoDontBase.defaultProps = {
+  alt: "",
 }
