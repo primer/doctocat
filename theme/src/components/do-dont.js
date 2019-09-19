@@ -50,5 +50,5 @@ function DoDontBase({src, alt, children, text, icon, iconBg}) {
 }
 
 DoDontBase.defaultProps = {
-  alt: '',
+  alt: "",
 }
