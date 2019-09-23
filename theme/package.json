@@ -8,13 +8,13 @@
   },
   "devDependencies": {
     "gatsby": "^2.13.52",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "peerDependencies": {
     "gatsby": "2.x",
     "react": "16.9.x",
-    "react-dom": "16.8.x"
+    "react-dom": "16.9.x"
   },
   "dependencies": {
     "@babel/preset-env": "^7.5.5",
