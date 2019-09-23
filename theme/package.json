@@ -13,7 +13,7 @@
   },
   "peerDependencies": {
     "gatsby": "2.x",
-    "react": "16.8.x",
+    "react": "16.9.x",
     "react-dom": "16.8.x"
   },
   "dependencies": {
