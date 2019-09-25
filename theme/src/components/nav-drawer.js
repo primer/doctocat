@@ -89,26 +89,28 @@ function PrimerNavItems({items}) {
         {item.children ? (
           <Details key={index}>
             {({open}) => (
-              <summary style={{cursor: 'pointer'}}>
-                <Flex alignItems="center" justifyContent="space-between">
-                  <Text>{item.title}</Text>
-                  <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
+              <>
+                <summary style={{cursor: 'pointer'}}>
+                  <Flex alignItems="center" justifyContent="space-between">
+                    <Text>{item.title}</Text>
+                    <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
+                  </Flex>
+                </summary>
+                <Flex flexDirection="column" mt={2}>
+                  {item.children.map(child => (
+                    <Link
+                      key={child.title}
+                      href={child.url}
+                      py={1}
+                      mt={2}
+                      fontSize={1}
+                      color="inherit"
+                    >
+                      {child.title}
+                    </Link>
+                  ))}
                 </Flex>
-              </summary>
-              <Flex flexDirection="column" mt={2}>
-                {item.children.map(child => (
-                  <Link
-                    key={child.title}
-                    href={child.url}
-                    py={1}
-                    mt={2}
-                    fontSize={1}
-                    color="inherit"
-                  >
-                    {child.title}
-                  </Link>
-                ))}
-              </Flex>
+              </>
             )}
           </Details>
         ) : (
