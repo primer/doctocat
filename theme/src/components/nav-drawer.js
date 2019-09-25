@@ -1,4 +1,4 @@
-import {BorderBox, Flex, Link, StyledOcticon, Text} from '@primer/components'
+import {BorderBox, Flex, Link, StyledOcticon, Text, Details} from '@primer/components'
 import {ChevronDown, ChevronUp, X} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -6,7 +6,6 @@ import navItems from '../nav.yml'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
 import DarkButton from './dark-button'
-import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
 
@@ -89,29 +88,27 @@ function PrimerNavItems({items}) {
       >
         {item.children ? (
           <Details key={index}>
-            {({open, toggle}) => (
-              <>
-                <summary onClick={toggle} style={{cursor: 'pointer'}}>
-                  <Flex alignItems="center" justifyContent="space-between">
-                    <Text>{item.title}</Text>
-                    <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
-                  </Flex>
-                </summary>
-                <Flex flexDirection="column" mt={2}>
-                  {item.children.map(child => (
-                    <Link
-                      key={child.title}
-                      href={child.url}
-                      py={1}
-                      mt={2}
-                      fontSize={1}
-                      color="inherit"
-                    >
-                      {child.title}
-                    </Link>
-                  ))}
+            {({open}) => (
+              <summary style={{cursor: 'pointer'}}>
+                <Flex alignItems="center" justifyContent="space-between">
+                  <Text>{item.title}</Text>
+                  <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
                 </Flex>
-              </>
+              </summary>
+              <Flex flexDirection="column" mt={2}>
+                {item.children.map(child => (
+                  <Link
+                    key={child.title}
+                    href={child.url}
+                    py={1}
+                    mt={2}
+                    fontSize={1}
+                    color="inherit"
+                  >
+                    {child.title}
+                  </Link>
+                ))}
+              </Flex>
             )}
           </Details>
         ) : (
