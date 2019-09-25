@@ -30,7 +30,6 @@
     "babel-jest": "^24.9.0",
     "copy-to-clipboard": "^3.2.0",
     "date-fns": "^2.0.1",
-    "details-element-polyfill": "^2.4.0",
     "downshift": "^3.2.10",
     "find-up": "^4.1.0",
     "framer-motion": "^1.4.2",
