@@ -17,10 +17,11 @@ const DarkTextInput = styled(TextInput)`
     box-shadow: none;
   }
 
-  &::-webkit-input-placeholder {
+&::placeholder {
     // Needed to fix Chromium-based Edge
     // where user-agent color is too dark.
-    color: rgb(117, 117, 117);
+    color: inherit;
+    opacity: 0.6; // inceases contrast ratio to 4.52
   }
 `
 export default DarkTextInput
