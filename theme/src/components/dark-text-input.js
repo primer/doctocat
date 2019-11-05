@@ -6,7 +6,7 @@ const DarkTextInput = styled(TextInput)`
    * Otherwise, iOS browsers will zoom in when the input is focused.
    * TODO: Update font-size of TextInput in @primer/components.
    */
-  font-size: ${themeGet('fontSizes.2')}px !important;
+  font-size: ${themeGet('fontSizes.2')} !important;
   color: ${themeGet('colors.white')};
   background-color: rgba(255, 255, 255, 0.07);
   border: 1px solid transparent;

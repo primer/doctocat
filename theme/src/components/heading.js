@@ -7,8 +7,8 @@ import textContent from 'react-addons-text-content'
 import styled from 'styled-components'
 
 const StyledHeading = styled(Heading)`
-  margin-top: ${themeGet('space.4')}px;
-  margin-bottom: ${themeGet('space.3')}px;
+  margin-top: ${themeGet('space.4')};
+  margin-bottom: ${themeGet('space.3')};
 
   & .octicon-link {
     visibility: hidden;
@@ -46,31 +46,31 @@ function MarkdownHeading({children, ...props}) {
 }
 
 const StyledH1 = styled(StyledHeading).attrs({as: 'h1'})`
-  padding-bottom: ${themeGet('space.1')}px;
-  font-size: ${themeGet('fontSizes.5')}px;
+  padding-bottom: ${themeGet('space.1')};
+  font-size: ${themeGet('fontSizes.5')};
   border-bottom: 1px solid ${themeGet('colors.gray.2')};
 `
 
 const StyledH2 = styled(StyledHeading).attrs({as: 'h2'})`
-  padding-bottom: ${themeGet('space.1')}px;
-  font-size: ${themeGet('fontSizes.4')}px;
+  padding-bottom: ${themeGet('space.1')};
+  font-size: ${themeGet('fontSizes.4')};
   border-bottom: 1px solid ${themeGet('colors.gray.2')};
 `
 
 const StyledH3 = styled(StyledHeading).attrs({as: 'h3'})`
-  font-size: ${themeGet('fontSizes.3')}px;
+  font-size: ${themeGet('fontSizes.3')};
 `
 
 const StyledH4 = styled(StyledHeading).attrs({as: 'h4'})`
-  font-size: ${themeGet('fontSizes.2')}px;
+  font-size: ${themeGet('fontSizes.2')};
 `
 
 const StyledH5 = styled(StyledHeading).attrs({as: 'h5'})`
-  font-size: ${themeGet('fontSizes.1')}px;
+  font-size: ${themeGet('fontSizes.1')};
 `
 
 const StyledH6 = styled(StyledHeading).attrs({as: 'h6'})`
-  font-size: ${themeGet('fontSizes.1')}px;
+  font-size: ${themeGet('fontSizes.1')};
   color: ${themeGet('colors.gray.5')};
 `
 

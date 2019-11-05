@@ -6,7 +6,7 @@ const InlineCode = styled.code`
   font-family: ${themeGet('fonts.mono')};
   font-size: 85%;
   background-color: ${themeGet('colors.gray.1')};
-  border-radius: ${themeGet('radii.1')}px;
+  border-radius: ${themeGet('radii.1')};
 `
 
 export default InlineCode
