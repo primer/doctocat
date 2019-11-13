@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: 10
+          version: 10
       - name: install
         run: yarn install
       - name: test
