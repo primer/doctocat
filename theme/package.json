@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.16.4",
+  "version": "0.16.5",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
