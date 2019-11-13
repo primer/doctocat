@@ -1093,32 +1093,11 @@
     hey-listen "^1.0.8"
     style-value-types "^3.1.6"
 
-"@primer/components@15.1.0-rc.8c17841":
-  version "15.1.0-rc.8c17841"
-  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0-rc.8c17841.tgz#547c467284190ba2509d3dc49a53c85d0e6f5a62"
-  integrity sha512-4sL3gFuhcGoUOduSRqgS+RA8lBFH/DNJvtztQ7vJfPz0Pfql9hQj5r252zKFRNnx4cMFkquCDMdRW1SXconvWw==
+"@primer/components@^15.1.1":
+  version "15.1.1"
+  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.1.tgz#7cc9aef3b8e10649f2c86cf4fcad60fb04b1e62e"
+  integrity sha512-sOTfaO6XYY9gOJUW8VVpuxNBnSBCL0t2l/YCDBR1YdADxafvR0Inn05mRRyuzapiGmhbPpWDokivmtYpk8BDqA==
   dependencies:
-    "@primer/octicons-react" "^9.2.0"
-    "@reach/dialog" "0.3.0"
-    "@styled-system/prop-types" "5.1.2"
-    "@styled-system/theme-get" "5.1.2"
-    "@types/styled-system" "5.1.2"
-    babel-plugin-macros "2.6.1"
-    classnames "^2.2.5"
-    details-element-polyfill "2.4.0"
-    nanoid "2.1.4"
-    primer-colors "1.0.1"
-    primer-typography "1.0.1"
-    react "^16.10.2"
-    react-is "16.10.2"
-    styled-system "5.1.2"
-
-"@primer/components@^15.1.0":
-  version "15.1.0"
-  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0.tgz#4f0aa12a9694fd342bb2e7dfd9f74ffaa6ec599a"
-  integrity sha512-ZZjdvm5NgRD/vkfA0drGAh2JzFXyCwKhyQYzIYsn/kiFLuIVstJXB8ChR33fX3aYa+05dH+8qusezyXKiAWSjA==
-  dependencies:
-    "@primer/gatsby-theme-doctocat" "0.0.0-c06ed5c"
     "@primer/octicons-react" "^9.2.0"
     "@reach/dialog" "0.3.0"
     "@styled-system/prop-types" "5.1.2"
@@ -1140,59 +1119,6 @@
   integrity sha512-oysHWaq/dzu8bj6KF+30jnF8lao5XuecKl2RQKh+gTgojDfzIErmYAJQoJGvntH0tTrTr+9EfQd3O/fA3zPBPg==
   dependencies:
     "@primer/octicons" "^9.1.1"
-
-"@primer/gatsby-theme-doctocat@0.0.0-c06ed5c":
-  version "0.0.0-c06ed5c"
-  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-0.0.0-c06ed5c.tgz#a2e525b43ec0d701df591391bd81494fd9cc4677"
-  integrity sha512-zzwd96l4C/3mpgSY2bHzYI0nM1s5eYv8+32BHAPLIjMvBdzvwAqyOMfNdeQ1zqei5H0Ld304K6K3C6HLOUD9NQ==
-  dependencies:
-    "@babel/preset-env" "^7.5.5"
-    "@babel/preset-react" "^7.0.0"
-    "@mdx-js/mdx" "^1.0.21"
-    "@mdx-js/react" "^1.0.21"
-    "@primer/components" "15.1.0-rc.8c17841"
-    "@primer/octicons-react" "^9.1.1"
-    "@styled-system/theme-get" "^5.0.12"
-    "@testing-library/jest-dom" "^4.1.0"
-    "@testing-library/react" "^9.1.3"
-    axios "^0.19.0"
-    babel-jest "^24.9.0"
-    copy-to-clipboard "^3.2.0"
-    date-fns "^2.0.1"
-    details-element-polyfill "^2.4.0"
-    downshift "^3.2.10"
-    find-up "^4.1.0"
-    framer-motion "^1.4.2"
-    fuse.js "^3.4.5"
-    gatsby-plugin-catch-links "^2.1.2"
-    gatsby-plugin-manifest "^2.2.1"
-    gatsby-plugin-mdx "^1.0.13"
-    gatsby-plugin-page-creator "^2.1.1"
-    gatsby-plugin-react-helmet "^3.1.0"
-    gatsby-plugin-remove-trailing-slashes "^2.1.2"
-    gatsby-plugin-styled-components "^3.1.0"
-    gatsby-source-filesystem "^2.1.0"
-    gatsby-transformer-yaml "^2.2.0"
-    get-pkg-repo "^4.1.0"
-    github-slugger "^1.2.1"
-    html-react-parser "^0.9.1"
-    jest "^24.9.0"
-    lodash.uniqby "^4.7.0"
-    pkg-up "^3.1.0"
-    pluralize "^8.0.0"
-    preval.macro "^3.0.0"
-    prism-react-renderer "^0.1.7"
-    react-addons-text-content "^0.0.4"
-    react-element-to-jsx-string "^14.0.3"
-    react-focus-on "^3.0.6"
-    react-frame-component "^4.1.1"
-    react-helmet "^5.2.1"
-    react-live "^2.1.2"
-    react-measure "^2.3.0"
-    read-pkg-up "^6.0.0"
-    sentence-case "^2.1.1"
-    styled-components "^4.3.2"
-    styled-system "^5.0.18"
 
 "@primer/octicons-react@^9.1.1":
   version "9.1.1"
