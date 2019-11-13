@@ -15,11 +15,11 @@ const List = styled.ul`
   }
 
   li > p {
-    margin-top: ${themeGet('space.3')}px;
+    margin-top: ${themeGet('space.3')};
   }
 
   li + li {
-    margin-top: ${themeGet('space.1')}px;
+    margin-top: ${themeGet('space.1')};
   }
 `
 

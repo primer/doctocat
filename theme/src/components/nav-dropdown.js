@@ -38,7 +38,7 @@ function NavDropdown({title, children}) {
 
 export const NavDropdownItem = styled.a`
   display: block;
-  padding: ${themeGet('space.2')}px ${themeGet('space.3')}px;
+  padding: ${themeGet('space.2')} ${themeGet('space.3')};
   color: inherit;
   text-decoration: none;
 
