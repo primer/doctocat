@@ -1093,12 +1093,11 @@
     hey-listen "^1.0.8"
     style-value-types "^3.1.6"
 
-"@primer/components@15.1.0":
-  version "15.1.0"
-  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0.tgz#4f0aa12a9694fd342bb2e7dfd9f74ffaa6ec599a"
-  integrity sha512-ZZjdvm5NgRD/vkfA0drGAh2JzFXyCwKhyQYzIYsn/kiFLuIVstJXB8ChR33fX3aYa+05dH+8qusezyXKiAWSjA==
+"@primer/components@15.1.0-rc.8c17841":
+  version "15.1.0-rc.8c17841"
+  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0-rc.8c17841.tgz#547c467284190ba2509d3dc49a53c85d0e6f5a62"
+  integrity sha512-4sL3gFuhcGoUOduSRqgS+RA8lBFH/DNJvtztQ7vJfPz0Pfql9hQj5r252zKFRNnx4cMFkquCDMdRW1SXconvWw==
   dependencies:
-    "@primer/gatsby-theme-doctocat" "0.0.0-c06ed5c"
     "@primer/octicons-react" "^9.2.0"
     "@reach/dialog" "0.3.0"
     "@styled-system/prop-types" "5.1.2"
@@ -1114,11 +1113,12 @@
     react-is "16.10.2"
     styled-system "5.1.2"
 
-"@primer/components@15.1.0-rc.8c17841":
-  version "15.1.0-rc.8c17841"
-  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0-rc.8c17841.tgz#547c467284190ba2509d3dc49a53c85d0e6f5a62"
-  integrity sha512-4sL3gFuhcGoUOduSRqgS+RA8lBFH/DNJvtztQ7vJfPz0Pfql9hQj5r252zKFRNnx4cMFkquCDMdRW1SXconvWw==
+"@primer/components@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0.tgz#4f0aa12a9694fd342bb2e7dfd9f74ffaa6ec599a"
+  integrity sha512-ZZjdvm5NgRD/vkfA0drGAh2JzFXyCwKhyQYzIYsn/kiFLuIVstJXB8ChR33fX3aYa+05dH+8qusezyXKiAWSjA==
   dependencies:
+    "@primer/gatsby-theme-doctocat" "0.0.0-c06ed5c"
     "@primer/octicons-react" "^9.2.0"
     "@reach/dialog" "0.3.0"
     "@styled-system/prop-types" "5.1.2"
