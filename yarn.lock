@@ -1093,10 +1093,10 @@
     hey-listen "^1.0.8"
     style-value-types "^3.1.6"
 
-"@primer/components@0.0.0-418d092":
-  version "0.0.0-418d092"
-  resolved "https://registry.yarnpkg.com/@primer/components/-/components-0.0.0-418d092.tgz#04f45c69873b86ecff111192cd9e243f31de75f8"
-  integrity sha512-f2SyhH4Z4YBXItSox74HY52YYdVxD7vIGrw6eEutnFN+/ezv2HkmTMx8sR7dsn27yS7ZZq/jwemST/AKD7WtCA==
+"@primer/components@15.1.0-rc.8c17841":
+  version "15.1.0-rc.8c17841"
+  resolved "https://registry.yarnpkg.com/@primer/components/-/components-15.1.0-rc.8c17841.tgz#547c467284190ba2509d3dc49a53c85d0e6f5a62"
+  integrity sha512-4sL3gFuhcGoUOduSRqgS+RA8lBFH/DNJvtztQ7vJfPz0Pfql9hQj5r252zKFRNnx4cMFkquCDMdRW1SXconvWw==
   dependencies:
     "@primer/octicons-react" "^9.2.0"
     "@reach/dialog" "0.3.0"
