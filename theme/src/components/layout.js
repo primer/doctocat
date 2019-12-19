@@ -24,7 +24,7 @@ function Layout({children, pageContext}) {
     <Flex flexDirection="column" minHeight="100vh">
       <Head title={title} description={description} />
       <Header />
-      <Flex flex="1 1 auto" flexDirection="row">
+      <Flex flex="1 1 auto" flexDirection="row" css={{zIndex: 0}}>
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
