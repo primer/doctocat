@@ -9,6 +9,36 @@ import DarkButton from './dark-button'
 import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
+import debounce from 'lodash.debounce'
+
+function useNavDrawerState(breakpoint) {
+  // Handle string values from themes with units at the end
+  if (typeof breakpoint === 'string') {
+    breakpoint = parseInt(breakpoint, 10)
+  }
+  const [isOpen, setOpen] = React.useState(false)
+
+  const onResize = React.useCallback(() => {
+    if (window.innerWidth >= breakpoint && isOpen) {
+      setOpen(false)
+    }
+  }, [isOpen, setOpen])
+
+  const debouncedOnResize = React.useCallback(debounce(onResize, 250), [
+    onResize,
+  ])
+
+  React.useEffect(() => {
+    window.addEventListener('resize', debouncedOnResize)
+    return () => {
+      // cancel any debounced invocation of the resize handler
+      debouncedOnResize.cancel()
+      window.removeEventListener('resize', debouncedOnResize)
+    }
+  }, [debouncedOnResize])
+
+  return [isOpen, setOpen]
+}
 
 function NavDrawer({isOpen, onDismiss}) {
   const siteMetadata = useSiteMetadata()
@@ -125,3 +155,4 @@ function PrimerNavItems({items}) {
 }
 
 export default NavDrawer
+export {useNavDrawerState}
