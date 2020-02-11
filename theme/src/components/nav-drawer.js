@@ -1,6 +1,7 @@
 import {BorderBox, Flex, Link, StyledOcticon, Text} from '@primer/components'
 import {ChevronDown, ChevronUp, X} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
+import debounce from 'lodash.debounce'
 import React from 'react'
 import navItems from '../nav.yml'
 import primerNavItems from '../primer-nav.yml'
@@ -9,6 +10,37 @@ import DarkButton from './dark-button'
 import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
+
+export function useNavDrawerState(breakpoint) {
+  // Handle string values from themes with units at the end
+  if (typeof breakpoint === 'string') {
+    breakpoint = parseInt(breakpoint, 10)
+  }
+  const [isOpen, setOpen] = React.useState(false)
+
+  const onResize = React.useCallback(() => {
+    if (window.innerWidth >= breakpoint) {
+      setOpen(false)
+    }
+  }, [setOpen])
+
+  const debouncedOnResize = React.useCallback(debounce(onResize, 250), [
+    onResize,
+  ])
+
+  React.useEffect(() => {
+    if (isOpen) {
+      window.addEventListener('resize', debouncedOnResize)
+      return () => {
+        // cancel any debounced invocation of the resize handler
+        debouncedOnResize.cancel()
+        window.removeEventListener('resize', debouncedOnResize)
+      }
+    }
+  }, [isOpen, debouncedOnResize])
+
+  return [isOpen, setOpen]
+}
 
 function NavDrawer({isOpen, onDismiss}) {
   const siteMetadata = useSiteMetadata()
