@@ -19,7 +19,7 @@ function useNavDrawerState(breakpoint) {
   const [isOpen, setOpen] = React.useState(false)
 
   const onResize = React.useCallback(() => {
-    if (window.innerWidth >= breakpoint && isOpen) {
+    if (window.innerWidth >= breakpoint) {
       setOpen(false)
     }
   }, [isOpen, setOpen])
@@ -29,13 +29,15 @@ function useNavDrawerState(breakpoint) {
   ])
 
   React.useEffect(() => {
-    window.addEventListener('resize', debouncedOnResize)
-    return () => {
-      // cancel any debounced invocation of the resize handler
-      debouncedOnResize.cancel()
-      window.removeEventListener('resize', debouncedOnResize)
+    if (isOpen) {
+      window.addEventListener('resize', debouncedOnResize)
+      return () => {
+        // cancel any debounced invocation of the resize handler
+        debouncedOnResize.cancel()
+        window.removeEventListener('resize', debouncedOnResize)
+      }
     }
-  }, [debouncedOnResize])
+  }, [isOpen, debouncedOnResize])
 
   return [isOpen, setOpen]
 }
