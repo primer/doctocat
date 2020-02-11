@@ -1,6 +1,7 @@
 import {BorderBox, Flex, Link, StyledOcticon, Text} from '@primer/components'
 import {ChevronDown, ChevronUp, X} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
+import debounce from 'lodash.debounce'
 import React from 'react'
 import navItems from '../nav.yml'
 import primerNavItems from '../primer-nav.yml'
@@ -9,7 +10,6 @@ import DarkButton from './dark-button'
 import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
-import debounce from 'lodash.debounce'
 
 function useNavDrawerState(breakpoint) {
   // Handle string values from themes with units at the end
