@@ -7,16 +7,20 @@ import {
 } from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
+import {ThemeContext} from 'styled-components'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
 import DarkButton from './dark-button'
-import NavDrawer from './nav-drawer'
+import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
 import MobileSearch from './mobile-search'
 
 function Header({isSearchEnabled}) {
-  const [isNavDrawerOpen, setIsNavDrawerOpen] = React.useState(false)
+  const theme = React.useContext(ThemeContext)
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(
+    theme.breakpoints[2],
+  )
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
