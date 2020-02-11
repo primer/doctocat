@@ -11,7 +11,7 @@ import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
 
-function useNavDrawerState(breakpoint) {
+export function useNavDrawerState(breakpoint) {
   // Handle string values from themes with units at the end
   if (typeof breakpoint === 'string') {
     breakpoint = parseInt(breakpoint, 10)
@@ -157,4 +157,3 @@ function PrimerNavItems({items}) {
 }
 
 export default NavDrawer
-export {useNavDrawerState}
