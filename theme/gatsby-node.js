@@ -4,6 +4,8 @@ const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 
+const CONTRIBUTOR_CACHE = new Map()
+
 exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
 
@@ -12,6 +14,9 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       allMdx {
         nodes {
           fileAbsolutePath
+          frontmatter {
+            title
+          }
           tableOfContents
           parent {
             ... on File {
@@ -23,6 +28,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       }
     }
   `)
+
+  if (!process.env.GITHUB_TOKEN) {
+    console.error(`No GITHUB_TOKEN environment variable set; skipping GitHub API calls`)
+  }
 
   // Turn every MDX file into a page.
   return Promise.all(
@@ -46,7 +55,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
 
       const editUrl = getEditUrl(repo, fileRelativePath)
 
-      const contributors = await fetchContributors(repo, fileRelativePath)
+      let contributors = []
+      if (process.env.GITHUB_TOKEN) {
+        contributors = await fetchContributors(repo, fileRelativePath, process.env.GITHUB_TOKEN)
+      }
 
       actions.createPage({
         path: pagePath,
@@ -55,9 +67,11 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           editUrl,
           contributors,
           tableOfContents: node.tableOfContents,
-          // We don't need to add `frontmatter` to the page context here
-          // because gatsby-plugin-mdx automatically does that.
-          // Source: https://git.io/fjQDa
+          // Note: gatsby-plugin-mdx should insert frontmatter
+          // for us here, and does on the first build,
+          // but when HMR kicks in the frontmatter is lost.
+          // The solution is to include it here explicitly.
+          frontmatter: node.frontmatter
         },
       })
     }),
@@ -68,11 +82,22 @@ function getEditUrl(repo, filePath) {
   return `https://github.com/${repo.user}/${repo.project}/edit/master/${filePath}`
 }
 
-async function fetchContributors(repo, filePath) {
+async function fetchContributors(repo, filePath, accessToken) {
+  const hash = `${repo.user}/${repo.project}/${filePath}`
+  const cached = CONTRIBUTOR_CACHE.get(hash)
+  if (cached) {
+    return cached
+  }
+
   try {
-    const {data} = await axios.get(
-      `https://api.github.com/repos/${repo.user}/${repo.project}/commits?path=${filePath}`,
-    )
+    const {data} = await axios.request({
+      method: 'get',
+      baseURL: 'https://api.github.com/',
+      url: `/repos/${repo.user}/${repo.project}/commits?path=${filePath}&per_page=100`,
+      headers: {
+        'Authorization': `token ${accessToken}`
+      }
+    })
 
     const commits = data
       .map(commit => ({
@@ -84,7 +109,9 @@ async function fetchContributors(repo, filePath) {
       }))
       .filter(contributor => Boolean(contributor.login))
 
-    return uniqBy(commits, 'login')
+    const result = uniqBy(commits, 'login')
+    CONTRIBUTOR_CACHE.set(hash, result)
+    return result
   } catch (error) {
     console.error(
       `[ERROR] Unable to fetch contributors for ${filePath}. ${error.message}`,
