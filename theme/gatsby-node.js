@@ -14,6 +14,9 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       allMdx {
         nodes {
           fileAbsolutePath
+          frontmatter {
+            title
+          }
           tableOfContents
           parent {
             ... on File {
@@ -64,9 +67,11 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           editUrl,
           contributors,
           tableOfContents: node.tableOfContents,
-          // We don't need to add `frontmatter` to the page context here
-          // because gatsby-plugin-mdx automatically does that.
-          // Source: https://git.io/fjQDa
+          // Note: gatsby-plugin-mdx should insert frontmatter
+          // for us here, and does on the first build,
+          // but when HMR kicks in the frontmatter is lost.
+          // The solution is to include it here explicitly.
+          frontmatter: node.frontmatter
         },
       })
     }),
