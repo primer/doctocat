@@ -86,7 +86,6 @@ async function fetchContributors(repo, filePath, accessToken) {
   const hash = `${repo.user}/${repo.project}/${filePath}`
   const cached = CONTRIBUTOR_CACHE.get(hash)
   if (cached) {
-    console.debug('found something in the cache. whee!')
     return cached
   }
 
