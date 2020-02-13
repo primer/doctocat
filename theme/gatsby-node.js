@@ -24,6 +24,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
     }
   `)
 
+  if (!process.env.GITHUB_TOKEN) {
+    console.error(`No GITHUB_TOKEN environment variable set; skipping GitHub API calls`)
+  }
+
   // Turn every MDX file into a page.
   return Promise.all(
     data.allMdx.nodes.map(async node => {
@@ -46,7 +50,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
 
       const editUrl = getEditUrl(repo, fileRelativePath)
 
-      const contributors = await fetchContributors(repo, fileRelativePath)
+      let contributors = []
+      if (process.env.GITHUB_TOKEN) {
+        contributors = await fetchContributors(repo, fileRelativePath, process.env.GITHUB_TOKEN)
+      }
 
       actions.createPage({
         path: pagePath,
@@ -68,11 +75,16 @@ function getEditUrl(repo, filePath) {
   return `https://github.com/${repo.user}/${repo.project}/edit/master/${filePath}`
 }
 
-async function fetchContributors(repo, filePath) {
+async function fetchContributors(repo, filePath, accessToken) {
   try {
-    const {data} = await axios.get(
-      `https://api.github.com/repos/${repo.user}/${repo.project}/commits?path=${filePath}`,
-    )
+    const {data} = await axios.request({
+      method: 'get',
+      baseURL: 'https://api.github.com/',
+      url: `/repos/${repo.user}/${repo.project}/commits?path=${filePath}&per_page=100`,
+      headers: {
+        'Authorization': `token ${accessToken}`
+      }
+    })
 
     const commits = data
       .map(commit => ({
