@@ -4,6 +4,8 @@ const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 
+const CONTRIBUTOR_CACHE = new Map()
+
 exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
 
@@ -76,6 +78,13 @@ function getEditUrl(repo, filePath) {
 }
 
 async function fetchContributors(repo, filePath, accessToken) {
+  const hash = `${repo.user}/${repo.project}/${filePath}`
+  const cached = CONTRIBUTOR_CACHE.get(hash)
+  if (cached) {
+    console.debug('found something in the cache. whee!')
+    return cached
+  }
+
   try {
     const {data} = await axios.request({
       method: 'get',
@@ -96,7 +105,9 @@ async function fetchContributors(repo, filePath, accessToken) {
       }))
       .filter(contributor => Boolean(contributor.login))
 
-    return uniqBy(commits, 'login')
+    const result = uniqBy(commits, 'login')
+    CONTRIBUTOR_CACHE.set(hash, result)
+    return result
   } catch (error) {
     console.error(
       `[ERROR] Unable to fetch contributors for ${filePath}. ${error.message}`,
