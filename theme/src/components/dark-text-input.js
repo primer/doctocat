@@ -10,6 +10,7 @@ const DarkTextInput = styled(TextInput)`
   color: ${themeGet('colors.white')};
   background-color: rgba(255, 255, 255, 0.07);
   border: 1px solid transparent;
+  box-shadow: none;
 
   &:focus {
     border: 1px solid rgba(255, 255, 255, 0.15);
