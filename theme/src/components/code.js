@@ -5,12 +5,12 @@ import React from 'react'
 import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
 
-function Code({className, children, live}) {
+function Code({className, children, live, noinline}) {
   const language = className ? className.replace(/language-/, '') : ''
   const code = children.trim()
 
   if (live) {
-    return <LiveCode code={code} language={language} />
+    return <LiveCode code={code} language={language} noinline={noinline} />
   }
 
   return (
