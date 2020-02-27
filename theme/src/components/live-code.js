@@ -34,7 +34,7 @@ function wrapWithFragment(jsx) {
   return `<React.Fragment>${jsx}</React.Fragment>`
 }
 
-function LiveCode({code, language}) {
+function LiveCode({code, language, noinline}) {
   const theme = React.useContext(ThemeContext)
 
   return (
@@ -47,6 +47,7 @@ function LiveCode({code, language}) {
         scope={scope}
         code={code}
         transformCode={languageTransformers[language]}
+        noInline={noinline}
       >
         <LivePreviewWrapper>
           <LivePreview />

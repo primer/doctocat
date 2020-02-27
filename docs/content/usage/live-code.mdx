@@ -77,3 +77,41 @@ export default function LivePreviewWrapper({children}) {
   )
 }
 ```
+
+## No-inline
+
+By default, live previews treat your code as a single JSX expression to be rendered. If you want to include more complex code, use the `noinline` attribute on the code block, and render components with the exported `render` function:
+
+````markdown
+```javascript live noinline
+function DemoApp() {
+  const [count, setCount] = React.useState(0)
+
+  return (
+    <div>
+      <button onClick={() => setCount(n => n - 1)}>-</button>
+      {count}
+      <button onClick={() => setCount(n => n + 1)}>+</button>
+    </div>
+  )
+}
+
+render(<DemoApp />)
+```
+````
+
+```javascript live noinline
+function DemoApp() {
+  const [count, setCount] = React.useState(0)
+
+  return (
+    <div style={{textAlign: 'center'}}>
+      <button onClick={() => setCount(n => n - 1)}>-</button>
+      {count}
+      <button onClick={() => setCount(n => n + 1)}>+</button>
+    </div>
+  )
+}
+
+render(<DemoApp />)
+```
