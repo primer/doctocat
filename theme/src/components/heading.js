@@ -9,15 +9,10 @@ import styled from 'styled-components'
 const StyledHeading = styled(Heading)`
   margin-top: ${themeGet('space.4')};
   margin-bottom: ${themeGet('space.3')};
-  
+
   // Makes sure links to Headings are not covered by the fixed "main" header
   // header (66px) + margin (24px) = 90px
-  &:target::before {
-    content: '';
-    display: block;
-    height: 90px;
-    margin-top: -90px;
-  }
+  scroll-margin-top: 90px;
 
   & .octicon-link {
     visibility: hidden;
