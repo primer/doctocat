@@ -42,6 +42,7 @@ function LiveCode({code, language, noinline}) {
       as={Flex}
       flexDirection="column"
       mb={3}
+      css={{overflow: 'hidden'}}
     >
       <LiveProvider
         scope={scope}
