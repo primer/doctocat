@@ -6,6 +6,7 @@ import {
   Heading,
   Position,
   Text,
+  Details,
 } from '@primer/components'
 import React from 'react'
 import Head from './head'
@@ -35,12 +36,17 @@ function Layout({children, pageContext}) {
         </Box>
         <Grid
           id="skip-nav"
-          gridTemplateColumns="minmax(0, 65ch) 260px"
-          gridTemplateAreas='"heading ." "content table-of-contents"'
-          gridColumnGap={7}
+          maxWidth="100%"
+          gridTemplateColumns={['100%', null, null, 'minmax(0, 65ch) 220px']}
+          gridTemplateAreas={[
+            '"heading" "content"',
+            null,
+            '"heading ." "content table-of-contents"',
+          ]}
+          gridColumnGap={[null, null, 6, 7]}
           gridRowGap={3}
           mx="auto"
-          p={7}
+          p={[5, 6, null, 7]}
           css={{alignItems: 'start', alignSelf: 'start'}}
         >
           <BorderBox
@@ -54,6 +60,7 @@ function Layout({children, pageContext}) {
           </BorderBox>
           {pageContext.tableOfContents.items ? (
             <Position
+              display={['none', null, 'block']}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
               position="sticky"
               top={HEADER_HEIGHT + 24}
@@ -72,6 +79,20 @@ function Layout({children, pageContext}) {
                 <Box mx="auto" />
                 {source ? <SourceLink href={source} /> : null}
               </Flex>
+            ) : null}
+            {pageContext.tableOfContents.items ? (
+              <Box display={['block', null, 'none']} mb={3}>
+                <details>
+                  <Text as="summary" fontWeight="bold">
+                    Contents
+                  </Text>
+                  <Box pt={1}>
+                    <TableOfContents
+                      items={pageContext.tableOfContents.items}
+                    />
+                  </Box>
+                </details>
+              </Box>
             ) : null}
             {children}
             <PageFooter
