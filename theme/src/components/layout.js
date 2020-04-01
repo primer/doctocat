@@ -34,6 +34,7 @@ function Layout({children, pageContext}) {
           <Sidebar />
         </Box>
         <Grid
+          id="skip-nav"
           gridTemplateColumns="minmax(0, 65ch) 260px"
           gridTemplateAreas='"heading ." "content table-of-contents"'
           gridColumnGap={7}
