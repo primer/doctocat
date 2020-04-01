@@ -16,6 +16,8 @@ import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
 import MobileSearch from './mobile-search'
 
+export const HEADER_HEIGHT = 66
+
 function Header({isSearchEnabled}) {
   const theme = React.useContext(ThemeContext)
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(
@@ -26,7 +28,7 @@ function Header({isSearchEnabled}) {
   return (
     <Sticky>
       <Flex
-        py={3}
+        height={HEADER_HEIGHT}
         px={[3, null, null, 4]}
         alignItems="center"
         justifyContent="space-between"
