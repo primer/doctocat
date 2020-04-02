@@ -69,7 +69,7 @@ function Layout({children, pageContext}) {
               maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 24px)`}
             >
               <Text display="inline-block" fontWeight="bold" mb={1}>
-                Contents
+                Table of contents
               </Text>
               <TableOfContents items={pageContext.tableOfContents.items} />
             </Position>
@@ -92,7 +92,7 @@ function Layout({children, pageContext}) {
                           icon={open ? ChevronDown : ChevronRight}
                           mr={2}
                         />
-                        Contents
+                        Table of contents
                       </Text>
                       <Box pt={1}>
                         <TableOfContents
