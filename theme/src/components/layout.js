@@ -7,7 +7,9 @@ import {
   Position,
   Text,
   Details,
+  StyledOcticon,
 } from '@primer/components'
+import {ChevronDown, ChevronRight} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -82,16 +84,24 @@ function Layout({children, pageContext}) {
             ) : null}
             {pageContext.tableOfContents.items ? (
               <Box display={['block', null, 'none']} mb={3}>
-                <details>
-                  <Text as="summary" fontWeight="bold">
-                    Contents
-                  </Text>
-                  <Box pt={1}>
-                    <TableOfContents
-                      items={pageContext.tableOfContents.items}
-                    />
-                  </Box>
-                </details>
+                <Details>
+                  {({open}) => (
+                    <>
+                      <Text as="summary" fontWeight="bold">
+                        <StyledOcticon
+                          icon={open ? ChevronDown : ChevronRight}
+                          mr={2}
+                        />
+                        Contents
+                      </Text>
+                      <Box pt={1}>
+                        <TableOfContents
+                          items={pageContext.tableOfContents.items}
+                        />
+                      </Box>
+                    </>
+                  )}
+                </Details>
               </Box>
             ) : null}
             {children}
