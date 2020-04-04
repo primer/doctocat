@@ -1,7 +1,7 @@
 import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from 'prism-react-renderer/themes/github'
-import React from 'react'
+import React, { useState } from 'react'
 import reactElementToJsxString from 'react-element-to-jsx-string'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
 import {ThemeContext} from 'styled-components'
@@ -36,6 +36,8 @@ function wrapWithFragment(jsx) {
 
 function LiveCode({code, language, noinline}) {
   const theme = React.useContext(ThemeContext)
+  const [liveCode, setLiveCode] = useState(code)
+  const handleChange = (updatedLiveCode) => setLiveCode(updatedLiveCode)
 
   return (
     <BorderBox
@@ -46,7 +48,7 @@ function LiveCode({code, language, noinline}) {
     >
       <LiveProvider
         scope={scope}
-        code={code}
+        code={liveCode}
         transformCode={languageTransformers[language]}
         noInline={noinline}
       >
@@ -55,6 +57,7 @@ function LiveCode({code, language, noinline}) {
         </LivePreviewWrapper>
         <Relative>
           <LiveEditor
+            onChange={handleChange}
             theme={githubTheme}
             ignoreTabKey={true}
             padding={theme.space[3]}
@@ -64,7 +67,7 @@ function LiveCode({code, language, noinline}) {
             }}
           />
           <Absolute top={0} right={0} p={2}>
-            <ClipboardCopy value={code} />
+            <ClipboardCopy value={liveCode} />
           </Absolute>
         </Relative>
         <Text
