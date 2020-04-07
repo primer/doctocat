@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.19.1",
+  "version": "0.20.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,8 @@
   },
   "peerDependencies": {
     "gatsby": "2.x",
-    "react": "16.9.x",
-    "react-dom": "16.9.x"
+    "react": "^16.9.x",
+    "react-dom": "^16.9.x"
   },
   "dependencies": {
     "@babel/preset-env": "^7.5.5",
