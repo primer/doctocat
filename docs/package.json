@@ -5,7 +5,7 @@
   "scripts": {
     "develop": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build --prefix-paths",
-    "now-build": "npm run build"
+    "now-build": "yarn build"
   },
   "dependencies": {
     "@primer/components": "^16.1.0",
