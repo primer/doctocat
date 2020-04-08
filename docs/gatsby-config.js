@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     title: 'Doctocat',
@@ -13,5 +15,15 @@ module.exports = {
       },
     },
   ],
-  plugins: ['gatsby-plugin-sass'],
+  plugins: [
+    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          react: path.resolve(__dirname, 'node_modules', 'react')
+        }
+      }
+    }
+  ],
 }

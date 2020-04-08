@@ -12,6 +12,7 @@
     "@primer/css": "^12.4.1",
     "@primer/gatsby-theme-doctocat": "*",
     "gatsby": "^2.13.52",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-sass": "^2.1.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
