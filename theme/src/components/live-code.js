@@ -60,6 +60,8 @@ function LiveCode({code, language, noinline}) {
             style={{
               fontFamily: theme.fonts.mono,
               fontSize: '85%',
+              borderBottomLeftRadius: '6px',
+              borderBottomRightRadius: '6px',
             }}
           />
           <Absolute top={0} right={0} p={2}>
