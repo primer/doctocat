@@ -1,5 +1,5 @@
-import {CircleOcticon, Flex, Text, Grid} from '@primer/components'
-import {Check, X} from '@primer/octicons-react'
+import {Flex, Grid, Text} from '@primer/components'
+import {CheckIcon, XIcon} from '@primer/styled-octicons'
 import React from 'react'
 import Caption from './caption'
 
@@ -20,26 +20,21 @@ DoDontContainer.defaultProps = {
 }
 
 export function Do(props) {
-  return <DoDontBase {...props} text="Do" icon={Check} iconBg="green.5" />
+  return <DoDontBase {...props} text="Do" icon={CheckIcon} iconBg="green.5" />
 }
 
 export function Dont(props) {
-  return <DoDontBase {...props} text="Don't" icon={X} iconBg="red.5" />
+  return <DoDontBase {...props} text="Don't" icon={XIcon} iconBg="red.5" />
 }
 
-function DoDontBase({src, alt, children, text, icon, iconBg}) {
+function DoDontBase({src, alt, children, text, icon: Icon, iconBg}) {
   return (
     <Flex flexDirection="column">
       <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
-        <CircleOcticon
-          icon={icon}
-          size={16}
-          bg={iconBg}
-          color="white"
-          mr="2"
-          p="1"
-        />
-        <Text fontWeight="bold" color="gray.9" ml="1">
+        <Flex bg={iconBg} color="white" p={1} style={{borderRadius: '50%'}}>
+          <Icon verticalAlign="middle" size={12} />
+        </Flex>
+        <Text fontWeight="bold" color="gray.9" ml={2}>
           {text}
         </Text>
       </Flex>
@@ -50,5 +45,5 @@ function DoDontBase({src, alt, children, text, icon, iconBg}) {
 }
 
 DoDontBase.defaultProps = {
-  alt: "",
+  alt: '',
 }

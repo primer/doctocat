@@ -1,5 +1,5 @@
-import {Absolute, Fixed, Flex, StyledOcticon} from '@primer/components'
-import {X} from '@primer/octicons-react'
+import {Absolute, Fixed, Flex} from '@primer/components'
+import {XIcon} from '@primer/styled-octicons'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
 import {navigate} from 'gatsby'
@@ -55,15 +55,15 @@ function MobileSearch({isOpen, onDismiss}) {
             />
             <Downshift
               inputValue={query}
-              onInputValueChange={inputValue => setQuery(inputValue)}
+              onInputValueChange={(inputValue) => setQuery(inputValue)}
               selectedItem={null}
-              onSelect={item => {
+              onSelect={(item) => {
                 if (item) {
                   navigate(item.path)
                   handleDismiss()
                 }
               }}
-              itemToString={item => (item ? item.title : '')}
+              itemToString={(item) => (item ? item.title : '')}
               stateReducer={stateReducer}
             >
               {({
@@ -100,7 +100,7 @@ function MobileSearch({isOpen, onDismiss}) {
                       aria-label="Cancel"
                       onClick={handleDismiss}
                     >
-                      <StyledOcticon icon={X} />
+                      <XIcon />
                     </DarkButton>
                   </Flex>
                   {isMenuOpen ? (
