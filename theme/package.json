@@ -22,7 +22,7 @@
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "@primer/components": "^16.1.0",
-    "@primer/styled-octicons": "^0.0.0-df8e278",
+    "@primer/styled-octicons": "^0.0.0-0ccdd71",
     "@styled-system/theme-get": "^5.0.12",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.3",

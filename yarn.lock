@@ -1145,10 +1145,10 @@
   dependencies:
     object-assign "^4.1.1"
 
-"@primer/styled-octicons@^0.0.0-df8e278":
-  version "0.0.0-df8e278"
-  resolved "https://registry.yarnpkg.com/@primer/styled-octicons/-/styled-octicons-0.0.0-df8e278.tgz#dfa55f2bc78f3e7ebd4ee36ee20b5162d3d74100"
-  integrity sha512-MDI8P1Skeei2JsMkOu251ZfRUgWSaWAUgnEaHA9A5sJnLP9BA/jQ3B57I55s0hx0U4r+RBGOPctxv/T5UY9WuA==
+"@primer/styled-octicons@^0.0.0-0ccdd71":
+  version "0.0.0-0ccdd71"
+  resolved "https://registry.yarnpkg.com/@primer/styled-octicons/-/styled-octicons-0.0.0-0ccdd71.tgz#ceea91793895fc6234eb24f57a0e349a085db520"
+  integrity sha512-TKjEz4auK9EfxGU3X2qqa89torZUA9r7/Rh3rEI2B8acoGf29oCJvqlTyZYA/tO3tzQrPPb25ViyJ5FNqrhzCQ==
   dependencies:
     "@styled-system/css" "^5.1.5"
     "@styled-system/prop-types" "^5.1.5"
