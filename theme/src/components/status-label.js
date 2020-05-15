@@ -1,5 +1,5 @@
-import {BorderBox, Flex, StyledOcticon, Text} from '@primer/components'
-import {PrimitiveDot} from '@primer/octicons-react'
+import {BorderBox, Flex, Text} from '@primer/components'
+import {DotFillIcon} from '@primer/styled-octicons'
 import React from 'react'
 
 const STATUS_COLORS = {
@@ -18,11 +18,7 @@ function StatusLabel({status}) {
   return (
     <BorderBox display="inline-block" px={2} py={1}>
       <Flex alignItems="center">
-        <StyledOcticon
-          icon={PrimitiveDot}
-          color={getStatusColor(status)}
-          mr={2}
-        />
+        <DotFillIcon color={getStatusColor(status)} mr={2} />
         <Text fontSize={1}>{status}</Text>
       </Flex>
     </BorderBox>

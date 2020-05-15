@@ -1,11 +1,5 @@
-import {
-  BorderBox,
-  Flex,
-  Link,
-  StyledOcticon,
-  themeGet,
-} from '@primer/components'
-import {LinkExternal} from '@primer/octicons-react'
+import {BorderBox, Flex, Link, themeGet} from '@primer/components'
+import {LinkExternalIcon} from '@primer/styled-octicons'
 import {Link as GatsbyLink} from 'gatsby'
 import preval from 'preval.macro'
 import React from 'react'
@@ -33,7 +27,7 @@ const NavLink = styled(Link)`
 function NavItems({items}) {
   return (
     <>
-      {items.map(item => (
+      {items.map((item) => (
         <BorderBox
           key={item.title}
           border={0}
@@ -53,7 +47,7 @@ function NavItems({items}) {
             </NavLink>
             {item.children ? (
               <Flex flexDirection="column" mt={2}>
-                {item.children.map(child => (
+                {item.children.map((child) => (
                   <NavLink
                     key={child.title}
                     as={GatsbyLink}
@@ -77,7 +71,7 @@ function NavItems({items}) {
           <Link href={repositoryUrl} color="inherit">
             <Flex justifyContent="space-between" alignItems="center">
               GitHub
-              <StyledOcticon icon={LinkExternal} color="gray.7"></StyledOcticon>
+              <LinkExternalIcon color="gray.7" />
             </Flex>
           </Link>
         </BorderBox>
