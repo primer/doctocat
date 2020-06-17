@@ -1,11 +1,5 @@
-import {
-  Absolute,
-  BorderBox,
-  StyledOcticon,
-  Text,
-  themeGet,
-} from '@primer/components'
-import {ChevronDown} from '@primer/octicons-react'
+import {Absolute, BorderBox, Text, themeGet} from '@primer/components'
+import {ChevronDownIcon} from '@primer/styled-octicons'
 import React from 'react'
 import styled from 'styled-components'
 import Details from './details'
@@ -17,7 +11,7 @@ function NavDropdown({title, children}) {
         <>
           <summary style={{cursor: 'pointer'}} onClick={toggle}>
             <Text>{title}</Text>
-            <StyledOcticon icon={ChevronDown} ml={1} />
+            <ChevronDownIcon ml={1} />
           </summary>
           <Absolute>
             <BorderBox

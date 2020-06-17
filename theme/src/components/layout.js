@@ -1,15 +1,14 @@
 import {
   BorderBox,
   Box,
+  Details,
   Flex,
   Grid,
   Heading,
   Position,
   Text,
-  Details,
-  StyledOcticon,
 } from '@primer/components'
-import {ChevronDown, ChevronRight} from '@primer/octicons-react'
+import {ChevronDownIcon, ChevronRightIcon} from '@primer/styled-octicons'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -88,10 +87,11 @@ function Layout({children, pageContext}) {
                   {({open}) => (
                     <>
                       <Text as="summary" fontWeight="bold">
-                        <StyledOcticon
-                          icon={open ? ChevronDown : ChevronRight}
-                          mr={2}
-                        />
+                        {open ? (
+                          <ChevronDownIcon mr={2} />
+                        ) : (
+                          <ChevronRightIcon mr={2} />
+                        )}
                         Table of contents
                       </Text>
                       <Box pt={1}>
@@ -108,7 +108,7 @@ function Layout({children, pageContext}) {
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(
-                additionalContributors.map(login => ({login})),
+                additionalContributors.map((login) => ({login})),
               )}
             />
           </Box>

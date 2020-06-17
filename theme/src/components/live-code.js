@@ -44,7 +44,6 @@ function LiveCode({code, language, noinline}) {
       as={Flex}
       flexDirection="column"
       mb={3}
-      css={{overflow: 'hidden'}}
     >
       <LiveProvider
         scope={scope}
@@ -64,6 +63,8 @@ function LiveCode({code, language, noinline}) {
             style={{
               fontFamily: theme.fonts.mono,
               fontSize: '85%',
+              borderBottomLeftRadius: theme.radii[2],
+              borderBottomRightRadius: theme.radii[2],
             }}
           />
           <Absolute top={0} right={0} p={2}>

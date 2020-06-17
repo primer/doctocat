@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.20.0",
+  "version": "0.22.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,8 @@
   },
   "peerDependencies": {
     "gatsby": "2.x",
-    "react": "16.9.x",
-    "react-dom": "16.9.x"
+    "react": "^16.9.x",
+    "react-dom": "^16.9.x"
   },
   "dependencies": {
     "@babel/preset-env": "^7.5.5",
@@ -22,7 +22,7 @@
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "@primer/components": "^16.1.0",
-    "@primer/octicons-react": "^9.1.1",
+    "@primer/styled-octicons": "^0.0.0-0ccdd71",
     "@styled-system/theme-get": "^5.0.12",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.3",

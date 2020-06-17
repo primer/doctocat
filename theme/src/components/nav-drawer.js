@@ -1,5 +1,5 @@
-import {BorderBox, Flex, Link, StyledOcticon, Text} from '@primer/components'
-import {ChevronDown, ChevronUp, X} from '@primer/octicons-react'
+import {BorderBox, Flex, Link, Text} from '@primer/components'
+import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/styled-octicons'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
 import React from 'react'
@@ -74,7 +74,7 @@ function NavDrawer({isOpen, onDismiss}) {
                 Primer
               </Link>
               <DarkButton aria-label="Close" onClick={onDismiss}>
-                <StyledOcticon icon={X} />
+                <XIcon />
               </DarkButton>
             </Flex>
           </BorderBox>
@@ -126,11 +126,11 @@ function PrimerNavItems({items}) {
                 <summary onClick={toggle} style={{cursor: 'pointer'}}>
                   <Flex alignItems="center" justifyContent="space-between">
                     <Text>{item.title}</Text>
-                    <StyledOcticon icon={open ? ChevronUp : ChevronDown} />
+                    {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
                   </Flex>
                 </summary>
                 <Flex flexDirection="column" mt={2}>
-                  {item.children.map(child => (
+                  {item.children.map((child) => (
                     <Link
                       key={child.title}
                       href={child.url}
