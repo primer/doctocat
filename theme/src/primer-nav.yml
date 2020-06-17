@@ -14,7 +14,7 @@
   children:
     - title: Primer CSS
       url: https://primer.style/css
-    - title: Primer Components
+    - title: Primer React
       url: https://primer.style/components
 - title: About
   url: https://primer.style/team
