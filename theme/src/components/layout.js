@@ -7,8 +7,9 @@ import {
   Heading,
   Position,
   Text,
+  StyledOcticon
 } from '@primer/components'
-import {ChevronDownIcon, ChevronRightIcon} from '@primer/styled-octicons'
+import {ChevronDownIcon, ChevronRightIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -88,9 +89,9 @@ function Layout({children, pageContext}) {
                     <>
                       <Text as="summary" fontWeight="bold">
                         {open ? (
-                          <ChevronDownIcon mr={2} />
+                          <StyledOcticon icon={ChevronDownIcon} mr={2} />
                         ) : (
-                          <ChevronRightIcon mr={2} />
+                          <StyledOcticon icon={ChevronRightIcon} mr={2} />
                         )}
                         Table of contents
                       </Text>

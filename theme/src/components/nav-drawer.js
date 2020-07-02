@@ -1,5 +1,5 @@
 import {BorderBox, Flex, Link, Text} from '@primer/components'
-import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/styled-octicons'
+import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
 import React from 'react'

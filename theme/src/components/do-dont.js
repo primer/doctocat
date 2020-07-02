@@ -1,5 +1,5 @@
 import {Flex, Grid, Text} from '@primer/components'
-import {CheckIcon, XIcon} from '@primer/styled-octicons'
+import {CheckIcon, XIcon} from '@primer/octicons-react'
 import React from 'react'
 import Caption from './caption'
 
