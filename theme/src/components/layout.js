@@ -6,9 +6,10 @@ import {
   Grid,
   Heading,
   Position,
+  StyledOcticon,
   Text,
 } from '@primer/components'
-import {ChevronDownIcon, ChevronRightIcon} from '@primer/styled-octicons'
+import {ChevronDownIcon, ChevronRightIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -52,8 +53,8 @@ function Layout({children, pageContext}) {
         >
           <BorderBox
             css={{gridArea: 'heading'}}
-            border={0}
-            borderBottom={1}
+            borderWidth={0}
+            borderBottomWidth={1}
             borderRadius={0}
             pb={2}
           >
@@ -88,9 +89,9 @@ function Layout({children, pageContext}) {
                     <>
                       <Text as="summary" fontWeight="bold">
                         {open ? (
-                          <ChevronDownIcon mr={2} />
+                          <StyledOcticon icon={ChevronDownIcon} mr={2} />
                         ) : (
-                          <ChevronRightIcon mr={2} />
+                          <StyledOcticon icon={ChevronRightIcon} mr={2} />
                         )}
                         Table of contents
                       </Text>

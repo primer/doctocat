@@ -1,5 +1,5 @@
-import {Flex, Grid, Text} from '@primer/components'
-import {CheckIcon, XIcon} from '@primer/styled-octicons'
+import {Flex, Grid, Text, StyledOcticon} from '@primer/components'
+import {CheckIcon, XIcon} from '@primer/octicons-react'
 import React from 'react'
 import Caption from './caption'
 
@@ -32,7 +32,7 @@ function DoDontBase({src, alt, children, text, icon: Icon, iconBg}) {
     <Flex flexDirection="column">
       <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
         <Flex bg={iconBg} color="white" p={1} style={{borderRadius: '50%'}}>
-          <Icon verticalAlign="middle" size={12} />
+          <StyledOcticon icon={Icon} verticalAlign="middle" size={12} />
         </Flex>
         <Text fontWeight="bold" color="gray.9" ml={2}>
           {text}

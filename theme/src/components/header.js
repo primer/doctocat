@@ -1,10 +1,10 @@
-import {Box, Flex, Link, Sticky} from '@primer/components'
+import {Box, Flex, Link, StyledOcticon, Sticky} from '@primer/components'
 import {
   ChevronRightIcon,
   MarkGithubIcon,
   SearchIcon,
   ThreeBarsIcon,
-} from '@primer/styled-octicons'
+} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import {ThemeContext} from 'styled-components'
@@ -41,7 +41,7 @@ function Header({isSearchEnabled}) {
             mr={3}
             lineHeight="condensedUltra"
           >
-            <MarkGithubIcon size="medium" />
+            <StyledOcticon icon={MarkGithubIcon} size="medium" />
           </Link>
           <Link
             display={[
@@ -61,7 +61,7 @@ function Header({isSearchEnabled}) {
           {siteMetadata.shortName ? (
             <>
               <Box display={['none', null, null, 'inline-block']} mx={2}>
-                <ChevronRightIcon color="blue.4" />
+                <StyledOcticon icon={ChevronRightIcon} color="blue.4" />
               </Box>
               <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono">
                 {siteMetadata.shortName}
