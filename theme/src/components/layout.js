@@ -58,7 +58,7 @@ function Layout({children, pageContext}) {
             borderRadius={0}
             pb={2}
           >
-            <Heading>{title}</Heading>
+            <Heading as="h1">{title}</Heading>
           </BorderBox>
           {pageContext.tableOfContents.items ? (
             <Position
