@@ -41,7 +41,6 @@ function LiveCode({code, language, noinline}) {
 
   return (
     <BorderBox
-      as={Flex}
       flexDirection="column"
       mb={3}
     >
