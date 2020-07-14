@@ -15,8 +15,8 @@ function Sidebar() {
       bg="gray.0"
     >
       <BorderBox
-        border={0}
-        borderRight={1}
+        borderWidth={0}
+        borderRightWidth={1}
         borderRadius={0}
         height="100%"
         style={{overflow: 'auto'}}
