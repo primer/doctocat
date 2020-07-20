@@ -1,5 +1,5 @@
 import {BorderBox, Flex, Link, Text} from '@primer/components'
-import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/styled-octicons'
+import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
 import React from 'react'
@@ -54,9 +54,9 @@ function NavDrawer({isOpen, onDismiss}) {
       >
         <Flex flexDirection="column" flex="1 0 auto" color="blue.2" bg="gray.9">
           <BorderBox
-            border={0}
+            borderWidth={0}
             borderRadius={0}
-            borderBottom={1}
+            borderBottomWidth={1}
             borderColor="gray.7"
           >
             <Flex
@@ -113,9 +113,9 @@ function PrimerNavItems({items}) {
     return (
       <BorderBox
         key={item.title}
-        border={0}
+        borderWidth={0}
         borderRadius={0}
-        borderTop={index !== 0 ? 1 : 0}
+        borderTopWidth={index !== 0 ? 1 : 0}
         borderColor="gray.7"
         p={4}
       >

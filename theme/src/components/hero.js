@@ -9,7 +9,7 @@ function Hero() {
   return (
     <Box bg="black" py={6}>
       <Container>
-        <Heading color="blue.4" fontSize={7} m={0}>
+        <Heading as="h1" color="blue.4" fontSize={7} m={0}>
           {title}
         </Heading>
         <Text as="p" m={0} color="blue.2" fontSize={4}>

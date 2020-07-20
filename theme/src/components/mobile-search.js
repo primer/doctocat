@@ -1,5 +1,5 @@
 import {Absolute, Fixed, Flex} from '@primer/components'
-import {XIcon} from '@primer/styled-octicons'
+import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
 import {navigate} from 'gatsby'
