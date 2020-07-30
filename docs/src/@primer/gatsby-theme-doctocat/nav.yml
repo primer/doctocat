@@ -6,6 +6,8 @@
 - title: Usage
   url: /usage
   children:
+    - title: Local Development
+      url: /usage/local-development
     - title: Customization
       url: /usage/customization
     - title: Front matter
