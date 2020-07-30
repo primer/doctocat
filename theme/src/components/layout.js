@@ -96,7 +96,7 @@ function Layout({children, pageContext}) {
                         )}
                         Table of contents
                       </Text>
-                      <Box>
+                      <Box pt={1}>
                         <TableOfContents
                           items={pageContext.tableOfContents.items}
                         />
