@@ -43,7 +43,7 @@ function Layout({children, pageContext}) {
           gridTemplateAreas={[
             '"heading" "content"',
             null,
-            '"heading ." "content table-of-contents"',
+            '"heading table-of-contents" "content table-of-contents"',
           ]}
           gridColumnGap={[null, null, 6, 7]}
           gridRowGap={3}
@@ -66,6 +66,7 @@ function Layout({children, pageContext}) {
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
               position="sticky"
               top={HEADER_HEIGHT + 24}
+              mt={2}
               maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 24px)`}
             >
               <Text display="inline-block" fontWeight="bold" mb={1}>
@@ -95,7 +96,7 @@ function Layout({children, pageContext}) {
                         )}
                         Table of contents
                       </Text>
-                      <Box pt={1}>
+                      <Box>
                         <TableOfContents
                           items={pageContext.tableOfContents.items}
                         />
