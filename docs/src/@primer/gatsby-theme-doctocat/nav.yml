@@ -16,6 +16,8 @@
       url: /usage/live-code
     - title: Deployment
       url: /usage/deployment
+    - title: Using Images
+      url: /usage/using-images
 - title: Components
   url: /components
   children:
