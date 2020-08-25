@@ -17,7 +17,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           frontmatter {
             title
           }
-          tableOfContents
+          tableOfContents(maxDepth: 3)
           parent {
             ... on File {
               relativeDirectory
