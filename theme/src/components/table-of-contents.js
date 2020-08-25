@@ -11,7 +11,7 @@ function TableOfContents({items, depth}) {
               display="inline-block"
               py={1}
               href={item.url}
-              fontSize={1}
+              fontSize={[2, null, 1]}
               color="gray.6"
             >
               {item.title}
