@@ -83,12 +83,7 @@ function Layout({children, pageContext}) {
               </Flex>
             ) : null}
             {pageContext.tableOfContents.items ? (
-              <Box
-                display={['block', null, 'none']}
-                mb={3}
-                bg="gray.1"
-                sx={{borderRadius: 2}}
-              >
+              <BorderBox display={['block', null, 'none']} mb={3} bg="gray.1">
                 <Details>
                   {({open}) => (
                     <>
@@ -128,7 +123,7 @@ function Layout({children, pageContext}) {
                     </>
                   )}
                 </Details>
-              </Box>
+              </BorderBox>
             ) : null}
             {children}
             <PageFooter
