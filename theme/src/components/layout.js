@@ -98,13 +98,13 @@ function Layout({children, pageContext}) {
                             <StyledOcticon
                               icon={ChevronUpIcon}
                               mr={2}
-                              color="gray.7"
+                              color="gray.6"
                             />
                           ) : (
                             <StyledOcticon
                               icon={ChevronDownIcon}
                               mr={2}
-                              color="gray.7"
+                              color="gray.6"
                             />
                           )}
                         </Flex>
