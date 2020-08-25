@@ -6,15 +6,17 @@ function TableOfContents({items, depth}) {
     <Box as="ul" m={0} p={0} css={{listStyle: 'none'}}>
       {items.map((item) => (
         <Box as="li" key={item.url} pl={depth > 0 ? 3 : 0}>
-          <Link
-            display="inline-block"
-            py={1}
-            href={item.url}
-            fontSize={1}
-            color="gray.6"
-          >
-            {item.title}
-          </Link>
+          {item.title ? (
+            <Link
+              display="inline-block"
+              py={1}
+              href={item.url}
+              fontSize={1}
+              color="gray.6"
+            >
+              {item.title}
+            </Link>
+          ) : null}
           {item.items ? (
             <TableOfContents items={item.items} depth={depth + 1} />
           ) : null}
