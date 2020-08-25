@@ -39,7 +39,7 @@ function Layout({children, pageContext}) {
         <Grid
           id="skip-nav"
           maxWidth="100%"
-          gridTemplateColumns={['100%', null, 'minmax(0, 65ch) 220px']}
+          gridTemplateColumns={['100%', null, 'minmax(0, 960px) 220px']}
           gridTemplateAreas={[
             '"heading" "content"',
             null,
