@@ -1,0 +1,56 @@
+---
+title: Note
+status: New
+source: https://github.com/primer/doctocat/blob/master/theme/src/components/note.js
+---
+
+Use the `Note` component to call out information in documentation pages.
+
+## Usage
+
+`Note` is a [shortcode](https://mdxjs.com/blog/shortcodes), meaning it's globally available in all `.md` and `.mdx` files. So you can use the `Note` component in any `.md` or `.mdx` file without importing it.
+
+```jsx live
+<Note>Your note goes here</Note>
+```
+
+To write markdown syntax inside of a `Note`, make sure to add extra newlines to seperate the content from the opening and
+closing tags:
+
+```
+blah blah blah
+
+<Note>
+
+Your _note_ goes **here**.
+
+</Note>
+
+blah blah blah
+```
+
+## Variants
+
+### Info (default)
+
+Use the `info` variant to call out neutral information.
+
+```jsx live
+<Note>Your note goes here</Note>
+```
+
+### Warning
+
+Use the `warning` variant to indicate that extra care should be taken.
+
+```jsx live
+<Note variant="warning">Don't forget to give your images alt text.</Note>
+```
+
+### Danger
+
+Use the `danger` variant to indicate that something bad could happen if the reader ignores the note.
+
+```jsx live
+<Note variant="danger">Don't cut the red wire!</Note>
+```

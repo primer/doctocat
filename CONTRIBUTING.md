@@ -4,12 +4,25 @@ title: Contributing
 
 We appreciate your contribution and hope that this document helps you along the way. If you have any questions or problems, don't hesitate to [file an issue](https://github.com/primer/doctocat/issues/new).
 
-_Note: These guidelines are for contributing to the theme itself, if you are looking for help running a Doctocat site for another project locally, check out the [Local Development](/usage/local-development) docs in the Usage section._
+<Note>
+
+
+These guidelines are for contributing to the theme itself, if you are looking for help running a Doctocat site for another project locally, check out the [Local Development](/usage/local-development) docs in the Usage section.
+
+</Note>
+
+
 ## Local development
 
 Run the following commands to begin local development:
 
-_Note: These steps require [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) to be set up locally._
+<Note>
+
+
+These steps require [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) to be set up locally.
+
+</Note>
+
 
 ```shell
 # Clone the repository

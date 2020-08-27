@@ -10,12 +10,13 @@ import HorizontalRule from './horizontal-rule'
 import Image from './image'
 import InlineCode from './inline-code'
 import List from './list'
+import Note from './note'
 import Paragraph from './paragraph'
 import Table from './table'
 
 const components = {
   a: Link,
-  pre: props => props.children,
+  pre: (props) => props.children,
   code: Code,
   inlineCode: InlineCode,
   table: Table,
@@ -32,6 +33,9 @@ const components = {
   ul: List,
   ol: List.withComponent('ol'),
   dl: DescriptionList,
+
+  // Shortcodes (https://mdxjs.com/blog/shortcodes)
+  Note,
 }
 
 function wrapRootElement({element}) {
