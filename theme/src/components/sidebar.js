@@ -1,10 +1,10 @@
 import {BorderBox, Flex, Position} from '@primer/components'
-import React from 'react'
 import {useScrollRestoration} from 'gatsby'
+import React from 'react'
+import smoothscroll from 'smoothscroll-polyfill'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
 import NavItems from './nav-items'
-import smoothscroll from 'smoothscroll-polyfill'
 
 // useScrollRestoration uses .scrollTo() under the hood.
 // Edge doesn't support .scrollTo() so we need to polyfill it.
