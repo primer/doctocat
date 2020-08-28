@@ -1,10 +1,13 @@
 import {BorderBox, Flex, Position} from '@primer/components'
 import React from 'react'
+import {useScrollRestoration} from 'gatsby'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
 import NavItems from './nav-items'
 
 function Sidebar() {
+  const sidebarScrollRestoration = useScrollRestoration('sidebar')
+
   return (
     <Position
       position="sticky"
@@ -20,6 +23,7 @@ function Sidebar() {
         borderRadius={0}
         height="100%"
         style={{overflow: 'auto'}}
+        {...sidebarScrollRestoration}
       >
         <Flex flexDirection="column">
           <NavItems items={navItems} />
