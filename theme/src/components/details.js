@@ -5,7 +5,7 @@ import styled from 'styled-components'
 // We have to check if window is defined before importing the polyfill
 // so the code doesn’t run while Gatsby is building.
 if (typeof window !== 'undefined') {
-  import('details-element-polyfill')
+  require('details-element-polyfill')
 }
 
 // TODO: Replace this Details component with the one from @primer/components when 14.0.0 is released.
