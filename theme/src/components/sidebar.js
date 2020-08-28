@@ -4,6 +4,13 @@ import {useScrollRestoration} from 'gatsby'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
 import NavItems from './nav-items'
+import smoothscroll from 'smoothscroll-polyfill'
+
+// useScrollRestoration uses .scrollTo() under the hood.
+// Edge doesn't support .scrollTo() so we need to polyfill it.
+if (typeof window !== 'undefined') {
+  smoothscroll.polyfill()
+}
 
 function Sidebar() {
   const sidebarScrollRestoration = useScrollRestoration('sidebar')
