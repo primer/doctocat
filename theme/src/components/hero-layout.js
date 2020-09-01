@@ -8,7 +8,11 @@ import Hero from './hero'
 import Sidebar from './sidebar'
 
 function HeroLayout({children, pageContext}) {
-  const {additionalContributors = []} = pageContext.frontmatter
+  let {additionalContributors} = pageContext.frontmatter
+
+  if (!additionalContributors) {
+    additionalContributors = []
+  }
 
   return (
     <Flex flexDirection="column" minHeight="100vh">
