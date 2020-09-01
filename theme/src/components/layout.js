@@ -20,13 +20,17 @@ import StatusLabel from './status-label'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  const {
+  let {
     title,
     description,
     status,
     source,
-    additionalContributors = [],
+    additionalContributors,
   } = pageContext.frontmatter
+
+  if (!additionalContributors) {
+    additionalContributors = []
+  }
 
   return (
     <Flex flexDirection="column" minHeight="100vh">

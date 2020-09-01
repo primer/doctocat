@@ -16,6 +16,9 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           fileAbsolutePath
           frontmatter {
             title
+            status
+            source
+            additionalContributors
           }
           tableOfContents
           parent {
@@ -71,7 +74,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           // for us here, and does on the first build,
           // but when HMR kicks in the frontmatter is lost.
           // The solution is to include it here explicitly.
-          // frontmatter: node.frontmatter
+          frontmatter: node.frontmatter,
         },
       })
     }),
