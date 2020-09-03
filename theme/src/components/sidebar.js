@@ -7,6 +7,12 @@ import NavItems from './nav-items'
 function usePersistentScroll(id) {
   const ref = React.useRef()
 
+  const handleScroll = React.useCallback(
+    // Save scroll position in session storage on every scroll change
+    (event) => window.sessionStorage.setItem(id, event.target.scrollTop),
+    [id],
+  )
+
   React.useLayoutEffect(() => {
     // Restore scroll position when component mounts
     const scrollPosition = window.sessionStorage.getItem(id)
@@ -15,15 +21,10 @@ function usePersistentScroll(id) {
     }
   }, [])
 
-  function scrollHandler(event) {
-    // Save scroll position in session storage on every scroll change
-    window.sessionStorage.setItem(id, event.target.scrollTop)
-  }
-
   // Return props to spread onto the scroll container
   return {
     ref,
-    onScroll: scrollHandler,
+    onScroll: handleScroll,
   }
 }
 
