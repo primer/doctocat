@@ -47,13 +47,12 @@ function Sidebar() {
       bg="gray.0"
     >
       <BorderBox
+        ref={scrollContainerRef}
         borderWidth={0}
         borderRightWidth={1}
         borderRadius={0}
         height="100%"
         style={{overflow: 'auto'}}
-        ref={scrollContainerRef}
-        // {...sidebarScrollRestoration}
       >
         <Flex flexDirection="column">
           <NavItems items={navItems} />
