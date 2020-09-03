@@ -39,7 +39,13 @@ export default {
 }
 ```
 
-**Note:** make sure to place `live-code-scope.js` in the root of your `gatsby-theme-doctocat` folder. Shadowed files must be present in the same location as they exist in the theme repository.
+<Note variant="warning">
+
+
+Make sure to place `live-code-scope.js` in the root of your `gatsby-theme-doctocat` folder. Shadowed files must be present in the same location as they exist in the theme repository.
+
+</Note>
+
 
 Every property on the object exported by `live-code-scope.js` will be available as a variable in the code:
 
@@ -89,9 +95,9 @@ function DemoApp() {
 
   return (
     <div>
-      <button onClick={() => setCount(n => n - 1)}>-</button>
+      <button onClick={() => setCount((n) => n - 1)}>-</button>
       {count}
-      <button onClick={() => setCount(n => n + 1)}>+</button>
+      <button onClick={() => setCount((n) => n + 1)}>+</button>
     </div>
   )
 }
@@ -106,9 +112,9 @@ function DemoApp() {
 
   return (
     <div style={{textAlign: 'center'}}>
-      <button onClick={() => setCount(n => n - 1)}>-</button>
+      <button onClick={() => setCount((n) => n - 1)}>-</button>
       {count}
-      <button onClick={() => setCount(n => n + 1)}>+</button>
+      <button onClick={() => setCount((n) => n + 1)}>+</button>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 // We have to check if window is defined before importing the polyfill
 // so the code doesn’t run while Gatsby is building.
 if (typeof window !== 'undefined') {
+  // eslint-disable-next-line no-unused-expressions
   import('details-element-polyfill')
 }
 
