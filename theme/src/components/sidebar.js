@@ -4,7 +4,33 @@ import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
 import NavItems from './nav-items'
 
+function usePersistentScroll(id) {
+  const ref = React.useRef()
+
+  const handleScroll = React.useCallback(
+    // Save scroll position in session storage on every scroll change
+    (event) => window.sessionStorage.setItem(id, event.target.scrollTop),
+    [id],
+  )
+
+  React.useLayoutEffect(() => {
+    // Restore scroll position when component mounts
+    const scrollPosition = window.sessionStorage.getItem(id)
+    if (scrollPosition && ref.current) {
+      ref.current.scrollTop = scrollPosition
+    }
+  }, [])
+
+  // Return props to spread onto the scroll container
+  return {
+    ref,
+    onScroll: handleScroll,
+  }
+}
+
 function Sidebar() {
+  const scrollContainerProps = usePersistentScroll('sidebar')
+
   return (
     <Position
       position="sticky"
@@ -15,6 +41,7 @@ function Sidebar() {
       bg="gray.0"
     >
       <BorderBox
+        {...scrollContainerProps}
         borderWidth={0}
         borderRightWidth={1}
         borderRadius={0}
