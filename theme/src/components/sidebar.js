@@ -16,26 +16,19 @@ function usePersistentScroll(id) {
   }, [])
 
   function scrollHandler(event) {
+    // Save scroll position in session storage on every scroll change
     window.sessionStorage.setItem(id, event.target.scrollTop)
   }
 
-  React.useEffect(() => {
-    if (ref.current) {
-      // Save scroll position in session storage on every scroll change
-      ref.current.addEventListener('scroll', scrollHandler, {passive: true})
-    }
-
-    // Clean up
-    return () => {
-      ref.current.removeEventListener('scroll', scrollHandler)
-    }
-  }, [])
-
-  return ref
+  // Return props to spread onto the scroll container
+  return {
+    ref,
+    onScroll: scrollHandler,
+  }
 }
 
 function Sidebar() {
-  const scrollContainerRef = usePersistentScroll('sidebar')
+  const scrollContainerProps = usePersistentScroll('sidebar')
 
   return (
     <Position
@@ -47,7 +40,7 @@ function Sidebar() {
       bg="gray.0"
     >
       <BorderBox
-        ref={scrollContainerRef}
+        {...scrollContainerProps}
         borderWidth={0}
         borderRightWidth={1}
         borderRadius={0}
