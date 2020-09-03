@@ -1,19 +1,40 @@
 import {BorderBox, Flex, Position} from '@primer/components'
-import {useScrollRestoration} from 'gatsby'
 import React from 'react'
-import smoothscroll from 'smoothscroll-polyfill'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
 import NavItems from './nav-items'
 
-// useScrollRestoration uses .scrollTo() under the hood.
-// Edge doesn't support .scrollTo() so we need to polyfill it.
-if (typeof window !== 'undefined') {
-  smoothscroll.polyfill()
+function usePersistentScroll(id) {
+  const ref = React.useRef()
+
+  React.useLayoutEffect(() => {
+    // Restore scroll position when component mounts
+    if (ref.current && window.sessionStorage.getItem(id)) {
+      ref.current.scrollTop = window.sessionStorage.getItem(id)
+    }
+  }, [])
+
+  function scrollHandler(event) {
+    window.sessionStorage.setItem(id, event.target.scrollTop)
+  }
+
+  React.useEffect(() => {
+    if (ref.current) {
+      // Save scroll position in session storage on every scroll change
+      ref.current.addEventListener('scroll', scrollHandler, {passive: true})
+    }
+
+    // Clean up
+    return () => {
+      ref.current.removeEventListener('scroll', scrollHandler)
+    }
+  }, [])
+
+  return ref
 }
 
 function Sidebar() {
-  const sidebarScrollRestoration = useScrollRestoration('sidebar')
+  const scrollContainerRef = usePersistentScroll('sidebar')
 
   return (
     <Position
@@ -30,7 +51,8 @@ function Sidebar() {
         borderRadius={0}
         height="100%"
         style={{overflow: 'auto'}}
-        {...sidebarScrollRestoration}
+        ref={scrollContainerRef}
+        // {...sidebarScrollRestoration}
       >
         <Flex flexDirection="column">
           <NavItems items={navItems} />
