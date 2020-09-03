@@ -9,8 +9,9 @@ function usePersistentScroll(id) {
 
   React.useLayoutEffect(() => {
     // Restore scroll position when component mounts
-    if (ref.current && window.sessionStorage.getItem(id)) {
-      ref.current.scrollTop = window.sessionStorage.getItem(id)
+    const scrollPosition = window.sessionStorage.getItem(id)
+    if (scrollPosition && ref.current) {
+      ref.current.scrollTop = scrollPosition
     }
   }, [])
 
