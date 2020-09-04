@@ -3,6 +3,8 @@ const readPkgUp = require('read-pkg-up')
 const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
+const extractExports = require(`gatsby-plugin-mdx/utils/extract-exports`)
+const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
 
 const CONTRIBUTOR_CACHE = new Map()
 
@@ -14,12 +16,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       allMdx {
         nodes {
           fileAbsolutePath
-          frontmatter {
-            title
-            status
-            source
-            additionalContributors
-          }
+          rawBody
           tableOfContents(maxDepth: 3)
           parent {
             ... on File {
@@ -63,6 +60,11 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
         contributors = await fetchContributors(repo, fileRelativePath, process.env.GITHUB_TOKEN)
       }
 
+      // Copied from gatsby-plugin-mdx (https://git.io/JUs3H)
+      // as a workaround for https://github.com/gatsbyjs/gatsby/issues/21837
+      const code = await mdx(node.rawBody)
+      const {frontmatter} = extractExports(code)
+
       actions.createPage({
         path: pagePath,
         component: node.fileAbsolutePath,
@@ -74,7 +76,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           // for us here, and does on the first build,
           // but when HMR kicks in the frontmatter is lost.
           // The solution is to include it here explicitly.
-          frontmatter: node.frontmatter,
+          frontmatter,
         },
       })
     }),
