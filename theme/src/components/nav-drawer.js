@@ -52,7 +52,7 @@ function NavDrawer({isOpen, onDismiss}) {
         bg="gray.9"
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
       >
-        <Flex flexDirection="column" flex="1 0 auto" color="blue.2" bg="gray.9">
+        <Flex flexDirection="column" flex="0 0 auto" color="blue.2" bg="gray.9">
           <BorderBox
             borderWidth={0}
             borderRadius={0}

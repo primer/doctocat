@@ -1,15 +1,15 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.23.1",
+  "version": "0.24.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "test": "jest"
   },
   "devDependencies": {
-    "gatsby": "^2.13.52",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "gatsby": "^2.24.52",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "peerDependencies": {
     "gatsby": "2.x",

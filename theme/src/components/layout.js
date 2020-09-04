@@ -9,7 +9,7 @@ import {
   StyledOcticon,
   Text,
 } from '@primer/components'
-import {ChevronDownIcon, ChevronRightIcon} from '@primer/octicons-react'
+import {ChevronDownIcon, ChevronUpIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -20,13 +20,17 @@ import StatusLabel from './status-label'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  const {
+  let {
     title,
     description,
     status,
     source,
-    additionalContributors = [],
+    additionalContributors,
   } = pageContext.frontmatter
+
+  if (!additionalContributors) {
+    additionalContributors = []
+  }
 
   return (
     <Flex flexDirection="column" minHeight="100vh">
@@ -39,7 +43,7 @@ function Layout({children, pageContext}) {
         <Grid
           id="skip-nav"
           maxWidth="100%"
-          gridTemplateColumns={['100%', null, 'minmax(0, 65ch) 220px']}
+          gridTemplateColumns={['100%', null, 'minmax(0, 960px) 220px']}
           gridTemplateAreas={[
             '"heading" "content"',
             null,
@@ -48,7 +52,7 @@ function Layout({children, pageContext}) {
           gridColumnGap={[null, null, 6, 7]}
           gridRowGap={3}
           mx="auto"
-          p={[5, 6, null, 7]}
+          p={[4, 5, 6, 7]}
           css={{alignItems: 'start', alignSelf: 'start'}}
         >
           <BorderBox
@@ -66,7 +70,6 @@ function Layout({children, pageContext}) {
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
               position="sticky"
               top={HEADER_HEIGHT + 24}
-              mt="6px"
               maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 24px)`}
             >
               <Text display="inline-block" fontWeight="bold" mb={1}>
@@ -84,19 +87,39 @@ function Layout({children, pageContext}) {
               </Flex>
             ) : null}
             {pageContext.tableOfContents.items ? (
-              <Box display={['block', null, 'none']} mb={3}>
+              <BorderBox display={['block', null, 'none']} mb={3} bg="gray.1">
                 <Details>
                   {({open}) => (
                     <>
-                      <Text as="summary" fontWeight="bold">
-                        {open ? (
-                          <StyledOcticon icon={ChevronDownIcon} mr={2} />
-                        ) : (
-                          <StyledOcticon icon={ChevronRightIcon} mr={2} />
-                        )}
-                        Table of contents
-                      </Text>
-                      <Box pt={1}>
+                      <Box as="summary" p={3} sx={{cursor: 'pointer'}}>
+                        <Flex
+                          flexDirection="row"
+                          justifyContent="space-between"
+                          alignItems="center"
+                        >
+                          <Text fontWeight="bold">Table of contents</Text>
+                          {open ? (
+                            <StyledOcticon
+                              icon={ChevronUpIcon}
+                              mr={2}
+                              color="gray.6"
+                            />
+                          ) : (
+                            <StyledOcticon
+                              icon={ChevronDownIcon}
+                              mr={2}
+                              color="gray.6"
+                            />
+                          )}
+                        </Flex>
+                      </Box>
+                      <Box
+                        p={3}
+                        sx={{
+                          borderTop: '1px solid',
+                          borderColor: 'border.gray',
+                        }}
+                      >
                         <TableOfContents
                           items={pageContext.tableOfContents.items}
                         />
@@ -104,7 +127,7 @@ function Layout({children, pageContext}) {
                     </>
                   )}
                 </Details>
-              </Box>
+              </BorderBox>
             ) : null}
             {children}
             <PageFooter
