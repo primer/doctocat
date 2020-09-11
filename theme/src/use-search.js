@@ -49,9 +49,10 @@ function useSearch(query) {
   }, [])
 
   React.useEffect(() => {
-    workerRef.current = new SearchWorker()
-    workerRef.current.addEventListener('message', handleSearchResults)
-    workerRef.current.postMessage({list})
+    const worker = new SearchWorker()
+    worker.addEventListener('message', handleSearchResults)
+    worker.postMessage({list})
+    workerRef.current = worker
 
     return () => {
       workerRef.current.terminate()
