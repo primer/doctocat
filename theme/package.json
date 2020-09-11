@@ -9,7 +9,8 @@
   "devDependencies": {
     "gatsby": "^2.24.52",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "worker-loader": "^3.0.2"
   },
   "peerDependencies": {
     "gatsby": "2.x",
