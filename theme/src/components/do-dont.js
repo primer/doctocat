@@ -1,7 +1,6 @@
-import {Flex, Grid, Text, StyledOcticon} from '@primer/components'
-import {CheckIcon, XIcon} from '@primer/octicons-react'
+import {Flex, Grid, StyledOcticon, Text} from '@primer/components'
+import {CheckCircleFillIcon, XCircleFillIcon} from '@primer/octicons-react'
 import React from 'react'
-import Caption from './caption'
 
 export function DoDontContainer({stacked, children}) {
   return (
@@ -20,30 +19,42 @@ DoDontContainer.defaultProps = {
 }
 
 export function Do(props) {
-  return <DoDontBase {...props} text="Do" icon={CheckIcon} iconBg="green.5" />
-}
-
-export function Dont(props) {
-  return <DoDontBase {...props} text="Don't" icon={XIcon} iconBg="red.5" />
-}
-
-function DoDontBase({src, alt, children, text, icon: Icon, iconBg}) {
   return (
-    <Flex flexDirection="column">
-      <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
-        <Flex bg={iconBg} color="white" p={1} style={{borderRadius: '50%'}}>
-          <StyledOcticon icon={Icon} verticalAlign="middle" size={12} />
-        </Flex>
-        <Text fontWeight="bold" color="gray.9" ml={2}>
-          {text}
-        </Text>
-      </Flex>
-      <img src={src} alt={alt} width="100%" />
-      <Caption mb={0}>{children}</Caption>
-    </Flex>
+    <DoDontBase
+      {...props}
+      title="Do"
+      icon={CheckCircleFillIcon}
+      iconBg="green.5"
+    />
   )
 }
 
-DoDontBase.defaultProps = {
-  alt: '',
+export function Dont(props) {
+  return (
+    <DoDontBase
+      {...props}
+      title="Don't"
+      icon={XCircleFillIcon}
+      iconBg="red.5"
+    />
+  )
+}
+
+function DoDontBase({children, title, icon: Icon, iconBg}) {
+  return (
+    <Flex flexDirection="column">
+      <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
+        <StyledOcticon icon={Icon} color={iconBg} />
+        <Text fontWeight="bold" color="gray.9" ml={2}>
+          {title}
+        </Text>
+      </Flex>
+      <Flex
+        flexDirection="column"
+        sx={{'& *:last-child': {mb: 0}, img: {width: '100%'}}}
+      >
+        {children}
+      </Flex>
+    </Flex>
+  )
 }
