@@ -57,7 +57,7 @@ function useSearch(query) {
     return () => {
       workerRef.current.terminate()
     }
-  }, [list])
+  }, [list, handleSearchResults])
 
   React.useEffect(() => {
     latestQuery.current = query
