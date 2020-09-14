@@ -20,7 +20,6 @@ import debounce from 'lodash.debounce'
 
   onmessage = function({data}) {
     if (data.list) {
-      console.log('list')
       fuse = new Fuse(data.list, {
         threshold: 0.2,
         keys: ['title', 'rawBody'],
