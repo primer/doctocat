@@ -3,6 +3,8 @@ import path from 'path'
 import React from 'react'
 import SearchWorker from 'worker-loader!./search.worker.js'
 
+const ensureAbsolute = uri => uri.startsWith('/') ? uri : `/${uri}`
+
 function useSearch(query) {
   const latestQuery = React.useRef(query)
   const workerRef = React.useRef()
@@ -30,10 +32,10 @@ function useSearch(query) {
   const list = React.useMemo(
     () =>
       data.allMdx.nodes.map(node => ({
-        path: path.join(
+        path: ensureAbsolute(path.join(
           node.parent.relativeDirectory,
           node.parent.name === 'index' ? '/' : node.parent.name,
-        ),
+        )),
         title: node.frontmatter.title,
         rawBody: node.rawBody,
       })),
