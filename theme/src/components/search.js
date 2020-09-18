@@ -1,6 +1,6 @@
 import {BorderBox, Position} from '@primer/components'
 import Downshift from 'downshift'
-import {navigate, withPrefix} from 'gatsby'
+import {navigate} from 'gatsby'
 import React from 'react'
 import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
@@ -36,9 +36,7 @@ function Search() {
       selectedItem={null}
       onSelect={item => {
         if (item) {
-          console.log('item.path', item.path)
-          console.log('withPrefix', withPrefix(item.path))
-          navigate(withPrefix(item.path))
+          navigate(item.path)
           setQuery('')
         }
       }}

@@ -2,7 +2,7 @@ import {Absolute, Fixed, Flex} from '@primer/components'
 import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
-import {navigate, withPrefix} from 'gatsby'
+import {navigate} from 'gatsby'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
 import useSearch from '../use-search'
@@ -59,7 +59,7 @@ function MobileSearch({isOpen, onDismiss}) {
               selectedItem={null}
               onSelect={(item) => {
                 if (item) {
-                  navigate(withPrefix(item.path))
+                  navigate(item.path)
                   handleDismiss()
                 }
               }}
