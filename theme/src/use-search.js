@@ -30,6 +30,7 @@ function useSearch(query) {
   const list = React.useMemo(
     () =>
       data.allMdx.nodes.map(node => ({
+        node: node,
         path: path.join(
           node.parent.relativeDirectory,
           node.parent.name === 'index' ? '/' : node.parent.name,
@@ -51,6 +52,7 @@ function useSearch(query) {
   React.useEffect(() => {
     const worker = new SearchWorker()
     worker.addEventListener('message', handleSearchResults)
+    console.log('sending list', list)
     worker.postMessage({list})
     workerRef.current = worker
 

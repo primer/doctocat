@@ -36,6 +36,8 @@ function Search() {
       selectedItem={null}
       onSelect={item => {
         if (item) {
+          console.log('item.path', item.path)
+          console.log('withPrefix', withPrefix(item.path))
           navigate(withPrefix(item.path))
           setQuery('')
         }
