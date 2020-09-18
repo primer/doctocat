@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.25.1",
+  "version": "0.25.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -49,6 +49,7 @@
     "jest": "^24.9.0",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "^4.7.0",
+    "lunr": "^2.3.9",
     "pkg-up": "^3.1.0",
     "pluralize": "^8.0.0",
     "preval.macro": "^3.0.0",
