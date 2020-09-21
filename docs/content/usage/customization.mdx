@@ -59,6 +59,8 @@ To enable these features, you'll need to specify your site's [`repository`](http
 }
 ```
 
+## Subdirectories
+
 If your site is located in a subdirectory of a repository, you'll also need to provide the relative path to the root of your git respository via the `repoRootPath` option in `gatsby-config.js`:
 
 ```js
@@ -69,6 +71,24 @@ module.exports = {
       resolve: '@primer/gatsby-theme-doctocat',
       options: {
         repoRootPath: '..', // defaults to '.'
+      },
+    },
+  ],
+}
+```
+
+### Default Branch
+
+If your site uses a branch other than `master` for your default branch, you'll also need to let Doctocat know via the `defaultBranch` option in `gatsby-config.js`:
+
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: '@primer/gatsby-theme-doctocat',
+      options: {
+        defaultBranch: 'main', // defaults to 'master'
       },
     },
   ],
