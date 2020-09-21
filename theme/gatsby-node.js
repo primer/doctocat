@@ -52,8 +52,8 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
         rootAbsolutePath,
         node.fileAbsolutePath,
       )
-
-      const editUrl = getEditUrl(repo, fileRelativePath)
+      const defaultBranch = themeOptions.defaultBranch || 'master'
+      const editUrl = getEditUrl(repo, fileRelativePath, defaultBranch)
 
       let contributors = []
       if (process.env.GITHUB_TOKEN || process.env.NOW_GITHUB_DEPLOYMENT) {
@@ -83,8 +83,8 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
   )
 }
 
-function getEditUrl(repo, filePath) {
-  return `https://github.com/${repo.user}/${repo.project}/edit/master/${filePath}`
+function getEditUrl(repo, filePath, defaultBranch) {
+  return `https://github.com/${repo.user}/${repo.project}/edit/${defaultBranch}/${filePath}`
 }
 
 async function fetchContributors(repo, filePath, accessToken = "") {
