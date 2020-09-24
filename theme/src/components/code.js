@@ -1,4 +1,4 @@
-import {Absolute, BorderBox, Relative, Text} from '@primer/components'
+import {Absolute, Box, Relative, Text} from '@primer/components'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
@@ -25,7 +25,7 @@ function Code({className, children, live, noinline}) {
         theme={githubTheme}
       >
         {({className, style, tokens, getLineProps, getTokenProps}) => (
-          <BorderBox
+          <Box
             as="pre"
             className={className}
             mt={0}
@@ -33,6 +33,7 @@ function Code({className, children, live, noinline}) {
             p={3}
             border={0}
             style={{...style, overflow: 'auto'}}
+            sx={{borderRadius: 2}}
           >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({line, key: i})}>
@@ -46,7 +47,7 @@ function Code({className, children, live, noinline}) {
                 ))}
               </div>
             ))}
-          </BorderBox>
+          </Box>
         )}
       </Highlight>
     </Relative>
