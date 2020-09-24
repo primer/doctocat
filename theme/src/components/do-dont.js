@@ -49,7 +49,10 @@ function DoDontBase({children, title, icon: Icon, iconBg}) {
           {title}
         </Text>
       </Flex>
-      <Flex flexDirection="column" sx={{'& *:last-child': {mb: 0}}}>
+      <Flex
+        flexDirection="column"
+        sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}}}
+      >
         {children}
       </Flex>
     </Flex>
