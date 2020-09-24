@@ -6,8 +6,8 @@ export function DoDontContainer({stacked, children}) {
   return (
     <Grid
       gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']}
-      gridGap={3}
-      mb={3}
+      gridGap={4}
+      mb={4}
     >
       {children}
     </Grid>
