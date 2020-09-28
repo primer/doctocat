@@ -21,11 +21,12 @@ function NavDropdown({title, children}) {
           </summary>
           <Absolute>
             <BorderBox
-              bg="white"
+              bg="gray.8"
               py={1}
               mt={2}
               boxShadow="medium"
-              color="gray.8"
+              borderColor="gray.7"
+              color="white"
             >
               {children}
             </BorderBox>
