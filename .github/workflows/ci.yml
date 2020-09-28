@@ -1,20 +1,20 @@
 name: CI
 on: [push]
 jobs:
-  all:
+  ci:
+    name: CI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Set up Node.js 10.x
+        uses: actions/setup-node@master
         with:
           version: 10
-      - name: install
-        run: yarn install
-      - name: test
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Test
         run: yarn workspace @primer/gatsby-theme-doctocat test
-      # - uses: primer/publish@v2.0.0
-      #   env:
-      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      #     NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      #   with:
-      #     args: "--dir=theme"
