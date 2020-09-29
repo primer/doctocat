@@ -18,3 +18,9 @@ jobs:
 
       - name: Test
         run: yarn workspace @primer/gatsby-theme-doctocat test
+
+      - name: Prerelease
+        run: |
+          yarn changeset pre enter canary
+          yarn changeset version
+          yarn changeset publish
