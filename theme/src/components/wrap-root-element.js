@@ -3,6 +3,7 @@ import {Link, theme} from '@primer/components'
 import React from 'react'
 import {ThemeProvider} from 'styled-components'
 import Blockquote from './blockquote'
+import Caption from './caption'
 import Code from './code'
 import DescriptionList from './description-list'
 import {Do, DoDontContainer, Dont} from './do-dont'
@@ -17,7 +18,7 @@ import Table from './table'
 
 const components = {
   a: Link,
-  pre: (props) => props.children,
+  pre: props => props.children,
   code: Code,
   inlineCode: InlineCode,
   table: Table,
@@ -40,6 +41,7 @@ const components = {
   Do,
   Dont,
   DoDontContainer,
+  Caption,
 }
 
 function wrapRootElement({element}) {
