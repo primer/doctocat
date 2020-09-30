@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "0.24.1",
+  "version": "0.25.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -63,6 +63,7 @@
     "read-pkg-up": "^6.0.0",
     "sentence-case": "^2.1.1",
     "styled-components": "^4.3.2",
-    "styled-system": "^5.0.18"
+    "styled-system": "^5.0.18",
+    "worker-loader": "^3.0.2"
   }
 }

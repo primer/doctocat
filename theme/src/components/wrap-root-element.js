@@ -3,6 +3,7 @@ import {Link, theme} from '@primer/components'
 import React from 'react'
 import {ThemeProvider} from 'styled-components'
 import Blockquote from './blockquote'
+import Caption from './caption'
 import Code from './code'
 import DescriptionList from './description-list'
 import {H1, H2, H3, H4, H5, H6} from './heading'
@@ -36,6 +37,7 @@ const components = {
 
   // Shortcodes (https://mdxjs.com/blog/shortcodes)
   Note,
+  Caption,
 }
 
 function wrapRootElement({element}) {
