@@ -2,7 +2,7 @@
 "@primer/gatsby-theme-doctocat": major
 ---
 
-Updated the `Do` and `Dont` component APIs to allow consumers to control how images are rendered:
+Update the `Do` and `Dont` component APIs to allow consumers to control how images are rendered:
 
 ```diff
 - <Do src="https://example.com/do.png">
