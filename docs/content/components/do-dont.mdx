@@ -4,15 +4,11 @@ status: New
 source: https://github.com/primer/doctocat/blob/master/theme/src/components/do-dont.js
 ---
 
-The `Do` and `Dont` components are used for providing good and bad examples within documentation.
+Use the `Do` and `Dont` components to provide good and bad examples within documentation.
 
 ## Usage
 
-To use these components in your MDX files, import them like so:
-
-```js
-import {DoDontContainer, Do, Dont} from '@primer/gatsby-theme-doctocat'
-```
+`Do`, `Dont` and `DoDontContainer` are a [shortcodes](https://mdxjs.com/blog/shortcodes), meaning they are globally available in all `.md` and `.mdx` files. So you can use the `Do`, `Dont`, and `DoDontContainer` components in any `.md` or `.mdx` file without importing them.
 
 ### Side-by-side
 
@@ -20,11 +16,13 @@ To create a side-by-side Do/Don't example, wrap the `Do` and `Dont` components w
 
 ```jsx live
 <DoDontContainer>
-  <Do src="https://user-images.githubusercontent.com/586552/63106528-06de5100-bf51-11e9-8a5e-98583ed74874.png">
-    Use brief and direct communication
+  <Do>
+    <img src="https://user-images.githubusercontent.com/586552/63106528-06de5100-bf51-11e9-8a5e-98583ed74874.png" />
+    <Caption>Use brief and direct communication</Caption>
   </Do>
-  <Dont src="https://user-images.githubusercontent.com/586552/63106527-06de5100-bf51-11e9-858c-72de6a5c728a.png">
-    Don't use wordy and redundant copy
+  <Dont>
+    <img src="https://user-images.githubusercontent.com/586552/63106527-06de5100-bf51-11e9-858c-72de6a5c728a.png" />
+    <Caption>Don't use wordy and redundant copy</Caption>
   </Dont>
 </DoDontContainer>
 ```
@@ -37,11 +35,13 @@ The `DoDontContainer` component also accepts a `stacked` prop to create stacked 
 
 ```jsx live
 <DoDontContainer stacked>
-  <Do src="https://user-images.githubusercontent.com/586552/63046880-46e5fb00-bea1-11e9-836d-be1b1c7d963f.png">
-    Use a container class to give the text a max-width
+  <Do>
+    <img src="https://user-images.githubusercontent.com/586552/63046880-46e5fb00-bea1-11e9-836d-be1b1c7d963f.png" />
+    <Caption>Use a container class to give the text a max-width</Caption>
   </Do>
-  <Dont src="https://user-images.githubusercontent.com/586552/63046881-46e5fb00-bea1-11e9-87ee-80dbeb0bea1c.png">
-    Don't let the text span the entire width of the window
+  <Dont>
+    <img src="https://user-images.githubusercontent.com/586552/63046881-46e5fb00-bea1-11e9-87ee-80dbeb0bea1c.png" />
+    <Caption>Don't let the text span the entire width of the window</Caption>
   </Dont>
 </DoDontContainer>
 ```

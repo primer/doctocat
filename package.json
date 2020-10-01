@@ -1,10 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "start": "yarn workspace docs develop"
+    "start": "yarn workspace docs develop",
+    "release": "changeset publish"
   },
   "workspaces": [
     "theme",
     "docs"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/changelog-github": "^0.2.7",
+    "@changesets/cli": "^2.10.3"
+  }
 }

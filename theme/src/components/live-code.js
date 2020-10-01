@@ -1,7 +1,7 @@
 import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from 'prism-react-renderer/themes/github'
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import reactElementToJsxString from 'react-element-to-jsx-string'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'
 import {ThemeContext} from 'styled-components'
@@ -10,8 +10,8 @@ import ClipboardCopy from './clipboard-copy'
 import LivePreviewWrapper from './live-preview-wrapper'
 
 const languageTransformers = {
-  html: html => htmlToJsx(html),
-  jsx: jsx => wrapWithFragment(jsx),
+  html: (html) => htmlToJsx(html),
+  jsx: (jsx) => wrapWithFragment(jsx),
 }
 
 function htmlToJsx(html) {
@@ -40,19 +40,25 @@ function LiveCode({code, language, noinline}) {
   const handleChange = (updatedLiveCode) => setLiveCode(updatedLiveCode)
 
   return (
-    <BorderBox
-      flexDirection="column"
-      mb={3}
-    >
+    <Flex flexDirection="column" mb={3}>
       <LiveProvider
         scope={scope}
         code={liveCode}
         transformCode={languageTransformers[language]}
         noInline={noinline}
       >
-        <LivePreviewWrapper>
-          <LivePreview />
-        </LivePreviewWrapper>
+        <Flex
+          sx={{
+            border: '1px solid',
+            borderColor: 'border.gray',
+            borderTopRightRadius: 2,
+            borderTopLeftRadius: 2,
+          }}
+        >
+          <LivePreviewWrapper>
+            <LivePreview />
+          </LivePreviewWrapper>
+        </Flex>
         <Relative>
           <LiveEditor
             onChange={handleChange}
@@ -80,7 +86,7 @@ function LiveCode({code, language, noinline}) {
           bg="red.5"
         />
       </LiveProvider>
-    </BorderBox>
+    </Flex>
   )
 }
 
