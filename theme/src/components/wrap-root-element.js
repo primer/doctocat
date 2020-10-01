@@ -6,6 +6,7 @@ import Blockquote from './blockquote'
 import Caption from './caption'
 import Code from './code'
 import DescriptionList from './description-list'
+import {Do, DoDontContainer, Dont} from './do-dont'
 import {H1, H2, H3, H4, H5, H6} from './heading'
 import HorizontalRule from './horizontal-rule'
 import Image from './image'
@@ -17,7 +18,7 @@ import Table from './table'
 
 const components = {
   a: Link,
-  pre: (props) => props.children,
+  pre: props => props.children,
   code: Code,
   inlineCode: InlineCode,
   table: Table,
@@ -37,6 +38,9 @@ const components = {
 
   // Shortcodes (https://mdxjs.com/blog/shortcodes)
   Note,
+  Do,
+  Dont,
+  DoDontContainer,
   Caption,
 }
 
