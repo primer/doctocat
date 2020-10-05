@@ -10,7 +10,7 @@
       url: https://primer.style/css/tools/prototyping
     - title: Presentations
       url: https://primer.style/presentations
-    - title: CLI
+    - title: Command line
       url: https://primer.style/cli
 - title: Development
   children:
