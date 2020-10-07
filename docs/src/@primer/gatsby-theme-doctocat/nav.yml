@@ -6,7 +6,7 @@
 - title: Usage
   url: /usage
   children:
-    - title: Local Development
+    - title: Local development
       url: /usage/local-development
     - title: Customization
       url: /usage/customization
