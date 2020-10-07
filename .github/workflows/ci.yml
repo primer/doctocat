@@ -31,3 +31,5 @@ jobs:
         run: |
           yarn changeset version --snapshot
           yarn changeset publish --tag canary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
