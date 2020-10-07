@@ -27,7 +27,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-      - name: Snapshot release
+      - name: Release snapshot
         run: |
           yarn changeset version --snapshot
           yarn changeset publish --tag canary
