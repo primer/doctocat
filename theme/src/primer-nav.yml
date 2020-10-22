@@ -12,6 +12,8 @@
       url: https://primer.style/presentations
     - title: Command line
       url: https://primer.style/cli
+    - title: Mobile
+      url: https://primer.style/mobile
 - title: Development
   children:
     - title: Primer CSS
