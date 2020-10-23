@@ -1,9 +1,16 @@
-import {Absolute, Box, Relative, Text} from '@primer/components'
-import Highlight, {defaultProps} from 'prism-react-renderer'
+import { Absolute, Box, Relative, Text } from '@primer/components'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import Prism from "prism-react-renderer/prism"
 import githubTheme from 'prism-react-renderer/themes/github'
 import React from 'react'
 import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
+
+// Add syntax highlighting support for ruby and erb
+// Reference: https://github.com/FormidableLabs/prism-react-renderer#faq
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-ruby");
+require("prismjs/components/prism-erb");
 
 function Code({className, children, live, noinline}) {
   const language = className ? className.replace(/language-/, '') : ''
