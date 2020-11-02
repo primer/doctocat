@@ -1,5 +1,19 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.2.0
+
+### Minor Changes
+
+- [`44ed070`](https://github.com/primer/doctocat/commit/44ed070e4340f1b01f258414b903c9550156b05e) [#204](https://github.com/primer/doctocat/pull/204) Thanks [@colebemis](https://github.com/colebemis)! - Add https://primer.style/view-components link to the global navigation
+
+* [`79654e5`](https://github.com/primer/doctocat/commit/79654e54762000884040b0f068162a10148b34cf) [#201](https://github.com/primer/doctocat/pull/201) Thanks [@colebemis](https://github.com/colebemis)! - Add https://primer.style/mobile link to the global navigation
+
+### Patch Changes
+
+- [`e412c29`](https://github.com/primer/doctocat/commit/e412c29c69dfd9b584fbe21c60327444ac9fd727) [#199](https://github.com/primer/doctocat/pull/199) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump object-path from 0.11.4 to 0.11.5
+
+* [`f35c5b3`](https://github.com/primer/doctocat/commit/f35c5b3b57c0c0fe0fce42167628fabb0a11b74e) [#205](https://github.com/primer/doctocat/pull/205) Thanks [@colebemis](https://github.com/colebemis)! - Remove border-radius on bottom page border
+
 ## 1.1.0
 
 ### Minor Changes
