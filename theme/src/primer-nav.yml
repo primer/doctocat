@@ -14,6 +14,8 @@
       url: https://primer.style/cli
     - title: Mobile
       url: https://primer.style/mobile
+    - title: Desktop
+      url: https://primer.style/desktop
 - title: Development
   children:
     - title: CSS
