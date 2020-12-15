@@ -1,5 +1,17 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.3.0
+
+### Minor Changes
+
+- [`eaa57f7`](https://github.com/primer/doctocat/commit/eaa57f79f6fbc11032e3ee535f7950a240f5ae94) [#211](https://github.com/primer/doctocat/pull/211) Thanks [@colebemis](https://github.com/colebemis)! - Remove Prototyping link from Design dropdown in the global navigation
+
+* [`a699326`](https://github.com/primer/doctocat/commit/a699326fb9d788fcc798a1c9881000fa2cc339bb) [#210](https://github.com/primer/doctocat/pull/210) Thanks [@colebemis](https://github.com/colebemis)! - Add https://primer.style/desktop link to the global navigation
+
+### Patch Changes
+
+- [`328099e`](https://github.com/primer/doctocat/commit/328099ee5913adf38145248ba8dad0666f9b4865) [#209](https://github.com/primer/doctocat/pull/209) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump ini from 1.3.5 to 1.3.7
+
 ## 1.2.0
 
 ### Minor Changes
