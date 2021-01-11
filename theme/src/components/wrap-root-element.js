@@ -5,6 +5,7 @@ import {ThemeProvider} from 'styled-components'
 import Blockquote from './blockquote'
 import Caption from './caption'
 import Code from './code'
+import Columns from './columns'
 import DescriptionList from './description-list'
 import {Do, DoDontContainer, Dont} from './do-dont'
 import {H1, H2, H3, H4, H5, H6} from './heading'
@@ -42,6 +43,7 @@ const components = {
   Dont,
   DoDontContainer,
   Caption,
+  Columns,
 }
 
 function wrapRootElement({element}) {

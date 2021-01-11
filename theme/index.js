@@ -1,4 +1,5 @@
 export {default as Caption} from './src/components/caption'
+export {default as Columns} from './src/components/columns'
 export {default as Container} from './src/components/container'
 export {default as Contributors} from './src/components/contributors'
 export {Do, DoDontContainer, Dont} from './src/components/do-dont'
