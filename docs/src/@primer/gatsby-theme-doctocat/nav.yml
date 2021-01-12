@@ -25,6 +25,8 @@
       url: /components/caption
     - title: Do/Don't
       url: /components/do-dont
+    - title: ImageContainer
+      url: /components/image-container
     - title: Note
       url: /components/note
 - title: Contributing
