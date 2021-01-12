@@ -10,6 +10,7 @@ import {Do, DoDontContainer, Dont} from './do-dont'
 import {H1, H2, H3, H4, H5, H6} from './heading'
 import HorizontalRule from './horizontal-rule'
 import Image from './image'
+import ImageContainer from './image-container'
 import InlineCode from './inline-code'
 import List from './list'
 import Note from './note'
@@ -42,6 +43,7 @@ const components = {
   Dont,
   DoDontContainer,
   Caption,
+  ImageContainer,
 }
 
 function wrapRootElement({element}) {
