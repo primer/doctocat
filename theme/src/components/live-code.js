@@ -1,6 +1,6 @@
 import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
 import htmlReactParser from 'html-react-parser'
-import githubTheme from 'prism-react-renderer/themes/github'
+import githubTheme from '../github'
 import React, {useState} from 'react'
 import reactElementToJsxString from 'react-element-to-jsx-string'
 import {LiveEditor, LiveError, LivePreview, LiveProvider} from 'react-live'

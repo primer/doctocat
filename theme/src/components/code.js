@@ -1,7 +1,7 @@
 import { Absolute, Box, Relative, Text } from '@primer/components'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import Prism from '../prism'
-import githubTheme from 'prism-react-renderer/themes/github'
+import githubTheme from '../github'
 import React from 'react'
 import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
