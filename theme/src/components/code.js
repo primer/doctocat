@@ -1,6 +1,7 @@
-import {Absolute, Box, Relative, Text} from '@primer/components'
-import Highlight, {defaultProps} from 'prism-react-renderer'
-import githubTheme from 'prism-react-renderer/themes/github'
+import { Absolute, Box, Relative, Text } from '@primer/components'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import Prism from '../prism'
+import githubTheme from '../github'
 import React from 'react'
 import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
@@ -20,6 +21,7 @@ function Code({className, children, live, noinline}) {
       </Absolute>
       <Highlight
         {...defaultProps}
+        Prism={Prism}
         code={code}
         language={language}
         theme={githubTheme}
