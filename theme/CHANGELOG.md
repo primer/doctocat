@@ -1,5 +1,13 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.4.0
+
+### Minor Changes
+
+- [`60a7f4a`](https://github.com/primer/doctocat/commit/60a7f4a3a91eda6fec83600b8886f9d0e19029ea) [#203](https://github.com/primer/doctocat/pull/203) Thanks [@colebemis](https://github.com/colebemis)! - Add syntax highlighting support for `ruby` and `erb` code examples
+
+* [`d4116cb`](https://github.com/primer/doctocat/commit/d4116cbf0906c594285ef470ae60b8845e6f5380) [#214](https://github.com/primer/doctocat/pull/214) Thanks [@colebemis](https://github.com/colebemis)! - Add ImageContainer component
+
 ## 1.3.0
 
 ### Minor Changes
