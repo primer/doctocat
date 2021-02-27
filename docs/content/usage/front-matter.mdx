@@ -3,7 +3,7 @@ title: Front matter
 ---
 
 import {BorderBox} from '@primer/components'
-import {StatusLabel, SourceLink} from '@primer/gatsby-theme-doctocat'
+import {StatusLabel, ExternalLink} from '@primer/gatsby-theme-doctocat'
 
 When you create a Markdown file (`.md` or `.mdx`) in `src/pages/`, you can define variables to provide additional information about that page. This information is called front matter and is set between triple dashes starting on the first line of the file:
 
@@ -63,7 +63,7 @@ source: https://github.com/path/to/code
 If the `source` front matter variable is defined, Doctocat will add a source code link to the top of the page, like this:
 
 <BorderBox p={4} mb={3}>
-  <SourceLink href="#" />
+  <ExternalLink href="#">View source</ExternalLink>
 </BorderBox>
 
 <Note>
@@ -72,6 +72,22 @@ If the `source` front matter variable is defined, Doctocat will add a source cod
 This source code link is not the same as the "Edit this page on GitHub" link that is automatically added to the bottom of every page. The source code link should point to code that is relevant to the page. The "Edit this page on GitHub" link points to the Markdown file for the page itself.
 
 </Note>
+
+## Storybook
+
+ You can use the `storybook` front matter variable to link to [Storybook](https://storybook.js.org/) stories:
+
+```
+---
+storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-component
+---
+```
+
+If the `storybook` front matter variable is defined, Doctocat will add a storybook link to the top of the page, like this:
+
+<BorderBox p={4} mb={3}>
+  <ExternalLink href="#">View storybook</ExternalLink>
+</BorderBox>
 
 
 ## Additional contributors

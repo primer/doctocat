@@ -15,7 +15,7 @@ import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
-import SourceLink from './source-link'
+import ExternalLink from './external-link'
 import StatusLabel from './status-label'
 import TableOfContents from './table-of-contents'
 
@@ -25,6 +25,7 @@ function Layout({children, pageContext}) {
     description,
     status,
     source,
+    storybook,
     additionalContributors,
   } = pageContext.frontmatter
 
@@ -79,11 +80,28 @@ function Layout({children, pageContext}) {
             </Position>
           ) : null}
           <Box css={{gridArea: 'content'}}>
-            {status || source ? (
-              <Flex mb={3} alignItems="center">
+            {status || source || storybook ? (
+              <Flex
+                mb={3}
+                alignItems={['start', 'center']}
+                flexDirection={['column', 'row']}
+              >
                 {status ? <StatusLabel status={status} /> : null}
                 <Box mx="auto" />
-                {source ? <SourceLink href={source} /> : null}
+                <Grid
+                  mt={[3, 0]}
+                  gridGap={[2, 4]}
+                  gridAutoFlow={['row', 'column']}
+                  gridAutoRows="max-content"
+                  gridAutoColumns="max-content"
+                >
+                  {source ? (
+                    <ExternalLink href={source}>View source</ExternalLink>
+                  ) : null}
+                  {storybook ? (
+                    <ExternalLink href={storybook}>View storybook</ExternalLink>
+                  ) : null}
+                </Grid>
               </Flex>
             ) : null}
             {pageContext.tableOfContents.items ? (
@@ -133,7 +151,7 @@ function Layout({children, pageContext}) {
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(
-                additionalContributors.map((login) => ({login})),
+                additionalContributors.map(login => ({login})),
               )}
             />
           </Box>
