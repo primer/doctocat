@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.5.0
+
+### Minor Changes
+
+- [`d7af544`](https://github.com/primer/doctocat/commit/d7af544369e8a592c05a65fef8813652d9a2842b) [#220](https://github.com/primer/doctocat/pull/220) Thanks [@colebemis](https://github.com/colebemis)! - Add support for "storybook" frontmatter variable
+
 ## 1.4.0
 
 ### Minor Changes
