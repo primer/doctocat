@@ -4,7 +4,7 @@ import React from 'react'
 
 function ExternalLink({href, children}) {
   return (
-    <Link href={href} lineHeight="condensedUltra" fontSize={1}>
+    <Link href={href} lineHeight="condensedUltra" fontSize={1} target="_blank">
       <StyledOcticon icon={LinkExternalIcon} mr={1} />
       {children}
     </Link>
