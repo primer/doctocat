@@ -1,10 +1,5 @@
-import {Box, Flex, Link, StyledOcticon, Sticky} from '@primer/components'
-import {
-  ChevronRightIcon,
-  MarkGithubIcon,
-  SearchIcon,
-  ThreeBarsIcon,
-} from '@primer/octicons-react'
+import {Box, Flex, Link, StyledOcticon, Sticky, Text} from '@primer/components'
+import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import {ThemeContext} from 'styled-components'
