@@ -60,9 +60,14 @@ function Header({isSearchEnabled}) {
 
           {siteMetadata.shortName ? (
             <>
-              <Box display={['none', null, null, 'inline-block']} mx={2}>
-                <StyledOcticon icon={ChevronRightIcon} color="blue.4" />
-              </Box>
+              <Text
+                display={['none', null, null, 'inline-block']}
+                color="blue.4"
+                fontFamily="mono"
+                mx={2}
+              >
+                /
+              </Text>
               <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono">
                 {siteMetadata.shortName}
               </Link>
