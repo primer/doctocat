@@ -1,5 +1,22 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.6.0
+
+### Minor Changes
+
+- [`6aafb95`](https://github.com/primer/doctocat/commit/6aafb95bd47f611cffd7b6c5c6528343c53b42e3) [#225](https://github.com/primer/doctocat/pull/225) Thanks [@colebemis](https://github.com/colebemis)! - Reduce table of contents depth (only list `h2`s)
+
+* [`31d9e8c`](https://github.com/primer/doctocat/commit/31d9e8cfe93d997a154928829b49c5d2f60dc35e) [#217](https://github.com/primer/doctocat/pull/217) Thanks [@srt32](https://github.com/srt32)! - Update supported statuses
+
+  ```diff
+  - New, Experimental, Review, Stable, Deprecated
+  + Alpha, Beta, Stable, Deprecated
+  ```
+
+### Patch Changes
+
+- [`c97e4ed`](https://github.com/primer/doctocat/commit/c97e4ed348cde43e7da638fd77893317d3db0ee4) [#224](https://github.com/primer/doctocat/pull/224) Thanks [@colebemis](https://github.com/colebemis)! - Replace `>` with `/` in the header
+
 ## 1.5.0
 
 ### Minor Changes

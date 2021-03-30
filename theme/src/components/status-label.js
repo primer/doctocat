@@ -3,10 +3,9 @@ import {DotFillIcon} from '@primer/octicons-react'
 import React from 'react'
 
 const STATUS_COLORS = {
+  alpha: 'red.6',
+  beta: 'yellow.7',
   stable: 'green.6',
-  new: 'green.6',
-  experimental: 'yellow.7',
-  review: 'yellow.7',
   deprecated: 'red.6',
 }
 
