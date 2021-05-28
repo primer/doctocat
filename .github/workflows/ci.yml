@@ -8,16 +8,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@master
 
-      - name: Set up Node.js 10.x
-        uses: actions/setup-node@master
+      - name: Setup Node.js
+        uses: 'actions/setup-node@v1'
         with:
-          node-version: 10
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup npm
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
 
       - name: Install dependencies
-        run: yarn
+        run: npm install --workspaces
 
       - name: Test
-        run: yarn workspace @primer/gatsby-theme-doctocat test
+        run: npm test --workspaces
 
       - name: Create .npmrc
         run: |
@@ -29,7 +33,7 @@ jobs:
 
       - name: Release snapshot
         run: |
-          yarn changeset version --snapshot
-          yarn changeset publish --tag canary
+          npx changeset version --snapshot
+          npx changeset publish --tag canary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

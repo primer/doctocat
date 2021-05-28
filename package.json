@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "yarn workspace docs develop",
+    "start": "npm run develop --workspaces",
     "release": "changeset publish"
   },
   "workspaces": [

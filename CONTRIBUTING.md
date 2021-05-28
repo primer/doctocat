@@ -6,11 +6,9 @@ We appreciate your contribution and hope that this document helps you along the 
 
 <Note>
 
-
 These guidelines are for contributing to the theme itself, if you are looking for help running a Doctocat site for another project locally, check out the [Local Development](/usage/local-development) docs in the Usage section.
 
 </Note>
-
 
 ## Local development
 
@@ -18,11 +16,9 @@ Run the following commands to begin local development:
 
 <Note>
 
-
-These steps require [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) to be set up locally.
+These steps require [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) (version 7 or higher) to be set up locally.
 
 </Note>
-
 
 ```shell
 # Clone the repository
@@ -30,10 +26,10 @@ git clone https://github.com/primer/doctocat.git
 cd doctocat
 
 # Install the dependencies
-yarn
+npm install --workspaces
 
 # Start the development server for the documentation site
-yarn workspace docs develop
+npm start
 
 # Navigate to http://localhost:8000 in your browser
 ```
@@ -50,15 +46,15 @@ yarn workspace docs develop
 
 - `theme/`: This directory contains the code for the [Gatsby Theme](https://www.gatsbyjs.org/docs/themes/what-are-gatsby-themes/) and is what gets published to npm.
 - `docs/`: This directory contains the code for the documentation site for Doctocat. The documentation site can also be used to test changes to the theme locally.
-- `package.json`: This file defines the [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) for the project and is not meant to be published.
+- `package.json`: This file defines the [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) for the project and is not meant to be published.
 - `now.json`: This file configures the deployment of the documentation site. Check out the [now.json docs](https://zeit.co/docs/v2/deployments/configuration/?query=now.json) for more information.
 
 ## Scripts
 
-The documentation site has a few [npm scripts](https://docs.npmjs.com/misc/scripts) for developing and building the site. You can run these scripts from the root directory using the [`yarn workspace`](https://yarnpkg.com/lang/en/docs/cli/workspace/) command:
+The documentation site has a few [npm scripts](https://docs.npmjs.com/misc/scripts) for developing and building the site. You can run these scripts from the root directory using the `npm run` commands with the [`--workspaces` flag](https://docs.npmjs.com/cli/v7/using-npm/workspaces#running-commands-in-the-context-of-workspaces):
 
 ```shell
-yarn workspace docs <script-name>
+npm run <script-name> --workspaces
 ```
 
 ### `develop`
@@ -149,13 +145,13 @@ Follow this process if you'd like your work considered for inclusion in the proj
 - Install the dependencies:
 
   ```shell
-  yarn
+  npm install --workspaces
   ```
 
 - Start Gatsby's hot-reloading development environment:
 
   ```shell
-  yarn workspace docs develop
+  npm run develop --workspaces
   # The documentation site will now be accessible from http://localhost:8000
   ```
 
