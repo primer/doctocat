@@ -1716,6 +1716,11 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
+"@primer/component-metadata@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.3.0.tgz#b15e01f273b9a19dd7a3d5adbb36f424f5e8b3e9"
+  integrity sha512-GNO+9sv7gYykFbGfFQX3bq69vbeRbahQSIpiqbepJOHTHLXhcIwamBrh0XqROIbI1FBNzVjWVMTHQ1HGUi4XgQ==
+
 "@primer/components@^20.0.0":
   version "20.0.0"
   resolved "https://registry.yarnpkg.com/@primer/components/-/components-20.0.0.tgz#643bd7d719af28d6cdf446909255ee04e9f47014"
