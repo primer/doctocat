@@ -82,10 +82,14 @@ function Layout({children, pageContext}) {
                 </Heading>{' '}
                 {status ? <StatusLabel status={status} /> : null}
               </Flex>
-              {description ? <Box sx={{fontSize: 3}}>{description}</Box> : null}
+              {description ? (
+                <Box pb={2} sx={{fontSize: 3}}>
+                  {description}
+                </Box>
+              ) : null}
               {source || storybook ? (
                 <Grid
-                  mt={3}
+                  py={2}
                   gridGap={[1, null, 3]}
                   gridAutoFlow={['row', null, 'column']}
                   gridAutoColumns="max-content"
