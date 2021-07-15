@@ -75,7 +75,7 @@ function Layout({children, pageContext}) {
             </Position>
           ) : null}
           <Box width="100%" maxWidth="960px">
-            <Box mb={6}>
+            <Box mb={4}>
               <Flex sx={{alignItems: 'center'}}>
                 <Heading as="h1" mr={2}>
                   {title}
@@ -84,14 +84,20 @@ function Layout({children, pageContext}) {
               </Flex>
               {description ? <Box sx={{fontSize: 3}}>{description}</Box> : null}
               {source || storybook ? (
-                <Grid mt={3} gridGap={1}>
+                <Grid
+                  mt={3}
+                  gridGap={[1, null, 3]}
+                  gridAutoFlow={['row', null, 'column']}
+                  gridAutoColumns="max-content"
+                  gridAutoRows="max-content"
+                >
                   {source ? <SourceLink href={source} /> : null}
                   {storybook ? <StorybookLink href={storybook} /> : null}
                 </Grid>
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox display={['block', null, 'none']} mb={6} bg="gray.1">
+              <BorderBox display={['block', null, 'none']} mb={4} bg="gray.1">
                 <Box p={3}>
                   <Flex
                     flexDirection="row"
