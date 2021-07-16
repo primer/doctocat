@@ -29,6 +29,22 @@ description: My page description
 ---
 ```
 
+## Component metadata
+
+To auto-populate the `title` and `description` of a component page using metadata from the [primer/component-metadata](https://github.com/primer/component-metadat) repository, add the `componentId` frontmatter variable:
+
+```markdown
+---
+componentId: avatar
+---
+```
+
+<Note>
+
+`componentId` must match the `id` of a component in this [metadata.json](https://github.com/primer/component-metadata/blob/main/metadata.json) file.
+
+</Note>
+
 ## Status
 
 You can add a status label to any page by setting a `status` variable in the frontmatter:
