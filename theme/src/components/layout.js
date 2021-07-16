@@ -101,7 +101,7 @@ function Layout({children, pageContext}) {
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox display={['block', null, 'none']} mb={4} bg="gray.1">
+              <BorderBox display={['block', null, 'none']} mb={5} bg="gray.1">
                 <Box p={3}>
                   <Flex
                     flexDirection="row"
