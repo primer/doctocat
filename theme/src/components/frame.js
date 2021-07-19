@@ -20,7 +20,7 @@ function Frame({children}) {
                 // We're using Measure to calculate the size of the content
                 // and adjust the iframe's height dynamically.
                 bounds={true}
-                onResize={rect => setHeight(rect.bounds.height)}
+                onResize={(rect) => setHeight(rect.bounds.height)}
               >
                 {({measureRef}) => <div ref={measureRef}>{children}</div>}
               </Measure>

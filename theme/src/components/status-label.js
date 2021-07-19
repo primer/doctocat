@@ -17,7 +17,10 @@ function StatusLabel({status}) {
   return (
     <BorderBox display="inline-block" px={2} py={1}>
       <Flex alignItems="center">
-        <StyledOcticon icon={DotFillIcon} color={getStatusColor(status)} mr={2} />
+        <StyledOcticon
+          icon={DotFillIcon}
+          sx={{color: getStatusColor(status), mr: 2}}
+        />
         <Text fontSize={1}>{status}</Text>
       </Flex>
     </BorderBox>

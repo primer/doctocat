@@ -68,8 +68,7 @@ function NavDrawer({isOpen, onDismiss}) {
             >
               <Link
                 href="https://primer.style"
-                fontFamily="mono"
-                color="inherit"
+                sx={{fontFamily: 'mono', color: 'inherit'}}
               >
                 Primer
               </Link>
@@ -92,11 +91,13 @@ function NavDrawer({isOpen, onDismiss}) {
             <Link
               as={GatsbyLink}
               to="/"
-              display="inline-block"
-              color="inherit"
-              fontFamily="mono"
-              mx={4}
-              my={4}
+              sx={{
+                display: 'inline-block',
+                color: 'inherit',
+                fontFamily: 'mono',
+                mx: 4,
+                my: 4,
+              }}
             >
               {siteMetadata.title}
             </Link>
@@ -134,10 +135,7 @@ function PrimerNavItems({items}) {
                     <Link
                       key={child.title}
                       href={child.url}
-                      py={1}
-                      mt={2}
-                      fontSize={1}
-                      color="inherit"
+                      sx={{py: 1, mt: 2, fontSize: 1, color: 'inherit'}}
                     >
                       {child.title}
                     </Link>
@@ -147,7 +145,11 @@ function PrimerNavItems({items}) {
             )}
           </Details>
         ) : (
-          <Link key={index} href={item.url} color="inherit" display="block">
+          <Link
+            key={index}
+            href={item.url}
+            sx={{color: 'inherit', display: 'block'}}
+          >
             {item.title}
           </Link>
         )}

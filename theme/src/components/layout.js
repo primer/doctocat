@@ -20,14 +20,8 @@ import StatusLabel from './status-label'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {
-    title,
-    description,
-    status,
-    source,
-    storybook,
-    additionalContributors,
-  } = pageContext.frontmatter
+  let {title, description, status, source, storybook, additionalContributors} =
+    pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -119,14 +113,12 @@ function Layout({children, pageContext}) {
                           {open ? (
                             <StyledOcticon
                               icon={ChevronUpIcon}
-                              mr={2}
-                              color="gray.6"
+                              sx={{mr: 2, color: 'gray.6'}}
                             />
                           ) : (
                             <StyledOcticon
                               icon={ChevronDownIcon}
-                              mr={2}
-                              color="gray.6"
+                              sx={{mr: 2, color: 'gray.6'}}
                             />
                           )}
                         </Flex>
@@ -151,7 +143,7 @@ function Layout({children, pageContext}) {
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(
-                additionalContributors.map(login => ({login})),
+                additionalContributors.map((login) => ({login})),
               )}
             />
           </Box>

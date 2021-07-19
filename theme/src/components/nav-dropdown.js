@@ -17,7 +17,7 @@ function NavDropdown({title, children}) {
         <>
           <summary style={{cursor: 'pointer'}} onClick={toggle}>
             <Text>{title}</Text>
-            <StyledOcticon icon={TriangleDownIcon} ml={1} />
+            <StyledOcticon icon={TriangleDownIcon} sx={{ml: 1}} />
           </summary>
           <Absolute>
             <BorderBox

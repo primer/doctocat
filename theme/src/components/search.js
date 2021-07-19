@@ -28,19 +28,19 @@ function Search() {
   return (
     <Downshift
       inputValue={query}
-      onInputValueChange={inputValue => setQuery(inputValue)}
+      onInputValueChange={(inputValue) => setQuery(inputValue)}
       // We don't need Downshift to keep track of a selected item because as
       // soon as an item is selected we navigate to a new page.
       // Let's avoid any unexpected states related to the selected item
       // by setting it to always be `null`.
       selectedItem={null}
-      onSelect={item => {
+      onSelect={(item) => {
         if (item) {
           navigate(item.path)
           setQuery('')
         }
       }}
-      itemToString={item => (item ? item.title : '')}
+      itemToString={(item) => (item ? item.title : '')}
       stateReducer={stateReducer}
     >
       {({

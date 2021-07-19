@@ -16,7 +16,7 @@ function ClipboardCopy({value}) {
 
   return (
     <Button
-      px={2}
+      sx={{px: 2}}
       aria-label="Copy to clipboard"
       onClick={() => {
         copy(value)
@@ -24,9 +24,9 @@ function ClipboardCopy({value}) {
       }}
     >
       {copied ? (
-        <StyledOcticon icon={CheckIcon} color="green.5" />
+        <StyledOcticon icon={CheckIcon} sx={{color: 'green.5'}} />
       ) : (
-        <StyledOcticon icon={ClippyIcon} color="gray.5" />
+        <StyledOcticon icon={ClippyIcon} sx={{color: 'gray.5'}} />
       )}
     </Button>
   )

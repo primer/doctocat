@@ -19,7 +19,7 @@ import Table from './table'
 
 const components = {
   a: Link,
-  pre: props => props.children,
+  pre: (props) => props.children,
   code: Code,
   inlineCode: InlineCode,
   table: Table,

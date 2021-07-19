@@ -8,11 +8,13 @@ function TableOfContents({items, depth}) {
         <Box as="li" key={item.url} pl={depth > 0 ? 3 : 0}>
           {item.title ? (
             <Link
-              display="inline-block"
-              py={1}
               href={item.url}
-              fontSize={[2, null, 1]}
-              color="gray.6"
+              sx={{
+                display: 'inline-block',
+                py: 1,
+                fontSize: [2, null, 1],
+                color: 'gray.6',
+              }}
             >
               {item.title}
             </Link>

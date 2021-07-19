@@ -29,7 +29,7 @@ function HeroLayout({children, pageContext}) {
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(
-                additionalContributors.map(login => ({login})),
+                additionalContributors.map((login) => ({login})),
               )}
             />
           </Container>

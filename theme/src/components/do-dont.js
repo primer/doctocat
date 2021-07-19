@@ -44,7 +44,7 @@ function DoDontBase({children, title, icon: Icon, iconBg}) {
   return (
     <Flex flexDirection="column">
       <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
-        <StyledOcticon icon={Icon} color={iconBg} />
+        <StyledOcticon icon={Icon} sx={{color: iconBg}} />
         <Text fontWeight="bold" color="gray.9" ml={2}>
           {title}
         </Text>

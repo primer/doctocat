@@ -17,12 +17,11 @@ function Contributors({contributors}) {
           {uniqueContributors.length}{' '}
           {pluralize('contributor', uniqueContributors.length)}
         </Text>
-        {uniqueContributors.map(contributor => (
+        {uniqueContributors.map((contributor) => (
           <Link
             key={contributor.login}
             href={`https://github.com/${contributor.login}`}
-            lineHeight="condensedUltra"
-            mr={2}
+            sx={{lineHeight: 'condensedUltra', mr: 2}}
           >
             <Tooltip key={contributor.login} aria-label={contributor.login}>
               <Avatar

@@ -4,8 +4,8 @@ import React from 'react'
 
 function ExternalLink({href, children}) {
   return (
-    <Link href={href} lineHeight="condensedUltra" fontSize={1}>
-      <StyledOcticon icon={LinkExternalIcon} mr={1} />
+    <Link href={href} sx={{lineHeight: 'condensedUltra', fontSize: 1}}>
+      <StyledOcticon icon={LinkExternalIcon} sx={{mr: 1}} />
       {children}
     </Link>
   )
