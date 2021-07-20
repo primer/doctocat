@@ -1,30 +1,44 @@
+import componentMetadata from '@primer/component-metadata'
 import {
   BorderBox,
   Box,
-  Details,
   Flex,
   Grid,
   Heading,
   Position,
-  StyledOcticon,
   Text,
 } from '@primer/components'
-import {ChevronDownIcon, ChevronUpIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
-import ExternalLink from './external-link'
+import SourceLink from './source-link'
 import StatusLabel from './status-label'
+import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, status, source, storybook, additionalContributors} =
-    pageContext.frontmatter
+  let {
+    title,
+    description,
+    status,
+    source,
+    storybook,
+    additionalContributors,
+    componentId,
+  } = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
+  }
+
+  const component = componentMetadata.components[componentId]
+
+  // Auto-populate title and description using component metadata
+  if (component) {
+    title ||= component.displayName
+    description ||= component.description
   }
 
   return (
@@ -35,32 +49,19 @@ function Layout({children, pageContext}) {
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
-        <Grid
+        <Box
           id="skip-nav"
-          maxWidth="100%"
-          gridTemplateColumns={['100%', null, 'minmax(0, 960px) 220px']}
-          gridTemplateAreas={[
-            '"heading" "content"',
-            null,
-            '"heading table-of-contents" "content table-of-contents"',
-          ]}
-          gridColumnGap={[null, null, 6, 7]}
-          gridRowGap={3}
-          mx="auto"
+          display="flex"
+          width="100%"
           p={[4, 5, 6, 7]}
-          css={{alignItems: 'start', alignSelf: 'start'}}
+          sx={{
+            justifyContent: 'center',
+            flexDirection: 'row-reverse',
+          }}
         >
-          <BorderBox
-            css={{gridArea: 'heading'}}
-            borderWidth={0}
-            borderBottomWidth={1}
-            borderRadius={0}
-            pb={2}
-          >
-            <Heading as="h1">{title}</Heading>
-          </BorderBox>
           {pageContext.tableOfContents.items ? (
             <Position
+              sx={{width: 220, flex: '0 0 auto', marginLeft: 6}}
               display={['none', null, 'block']}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
               position="sticky"
@@ -68,86 +69,68 @@ function Layout({children, pageContext}) {
               maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 24px)`}
             >
               <Text display="inline-block" fontWeight="bold" mb={1}>
-                Table of contents
+                On this page
               </Text>
               <TableOfContents items={pageContext.tableOfContents.items} />
             </Position>
           ) : null}
-          <Box css={{gridArea: 'content'}}>
-            {status || source || storybook ? (
-              <Flex
-                mb={3}
-                alignItems={['start', 'center']}
-                flexDirection={['column', 'row']}
-              >
+          <Box width="100%" maxWidth="960px">
+            <Box mb={4}>
+              <Flex sx={{alignItems: 'center'}}>
+                <Heading as="h1" mr={2}>
+                  {title}
+                </Heading>{' '}
                 {status ? <StatusLabel status={status} /> : null}
-                <Box mx="auto" />
-                <Grid
-                  mt={[3, 0]}
-                  gridGap={[2, 4]}
-                  gridAutoFlow={['row', 'column']}
-                  gridAutoRows="max-content"
-                  gridAutoColumns="max-content"
-                >
-                  {source ? (
-                    <ExternalLink href={source}>View source</ExternalLink>
-                  ) : null}
-                  {storybook ? (
-                    <ExternalLink href={storybook}>View storybook</ExternalLink>
-                  ) : null}
-                </Grid>
               </Flex>
-            ) : null}
+              {description ? (
+                <Box pb={2} sx={{fontSize: 3}}>
+                  {description}
+                </Box>
+              ) : null}
+              {source || storybook ? (
+                <Grid
+                  py={2}
+                  gridGap={[1, null, 3]}
+                  gridAutoFlow={['row', null, 'column']}
+                  gridAutoColumns="max-content"
+                  gridAutoRows="max-content"
+                >
+                  {source ? <SourceLink href={source} /> : null}
+                  {storybook ? <StorybookLink href={storybook} /> : null}
+                </Grid>
+              ) : null}
+            </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox display={['block', null, 'none']} mb={3} bg="gray.1">
-                <Details>
-                  {({open}) => (
-                    <>
-                      <Box as="summary" p={3} sx={{cursor: 'pointer'}}>
-                        <Flex
-                          flexDirection="row"
-                          justifyContent="space-between"
-                          alignItems="center"
-                        >
-                          <Text fontWeight="bold">Table of contents</Text>
-                          {open ? (
-                            <StyledOcticon
-                              icon={ChevronUpIcon}
-                              sx={{mr: 2, color: 'gray.6'}}
-                            />
-                          ) : (
-                            <StyledOcticon
-                              icon={ChevronDownIcon}
-                              sx={{mr: 2, color: 'gray.6'}}
-                            />
-                          )}
-                        </Flex>
-                      </Box>
-                      <Box
-                        p={3}
-                        sx={{
-                          borderTop: '1px solid',
-                          borderColor: 'border.gray',
-                        }}
-                      >
-                        <TableOfContents
-                          items={pageContext.tableOfContents.items}
-                        />
-                      </Box>
-                    </>
-                  )}
-                </Details>
+              <BorderBox display={['block', null, 'none']} mb={5} bg="gray.1">
+                <Box p={3}>
+                  <Flex
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <Text fontWeight="bold">On this page</Text>
+                  </Flex>
+                </Box>
+                <Box
+                  p={3}
+                  sx={{
+                    borderTop: '1px solid',
+                    borderColor: 'border.gray',
+                  }}
+                >
+                  <TableOfContents items={pageContext.tableOfContents.items} />
+                </Box>
               </BorderBox>
             ) : null}
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(
-                additionalContributors.map((login) => ({login})),
+                additionalContributors.map(login => ({login})),
               )}
             />
           </Box>
-        </Grid>
+        </Box>
       </Flex>
     </Flex>
   )

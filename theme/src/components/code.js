@@ -15,7 +15,15 @@ function Code({className, children, live, noinline}) {
   }
 
   return (
-    <Relative>
+    <Relative
+      sx={{
+        // Make <pre> adjust to the width of the container
+        // https://stackoverflow.com/a/14406386
+        display: 'table',
+        tableLayout: 'fixed',
+        width: '100%',
+      }}
+    >
       <Absolute top={0} right={0} p={2}>
         <ClipboardCopy value={code} />
       </Absolute>

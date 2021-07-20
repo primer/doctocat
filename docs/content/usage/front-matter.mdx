@@ -3,7 +3,10 @@ title: Front matter
 ---
 
 import {BorderBox} from '@primer/components'
-import {StatusLabel, ExternalLink} from '@primer/gatsby-theme-doctocat'
+import {StatusLabel} from '@primer/gatsby-theme-doctocat'
+import StorybookLink from '@primer/gatsby-theme-doctocat/src/components/storybook-link'
+import SourceLink from '@primer/gatsby-theme-doctocat/src/components/source-link'
+
 
 When you create a Markdown file (`.md` or `.mdx`) in `src/pages/`, you can define variables to provide additional information about that page. This information is called front matter and is set between triple dashes starting on the first line of the file:
 
@@ -25,6 +28,22 @@ title: My page title
 description: My page description
 ---
 ```
+
+## Component metadata
+
+To auto-populate the `title` and `description` of a component page using metadata from the [primer/component-metadata](https://github.com/primer/component-metadat) repository, add the `componentId` frontmatter variable:
+
+```markdown
+---
+componentId: avatar
+---
+```
+
+<Note>
+
+`componentId` must match the `id` of a component in this [metadata.json](https://github.com/primer/component-metadata/blob/main/metadata.json) file.
+
+</Note>
 
 ## Status
 
@@ -62,7 +81,7 @@ source: https://github.com/path/to/code
 If the `source` front matter variable is defined, Doctocat will add a source code link to the top of the page, like this:
 
 <BorderBox p={4} mb={3}>
-  <ExternalLink href="#">View source</ExternalLink>
+  <SourceLink href="#" />
 </BorderBox>
 
 <Note>
@@ -85,7 +104,7 @@ storybook: https://primer.style/view-components/stories/?path=/story/primer-avat
 If the `storybook` front matter variable is defined, Doctocat will add a storybook link to the top of the page, like this:
 
 <BorderBox p={4} mb={3}>
-  <ExternalLink href="#">View storybook</ExternalLink>
+  <StorybookLink href="#" />
 </BorderBox>
 
 

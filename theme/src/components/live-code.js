@@ -10,8 +10,8 @@ import ClipboardCopy from './clipboard-copy'
 import LivePreviewWrapper from './live-preview-wrapper'
 
 const languageTransformers = {
-  html: (html) => htmlToJsx(html),
-  jsx: (jsx) => wrapWithFragment(jsx),
+  html: html => htmlToJsx(html),
+  jsx: jsx => wrapWithFragment(jsx),
 }
 
 function htmlToJsx(html) {
@@ -37,7 +37,7 @@ function wrapWithFragment(jsx) {
 function LiveCode({code, language, noinline}) {
   const theme = React.useContext(ThemeContext)
   const [liveCode, setLiveCode] = useState(code)
-  const handleChange = (updatedLiveCode) => setLiveCode(updatedLiveCode)
+  const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
 
   return (
     <Flex flexDirection="column" mb={3}>
@@ -70,6 +70,9 @@ function LiveCode({code, language, noinline}) {
               fontSize: '85%',
               borderBottomLeftRadius: theme.radii[2],
               borderBottomRightRadius: theme.radii[2],
+              border: '1px solid',
+              borderTop: 0,
+              borderColor: theme.colors.border.gray,
             }}
           />
           <Absolute top={0} right={0} p={2}>
