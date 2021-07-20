@@ -1,0 +1,16 @@
+import {Link, Text} from '@primer/components'
+import {MarkGithubIcon} from '@primer/octicons-react'
+import React from 'react'
+
+function SourceLink({href}) {
+  return (
+    <Link href={href}>
+      <MarkGithubIcon />
+      <Text ml={2} display="inline-block">
+        View source
+      </Text>
+    </Link>
+  )
+}
+
+export default SourceLink

@@ -1,5 +1,5 @@
-import { Absolute, Box, Relative, Text } from '@primer/components'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import {Absolute, Box, Relative, Text} from '@primer/components'
+import Highlight, {defaultProps} from 'prism-react-renderer'
 import Prism from '../prism'
 import githubTheme from '../github'
 import React from 'react'
@@ -15,7 +15,15 @@ function Code({className, children, live, noinline}) {
   }
 
   return (
-    <Relative>
+    <Relative
+      sx={{
+        // Make <pre> adjust to the width of the container
+        // https://stackoverflow.com/a/14406386
+        display: 'table',
+        tableLayout: 'fixed',
+        width: '100%',
+      }}
+    >
       <Absolute top={0} right={0} p={2}>
         <ClipboardCopy value={code} />
       </Absolute>
