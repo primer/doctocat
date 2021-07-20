@@ -2,4 +2,4 @@
 "@primer/gatsby-theme-doctocat": patch
 ---
 
-Deprecate system props in all components except for `Box`
+Migrate system props into the `sx` prop (no consumer-facing impact).
