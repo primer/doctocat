@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.7.0
+
+### Minor Changes
+
+- [`fa4fb2e`](https://github.com/primer/doctocat/commit/fa4fb2eed2eeb003ee3294f61b456005c03e5c1e) [#239](https://github.com/primer/doctocat/pull/239) Thanks [@colebemis](https://github.com/colebemis)! - Auto-populate title and description when valid `componentId` frontmatter variable is defined
+
 ## 1.6.0
 
 ### Minor Changes
