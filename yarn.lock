@@ -1716,10 +1716,10 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
-"@primer/component-metadata@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.3.0.tgz#b15e01f273b9a19dd7a3d5adbb36f424f5e8b3e9"
-  integrity sha512-GNO+9sv7gYykFbGfFQX3bq69vbeRbahQSIpiqbepJOHTHLXhcIwamBrh0XqROIbI1FBNzVjWVMTHQ1HGUi4XgQ==
+"@primer/component-metadata@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.4.0.tgz#44b7d7b1285bea41c2a88621fd17f2c777a4c5e9"
+  integrity sha512-yppmDSSDrN2CHwjq3h+RWhfpjehFQAx21JcEipYyNTp0f/kC+iazFVNCKZE6DOavAxv003ti7QIrp+QkPT9tpg==
 
 "@primer/components@^20.0.0":
   version "20.0.0"
@@ -11855,9 +11855,9 @@ path-key@^3.0.0, path-key@^3.1.0:
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
 
 path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
-  integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 path-to-regexp@0.1.7:
   version "0.1.7"
