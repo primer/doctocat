@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.8.0
+
+### Minor Changes
+
+- [`7502f6c`](https://github.com/primer/doctocat/commit/7502f6ce137485ce162c6082067070b576279701) [#251](https://github.com/primer/doctocat/pull/251) Thanks [@colebemis](https://github.com/colebemis)! - Add [Contribute](https://primer.style/contribute) to global navigation
+
 ## 1.7.0
 
 ### Minor Changes
