@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 1.8.1
+
+### Patch Changes
+
+- [`605a4bf`](https://github.com/primer/doctocat/commit/605a4bf013b12593888bbcf4c9b8d30ba03172f9) [#255](https://github.com/primer/doctocat/pull/255) Thanks [@SferaDev](https://github.com/SferaDev)! - Update mobile table of contents border color
+
 ## 1.8.0
 
 ### Minor Changes
