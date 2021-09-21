@@ -115,7 +115,7 @@ function Layout({children, pageContext}) {
                   p={3}
                   sx={{
                     borderTop: '1px solid',
-                    borderColor: 'border.gray',
+                    borderColor: 'gray.2',
                   }}
                 >
                   <TableOfContents items={pageContext.tableOfContents.items} />
