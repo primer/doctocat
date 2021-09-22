@@ -14,6 +14,7 @@ import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import SourceLink from './source-link'
+import StatusDialog from './status-dialog'
 import StatusLabel from './status-label'
 import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
@@ -80,7 +81,13 @@ function Layout({children, pageContext}) {
                 <Heading as="h1" mr={2}>
                   {title}
                 </Heading>{' '}
-                {status ? <StatusLabel status={status} /> : null}
+                {status ? (
+                  <StatusDialog
+                    title={title}
+                    status={status}
+                    checklist={['dependenciesReviewed']}
+                  />
+                ) : null}
               </Flex>
               {description ? (
                 <Box pb={2} sx={{fontSize: 3}}>

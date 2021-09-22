@@ -1,0 +1,32 @@
+- name: Alpha
+  description: The component is ready for preliminary usage, with breaking changes expected.
+  criteria:
+    dependenciesReviewed:
+      description: Any third-party dependencies have been reviewed. These could be external libraries or dependencies on libraries in an application (like GitHub.com).
+    colorModeCompatible:
+      description: The component is compatible with color modes and can adapt to different themes.
+    responsive:
+      description: The component can adapt to different screen sizes, from mobile to large desktop screens.
+
+- name: Beta
+  description: The component meets most maturity criteria, and use is encouraged for most scenarios.
+  criteria:
+    usedInProdcution:
+      description: The component is used in a production application in multiple instances.
+    designReviewed:
+      description: The design has been reviewed and any resulting issues have been addressed.
+
+- name: Stable
+  description: The component is mature and usage is strongly encouraged, with long-term support expected.
+  criteria:
+    stableApi:
+      description: The API has remained stable with no breaking changes for at least one month.
+
+- name: Deprecated
+  description: The component will be removed in the future and usage should be avoided.
+  criteria:
+    deprecationDocumented:
+      description: Deprecation is documented, including any alternative components to use instead.
+
+- name: Removed
+  description: The component no longer exists in Primer.
