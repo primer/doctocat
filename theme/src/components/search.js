@@ -4,7 +4,7 @@ import {navigate} from 'gatsby'
 import React from 'react'
 import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
-import DarkTextInput from './dark-text-input'
+import TextInput from './text-input'
 import SearchResults from './search-results'
 
 function stateReducer(state, changes) {
@@ -52,7 +52,7 @@ function Search() {
         highlightedIndex,
       }) => (
         <Position {...getRootProps({position: 'relative'})}>
-          <DarkTextInput
+          <TextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
               sx: {

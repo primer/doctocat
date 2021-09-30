@@ -6,7 +6,7 @@ import { navigate } from 'gatsby'
 import React from 'react'
 import { FocusOn } from 'react-focus-on'
 import useSearch from '../use-search'
-import DarkTextInput from './dark-text-input'
+import TextInput from './text-input'
 import SearchResults from './search-results'
 
 function stateReducer(state, changes) {
@@ -92,7 +92,7 @@ function MobileSearch({isOpen, onDismiss}) {
                       transition={{type: 'tween', duration: 0.2}}
                       style={{width: '100%', originX: '100%'}}
                     >
-                      <DarkTextInput
+                      <TextInput
                         {...getInputProps({
                           placeholder: `Search`,
                           width: '100%',
