@@ -9,7 +9,7 @@ function usePersistentScroll(id) {
 
   const handleScroll = React.useCallback(
     // Save scroll position in session storage on every scroll change
-    (event) => window.sessionStorage.setItem(id, event.target.scrollTop),
+    event => window.sessionStorage.setItem(id, event.target.scrollTop),
     [id],
   )
 
@@ -37,8 +37,7 @@ function Sidebar() {
       top={HEADER_HEIGHT}
       height={`calc(100vh - ${HEADER_HEIGHT}px)`}
       minWidth={260}
-      color="gray.8"
-      bg="gray.0"
+      bg="canvas.subtle"
     >
       <BorderBox
         {...scrollContainerProps}

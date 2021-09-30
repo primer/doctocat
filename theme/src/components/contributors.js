@@ -1,4 +1,4 @@
-import {Avatar, Flex, Link, Text, Tooltip} from '@primer/components'
+import {Avatar, Box, Link, Text, Tooltip} from '@primer/components'
 import {format} from 'date-fns'
 import uniqBy from 'lodash.uniqby'
 import pluralize from 'pluralize'
@@ -12,7 +12,7 @@ function Contributors({contributors}) {
 
   return (
     <div>
-      <Flex alignItems="center">
+      <Box display="flex" alignItems="center">
         <Text mr={2}>
           {uniqueContributors.length}{' '}
           {pluralize('contributor', uniqueContributors.length)}
@@ -22,7 +22,7 @@ function Contributors({contributors}) {
             key={contributor.login}
             href={`https://github.com/${contributor.login}`}
             lineHeight="condensedUltra"
-            mr={2}
+            sx={{mr: 2}}
           >
             <Tooltip key={contributor.login} aria-label={contributor.login}>
               <Avatar
@@ -32,10 +32,10 @@ function Contributors({contributors}) {
             </Tooltip>
           </Link>
         ))}
-      </Flex>
+      </Box>
 
       {latestContributor.latestCommit ? (
-        <Text fontSize={1} color="gray.7" mt={1}>
+        <Text fontSize={1} color="fg.muted" mt={1}>
           Last edited by{' '}
           <Link href={`https://github.com/${latestContributor.login}`}>
             {latestContributor.login}

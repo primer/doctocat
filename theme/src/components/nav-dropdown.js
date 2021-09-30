@@ -21,12 +21,12 @@ function NavDropdown({title, children}) {
           </summary>
           <Absolute>
             <BorderBox
-              bg="gray.8"
-              py={1}
+              bg="canvas.overlay"
+              p={2}
               mt={2}
-              boxShadow="medium"
-              borderColor="gray.7"
-              color="white"
+              borderColor="border.default"
+              color="fg.default"
+              borderRadius="12px"
             >
               {children}
             </BorderBox>
@@ -39,13 +39,14 @@ function NavDropdown({title, children}) {
 
 export const NavDropdownItem = styled.a`
   display: block;
-  padding: ${themeGet('space.2')} ${themeGet('space.3')};
+  padding: ${themeGet('space.2')};
   color: inherit;
   text-decoration: none;
+  border-radius: ${themeGet('radii.2')};
+  line-height: 1.25;
 
   &:hover {
-    color: ${themeGet('colors.white')};
-    background-color: ${themeGet('colors.blue.5')};
+    background-color: ${themeGet('colors.neutral.muted')};
     text-decoration: none;
   }
 `

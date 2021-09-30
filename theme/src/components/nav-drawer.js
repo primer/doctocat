@@ -1,4 +1,11 @@
-import {BorderBox, Flex, Link, Text} from '@primer/components'
+import {
+  BorderBox,
+  Flex,
+  Link,
+  Text,
+  Button,
+  ThemeProvider,
+} from '@primer/components'
 import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
@@ -6,7 +13,6 @@ import React from 'react'
 import navItems from '../nav.yml'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
-import DarkButton from './dark-button'
 import Details from './details'
 import Drawer from './drawer'
 import NavItems from './nav-items'
@@ -49,15 +55,20 @@ function NavDrawer({isOpen, onDismiss}) {
       <Flex
         flexDirection="column"
         height="100%"
-        bg="gray.9"
+        bg="canvas.default"
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
       >
-        <Flex flexDirection="column" flex="0 0 auto" color="blue.2" bg="gray.9">
+        <Flex
+          flexDirection="column"
+          flex="0 0 auto"
+          color="fg.default"
+          bg="canvas.default"
+        >
           <BorderBox
             borderWidth={0}
             borderRadius={0}
             borderBottomWidth={1}
-            borderColor="gray.7"
+            borderColor="border.muted"
           >
             <Flex
               py={3}
@@ -73,9 +84,9 @@ function NavDrawer({isOpen, onDismiss}) {
               >
                 Primer
               </Link>
-              <DarkButton aria-label="Close" onClick={onDismiss}>
+              <Button aria-label="Close" onClick={onDismiss}>
                 <XIcon />
-              </DarkButton>
+              </Button>
             </Flex>
           </BorderBox>
           <Flex flexDirection="column">
@@ -83,25 +94,27 @@ function NavDrawer({isOpen, onDismiss}) {
           </Flex>
         </Flex>
         {navItems.length > 0 ? (
-          <Flex
-            flexDirection="column"
-            flex="1 0 auto"
-            color="gray.7"
-            bg="gray.0"
-          >
-            <Link
-              as={GatsbyLink}
-              to="/"
-              display="inline-block"
-              color="inherit"
-              fontFamily="mono"
-              mx={4}
-              my={4}
+          <ThemeProvider colorMode="day">
+            <Flex
+              flexDirection="column"
+              flex="1 0 auto"
+              color="fg.default"
+              bg="canvas.default"
             >
-              {siteMetadata.title}
-            </Link>
-            <NavItems items={navItems} />
-          </Flex>
+              <Link
+                as={GatsbyLink}
+                to="/"
+                display="inline-block"
+                color="inherit"
+                fontFamily="mono"
+                mx={4}
+                my={4}
+              >
+                {siteMetadata.title}
+              </Link>
+              <NavItems items={navItems} />
+            </Flex>
+          </ThemeProvider>
         ) : null}
       </Flex>
     </Drawer>
@@ -116,7 +129,7 @@ function PrimerNavItems({items}) {
         borderWidth={0}
         borderRadius={0}
         borderTopWidth={index !== 0 ? 1 : 0}
-        borderColor="gray.7"
+        borderColor="border.muted"
         p={4}
       >
         {item.children ? (
@@ -130,7 +143,7 @@ function PrimerNavItems({items}) {
                   </Flex>
                 </summary>
                 <Flex flexDirection="column" mt={2}>
-                  {item.children.map((child) => (
+                  {item.children.map(child => (
                     <Link
                       key={child.title}
                       href={child.url}

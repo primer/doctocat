@@ -50,7 +50,7 @@ function LiveCode({code, language, noinline}) {
         <Flex
           sx={{
             border: '1px solid',
-            borderColor: 'border.gray',
+            borderColor: 'border.default',
             borderTopRightRadius: 2,
             borderTopLeftRadius: 2,
           }}
@@ -72,7 +72,7 @@ function LiveCode({code, language, noinline}) {
               borderBottomRightRadius: theme.radii[2],
               border: '1px solid',
               borderTop: 0,
-              borderColor: theme.colors.border.gray,
+              borderColor: theme.colors.border.default,
             }}
           />
           <Absolute top={0} right={0} p={2}>
@@ -85,8 +85,8 @@ function LiveCode({code, language, noinline}) {
           p={3}
           fontFamily="mono"
           fontSize={1}
-          color="white"
-          bg="red.5"
+          color="fg.onEmphasis"
+          bg="danger.emphasis"
         />
       </LiveProvider>
     </Flex>

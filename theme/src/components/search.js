@@ -1,4 +1,4 @@
-import {BorderBox, Position} from '@primer/components'
+import {BorderBox, Position, ThemeProvider} from '@primer/components'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
 import React from 'react'
@@ -55,7 +55,9 @@ function Search() {
           <DarkTextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
-              width: 240,
+              sx: {
+                width: 240,
+              },
             })}
           />
           {isOpen ? (
@@ -67,20 +69,24 @@ function Search() {
                 pt: 2,
               })}
             >
-              <BorderBox
-                minWidth={300}
-                maxHeight="70vh"
-                py={1}
-                boxShadow="medium"
-                bg="white"
-                style={{overflow: 'auto'}}
-              >
-                <SearchResults
-                  results={results}
-                  getItemProps={getItemProps}
-                  highlightedIndex={highlightedIndex}
-                />
-              </BorderBox>
+              <ThemeProvider colorMode="day">
+                <BorderBox
+                  minWidth={300}
+                  maxHeight="70vh"
+                  p={2}
+                  boxShadow="shadow.large"
+                  borderColor="border.muted"
+                  bg="canvas.overlay"
+                  borderRadius="12px"
+                  style={{overflow: 'auto'}}
+                >
+                  <SearchResults
+                    results={results}
+                    getItemProps={getItemProps}
+                    highlightedIndex={highlightedIndex}
+                  />
+                </BorderBox>
+              </ThemeProvider>
             </Position>
           ) : null}
         </Position>

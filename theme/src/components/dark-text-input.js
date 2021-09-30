@@ -7,7 +7,7 @@ const DarkTextInput = styled(TextInput)`
    * TODO: Update font-size of TextInput in @primer/components.
    */
   font-size: ${themeGet('fontSizes.2')} !important;
-  color: ${themeGet('colors.white')};
+  /* color: ${themeGet('colors.white')};
   background-color: rgba(255, 255, 255, 0.07);
   border: 1px solid transparent;
   box-shadow: none;
@@ -16,6 +16,6 @@ const DarkTextInput = styled(TextInput)`
     border: 1px solid rgba(255, 255, 255, 0.15);
     outline: none;
     box-shadow: none;
-  }
+  } */
 `
 export default DarkTextInput
