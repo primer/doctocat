@@ -8,7 +8,7 @@ import {
   Position,
   Text,
 } from '@primer/components'
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
