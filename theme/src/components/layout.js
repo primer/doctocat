@@ -8,7 +8,7 @@ import {
   Position,
   Text,
 } from '@primer/components'
-import React from 'react'
+import React, { useState } from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
@@ -17,8 +17,12 @@ import SourceLink from './source-link'
 import StatusLabel from './status-label'
 import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
+import useVisibleHeading from '../use-visible-heading'
 
 function Layout({children, pageContext}) {
+  const [activeSection, setActiveSection] = useState()
+  useVisibleHeading(setActiveSection)
+
   let {
     title,
     description,
@@ -71,7 +75,7 @@ function Layout({children, pageContext}) {
               <Text display="inline-block" fontWeight="bold" mb={1}>
                 On this page
               </Text>
-              <TableOfContents items={pageContext.tableOfContents.items} />
+              <TableOfContents items={pageContext.tableOfContents.items} activeSection={activeSection} />
             </Position>
           ) : null}
           <Box width="100%" maxWidth="960px">

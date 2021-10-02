@@ -1,7 +1,7 @@
 import {Box, Link} from '@primer/components'
 import React from 'react'
 
-function TableOfContents({items, depth}) {
+function TableOfContents({items, depth, activeSection}) {
   return (
     <Box as="ul" m={0} p={0} css={{listStyle: 'none'}}>
       {items.map((item) => (
@@ -12,13 +12,14 @@ function TableOfContents({items, depth}) {
               py={1}
               href={item.url}
               fontSize={[2, null, 1]}
-              color="gray.6"
+              color={`#${activeSection}` === item.url ? "blue.6" : "gray.6"}
+              fontWeight={`#${activeSection}` === item.url ? "bold" : "normal"}
             >
               {item.title}
             </Link>
           ) : null}
           {item.items ? (
-            <TableOfContents items={item.items} depth={depth + 1} />
+            <TableOfContents items={item.items} depth={depth + 1} activeSection={activeSection} />
           ) : null}
         </Box>
       ))}
