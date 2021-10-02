@@ -14,7 +14,7 @@ const useVisibleHeading = setVisibleHeading => {
                 return headingElement.isIntersecting ? [...items, headingElement] : items
             }, [])
 
-            setVisibleHeading(visibleHeadings[0].target.id)
+            if (visibleHeadings.length > 0) setVisibleHeading(visibleHeadings[0].target.id)
         })
 
         Array.from(document.querySelectorAll("h2, h3")).forEach(element => observer.observe(element))
