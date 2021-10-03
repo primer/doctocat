@@ -1,23 +1,19 @@
-import {useRef, useEffect} from 'react'
+import {useEffect} from 'react'
 
 const useVisibleHeading = setVisibleHeading => {
-    const elements = useRef({})
-
     useEffect(() => {
         const observer = new IntersectionObserver(headings => {
-            elements.current = headings.reduce((map, headingElement) => {
-                return {...map, [headingElement.target.id]: headingElement}
-            }, elements.current)
+            const visibleHeadings = headings.filter(heading => heading.isIntersecting)
 
-            const visibleHeadings = Object.keys(elements.current).reduce((items, key) => {
-                const headingElement = elements.current[key]
-                return headingElement.isIntersecting ? [...items, headingElement] : items
-            }, [])
-
-            if (visibleHeadings.length > 0) setVisibleHeading(visibleHeadings[0].target.id)
+            if (visibleHeadings.length > 0) {
+                setVisibleHeading(visibleHeadings[0].target.id)
+            }
         })
 
-        Array.from(document.querySelectorAll("h2, h3")).forEach(element => observer.observe(element))
+        const headings = Array.from(document.querySelectorAll("h2"))
+        for (const heading of headings) {
+            observer.observe(heading)
+        }
 
         return () => observer.disconnect()
     }, [setVisibleHeading])
