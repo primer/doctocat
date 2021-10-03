@@ -1,4 +1,4 @@
-import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
+import {Absolute, Box, Flex, Relative, Text} from '@primer/components'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from '../github'
 import React, {useState} from 'react'
@@ -34,7 +34,7 @@ function wrapWithFragment(jsx) {
   return `<React.Fragment>${jsx}</React.Fragment>`
 }
 
-function LiveCode({code, language, noinline}) {
+function LiveCode({code, language, noinline, title}) {
   const theme = React.useContext(ThemeContext)
   const [liveCode, setLiveCode] = useState(code)
   const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
@@ -59,6 +59,18 @@ function LiveCode({code, language, noinline}) {
             <LivePreview />
           </LivePreviewWrapper>
         </Flex>
+        {title ? (
+          <Box
+            p={3}
+            sx={{
+              border: '1px solid',
+              borderColor: 'border.gray',
+              borderTop: 0,
+            }}
+          >
+            {title}
+          </Box>
+        ) : null}
         <Relative>
           <LiveEditor
             onChange={handleChange}

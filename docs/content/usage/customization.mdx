@@ -11,8 +11,7 @@ Here are a few ways you can customize your Doctocat site:
 
 You can customize your site's metadata via the `siteMetadata` object in `gatsby-config.js`:
 
-```js
-// gatsby-config.js
+```js title='gatsby-config.js'
 module.exports = {
   siteMetadata: {
     // Used for page titles and SEO
@@ -31,8 +30,7 @@ module.exports = {
 
 Side navigation for your site is generated from the content in `src/@primer/gatsby-theme-doctocat/nav.yml`. Edit that file to customize your side navigation. Each entry in `nav.yml` should have a `title`, `url`, and an optional `children` list to create nested navigation links:
 
-```yml
-# src/@primer/gatsby-theme-doctocat/nav.yml
+```yml title='src/@primer/gatsby-theme-doctocat/nav.yml'
 - title: Example
   url: /example
   children:
@@ -52,8 +50,7 @@ Doctocat has a few features that rely on information about your repository, incl
 
 To enable these features, you'll need to specify your site's [`repository`](https://docs.npmjs.com/files/package.json#repository) in `package.json`:
 
-```json
-// package.json
+```json title='package.json'
 {
   "repository": "repo-owner/repo-name"
 }
@@ -63,8 +60,7 @@ To enable these features, you'll need to specify your site's [`repository`](http
 
 If your site is located in a subdirectory of a repository, you'll also need to provide the relative path to the root of your git respository via the `repoRootPath` option in `gatsby-config.js`:
 
-```js
-// gatsby-config.js
+```js title='gatsby-config.js'
 module.exports = {
   plugins: [
     {
@@ -81,8 +77,7 @@ module.exports = {
 
 If your site uses a branch other than `master` for your default branch, you'll also need to let Doctocat know via the `defaultBranch` option in `gatsby-config.js`:
 
-```js
-// gatsby-config.js
+```js title='gatsby-config.js'
 module.exports = {
   plugins: [
     {
@@ -126,8 +121,7 @@ These contributors are determined by commits. However, we know that commits aren
 
 To add a hero section to a page, you'll need to override the default layout component with Doctocat's `HeroLayout` component by exporting it from your MDX file:
 
-```markdown
-// index.mdx
+```markdown title='index.mdx'
 import {HeroLayout} from '@primer/gatsby-theme-doctocat'
 export default HeroLayout
 ```
@@ -158,8 +152,7 @@ export default function Hero() {
 
 If you want to override the default favicon, you can pass a relative path to a custom icon as a theme option in your `gatsby-config.js`:
 
-```js
-// gatsby-config.js
+```js title="gatsby-config.js" {6}
 module.exports = {
   plugins: [
     {
