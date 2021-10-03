@@ -27,6 +27,7 @@ function Layout({children, pageContext}) {
     storybook,
     additionalContributors,
     componentId,
+    editable = true,
   } = pageContext.frontmatter
 
   if (!additionalContributors) {
@@ -124,7 +125,7 @@ function Layout({children, pageContext}) {
             ) : null}
             {children}
             <PageFooter
-              editUrl={pageContext.editUrl}
+              editUrl={editable ? pageContext.editUrl : undefined}
               contributors={pageContext.contributors.concat(
                 additionalContributors.map(login => ({login})),
               )}
