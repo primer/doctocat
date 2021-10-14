@@ -1,11 +1,18 @@
-import {Box, Flex, Link, StyledOcticon, Sticky, Text} from '@primer/components'
+import {
+  Box,
+  Button,
+  Link,
+  Sticky,
+  StyledOcticon,
+  Text,
+  ThemeProvider,
+  useTheme,
+} from '@primer/components'
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
-import {ThemeContext} from 'styled-components'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
-import DarkButton from './dark-button'
 import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
@@ -14,103 +21,122 @@ import Search from './search'
 export const HEADER_HEIGHT = 66
 
 function Header({isSearchEnabled}) {
-  const theme = React.useContext(ThemeContext)
+  const {theme} = useTheme()
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(
     theme.breakpoints[2],
   )
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
-    <Sticky>
-      <Flex
-        height={HEADER_HEIGHT}
-        px={[3, null, null, 4]}
-        alignItems="center"
-        justifyContent="space-between"
-        bg="black"
-      >
-        <Flex alignItems="center">
-          <Link
-            href="https://primer.style"
-            color="blue.4"
-            mr={3}
-            lineHeight="condensedUltra"
-          >
-            <StyledOcticon icon={MarkGithubIcon} size="medium" />
-          </Link>
-          <Link
-            display={[
-              // We only hide "Primer" on small viewports if a shortName is defined.
-              siteMetadata.shortName ? 'none' : 'inline-block',
-              null,
-              null,
-              'inline-block',
-            ]}
-            href="https://primer.style"
-            color="blue.4"
-            fontFamily="mono"
-          >
-            Primer
-          </Link>
+    <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
+      <Sticky>
+        <Box
+          display="flex"
+          height={HEADER_HEIGHT}
+          px={[3, null, null, 4]}
+          alignItems="center"
+          justifyContent="space-between"
+          bg="canvas.default"
+        >
+          <Box display="flex" alignItems="center">
+            <Link
+              href="https://primer.style"
+              sx={{
+                color: 'accent.fg',
+                mr: 3,
+                lineHeight: 'condensedUltra',
+              }}
+            >
+              <StyledOcticon icon={MarkGithubIcon} size="medium" />
+            </Link>
+            <Link
+              href="https://primer.style"
+              sx={{
+                color: 'accent.fg',
+                fontFamily: 'mono',
+                display: [
+                  // We only hide "Primer" on small viewports if a shortName is defined.
+                  siteMetadata.shortName ? 'none' : 'inline-block',
+                  null,
+                  null,
+                  'inline-block',
+                ],
+              }}
+            >
+              Primer
+            </Link>
 
-          {siteMetadata.shortName ? (
-            <>
-              <Text
-                display={['none', null, null, 'inline-block']}
-                color="blue.4"
-                fontFamily="mono"
-                mx={2}
-              >
-                /
-              </Text>
-              <Link as={GatsbyLink} to="/" color="blue.4" fontFamily="mono">
-                {siteMetadata.shortName}
-              </Link>
-            </>
-          ) : null}
-
-          {isSearchEnabled ? (
-            <Box display={['none', null, null, 'block']} ml={4}>
-              <Search />
-            </Box>
-          ) : null}
-        </Flex>
-        <Flex>
-          <Box display={['none', null, null, 'block']}>
-            <PrimerNavItems items={primerNavItems} />
-          </Box>
-          <Flex display={['flex', null, null, 'none']}>
-            {isSearchEnabled ? (
+            {siteMetadata.shortName ? (
               <>
-                <DarkButton
-                  aria-label="Search"
-                  aria-expanded={isMobileSearchOpen}
-                  onClick={() => setIsMobileSearchOpen(true)}
+                <Text
+                  display={['none', null, null, 'inline-block']}
+                  color="accent.fg"
+                  fontFamily="mono"
+                  mx={2}
                 >
-                  <SearchIcon />
-                </DarkButton>
-                <MobileSearch
-                  isOpen={isMobileSearchOpen}
-                  onDismiss={() => setIsMobileSearchOpen(false)}
-                />
+                  /
+                </Text>
+                <Link
+                  as={GatsbyLink}
+                  to="/"
+                  sx={{
+                    color: 'accent.fg',
+                    fontFamily: 'mono',
+                  }}
+                >
+                  {siteMetadata.shortName}
+                </Link>
               </>
             ) : null}
-            <DarkButton
-              aria-label="Menu"
-              aria-expanded={isNavDrawerOpen}
-              onClick={() => setIsNavDrawerOpen(true)}
-              ml={3}
-            >
-              <ThreeBarsIcon />
-            </DarkButton>
-            <NavDrawer
-              isOpen={isNavDrawerOpen}
-              onDismiss={() => setIsNavDrawerOpen(false)}
-            />
-          </Flex>
-        </Flex>
-      </Flex>
-    </Sticky>
+
+            {isSearchEnabled ? (
+              <Box display={['none', null, null, 'block']} ml={4}>
+                <Search />
+              </Box>
+            ) : null}
+          </Box>
+          <Box>
+            <Box display={['none', null, null, 'block']}>
+              <PrimerNavItems items={primerNavItems} />
+            </Box>
+            <Box display={['flex', null, null, 'none']}>
+              {isSearchEnabled ? (
+                <>
+                  <Button
+                    aria-label="Search"
+                    aria-expanded={isMobileSearchOpen}
+                    onClick={() => setIsMobileSearchOpen(true)}
+                    sx={{
+                      ml: 3,
+                    }}
+                  >
+                    <SearchIcon />
+                  </Button>
+                  <MobileSearch
+                    isOpen={isMobileSearchOpen}
+                    onDismiss={() => setIsMobileSearchOpen(false)}
+                  />
+                </>
+              ) : null}
+              <Button
+                aria-label="Menu"
+                aria-expanded={isNavDrawerOpen}
+                onClick={() => setIsNavDrawerOpen(true)}
+                sx={{
+                  ml: 3,
+                }}
+              >
+                <ThreeBarsIcon />
+              </Button>
+              <NavDrawer
+                isOpen={isNavDrawerOpen}
+                onDismiss={() => setIsNavDrawerOpen(false)}
+              />
+            </Box>
+          </Box>
+        </Box>
+      </Sticky>
+    </ThemeProvider>
   )
 }
 
@@ -120,13 +146,13 @@ Header.defaultProps = {
 
 function PrimerNavItems({items}) {
   return (
-    <Flex alignItems="center" color="blue.2">
+    <Box display="flex" alignItems="center" color="fg.default">
       {items.map((item, index) => {
         if (item.children) {
           return (
             <Box ml={4} key={index}>
               <NavDropdown title={item.title}>
-                {item.children.map((child) => (
+                {item.children.map(child => (
                   <NavDropdownItem key={child.title} href={child.url}>
                     {child.title}
                   </NavDropdownItem>
@@ -140,15 +166,17 @@ function PrimerNavItems({items}) {
           <Link
             key={index}
             href={item.url}
-            display="block"
-            color="inherit"
-            ml={4}
+            sx={{
+              display: 'block',
+              color: 'inherit',
+              ml: 4,
+            }}
           >
             {item.title}
           </Link>
         )
       })}
-    </Flex>
+    </Box>
   )
 }
 

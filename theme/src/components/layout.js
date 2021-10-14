@@ -101,7 +101,12 @@ function Layout({children, pageContext}) {
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox display={['block', null, 'none']} mb={5} bg="gray.1">
+              <BorderBox
+                display={['block', null, 'none']}
+                mb={5}
+                borderColor="border.muted"
+                bg="canvas.subtle"
+              >
                 <Box p={3}>
                   <Flex
                     flexDirection="row"
@@ -111,13 +116,7 @@ function Layout({children, pageContext}) {
                     <Text fontWeight="bold">On this page</Text>
                   </Flex>
                 </Box>
-                <Box
-                  p={3}
-                  sx={{
-                    borderTop: '1px solid',
-                    borderColor: 'gray.2',
-                  }}
-                >
+                <Box p={3} borderTop="1px solid" borderColor="border.muted">
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
               </BorderBox>
@@ -126,7 +125,7 @@ function Layout({children, pageContext}) {
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(
-                additionalContributors.map(login => ({login})),
+                additionalContributors.map((login) => ({login})),
               )}
             />
           </Box>
