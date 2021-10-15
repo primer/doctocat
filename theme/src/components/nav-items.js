@@ -38,13 +38,7 @@ function NavItems({items}) {
           p={4}
         >
           <Box display="flex" flexDirection="column">
-            <NavLink
-              as={GatsbyLink}
-              to={item.url}
-              activeClassName="active"
-              partiallyActive={true}
-              color="inherit"
-            >
+            <NavLink as={GatsbyLink} to={item.url} activeClassName="active" partiallyActive={true} color="inherit">
               {item.title}
             </NavLink>
             {item.children ? (
@@ -69,20 +63,9 @@ function NavItems({items}) {
         </Box>
       ))}
       {repositoryUrl ? (
-        <Box
-          borderWidth={0}
-          borderTopWidth={1}
-          borderRadius={0}
-          borderStyle="solid"
-          borderColor="border.default"
-          p={4}
-        >
+        <Box borderWidth={0} borderTopWidth={1} borderRadius={0} borderStyle="solid" borderColor="border.default" p={4}>
           <Link href={repositoryUrl} color="inherit">
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
+            <Box display="flex" justifyContent="space-between" alignItems="center">
               GitHub
               <StyledOcticon icon={LinkExternalIcon} color="fg.muted" />
             </Box>

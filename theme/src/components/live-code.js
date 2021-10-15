@@ -11,7 +11,7 @@ import LivePreviewWrapper from './live-preview-wrapper'
 
 const languageTransformers = {
   html: html => htmlToJsx(html),
-  jsx: jsx => wrapWithFragment(jsx),
+  jsx: jsx => wrapWithFragment(jsx)
 }
 
 function htmlToJsx(html) {
@@ -41,18 +41,13 @@ function LiveCode({code, language, noinline}) {
 
   return (
     <Flex flexDirection="column" mb={3}>
-      <LiveProvider
-        scope={scope}
-        code={liveCode}
-        transformCode={languageTransformers[language]}
-        noInline={noinline}
-      >
+      <LiveProvider scope={scope} code={liveCode} transformCode={languageTransformers[language]} noInline={noinline}>
         <Flex
           sx={{
             border: '1px solid',
             borderColor: 'border.default',
             borderTopRightRadius: 2,
-            borderTopLeftRadius: 2,
+            borderTopLeftRadius: 2
           }}
         >
           <LivePreviewWrapper>
@@ -72,22 +67,14 @@ function LiveCode({code, language, noinline}) {
               borderBottomRightRadius: theme.radii[2],
               border: '1px solid',
               borderTop: 0,
-              borderColor: theme.colors.border.default,
+              borderColor: theme.colors.border.default
             }}
           />
           <Absolute top={0} right={0} p={2}>
             <ClipboardCopy value={liveCode} />
           </Absolute>
         </Relative>
-        <Text
-          as={LiveError}
-          m={0}
-          p={3}
-          fontFamily="mono"
-          fontSize={1}
-          color="fg.onEmphasis"
-          bg="danger.emphasis"
-        />
+        <Text as={LiveError} m={0} p={3} fontFamily="mono" fontSize={1} color="fg.onEmphasis" bg="danger.emphasis" />
       </LiveProvider>
     </Flex>
   )

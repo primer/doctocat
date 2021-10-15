@@ -13,15 +13,13 @@ function TableOfContents({items, depth}) {
                 display: 'inline-block',
                 py: 1,
                 fontSize: [2, null, 1],
-                color: 'fg.muted',
+                color: 'fg.muted'
               }}
             >
               {item.title}
             </Link>
           ) : null}
-          {item.items ? (
-            <TableOfContents items={item.items} depth={depth + 1} />
-          ) : null}
+          {item.items ? <TableOfContents items={item.items} depth={depth + 1} /> : null}
         </Box>
       ))}
     </Box>
@@ -29,7 +27,7 @@ function TableOfContents({items, depth}) {
 }
 
 TableOfContents.defaultProps = {
-  depth: 0,
+  depth: 0
 }
 
 export default TableOfContents

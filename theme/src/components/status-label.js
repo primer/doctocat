@@ -5,7 +5,7 @@ const STATUS_COLORS = {
   alpha: 'severe.fg',
   beta: 'attention.fg',
   stable: 'success.fg',
-  deprecated: 'danger.fg',
+  deprecated: 'danger.fg'
 }
 
 function getStatusColor(status) {
@@ -14,11 +14,7 @@ function getStatusColor(status) {
 
 function StatusLabel({status}) {
   return (
-    <Label
-      outline
-      color={getStatusColor(status)}
-      borderColor={getStatusColor(status)}
-    >
+    <Label outline color={getStatusColor(status)} borderColor={getStatusColor(status)}>
       {status}
     </Label>
   )

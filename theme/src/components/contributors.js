@@ -14,8 +14,7 @@ function Contributors({contributors}) {
     <div>
       <Box display="flex" alignItems="center">
         <Text mr={2}>
-          {uniqueContributors.length}{' '}
-          {pluralize('contributor', uniqueContributors.length)}
+          {uniqueContributors.length} {pluralize('contributor', uniqueContributors.length)}
         </Text>
         {uniqueContributors.map(contributor => (
           <Link
@@ -25,10 +24,7 @@ function Contributors({contributors}) {
             sx={{mr: 2}}
           >
             <Tooltip key={contributor.login} aria-label={contributor.login}>
-              <Avatar
-                src={`https://github.com/${contributor.login}.png?size=40`}
-                alt={contributor.login}
-              />
+              <Avatar src={`https://github.com/${contributor.login}.png?size=40`} alt={contributor.login} />
             </Tooltip>
           </Link>
         ))}
@@ -36,10 +32,7 @@ function Contributors({contributors}) {
 
       {latestContributor.latestCommit ? (
         <Text fontSize={1} color="fg.muted" mt={1}>
-          Last edited by{' '}
-          <Link href={`https://github.com/${latestContributor.login}`}>
-            {latestContributor.login}
-          </Link>{' '}
+          Last edited by <Link href={`https://github.com/${latestContributor.login}`}>{latestContributor.login}</Link>{' '}
           on{' '}
           <Link href={latestContributor.latestCommit.url}>
             {format(new Date(latestContributor.latestCommit.date), 'MMMM d, y')}

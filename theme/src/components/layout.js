@@ -1,13 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {
-  BorderBox,
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  Position,
-  Text,
-} from '@primer/components'
+import {BorderBox, Box, Flex, Grid, Heading, Position, Text} from '@primer/components'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -19,15 +11,7 @@ import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {
-    title,
-    description,
-    status,
-    source,
-    storybook,
-    additionalContributors,
-    componentId,
-  } = pageContext.frontmatter
+  let {title, description, status, source, storybook, additionalContributors, componentId} = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -56,7 +40,7 @@ function Layout({children, pageContext}) {
           p={[4, 5, 6, 7]}
           sx={{
             justifyContent: 'center',
-            flexDirection: 'row-reverse',
+            flexDirection: 'row-reverse'
           }}
         >
           {pageContext.tableOfContents.items ? (
@@ -101,18 +85,9 @@ function Layout({children, pageContext}) {
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox
-                display={['block', null, 'none']}
-                mb={5}
-                borderColor="border.muted"
-                bg="canvas.subtle"
-              >
+              <BorderBox display={['block', null, 'none']} mb={5} borderColor="border.muted" bg="canvas.subtle">
                 <Box p={3}>
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
+                  <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
                     <Text fontWeight="bold">On this page</Text>
                   </Flex>
                 </Box>
@@ -124,9 +99,7 @@ function Layout({children, pageContext}) {
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
-              contributors={pageContext.contributors.concat(
-                additionalContributors.map((login) => ({login})),
-              )}
+              contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
           </Box>
         </Box>
