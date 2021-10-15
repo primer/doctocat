@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Link,
-  Sticky,
-  StyledOcticon,
-  Text,
-  ThemeProvider,
-  useTheme,
-} from '@primer/components'
+import {Box, Button, Link, Sticky, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/components'
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -22,9 +13,7 @@ export const HEADER_HEIGHT = 66
 
 function Header({isSearchEnabled}) {
   const {theme} = useTheme()
-  const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(
-    theme.breakpoints[2],
-  )
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(theme.breakpoints[2])
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
@@ -44,7 +33,7 @@ function Header({isSearchEnabled}) {
               sx={{
                 color: 'accent.fg',
                 mr: 3,
-                lineHeight: 'condensedUltra',
+                lineHeight: 'condensedUltra'
               }}
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
@@ -59,8 +48,8 @@ function Header({isSearchEnabled}) {
                   siteMetadata.shortName ? 'none' : 'inline-block',
                   null,
                   null,
-                  'inline-block',
-                ],
+                  'inline-block'
+                ]
               }}
             >
               Primer
@@ -68,12 +57,7 @@ function Header({isSearchEnabled}) {
 
             {siteMetadata.shortName ? (
               <>
-                <Text
-                  display={['none', null, null, 'inline-block']}
-                  color="accent.fg"
-                  fontFamily="mono"
-                  mx={2}
-                >
+                <Text display={['none', null, null, 'inline-block']} color="accent.fg" fontFamily="mono" mx={2}>
                   /
                 </Text>
                 <Link
@@ -81,7 +65,7 @@ function Header({isSearchEnabled}) {
                   to="/"
                   sx={{
                     color: 'accent.fg',
-                    fontFamily: 'mono',
+                    fontFamily: 'mono'
                   }}
                 >
                   {siteMetadata.shortName}
@@ -107,15 +91,12 @@ function Header({isSearchEnabled}) {
                     aria-expanded={isMobileSearchOpen}
                     onClick={() => setIsMobileSearchOpen(true)}
                     sx={{
-                      ml: 3,
+                      ml: 3
                     }}
                   >
                     <SearchIcon />
                   </Button>
-                  <MobileSearch
-                    isOpen={isMobileSearchOpen}
-                    onDismiss={() => setIsMobileSearchOpen(false)}
-                  />
+                  <MobileSearch isOpen={isMobileSearchOpen} onDismiss={() => setIsMobileSearchOpen(false)} />
                 </>
               ) : null}
               <Button
@@ -123,15 +104,12 @@ function Header({isSearchEnabled}) {
                 aria-expanded={isNavDrawerOpen}
                 onClick={() => setIsNavDrawerOpen(true)}
                 sx={{
-                  ml: 3,
+                  ml: 3
                 }}
               >
                 <ThreeBarsIcon />
               </Button>
-              <NavDrawer
-                isOpen={isNavDrawerOpen}
-                onDismiss={() => setIsNavDrawerOpen(false)}
-              />
+              <NavDrawer isOpen={isNavDrawerOpen} onDismiss={() => setIsNavDrawerOpen(false)} />
             </Box>
           </Box>
         </Box>
@@ -141,7 +119,7 @@ function Header({isSearchEnabled}) {
 }
 
 Header.defaultProps = {
-  isSearchEnabled: true,
+  isSearchEnabled: true
 }
 
 function PrimerNavItems({items}) {
@@ -169,7 +147,7 @@ function PrimerNavItems({items}) {
             sx={{
               display: 'block',
               color: 'inherit',
-              ml: 4,
+              ml: 4
             }}
           >
             {item.title}

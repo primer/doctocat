@@ -1,10 +1,10 @@
-import { Absolute, Box, Button, Fixed, Flex } from '@primer/components'
-import { XIcon } from '@primer/octicons-react'
+import {Absolute, Box, Button, Fixed, Flex} from '@primer/components'
+import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
-import { AnimatePresence, motion } from 'framer-motion'
-import { navigate } from 'gatsby'
+import {AnimatePresence, motion} from 'framer-motion'
+import {navigate} from 'gatsby'
 import React from 'react'
-import { FocusOn } from 'react-focus-on'
+import {FocusOn} from 'react-focus-on'
 import useSearch from '../use-search'
 import TextInput from './text-input'
 import SearchResults from './search-results'
@@ -65,26 +65,14 @@ function MobileSearch({isOpen, onDismiss}) {
               itemToString={item => (item ? item.title : '')}
               stateReducer={stateReducer}
             >
-              {({
-                getInputProps,
-                getItemProps,
-                getMenuProps,
-                getRootProps,
-                isOpen: isMenuOpen,
-                highlightedIndex,
-              }) => (
+              {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen: isMenuOpen, highlightedIndex}) => (
                 <Flex
                   {...getRootProps({
                     flexDirection: 'column',
-                    height: isMenuOpen ? '100%' : 'auto',
+                    height: isMenuOpen ? '100%' : 'auto'
                   })}
                 >
-                  <Flex
-                    bg="canvas.default"
-                    color="fg.default"
-                    p={3}
-                    flex="0 0 auto"
-                  >
+                  <Flex bg="canvas.default" color="fg.default" p={3} flex="0 0 auto">
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}
@@ -95,15 +83,11 @@ function MobileSearch({isOpen, onDismiss}) {
                       <TextInput
                         {...getInputProps({
                           placeholder: `Search`,
-                          width: '100%',
+                          width: '100%'
                         })}
                       />
                     </motion.div>
-                    <Button
-                      aria-label="Cancel"
-                      onClick={handleDismiss}
-                      sx={{ml: 3}}
-                    >
+                    <Button aria-label="Cancel" onClick={handleDismiss} sx={{ml: 3}}>
                       <XIcon />
                     </Button>
                   </Flex>
@@ -118,8 +102,8 @@ function MobileSearch({isOpen, onDismiss}) {
                         flex: '1 1 auto',
                         style: {
                           overflow: 'auto',
-                          WebkitOverflowScrolling: 'touch',
-                        },
+                          WebkitOverflowScrolling: 'touch'
+                        }
                       })}
                     >
                       <SearchResults

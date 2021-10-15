@@ -1,12 +1,5 @@
-import {
-  Box,
-  Details,
-  StyledOcticon,
-  Text,
-  themeGet,
-  useDetails
-} from '@primer/components'
-import { TriangleDownIcon } from '@primer/octicons-react'
+import {Box, Details, StyledOcticon, Text, themeGet, useDetails} from '@primer/components'
+import {TriangleDownIcon} from '@primer/octicons-react'
 import React from 'react'
 import styled from 'styled-components'
 

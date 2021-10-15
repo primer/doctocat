@@ -42,7 +42,7 @@ const components = {
   Dont,
   DoDontContainer,
   Caption,
-  ImageContainer,
+  ImageContainer
 }
 
 function wrapRootElement({element}) {

@@ -10,18 +10,18 @@ test('renders contributors', () => {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19Z',
-          },
+            date: '2019-08-15T23:40:19Z'
+          }
         },
         {
           login: 'emplums',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54Z',
-          },
-        },
+            date: '2019-08-14T00:19:54Z'
+          }
+        }
       ]}
-    />,
+    />
   )
 
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
@@ -31,9 +31,7 @@ test('renders contributors', () => {
 })
 
 test('does not render "last edited by" if latest contributor does not have a latest commit', () => {
-  const {queryByText} = render(
-    <Contributors contributors={[{login: 'ashygee'}]} />,
-  )
+  const {queryByText} = render(<Contributors contributors={[{login: 'ashygee'}]} />)
 
   expect(queryByText(/1 contributor/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeNull()
@@ -55,18 +53,18 @@ test('does not render duplicate contributors', () => {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19Z',
-          },
+            date: '2019-08-15T23:40:19Z'
+          }
         },
         {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54Z',
-          },
-        },
+            date: '2019-08-14T00:19:54Z'
+          }
+        }
       ]}
-    />,
+    />
   )
 
   expect(queryByText(/1 contributor/)).toBeInTheDocument()

@@ -43,21 +43,14 @@ function Search() {
       itemToString={item => (item ? item.title : '')}
       stateReducer={stateReducer}
     >
-      {({
-        getInputProps,
-        getItemProps,
-        getMenuProps,
-        getRootProps,
-        isOpen,
-        highlightedIndex,
-      }) => (
+      {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, highlightedIndex}) => (
         <Position {...getRootProps({position: 'relative'})}>
           <TextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
               sx: {
-                width: 240,
-              },
+                width: 240
+              }
             })}
           />
           {isOpen ? (
@@ -66,7 +59,7 @@ function Search() {
                 position: 'absolute',
                 left: 0,
                 right: 0,
-                pt: 2,
+                pt: 2
               })}
             >
               <ThemeProvider colorMode="day">
@@ -80,11 +73,7 @@ function Search() {
                   borderRadius="12px"
                   style={{overflow: 'auto'}}
                 >
-                  <SearchResults
-                    results={results}
-                    getItemProps={getItemProps}
-                    highlightedIndex={highlightedIndex}
-                  />
+                  <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
                 </BorderBox>
               </ThemeProvider>
             </Position>

@@ -29,49 +29,26 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
     }
   `)
 
-  if (
-    !process.env.GITHUB_TOKEN &&
-    !process.env.NOW_GITHUB_DEPLOYMENT &&
-    !process.env.VERCEL_GITHUB_DEPLOYMENT
-  ) {
-    console.error(
-      `Non-deploy build and no GITHUB_TOKEN environment variable set; skipping GitHub API calls`,
-    )
+  if (!process.env.GITHUB_TOKEN && !process.env.NOW_GITHUB_DEPLOYMENT && !process.env.VERCEL_GITHUB_DEPLOYMENT) {
+    console.error(`Non-deploy build and no GITHUB_TOKEN environment variable set; skipping GitHub API calls`)
   }
 
   // Turn every MDX file into a page.
   return Promise.all(
     data.allMdx.nodes.map(async node => {
       const pagePath = path
-        .join(
-          node.parent.relativeDirectory,
-          node.parent.name === 'index' ? '/' : node.parent.name,
-        )
+        .join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
         .replace(/\\/g, '/') // Convert Windows backslash paths to forward slash paths: foo\\bar → foo/bar
 
-      const rootAbsolutePath = path.resolve(
-        process.cwd(),
-        themeOptions.repoRootPath || '.',
-      )
+      const rootAbsolutePath = path.resolve(process.cwd(), themeOptions.repoRootPath || '.')
 
-      const fileRelativePath = path.relative(
-        rootAbsolutePath,
-        node.fileAbsolutePath,
-      )
+      const fileRelativePath = path.relative(rootAbsolutePath, node.fileAbsolutePath)
       const defaultBranch = themeOptions.defaultBranch || 'master'
       const editUrl = getEditUrl(repo, fileRelativePath, defaultBranch)
 
       let contributors = []
-      if (
-        process.env.GITHUB_TOKEN ||
-        process.env.NOW_GITHUB_DEPLOYMENT ||
-        process.env.VERCEL_GITHUB_DEPLOYMENT
-      ) {
-        contributors = await fetchContributors(
-          repo,
-          fileRelativePath,
-          process.env.GITHUB_TOKEN,
-        )
+      if (process.env.GITHUB_TOKEN || process.env.NOW_GITHUB_DEPLOYMENT || process.env.VERCEL_GITHUB_DEPLOYMENT) {
+        contributors = await fetchContributors(repo, fileRelativePath, process.env.GITHUB_TOKEN)
       }
 
       // Copied from gatsby-plugin-mdx (https://git.io/JUs3H)
@@ -90,10 +67,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           // for us here, and does on the first build,
           // but when HMR kicks in the frontmatter is lost.
           // The solution is to include it here explicitly.
-          frontmatter,
-        },
+          frontmatter
+        }
       })
-    }),
+    })
   )
 }
 
@@ -112,12 +89,12 @@ async function fetchContributors(repo, filePath, accessToken = '') {
     const req = {
       method: 'get',
       baseURL: 'https://api.github.com/',
-      url: `/repos/${repo.user}/${repo.project}/commits?path=${filePath}&per_page=100`,
+      url: `/repos/${repo.user}/${repo.project}/commits?path=${filePath}&per_page=100`
     }
 
     if (accessToken && accessToken.length) {
       req.headers = {
-        Authorization: `token ${accessToken}`,
+        Authorization: `token ${accessToken}`
       }
     }
 
@@ -128,8 +105,8 @@ async function fetchContributors(repo, filePath, accessToken = '') {
         login: commit.author && commit.author.login,
         latestCommit: {
           date: commit.commit.author.date,
-          url: commit.html_url,
-        },
+          url: commit.html_url
+        }
       }))
       .filter(contributor => Boolean(contributor.login))
 
@@ -137,9 +114,7 @@ async function fetchContributors(repo, filePath, accessToken = '') {
     CONTRIBUTOR_CACHE.set(hash, result)
     return result
   } catch (error) {
-    console.error(
-      `[ERROR] Unable to fetch contributors for ${filePath}. ${error.message}`,
-    )
+    console.error(`[ERROR] Unable to fetch contributors for ${filePath}. ${error.message}`)
     return []
   }
 }

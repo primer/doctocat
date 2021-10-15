@@ -35,7 +35,7 @@ function MarkdownHeading({children, ...props}) {
         sx={{
           p: 2,
           ml: -32,
-          color: 'fg.default',
+          color: 'fg.default'
         }}
       >
         <LinkIcon className="octicon-link" verticalAlign="middle" />
