@@ -16,6 +16,9 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Lint
+        run: yarn workspace @primer/gatsby-theme-doctocat lint
+
       - name: Test
         run: yarn workspace @primer/gatsby-theme-doctocat test
 
