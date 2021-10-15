@@ -7,6 +7,7 @@ function Drawer({isOpen, onDismiss, children}) {
   return (
     <AnimatePresence>
       {isOpen ? (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
         <div
           // These event handlers fix a bug that caused links below the fold
           // to be unclickable in macOS Safari.
