@@ -5,11 +5,13 @@ const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 const extractExports = require(`gatsby-plugin-mdx/utils/extract-exports`)
 const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
+const checklistSchema = require('./src/checklist-schema')
 
 const CONTRIBUTOR_CACHE = new Map()
 
 exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
+  console.log(checklistSchema)
 
   const {data} = await graphql(`
     {
@@ -55,6 +57,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       // as a workaround for https://github.com/gatsbyjs/gatsby/issues/21837
       const code = await mdx(node.rawBody)
       const {frontmatter} = extractExports(code)
+
+      if (frontmatter.checklist) {
+        validateChecklist(frontmatter.checklist, checklistSchema, fileRelativePath)
+      }
 
       actions.createPage({
         path: pagePath,
@@ -117,4 +123,44 @@ async function fetchContributors(repo, filePath, accessToken = '') {
     console.error(`[ERROR] Unable to fetch contributors for ${filePath}. ${error.message}`)
     return []
   }
+}
+
+function validateChecklist(checklist, schema, file) {
+  // Assert that checklist is not an array
+  if (Array.isArray(checklist)) {
+    throw new Error(`\`checklist\` fontmatter variable in ${file} must follow this structure:\n
+checklist:
+${Object.keys(schema)
+  .map(item => `  ${item}: false # or true`)
+  .join('\n')}\n
+Found an array instead.
+  `)
+  }
+
+  // Assert that all entries in checklist are boolean values
+  Object.entries(checklist).forEach(([item, value]) => {
+    if (typeof value !== 'boolean') {
+      throw new Error(`Checklist item \`${item}: ${JSON.stringify(value)}\` is not a boolean value (${file})`)
+    }
+  })
+
+  // Assert that there are no unrecognized checklist items
+  Object.keys(checklist).forEach(item => {
+    if (!Object.keys(schema).includes(item)) {
+      throw new Error(`Unrecognized checklist item: \`${item}\` (${file})`)
+    }
+  })
+
+  // Assert that all keys in the checklist schema are present.
+  // This makes checklist items more discoverable.
+  Object.keys(schema).forEach(item => {
+    if (!Object.keys(checklist).includes(item)) {
+      throw new Error(
+        `\`checklist\` fontmatter variable in ${file} must include all of the following keys:
+${Object.keys(schema)
+  .map(item => `  ${item}`)
+  .join('\n')}`
+      )
+    }
+  })
 }

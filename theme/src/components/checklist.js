@@ -1,6 +1,6 @@
 import React from 'react'
 import {H2} from './heading'
-import checklistSchema from '../checklist-schema.yml'
+import checklistSchema from '../checklist-schema'
 import {Box, StyledOcticon} from '@primer/components'
 import {CheckCircleFillIcon, CircleIcon} from '@primer/octicons-react'
 
