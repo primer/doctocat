@@ -1,0 +1,8 @@
+# TODO: this file needs a better name
+# TODO: validate this structure
+
+dependenciesReviewed:
+  description: All third-party dependencies have been reviewed.
+
+componentStatusDocumented:
+  description: Component status is documented.

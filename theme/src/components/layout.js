@@ -1,6 +1,7 @@
 import componentMetadata from '@primer/component-metadata'
 import {BorderBox, Box, Flex, Grid, Heading, Position, Text} from '@primer/components'
 import React from 'react'
+import Checklist from './checklist'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
@@ -11,7 +12,9 @@ import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, status, source, storybook, additionalContributors, componentId} = pageContext.frontmatter
+  // TODO: validate checklist frontmatter
+  let {title, description, status, source, storybook, additionalContributors, componentId, checklist} =
+    pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -97,6 +100,7 @@ function Layout({children, pageContext}) {
               </BorderBox>
             ) : null}
             {children}
+            {checklist ? <Checklist checklist={checklist} /> : null}
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
