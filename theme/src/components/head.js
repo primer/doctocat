@@ -4,9 +4,7 @@ import useSiteMetadata from '../use-site-metadata'
 
 function Head(props) {
   const siteMetadata = useSiteMetadata()
-  const title = props.title
-    ? `${props.title} | ${siteMetadata.title}`
-    : siteMetadata.title
+  const title = props.title ? `${props.title} | ${siteMetadata.title}` : siteMetadata.title
   const description = props.description || siteMetadata.description
 
   return (

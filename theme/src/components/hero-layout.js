@@ -28,9 +28,7 @@ function HeroLayout({children, pageContext}) {
             {children}
             <PageFooter
               editUrl={editable ? pageContext.editUrl : undefined}
-              contributors={pageContext.contributors.concat(
-                additionalContributors.map(login => ({login})),
-              )}
+              contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
           </Container>
         </Box>

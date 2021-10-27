@@ -14,16 +14,14 @@ function PageFooter({editUrl, contributors}) {
           </Link>
         ) : null}
 
-        {contributors.length > 0 ? (
-          <Contributors contributors={contributors} />
-        ) : null}
+        {contributors.length > 0 ? <Contributors contributors={contributors} /> : null}
       </Grid>
     </BorderBox>
   ) : null
 }
 
 PageFooter.defaultProps = {
-  contributors: [],
+  contributors: []
 }
 
 export default PageFooter

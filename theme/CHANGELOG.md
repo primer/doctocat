@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 2.0.0
+
+### Major Changes
+
+- [`c9e3209`](https://github.com/primer/doctocat/commit/c9e32094a6dbccc7f9d48cfa9202a2d1aa7fe7d3) [#260](https://github.com/primer/doctocat/pull/260) Thanks [@colebemis](https://github.com/colebemis)! - Update from `@primer/components` v20.0.0 to v30.0.0 which includes a migration to the new [functional color variables](https://primer.style/primitives/color).
+
 ## 1.8.1
 
 ### Patch Changes

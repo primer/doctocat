@@ -1,4 +1,4 @@
-import {BorderBox, Flex, StyledOcticon, Link, themeGet} from '@primer/components'
+import {Box, Link, StyledOcticon, themeGet} from '@primer/components'
 import {LinkExternalIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import preval from 'preval.macro'
@@ -20,34 +20,30 @@ const repositoryUrl = preval`
 const NavLink = styled(Link)`
   &.active {
     font-weight: ${themeGet('fontWeights.bold')};
-    color: ${themeGet('colors.gray.8')};
+    color: ${themeGet('colors.fg.default')};
   }
 `
 
 function NavItems({items}) {
   return (
     <>
-      {items.map((item) => (
-        <BorderBox
+      {items.map(item => (
+        <Box
           key={item.title}
           borderWidth={0}
           borderRadius={0}
           borderTopWidth={1}
+          borderStyle="solid"
+          borderColor="border.muted"
           p={4}
         >
-          <Flex flexDirection="column">
-            <NavLink
-              as={GatsbyLink}
-              to={item.url}
-              activeClassName="active"
-              partiallyActive={true}
-              color="inherit"
-            >
+          <Box display="flex" flexDirection="column">
+            <NavLink as={GatsbyLink} to={item.url} activeClassName="active" partiallyActive={true} color="inherit">
               {item.title}
             </NavLink>
             {item.children ? (
-              <Flex flexDirection="column" mt={2}>
-                {item.children.map((child) => (
+              <Box display="flex" flexDirection="column" mt={2}>
+                {item.children.map(child => (
                   <NavLink
                     key={child.title}
                     as={GatsbyLink}
@@ -61,20 +57,20 @@ function NavItems({items}) {
                     {child.title}
                   </NavLink>
                 ))}
-              </Flex>
+              </Box>
             ) : null}
-          </Flex>
-        </BorderBox>
+          </Box>
+        </Box>
       ))}
       {repositoryUrl ? (
-        <BorderBox borderWidth={0} borderTopWidth={1} borderRadius={0} p={4}>
+        <Box borderWidth={0} borderTopWidth={1} borderRadius={0} borderStyle="solid" borderColor="border.default" p={4}>
           <Link href={repositoryUrl} color="inherit">
-            <Flex justifyContent="space-between" alignItems="center">
+            <Box display="flex" justifyContent="space-between" alignItems="center">
               GitHub
-              <StyledOcticon icon={LinkExternalIcon} color="gray.7" />
-            </Flex>
+              <StyledOcticon icon={LinkExternalIcon} color="fg.muted" />
+            </Box>
           </Link>
-        </BorderBox>
+        </Box>
       ) : null}
     </>
   )
