@@ -21,18 +21,3 @@ jobs:
 
       - name: Test
         run: yarn workspace @primer/gatsby-theme-doctocat test
-
-      - name: Create .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
-
-      - name: Release snapshot
-        run: |
-          yarn changeset version --snapshot
-          yarn changeset publish --tag canary
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
