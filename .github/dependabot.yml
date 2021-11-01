@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/docs" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/theme" # Location of package manifests
@@ -19,10 +19,10 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
