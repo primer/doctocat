@@ -5,7 +5,9 @@ on:
       - main
 jobs:
   release:
-    name: Release
+    name: Final
+    if: ${{ github.repository == 'primer/doctocat' }}
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -26,6 +28,7 @@ jobs:
         id: changesets
         uses: changesets/action@master
         with:
+          title: Release Tracking
           publish: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
