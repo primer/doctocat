@@ -1,4 +1,4 @@
-import {Absolute, Fixed, Flex} from '@primer/components'
+import {Absolute, Box, Button, Fixed, Flex} from '@primer/components'
 import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
@@ -6,8 +6,7 @@ import {navigate} from 'gatsby'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
 import useSearch from '../use-search'
-import DarkButton from './dark-button'
-import DarkTextInput from './dark-text-input'
+import TextInput from './text-input'
 import SearchResults from './search-results'
 
 function stateReducer(state, changes) {
@@ -49,38 +48,31 @@ function MobileSearch({isOpen, onDismiss}) {
               left={0}
               right={0}
               bottom={0}
-              bg="rgba(0,0,0,0.5)"
+              bg="primer.canvas.backdrop"
               zIndex={-1}
               onClick={handleDismiss}
             />
             <Downshift
               inputValue={query}
-              onInputValueChange={(inputValue) => setQuery(inputValue)}
+              onInputValueChange={inputValue => setQuery(inputValue)}
               selectedItem={null}
-              onSelect={(item) => {
+              onSelect={item => {
                 if (item) {
                   navigate(item.path)
                   handleDismiss()
                 }
               }}
-              itemToString={(item) => (item ? item.title : '')}
+              itemToString={item => (item ? item.title : '')}
               stateReducer={stateReducer}
             >
-              {({
-                getInputProps,
-                getItemProps,
-                getMenuProps,
-                getRootProps,
-                isOpen: isMenuOpen,
-                highlightedIndex,
-              }) => (
+              {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen: isMenuOpen, highlightedIndex}) => (
                 <Flex
                   {...getRootProps({
                     flexDirection: 'column',
-                    height: isMenuOpen ? '100%' : 'auto',
+                    height: isMenuOpen ? '100%' : 'auto'
                   })}
                 >
-                  <Flex bg="gray.9" color="white" p={3} flex="0 0 auto">
+                  <Flex bg="canvas.default" color="fg.default" p={3} flex="0 0 auto">
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}
@@ -88,32 +80,30 @@ function MobileSearch({isOpen, onDismiss}) {
                       transition={{type: 'tween', duration: 0.2}}
                       style={{width: '100%', originX: '100%'}}
                     >
-                      <DarkTextInput
+                      <TextInput
                         {...getInputProps({
                           placeholder: `Search`,
-                          width: '100%',
+                          width: '100%'
                         })}
                       />
                     </motion.div>
-                    <DarkButton
-                      ml={3}
-                      aria-label="Cancel"
-                      onClick={handleDismiss}
-                    >
+                    <Button aria-label="Cancel" onClick={handleDismiss} sx={{ml: 3}}>
                       <XIcon />
-                    </DarkButton>
+                    </Button>
                   </Flex>
                   {isMenuOpen ? (
-                    <Flex
+                    <Box
                       {...getMenuProps({
-                        bg: 'white',
+                        display: 'flex',
+                        bg: 'canvas.default',
                         py: 1,
+                        px: 2,
                         flexDirection: 'column',
                         flex: '1 1 auto',
                         style: {
                           overflow: 'auto',
-                          WebkitOverflowScrolling: 'touch',
-                        },
+                          WebkitOverflowScrolling: 'touch'
+                        }
                       })}
                     >
                       <SearchResults
@@ -121,7 +111,7 @@ function MobileSearch({isOpen, onDismiss}) {
                         getItemProps={getItemProps}
                         highlightedIndex={highlightedIndex}
                       />
-                    </Flex>
+                    </Box>
                   ) : null}
                 </Flex>
               )}

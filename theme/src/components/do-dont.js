@@ -1,60 +1,39 @@
-import {Flex, Grid, StyledOcticon, Text} from '@primer/components'
+import {Box, StyledOcticon, Text} from '@primer/components'
 import {CheckCircleFillIcon, XCircleFillIcon} from '@primer/octicons-react'
 import React from 'react'
 
 export function DoDontContainer({stacked, children}) {
   return (
-    <Grid
-      gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']}
-      gridGap={4}
-      mb={4}
-    >
+    <Box display="grid" gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']} gridGap={4} mb={4}>
       {children}
-    </Grid>
+    </Box>
   )
 }
 
 DoDontContainer.defaultProps = {
-  stacked: false,
+  stacked: false
 }
 
 export function Do(props) {
-  return (
-    <DoDontBase
-      {...props}
-      title="Do"
-      icon={CheckCircleFillIcon}
-      iconBg="green.5"
-    />
-  )
+  return <DoDontBase {...props} title="Do" icon={CheckCircleFillIcon} iconBg="success.fg" />
 }
 
 export function Dont(props) {
-  return (
-    <DoDontBase
-      {...props}
-      title="Don't"
-      icon={XCircleFillIcon}
-      iconBg="red.5"
-    />
-  )
+  return <DoDontBase {...props} title="Don't" icon={XCircleFillIcon} iconBg="danger.fg" />
 }
 
 function DoDontBase({children, title, icon: Icon, iconBg}) {
   return (
-    <Flex flexDirection="column">
-      <Flex alignSelf="start" flexDirection="row" alignItems="center" mb="2">
+    <Box display="flex" flexDirection="column">
+      <Box display="flex" alignSelf="start" flexDirection="row" alignItems="center" mb="2">
         <StyledOcticon icon={Icon} color={iconBg} />
-        <Text fontWeight="bold" color="gray.9" ml={2}>
+        <Text fontWeight="bold" color="fg.default" ml={2}>
           {title}
         </Text>
-      </Flex>
-      <Flex
-        flexDirection="column"
-        sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}}}
-      >
+      </Box>
+      <Box display="flex" flexDirection="column" sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}}}>
         {children}
-      </Flex>
-    </Flex>
+      </Box>
+    </Box>
   )
 }

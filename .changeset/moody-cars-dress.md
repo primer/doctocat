@@ -2,4 +2,4 @@
 "@primer/gatsby-theme-doctocat": patch
 ---
 
-Update mobile table of contents border color
+Bump axios from 0.19.2 to 0.21.2
