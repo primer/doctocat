@@ -1,12 +1,11 @@
 import React from 'react'
 import {H2} from './heading'
-import checklistSchema from '../checklist-schema'
 import {Box, StyledOcticon} from '@primer/components'
 import {CheckCircleFillIcon, CircleIcon} from '@primer/octicons-react'
 
-type ChecklistSchema = {
+export type ChecklistSchema = {
   title: string
-  items: {[id: string]: {description: string}}
+  items: Array<{id: string; description: string}>
 }
 
 type ChecklistProps = {
@@ -19,11 +18,11 @@ function Checklist({checklist, schema}: ChecklistProps) {
     <>
       <H2>{schema.title}</H2>
       <Box display="grid" gridGap={2}>
-        {Object.entries(schema.items).map(([id, item]) => {
+        {schema.items.map(({id, description}) => {
           const checked = Boolean(checklist[id])
           return (
             <ChecklistItem checked={checked} key={id}>
-              {item.description}
+              {description}
             </ChecklistItem>
           )
         })}

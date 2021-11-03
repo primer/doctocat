@@ -28,17 +28,20 @@ a11yChecklist:
     }}
     schema={{
       title: 'Accessibility checklist',
-      items: {
-        legibleType: {
+      items: [
+        {
+          id: 'legibleType',
           description: 'Typography is legible, even under difficult conditions.'
         },
-        visibleFocus: {
+        {
+          id: 'visibleFocus',
           description: 'Focused element is clearly indicated.'
         },
-        semanticHtml: {
+        {
+          id: 'semanticHtml',
           description: 'Component uses appropriate semantic HTML elements.'
         }
-      }
+      ]
     }}
   />
 </Box>
@@ -59,24 +62,25 @@ We'll use a checklist to make these expectations visible.
 
 First, we'll need to describe the structure of our checklist by creating a checklist schema. Checklist schema files (`.schema.js`) must live in a `src/@primer/gatsby-theme-doctocat/src/checklists/` directory. In our case, we'll create `a11y.schema.js`:
 
-<!-- NOTE: should schema files be in TypeSript? -->
-
-```js
+```ts
 // @primer/gatsby-theme-doctocat/src/checklists/a11y.schema.js
 
 module.exports = {
   title: 'Accessibility checklist',
-  items: {
-    legibleType: {
+  items: [
+    {
+      id: 'legibleType',
       description: 'Typography is legible, even under difficult conditions.'
     },
-    visibleFocus: {
+    {
+      id: 'visibleFocus',
       description: 'Focused element is clearly indicated.'
     },
-    semanticHtml: {
+    {
+      id: 'semanticHtml',
       description: 'Component uses appropriate semantic HTML elements.'
     }
-  }
+  ]
 }
 ````
 
@@ -90,7 +94,7 @@ Give your checklist a title. This becomes the heading of the checklist on docume
 
 #### `items`
 
-_Type:_ `{ [checklistItemId: string]: { description: string } }` 
+_Type:_ `Array<{ id: string; description: string }>` 
 
 Define the checklist items. Each item must have a unique `id` and a `description`.
 
@@ -139,17 +143,20 @@ When checklist frontmatter is present in a Markdown file, the checklist will be 
     }}
     schema={{
       title: 'Accessibility checklist',
-      items: {
-        legibleType: {
+      items: [
+        {
+          id: 'legibleType',
           description: 'Typography is legible, even under difficult conditions.'
         },
-        visibleFocus: {
+        {
+          id: 'visibleFocus',
           description: 'Focused element is clearly indicated.'
         },
-        semanticHtml: {
+        {
+          id: 'semanticHtml',
           description: 'Component uses appropriate semantic HTML elements.'
         }
-      }
+      ]
     }}
   />
 </Box>
