@@ -1,0 +1,235 @@
+---
+title: Checklists
+description: Improve the consistency of your project with checklists.
+---
+
+import {Box} from '@primer/components'
+import Checklist from '@primer/gatsby-theme-doctocat/src/components/checklist'
+
+Doctocat provides first-class support for rendering checklists on documentation pages via Markdown frontmatter:
+
+<Box sx={{display: 'grid', gridTemplateColumns: ['1fr', null, null, null, '1fr 1fr'], gridGap: [0,null, null, null, 3], alignItems: 'stetch'}}>
+
+```md
+---
+a11yChecklist:
+  legibleType: true
+  visibleFocus: true
+  semanticHtml: false
+---
+```
+
+<Box sx={{p: 3, border: '1px solid', borderColor: 'border.default', borderRadius: 2, '& > h2': {mt: 0}}}>
+  <Checklist
+    checklist={{
+      legibleType: true, 
+      visibleFocus: true,
+      semanticHtml: false 
+    }}
+    schema={{
+      title: 'Accessibility checklist',
+      items: {
+        legibleType: {
+          description: 'Typography is legible, even under difficult conditions.'
+        },
+        visibleFocus: {
+          description: 'Focused element is clearly indicated.'
+        },
+        semanticHtml: {
+          description: 'Component uses appropriate semantic HTML elements.'
+        }
+      }
+    }}
+  />
+</Box>
+
+</Box>
+
+## Usage
+
+To understand how checklists work in Doctocat, let's create an accessibility checklist. In this example scenerio, we have a collection of pages documenting UI components. We expect all of the components to meet the following accessibility requirements:
+
+- Typography is legible, even under difficult conditions.
+- Focused element is clearly indicated.
+- Components use appropriate semantic HTML elements.
+
+We'll use a checklist to make these expectations visible.
+
+### Create a checklist schema
+
+First, we'll need to describe the structure of our checklist by creating a checklist schema. Checklist schema files (`.schema.js`) must live in a `src/@primer/gatsby-theme-doctocat/src/checklists/` directory. In our case, we'll create `a11y.schema.js`:
+
+<!-- NOTE: should schema files be in TypeSript? -->
+
+```js
+// @primer/gatsby-theme-doctocat/src/checklists/a11y.schema.js
+
+module.exports = {
+  title: 'Accessibility checklist',
+  items: {
+    legibleType: {
+      description: 'Typography is legible, even under difficult conditions.'
+    },
+    visibleFocus: {
+      description: 'Focused element is clearly indicated.'
+    },
+    semanticHtml: {
+      description: 'Component uses appropriate semantic HTML elements.'
+    }
+  }
+}
+````
+
+Checklists schema files are JavaScript files that export an object to describe the structure of a checklist. Let's examine the properties of a schema object.
+
+#### `title`
+
+_Type:_ `string`
+
+Give your checklist a title. This becomes the heading of the checklist on documentation pages.
+
+#### `items`
+
+_Type:_ `{ [checklistItemId: string]: { description: string } }` 
+
+Define the checklist items. Each item must have a unique `id` and a `description`.
+
+<Note variant="warning">
+
+Checklist schema files must use CommonJS-style exports (i.e. `module.exports`).
+
+</Note>
+
+### Use a checklist
+
+Now that we've created a checklist schema, we can add our checklist to any page via Markdown frontmatter:
+
+
+
+```md
+---
+a11yChecklist:
+  legibleType: true
+  visibleFocus: true
+  semanticHtml: false
+---
+```
+
+
+
+
+* The name `a11yChecklist` corresponds to the name of the checklist schema (`a11y.schema.js`).
+* The value is an object with a key for each checklist item.
+* The value of each key is a boolean indicating whether or not the item should be checked.
+
+<Note variant="warning">
+  All items from the checklist schema must be present in the checklist. If a item
+  is missing, your site will fail to build. This ensures that you don't
+  accidently forget about a checklist item.
+</Note>
+
+When checklist frontmatter is present in a Markdown file, the checklist will be rendered on the bottom of the page:
+
+<Box sx={{p: 3, border: '1px solid', borderColor: 'border.default', borderRadius: 2, '& > h2': {mt: 0}}}>
+  <Checklist
+    checklist={{
+      legibleType: true, 
+      visibleFocus: true,
+      semanticHtml: false 
+    }}
+    schema={{
+      title: 'Accessibility checklist',
+      items: {
+        legibleType: {
+          description: 'Typography is legible, even under difficult conditions.'
+        },
+        visibleFocus: {
+          description: 'Focused element is clearly indicated.'
+        },
+        semanticHtml: {
+          description: 'Component uses appropriate semantic HTML elements.'
+        }
+      }
+    }}
+  />
+</Box>
+
+
+
+
+<!-- TODO: implement grouping functionality
+
+ ### Group checklist items
+
+In our example scenerio, we may want to group checklist items by component status. Specifically, we want to make it clear that title and description are required for all components with `Alpha` status. Examples and API reference documentation are required to move to `Beta` status.
+
+[show example of grouped checklist]
+
+To accomplish this we'll need to update our checklist schema:
+
+```diff
+// @primer/gatsby-theme-doctocat/src/checklists/accessibility.schema.js
+
+module.exports = {
+  title: 'Accessibility checklist',
++ groupBy: 'componentStatus',
+  items: {
+    legibleType: {
+      description: 'Typography is legible, even under difficult conditions.'
++     componentStatus: 'Alpha'
+    },
+    visibleFocus: {
+      description: 'Focused element is clearly indicated.',
++     componentStatus: 'Beta'
+    },
+    semanticHtml: {
+      description: 'Component uses appropriate semantic HTML elements.',
++     componentStatus: 'Stable'
+    }
+  },
+}
+```
+
+
+- `groupBy` (`string | undefined`): Define a  property that will be used to group checklist items. -->
+
+
+
+<!-- TODO: implement built-in checklists
+
+## Built-in checklists
+
+Doctocat includes the following checklist schemas by default.
+
+### `component` checklist
+
+A collection of maturity criteria for Primer components.
+
+```
+---
+componentChecklist:
+  dependenciesReviewed: false
+---
+```
+
+### Extend built-in checklists
+
+Use Gatsby [file shadowing](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/#any-source-file-is-shadowable) and [deepmerge](#) to extend any built-in checklist schemas:
+
+```js
+// src/@primer/gatsby-theme-doctocat/src/checklists/component.schema.js
+
+const merge = require('deepmerge')
+const componentChecklistSchema = require('@primer/gatsby-theme-doctocat/src/checklists/component.schema')
+
+module.exports = merge(componentChecklistSchema, {
+  items: {
+    treeshakable: {
+      description: 'Component is tree-shakable.',
+      componentStatus: 'alpha',
+    },
+  },
+})
+``` -->
+
+
