@@ -5,7 +5,32 @@ const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 const extractExports = require(`gatsby-plugin-mdx/utils/extract-exports`)
 const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
-const checklistSchema = require('./src/checklist-schema')
+const requireGlob = require('require-glob')
+const checklistSchema = require('./src/checklists/component.schema.js')
+const checklistSchemas = requireGlob.sync('./src/checklists/*.schema.js')
+
+exports.sourceNodes = ({actions, createNodeId, createContentDigest}) => {
+  const {createNode} = actions
+
+  // Add checklist schemas to GraphQL API
+  for (const schemaKey in checklistSchemas) {
+    const name = schemaKey.replace('Schema', '')
+    const data = {name, ...checklistSchemas[schemaKey]}
+    console.log(data)
+
+    const node = {
+      id: createNodeId(schemaKey),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'ChecklistSchema',
+        contentDigest: createContentDigest(data)
+      },
+      ...data
+    }
+    createNode(node)
+  }
+}
 
 const CONTRIBUTOR_CACHE = new Map()
 
@@ -57,6 +82,8 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       // as a workaround for https://github.com/gatsbyjs/gatsby/issues/21837
       const code = await mdx(node.rawBody)
       const {frontmatter} = extractExports(code)
+
+      // console.log(checklistSchema)
 
       if (frontmatter.checklist) {
         validateChecklist(frontmatter.checklist, checklistSchema, fileRelativePath)
