@@ -11,7 +11,7 @@
   "dependencies": {
     "@primer/components": "^30.0.0",
     "@primer/gatsby-theme-doctocat": "*",
-    "gatsby": "^2.24.52",
+    "gatsby": "^4.1.1",
     "gatsby-plugin-sass": "^2.1.0",
     "node-sass": "^4.12.0",
     "react": "^16.13.1",
