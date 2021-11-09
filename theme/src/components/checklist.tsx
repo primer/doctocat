@@ -40,7 +40,6 @@ type ChecklistItemProps = {
   checked: boolean
 }
 
-// TODO: ask for accessibility review on checklist items
 function ChecklistItem({checked, children}: React.PropsWithChildren<ChecklistItemProps>) {
   return (
     <Box as="li" display="grid" gridTemplateColumns="auto 1fr" gridGap={2} sx={{listStyleType: 'none'}}>
