@@ -1,5 +1,21 @@
 # @primer/gatsby-theme-doctocat
 
+## 2.1.0
+
+### Minor Changes
+
+- [`9ddaa08`](https://github.com/primer/doctocat/commit/9ddaa08395a5d08fc0cd6f7dc0de4d1e19252fa7) [#267](https://github.com/primer/doctocat/pull/267) Thanks [@colebemis](https://github.com/colebemis)! - Add support for checklists. See the [checklists](https://primer.style/doctocat/usage/checklists) documentation for more details.
+
+### Patch Changes
+
+- [`43a78eb`](https://github.com/primer/doctocat/commit/43a78eb93e453f9659488c125f7e5889633b3540) [#254](https://github.com/primer/doctocat/pull/254) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump axios from 0.19.2 to 0.21.2
+
+* [`a730972`](https://github.com/primer/doctocat/commit/a7309725faa1636d7e53a5d63c65007bbe340e53) [#258](https://github.com/primer/doctocat/pull/258) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump tmpl from 1.0.4 to 1.0.5
+
+- [`5efe933`](https://github.com/primer/doctocat/commit/5efe93324e3b078cac84c41cbec7de4ee9c2c800) [#216](https://github.com/primer/doctocat/pull/216) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump socket.io from 2.3.0 to 2.4.1
+
+* [`6dcddf2`](https://github.com/primer/doctocat/commit/6dcddf2bd77019251b058c5e3081d815f7eaafed) [#256](https://github.com/primer/doctocat/pull/256) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump prismjs from 1.22.0 to 1.25.0
+
 ## 2.0.0
 
 ### Major Changes
