@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "lint": "eslint '**/*.{js,ts,tsx}'",
+    "lint": "eslint '**/*.{js}'",
     "lint:fix": "yarn lint -- --fix"
   },
   "prettier": "@github/prettier-config",
