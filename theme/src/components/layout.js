@@ -1,6 +1,7 @@
 import componentMetadata from '@primer/component-metadata'
 import {BorderBox, Box, Flex, Grid, Heading, Position, Text} from '@primer/components'
 import React from 'react'
+import Checklists from './checklists'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
@@ -97,6 +98,7 @@ function Layout({children, pageContext}) {
               </BorderBox>
             ) : null}
             {children}
+            <Checklists frontmatter={pageContext.frontmatter} />
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
