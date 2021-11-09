@@ -1,4 +1,4 @@
-import {validateChecklistSchema} from '../validate-checklists'
+import {validateChecklistSchema, validateChecklist} from '../validate-checklists'
 
 describe('validateChecklistSchema()', () => {
   const valid = [
@@ -34,15 +34,63 @@ describe('validateChecklistSchema()', () => {
     }
   ]
 
-  for (const checklist of valid) {
-    it(`should validate ${JSON.stringify(checklist)}`, () => {
-      expect(() => validateChecklistSchema(checklist)).not.toThrow()
+  for (const checklistSchema of valid) {
+    test(`should validate ${JSON.stringify(checklistSchema)}`, () => {
+      expect(() => validateChecklistSchema(checklistSchema)).not.toThrow()
     })
   }
 
-  for (const checklist of invalid) {
-    it(`should not validate ${JSON.stringify(checklist)}`, () => {
-      expect(() => validateChecklistSchema(checklist)).toThrow()
+  for (const checklistSchema of invalid) {
+    test(`should not validate ${JSON.stringify(checklistSchema)}`, () => {
+      expect(() => validateChecklistSchema(checklistSchema)).toThrow()
+    })
+  }
+})
+
+describe('validateChecklist()', () => {
+  const valid = [
+    {
+      checklist: {dependenciesReviewed: true},
+      checklistSchema: {
+        title: 'Example checklist',
+        items: [{id: 'dependenciesReviewed', description: 'Third-party dependencies have been reviewed'}]
+      }
+    }
+  ]
+
+  const invalid = [
+    {
+      checklist: {reviewed: true},
+      checklistSchema: {
+        title: 'Example checklist',
+        items: [{id: 'dependenciesReviewed', description: 'Third-party dependencies have been reviewed'}]
+      }
+    },
+    {
+      checklist: {dependenciesReviewed: 1},
+      checklistSchema: {
+        title: 'Example checklist',
+        items: [{id: 'dependenciesReviewed', description: 'Third-party dependencies have been reviewed'}]
+      }
+    },
+    {
+      checklist: ['dependenciesReviewed'],
+      checklistSchema: {
+        title: 'Example checklist',
+        items: [{id: 'dependenciesReviewed', description: 'Third-party dependencies have been reviewed'}]
+      }
+    }
+  ]
+
+  for (const {checklist, checklistSchema} of valid) {
+    test(`should validate ${JSON.stringify(checklist)}`, () => {
+      expect(() => validateChecklist(checklist, checklistSchema)).not.toThrow()
+    })
+  }
+
+  for (const {checklist, checklistSchema} of invalid) {
+    test(`should not validate ${JSON.stringify(checklist)}`, () => {
+      expect(() => validateChecklist(checklist, checklistSchema)).toThrow()
     })
   }
 })
