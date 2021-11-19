@@ -1,5 +1,21 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.0.0
+
+### Major Changes
+
+- [`c2037d8`](https://github.com/primer/doctocat/commit/c2037d8352fca4ce3055e801b365d4ff1b5eefe9) [#295](https://github.com/primer/doctocat/pull/295) Thanks [@colebemis](https://github.com/colebemis)! - Remove checklist feature
+
+### Minor Changes
+
+- [`a94e0a9`](https://github.com/primer/doctocat/commit/a94e0a962e8013901e4285c7a3cabc3a0b691a92) [#294](https://github.com/primer/doctocat/pull/294) Thanks [@colebemis](https://github.com/colebemis)! - You can now make custom React components globally available (no import required) to all markdown files in your site.
+
+### Patch Changes
+
+- [`31a62df`](https://github.com/primer/doctocat/commit/31a62dfb7eb7a467a4e03a991adad995564ae4d1) [#262](https://github.com/primer/doctocat/pull/262) Thanks [@SferaDev](https://github.com/SferaDev)! - Fix scroll flickering of table of contents
+
+* [`9972de8`](https://github.com/primer/doctocat/commit/9972de88224e1b868dad051abe62a92daf8796ef) [#291](https://github.com/primer/doctocat/pull/291) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix release
+
 ## 2.1.0
 
 ### Minor Changes
