@@ -16,10 +16,8 @@
       url: /usage/live-code
     - title: Deployment
       url: /usage/deployment
-    - title: Images
+    - title: Using images
       url: /usage/using-images
-    - title: Checklists
-      url: /usage/checklists
 - title: Components
   url: /components
   children:
