@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "lint": "eslint '**/*.js'",
+    "lint": "eslint '**/*.{js,ts,tsx}'",
     "lint:fix": "yarn lint -- --fix"
   },
   "prettier": "@github/prettier-config",
@@ -60,7 +60,6 @@
     "github-slugger": "^1.2.1",
     "html-react-parser": "^1.4.0",
     "jest": "^24.9.0",
-    "jsonschema": "^1.4.0",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "^4.7.0",
     "pkg-up": "^3.1.0",
@@ -76,7 +75,6 @@
     "react-live": "^2.1.2",
     "react-measure": "^2.3.0",
     "read-pkg-up": "^6.0.0",
-    "require-glob": "^4.0.0",
     "sentence-case": "^2.1.1",
     "styled-components": "^4.3.2",
     "styled-system": "^5.0.18",

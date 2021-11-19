@@ -5,37 +5,6 @@ const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
 const extractExports = require(`gatsby-plugin-mdx/utils/extract-exports`)
 const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
-const requireGlob = require('require-glob')
-const {validateChecklistSchema, validateChecklist} = require('./src/validate-checklists')
-const checklistSchemas = requireGlob.sync('./src/checklists/*.schema.js')
-
-exports.sourceNodes = ({actions, createNodeId, createContentDigest}) => {
-  const {createNode} = actions
-
-  // Add checklist schemas to GraphQL API
-  for (const schemaKey in checklistSchemas) {
-    try {
-      validateChecklistSchema(checklistSchemas[schemaKey])
-    } catch (error) {
-      throw new Error(`Invalid checklist schema: ${schemaKey.replace('Schema', '')}.schema.js\n${error.message}`)
-    }
-
-    const name = schemaKey.replace('Schema', '')
-    const data = {name, ...checklistSchemas[schemaKey]}
-
-    const node = {
-      id: createNodeId(schemaKey),
-      parent: null,
-      children: [],
-      internal: {
-        type: 'ChecklistSchema',
-        contentDigest: createContentDigest(data)
-      },
-      ...data
-    }
-    createNode(node)
-  }
-}
 
 const CONTRIBUTOR_CACHE = new Map()
 
@@ -86,18 +55,6 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       // as a workaround for https://github.com/gatsbyjs/gatsby/issues/21837
       const code = await mdx(node.rawBody)
       const {frontmatter} = extractExports(code)
-
-      // Validate checklist frontmatter
-      for (const schemaKey in checklistSchemas) {
-        const checklistKey = schemaKey.replace('Schema', 'Checklist')
-        if (checklistKey in frontmatter) {
-          try {
-            validateChecklist(frontmatter[checklistKey], checklistSchemas[schemaKey])
-          } catch (error) {
-            throw new Error(`Invalid checklist: ${checklistKey} in ${fileRelativePath}\n${error.message}`)
-          }
-        }
-      }
 
       actions.createPage({
         path: pagePath,
