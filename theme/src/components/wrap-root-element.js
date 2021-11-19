@@ -1,6 +1,7 @@
 import {MDXProvider} from '@mdx-js/react'
 import {Link, ThemeProvider} from '@primer/components'
 import React from 'react'
+import mdxComponents from '../mdx-components'
 import Blockquote from './blockquote'
 import Caption from './caption'
 import Code from './code'
@@ -36,13 +37,14 @@ const components = {
   ol: List.withComponent('ol'),
   dl: DescriptionList,
 
-  // Shortcodes (https://mdxjs.com/blog/shortcodes)
+  // Custom components
   Note,
   Do,
   Dont,
   DoDontContainer,
   Caption,
-  ImageContainer
+  ImageContainer,
+  ...mdxComponents
 }
 
 function wrapRootElement({element}) {
