@@ -49,8 +49,8 @@ function Layout({children, pageContext}) {
               display={['none', null, 'block']}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
               position="sticky"
-              top={HEADER_HEIGHT + 24}
-              maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 24px)`}
+              top={HEADER_HEIGHT + 48}
+              maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 48px)`}
             >
               <Text display="inline-block" fontWeight="bold" mb={1}>
                 On this page
