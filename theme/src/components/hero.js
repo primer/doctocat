@@ -10,7 +10,7 @@ function Hero() {
     <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
       <Box bg="canvas.default" py={6}>
         <Container>
-          <Heading as="h1" color="accent.fg" fontSize={7} m={0}>
+          <Heading as="h1" sx={{color: 'accent.fg', fontSize: 7, m: 0}}>
             {title}
           </Heading>
           <Text as="p" m={0} color="fg.default" fontSize={4}>

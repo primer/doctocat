@@ -20,8 +20,7 @@ function Contributors({contributors}) {
           <Link
             key={contributor.login}
             href={`https://github.com/${contributor.login}`}
-            lineHeight="condensedUltra"
-            sx={{mr: 2}}
+            sx={{mr: 2, lineHeight: 'condensedUltra'}}
           >
             <Tooltip key={contributor.login} aria-label={contributor.login}>
               <Avatar src={`https://github.com/${contributor.login}.png?size=40`} alt={contributor.login} />
