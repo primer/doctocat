@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.0.1
+
+### Patch Changes
+
+- [`ff74ece`](https://github.com/primer/doctocat/commit/ff74ecea1b373469034c2122d94a54ca3e964158) [#301](https://github.com/primer/doctocat/pull/301) Thanks [@jfuchs](https://github.com/jfuchs)! - Removed styled system prop usage on Primer React components.
+
 ## 3.0.0
 
 ### Major Changes
