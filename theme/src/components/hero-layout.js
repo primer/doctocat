@@ -8,7 +8,7 @@ import Hero from './hero'
 import Sidebar from './sidebar'
 
 function HeroLayout({children, pageContext}) {
-  let {additionalContributors, editable = true} = pageContext.frontmatter
+  let {additionalContributors, hideEditLink = false} = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -27,7 +27,7 @@ function HeroLayout({children, pageContext}) {
           <Container>
             {children}
             <PageFooter
-              editUrl={editable ? pageContext.editUrl : undefined}
+              editUrl={hideEditLink ? undefined : pageContext.editUrl}
               contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
           </Container>
