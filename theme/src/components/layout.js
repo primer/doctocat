@@ -1,13 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {
-  BorderBox,
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  Position,
-  Text,
-} from '@primer/components'
+import {BorderBox, Box, Flex, Grid, Heading, Position, Text} from '@primer/components'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -19,15 +11,7 @@ import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {
-    title,
-    description,
-    status,
-    source,
-    storybook,
-    additionalContributors,
-    componentId,
-  } = pageContext.frontmatter
+  let {title, description, status, source, storybook, additionalContributors, componentId} = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -42,10 +26,10 @@ function Layout({children, pageContext}) {
   }
 
   return (
-    <Flex flexDirection="column" minHeight="100vh">
+    <Flex sx={{flexDirection: 'column', minHeight: '100vh'}}>
       <Head title={title} description={description} />
       <Header />
-      <Flex flex="1 1 auto" flexDirection="row" css={{zIndex: 0}}>
+      <Flex css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row'}}>
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
@@ -56,17 +40,21 @@ function Layout({children, pageContext}) {
           p={[4, 5, 6, 7]}
           sx={{
             justifyContent: 'center',
-            flexDirection: 'row-reverse',
+            flexDirection: 'row-reverse'
           }}
         >
           {pageContext.tableOfContents.items ? (
             <Position
-              sx={{width: 220, flex: '0 0 auto', marginLeft: 6}}
-              display={['none', null, 'block']}
+              sx={{
+                width: 220,
+                flex: '0 0 auto',
+                marginLeft: 6,
+                display: ['none', null, 'block'],
+                position: 'sticky',
+                top: HEADER_HEIGHT + 48,
+                maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 48px)`
+              }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
-              position="sticky"
-              top={HEADER_HEIGHT + 24}
-              maxHeight={`calc(100vh - ${HEADER_HEIGHT}px - 24px)`}
             >
               <Text display="inline-block" fontWeight="bold" mb={1}>
                 On this page
@@ -77,7 +65,7 @@ function Layout({children, pageContext}) {
           <Box width="100%" maxWidth="960px">
             <Box mb={4}>
               <Flex sx={{alignItems: 'center'}}>
-                <Heading as="h1" mr={2}>
+                <Heading as="h1" sx={{mr: 2}}>
                   {title}
                 </Heading>{' '}
                 {status ? <StatusLabel status={status} /> : null}
@@ -89,11 +77,13 @@ function Layout({children, pageContext}) {
               ) : null}
               {source || storybook ? (
                 <Grid
-                  py={2}
-                  gridGap={[1, null, 3]}
-                  gridAutoFlow={['row', null, 'column']}
-                  gridAutoColumns="max-content"
-                  gridAutoRows="max-content"
+                  sx={{
+                    py: 2,
+                    gridGap: [1, null, 3],
+                    gridAutoFlow: ['row', null, 'column'],
+                    gridAutoColumns: 'max-content',
+                    gridAutoRows: 'max-content'
+                  }}
                 >
                   {source ? <SourceLink href={source} /> : null}
                   {storybook ? <StorybookLink href={storybook} /> : null}
@@ -101,23 +91,15 @@ function Layout({children, pageContext}) {
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox display={['block', null, 'none']} mb={5} bg="gray.1">
+              <BorderBox
+                sx={{display: ['block', null, 'none'], mb: 5, borderColor: 'border.muted', bg: 'canvas.subtle'}}
+              >
                 <Box p={3}>
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
+                  <Flex sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                     <Text fontWeight="bold">On this page</Text>
                   </Flex>
                 </Box>
-                <Box
-                  p={3}
-                  sx={{
-                    borderTop: '1px solid',
-                    borderColor: 'gray.2',
-                  }}
-                >
+                <Box p={3} borderTop="1px solid" borderColor="border.muted">
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
               </BorderBox>
@@ -125,9 +107,7 @@ function Layout({children, pageContext}) {
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
-              contributors={pageContext.contributors.concat(
-                additionalContributors.map(login => ({login})),
-              )}
+              contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
           </Box>
         </Box>

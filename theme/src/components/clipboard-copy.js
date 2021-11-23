@@ -1,5 +1,5 @@
 import {Button, StyledOcticon} from '@primer/components'
-import {CheckIcon, ClippyIcon} from '@primer/octicons-react'
+import {CheckIcon, CopyIcon} from '@primer/octicons-react'
 import copy from 'copy-to-clipboard'
 import React from 'react'
 
@@ -16,17 +16,17 @@ function ClipboardCopy({value}) {
 
   return (
     <Button
-      px={2}
       aria-label="Copy to clipboard"
       onClick={() => {
         copy(value)
         setCopied(true)
       }}
+      sx={{px: 2}}
     >
       {copied ? (
-        <StyledOcticon icon={CheckIcon} color="green.5" />
+        <StyledOcticon icon={CheckIcon} sx={{color: 'success.fg'}} />
       ) : (
-        <StyledOcticon icon={ClippyIcon} color="gray.5" />
+        <StyledOcticon icon={CopyIcon} sx={{color: 'fg.muted'}} />
       )}
     </Button>
   )

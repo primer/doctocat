@@ -2,22 +2,26 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - 'main'
+      - 'next_major'
 jobs:
   release:
-    name: Release
+    name: Final
+    if: ${{ github.repository == 'primer/doctocat' }}
+
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
+          persist-credentials: false
 
-      - name: Set up Node.js 12.x
-        uses: actions/setup-node@master
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 14.x
 
       - name: Install dependencies
         run: yarn
@@ -26,7 +30,9 @@ jobs:
         id: changesets
         uses: changesets/action@master
         with:
+          title: Release Tracking
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}

@@ -14,15 +14,15 @@ const Table = styled.table`
   th,
   td {
     padding: ${themeGet('space.2')} ${themeGet('space.3')};
-    border: 1px solid ${themeGet('colors.gray.2')};
+    border: 1px solid ${themeGet('colors.border.muted')};
   }
 
   tr {
     background-color: ${themeGet('colors.white')};
-    border-top: 1px solid ${themeGet('colors.gray.2')};
+    border-top: 1px solid ${themeGet('colors.border.muted')};
 
     &:nth-child(2n) {
-      background-color: ${themeGet('colors.gray.1')};
+      background-color: ${themeGet('colors.neutral.subtle')};
     }
   }
 

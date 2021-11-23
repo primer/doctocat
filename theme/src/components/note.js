@@ -15,23 +15,23 @@ const Note = styled.div`
   ${variant({
     variants: {
       info: {
-        borderColor: 'blue.4',
-        bg: 'blue.0',
+        borderColor: 'accent.muted',
+        bg: 'accent.subtle'
       },
       warning: {
-        borderColor: 'yellow.5',
-        bg: 'yellow.1',
+        borderColor: 'attention.muted',
+        bg: 'attention.subtle'
       },
       danger: {
-        borderColor: 'red.4',
-        bg: 'red.0',
-      },
-    },
+        borderColor: 'danger.muted',
+        bg: 'danger.subtle'
+      }
+    }
   })}
 `
 
 Note.defaultProps = {
-  variant: 'info',
+  variant: 'info'
 }
 
 export default Note

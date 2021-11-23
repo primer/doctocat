@@ -11,7 +11,7 @@ import LivePreviewWrapper from './live-preview-wrapper'
 
 const languageTransformers = {
   html: html => htmlToJsx(html),
-  jsx: jsx => wrapWithFragment(jsx),
+  jsx: jsx => wrapWithFragment(jsx)
 }
 
 function htmlToJsx(html) {
@@ -40,19 +40,14 @@ function LiveCode({code, language, noinline, title}) {
   const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
 
   return (
-    <Flex flexDirection="column" mb={3}>
-      <LiveProvider
-        scope={scope}
-        code={liveCode}
-        transformCode={languageTransformers[language]}
-        noInline={noinline}
-      >
+    <Flex sx={{flexDirection: 'column', mb: 3}}>
+      <LiveProvider scope={scope} code={liveCode} transformCode={languageTransformers[language]} noInline={noinline}>
         <Flex
           sx={{
             border: '1px solid',
-            borderColor: 'border.gray',
+            borderColor: 'border.default',
             borderTopRightRadius: 2,
-            borderTopLeftRadius: 2,
+            borderTopLeftRadius: 2
           }}
         >
           <LivePreviewWrapper>
@@ -65,7 +60,7 @@ function LiveCode({code, language, noinline, title}) {
             sx={{
               border: '1px solid',
               borderColor: 'border.gray',
-              borderTop: 0,
+              borderTop: 0
             }}
           >
             {title}
@@ -84,22 +79,14 @@ function LiveCode({code, language, noinline, title}) {
               borderBottomRightRadius: theme.radii[2],
               border: '1px solid',
               borderTop: 0,
-              borderColor: theme.colors.border.gray,
+              borderColor: theme.colors.border.default
             }}
           />
-          <Absolute top={0} right={0} p={2}>
+          <Absolute sx={{top: 0, right: 0, p: 2}}>
             <ClipboardCopy value={liveCode} />
           </Absolute>
         </Relative>
-        <Text
-          as={LiveError}
-          m={0}
-          p={3}
-          fontFamily="mono"
-          fontSize={1}
-          color="white"
-          bg="red.5"
-        />
+        <Text as={LiveError} m={0} p={3} fontFamily="mono" fontSize={1} color="fg.onEmphasis" bg="danger.emphasis" />
       </LiveProvider>
     </Flex>
   )

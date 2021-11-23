@@ -1,4 +1,4 @@
-import {Flex, Text} from '@primer/components'
+import {Flex, Text, Box} from '@primer/components'
 import React from 'react'
 import sentenceCase from 'sentence-case'
 import useSiteMetadata from '../use-site-metadata'
@@ -8,9 +8,9 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
 
   if (results.length === 0) {
     return (
-      <Text as="div" p={3} fontSize={1} color="gray.7" width="100%">
+      <Box p={3} fontSize={1} color="fg.muted" width="100%">
         No results
-      </Text>
+      </Box>
     )
   }
 
@@ -21,17 +21,16 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         item,
         flexDirection: 'column',
         flex: '0 0 auto',
-        px: 3,
+        px: 2,
         py: 2,
-        color: highlightedIndex === index ? 'white' : 'gray.8',
-        bg: highlightedIndex === index ? 'blue.5' : 'transparent',
+        color: 'fg.default',
+        fontSize: 1,
+        bg: highlightedIndex === index ? 'neutral.muted' : 'transparent',
         style: {cursor: 'pointer'},
+        borderRadius: 2
       })}
     >
-      <Text
-        fontSize={0}
-        color={highlightedIndex === index ? 'blue.2' : 'gray.7'}
-      >
+      <Text fontSize={0} color="fg.muted">
         {getBreadcrumbs(siteMetadata.shortName, item.path).join(' / ')}
       </Text>
       {item.title}
@@ -48,7 +47,7 @@ function getBreadcrumbs(siteTitle, path) {
       // The last title will be displayed separately, so we exclude it
       // from the breadcrumbs to avoid displaying it twice.
       .slice(0, -1)
-      .map(sentenceCase),
+      .map(sentenceCase)
   ]
 }
 

@@ -31,10 +31,12 @@ function MarkdownHeading({children, ...props}) {
     <StyledHeading id={id} {...props}>
       <Link
         href={`#${id}`}
-        p={2}
-        ml={-32}
-        color="gray.8"
         aria-label={`${text} permalink`}
+        sx={{
+          p: 2,
+          ml: -32,
+          color: 'fg.default'
+        }}
       >
         <LinkIcon className="octicon-link" verticalAlign="middle" />
       </Link>
@@ -46,13 +48,13 @@ function MarkdownHeading({children, ...props}) {
 const StyledH1 = styled(StyledHeading).attrs({as: 'h1'})`
   padding-bottom: ${themeGet('space.1')};
   font-size: ${themeGet('fontSizes.5')};
-  border-bottom: 1px solid ${themeGet('colors.gray.2')};
+  border-bottom: 1px solid ${themeGet('colors.border.default')};
 `
 
 const StyledH2 = styled(StyledHeading).attrs({as: 'h2'})`
   padding-bottom: ${themeGet('space.1')};
   font-size: ${themeGet('fontSizes.4')};
-  border-bottom: 1px solid ${themeGet('colors.gray.2')};
+  border-bottom: 1px solid ${themeGet('colors.border.default')};
 `
 
 const StyledH3 = styled(StyledHeading).attrs({as: 'h3'})`
@@ -69,12 +71,12 @@ const StyledH5 = styled(StyledHeading).attrs({as: 'h5'})`
 
 const StyledH6 = styled(StyledHeading).attrs({as: 'h6'})`
   font-size: ${themeGet('fontSizes.1')};
-  color: ${themeGet('colors.gray.5')};
+  color: ${themeGet('colors.fg.muted')};
 `
 
-export const H1 = (props) => <MarkdownHeading as={StyledH1} {...props} />
-export const H2 = (props) => <MarkdownHeading as={StyledH2} {...props} />
-export const H3 = (props) => <MarkdownHeading as={StyledH3} {...props} />
-export const H4 = (props) => <MarkdownHeading as={StyledH4} {...props} />
-export const H5 = (props) => <MarkdownHeading as={StyledH5} {...props} />
-export const H6 = (props) => <MarkdownHeading as={StyledH6} {...props} />
+export const H1 = props => <MarkdownHeading as={StyledH1} {...props} />
+export const H2 = props => <MarkdownHeading as={StyledH2} {...props} />
+export const H3 = props => <MarkdownHeading as={StyledH3} {...props} />
+export const H4 = props => <MarkdownHeading as={StyledH4} {...props} />
+export const H5 = props => <MarkdownHeading as={StyledH5} {...props} />
+export const H6 = props => <MarkdownHeading as={StyledH6} {...props} />

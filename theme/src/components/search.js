@@ -1,10 +1,10 @@
-import {BorderBox, Position} from '@primer/components'
+import {BorderBox, Position, ThemeProvider} from '@primer/components'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
 import React from 'react'
 import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
-import DarkTextInput from './dark-text-input'
+import TextInput from './text-input'
 import SearchResults from './search-results'
 
 function stateReducer(state, changes) {
@@ -43,19 +43,14 @@ function Search() {
       itemToString={item => (item ? item.title : '')}
       stateReducer={stateReducer}
     >
-      {({
-        getInputProps,
-        getItemProps,
-        getMenuProps,
-        getRootProps,
-        isOpen,
-        highlightedIndex,
-      }) => (
+      {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, highlightedIndex}) => (
         <Position {...getRootProps({position: 'relative'})}>
-          <DarkTextInput
+          <TextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
-              width: 240,
+              sx: {
+                width: 240
+              }
             })}
           />
           {isOpen ? (
@@ -64,23 +59,25 @@ function Search() {
                 position: 'absolute',
                 left: 0,
                 right: 0,
-                pt: 2,
+                pt: 2
               })}
             >
-              <BorderBox
-                minWidth={300}
-                maxHeight="70vh"
-                py={1}
-                boxShadow="medium"
-                bg="white"
-                style={{overflow: 'auto'}}
-              >
-                <SearchResults
-                  results={results}
-                  getItemProps={getItemProps}
-                  highlightedIndex={highlightedIndex}
-                />
-              </BorderBox>
+              <ThemeProvider colorMode="day">
+                <BorderBox
+                  style={{overflow: 'auto'}}
+                  sx={{
+                    minWidth: 300,
+                    maxHeight: '70vh',
+                    p: 2,
+                    boxShadow: 'shadow.large',
+                    borderColor: 'border.muted',
+                    bg: 'canvas.overlay',
+                    borderRadius: '12px'
+                  }}
+                >
+                  <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
+                </BorderBox>
+              </ThemeProvider>
             </Position>
           ) : null}
         </Position>

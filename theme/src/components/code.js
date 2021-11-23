@@ -13,14 +13,7 @@ function Code({className, children, live, noinline, metastring}) {
   const {title} = extractProperties(metastring)
 
   if (live) {
-    return (
-      <LiveCode
-        code={code}
-        language={language}
-        noinline={noinline}
-        title={title}
-      />
-    )
+    return <LiveCode code={code} language={language} noinline={noinline} title={title} />
   }
 
   return (
@@ -34,7 +27,7 @@ function Code({className, children, live, noinline, metastring}) {
         width: '100%',
         borderRadius: 2,
         border: '1px solid',
-        borderColor: 'border.gray',
+        borderColor: 'border.default'
       }}
     >
       {title ? (
@@ -42,30 +35,24 @@ function Code({className, children, live, noinline, metastring}) {
           p={3}
           sx={{
             borderBottom: '1px solid',
-            borderColor: 'border.gray',
+            borderColor: 'border.default'
           }}
         >
           {title}
         </Box>
       ) : null}
       <Relative>
-        <Absolute top={0} right={0} p={2}>
+        <Absolute sx={{top: 0, right: 0, p: 2}}>
           <ClipboardCopy value={code} />
         </Absolute>
-        <Highlight
-          {...defaultProps}
-          Prism={Prism}
-          code={code}
-          language={language}
-          theme={githubTheme}
-        >
+        <Highlight {...defaultProps} Prism={Prism} code={code} language={language} theme={githubTheme}>
           {({className, style, tokens, getLineProps, getTokenProps}) => (
             <Box
               as="pre"
               className={className}
-              m={0}
-              pt={3}
-              pb={3}
+              mt={0}
+              mb={3}
+              p={3}
               border={0}
               style={{...style, overflow: 'auto'}}
               sx={{borderRadius: 2}}
@@ -76,15 +63,10 @@ function Code({className, children, live, noinline, metastring}) {
                   {...getLineProps({line, key: i})}
                   pr={3}
                   pl={3}
-                  bg={shouldHighlight(i) ? 'yellow.2' : undefined}
+                  bg={shouldHighlight(i) ? 'bg.attention' : undefined}
                 >
                   {line.map((token, key) => (
-                    <Text
-                      key={key}
-                      fontFamily="mono"
-                      fontSize={1}
-                      {...getTokenProps({token, key})}
-                    />
+                    <Text key={key} fontFamily="mono" fontSize={1} {...getTokenProps({token, key})} />
                   ))}
                 </Box>
               ))}
@@ -124,7 +106,7 @@ function rangeParser(string) {
   }, [])
 }
 
-const calculateLinesToHighlight = (metastring) => {
+const calculateLinesToHighlight = metastring => {
   const regex = /{([\d.,-]+)}/
   if (!regex.test(metastring)) {
     return () => false
@@ -132,10 +114,10 @@ const calculateLinesToHighlight = (metastring) => {
 
   const strlineNumbers = regex.exec(metastring)[1]
   const lineNumbers = rangeParser(strlineNumbers)
-  return (index) => lineNumbers.includes(index + 1)
+  return index => lineNumbers.includes(index + 1)
 }
 
-const extractProperties = (metastring) => {
+const extractProperties = metastring => {
   const regex = /(\w+)=["']([^"']+)["']/g
   const results = metastring ? metastring.matchAll(regex) : []
 
