@@ -50,9 +50,9 @@ function Code({className, children, live, noinline, metastring}) {
             <Box
               as="pre"
               className={className}
-              mt={0}
-              mb={3}
-              p={3}
+              m={0}
+              pt={3}
+              pb={3}
               border={0}
               style={{...style, overflow: 'auto'}}
               sx={{borderRadius: 2}}
@@ -63,7 +63,7 @@ function Code({className, children, live, noinline, metastring}) {
                   {...getLineProps({line, key: i})}
                   pr={3}
                   pl={3}
-                  bg={shouldHighlight(i) ? 'bg.attention' : undefined}
+                  bg={shouldHighlight(i) ? 'attention.subtle' : undefined}
                 >
                   {line.map((token, key) => (
                     <Text key={key} fontFamily="mono" fontSize={1} {...getTokenProps({token, key})} />
