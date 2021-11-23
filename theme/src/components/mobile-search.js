@@ -38,19 +38,14 @@ function MobileSearch({isOpen, onDismiss}) {
     <AnimatePresence>
       {isOpen ? (
         <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
-          <Fixed top={0} left={0} right={0} bottom={0} zIndex={1}>
+          <Fixed sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
             <Absolute
               as={motion.div}
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
-              top={0}
-              left={0}
-              right={0}
-              bottom={0}
-              bg="primer.canvas.backdrop"
-              zIndex={-1}
               onClick={handleDismiss}
+              sx={{top: 0, left: 0, right: 0, bottom: 0, bg: 'primer.canvas.backdrop', zIndex: -1}}
             />
             <Downshift
               inputValue={query}
@@ -72,7 +67,7 @@ function MobileSearch({isOpen, onDismiss}) {
                     height: isMenuOpen ? '100%' : 'auto'
                   })}
                 >
-                  <Flex bg="canvas.default" color="fg.default" p={3} flex="0 0 auto">
+                  <Flex sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto'}}>
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}
@@ -83,7 +78,7 @@ function MobileSearch({isOpen, onDismiss}) {
                       <TextInput
                         {...getInputProps({
                           placeholder: `Search`,
-                          width: '100%'
+                          sx: {width: '100%'}
                         })}
                       />
                     </motion.div>

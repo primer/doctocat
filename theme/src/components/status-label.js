@@ -14,7 +14,7 @@ function getStatusColor(status) {
 
 function StatusLabel({status}) {
   return (
-    <Label outline color={getStatusColor(status)} borderColor={getStatusColor(status)}>
+    <Label outline sx={{color: getStatusColor(status), borderColor: getStatusColor(status)}}>
       {status}
     </Label>
   )

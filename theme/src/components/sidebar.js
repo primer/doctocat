@@ -33,21 +33,20 @@ function Sidebar() {
 
   return (
     <Position
-      position="sticky"
-      top={HEADER_HEIGHT}
-      height={`calc(100vh - ${HEADER_HEIGHT}px)`}
-      minWidth={260}
-      bg="canvas.subtle"
+      sx={{
+        position: 'sticky',
+        top: HEADER_HEIGHT,
+        height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+        minWidth: 260,
+        bg: 'canvas.subtle'
+      }}
     >
       <BorderBox
         {...scrollContainerProps}
-        borderWidth={0}
-        borderRightWidth={1}
-        borderRadius={0}
-        height="100%"
         style={{overflow: 'auto'}}
+        sx={{borderWidth: 0, borderRightWidth: 1, borderRadius: 0, height: '100%'}}
       >
-        <Flex flexDirection="column">
+        <Flex sx={{flexDirection: 'column'}}>
           <NavItems items={navItems} />
         </Flex>
       </BorderBox>

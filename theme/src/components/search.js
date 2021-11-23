@@ -64,14 +64,16 @@ function Search() {
             >
               <ThemeProvider colorMode="day">
                 <BorderBox
-                  minWidth={300}
-                  maxHeight="70vh"
-                  p={2}
-                  boxShadow="shadow.large"
-                  borderColor="border.muted"
-                  bg="canvas.overlay"
-                  borderRadius="12px"
                   style={{overflow: 'auto'}}
+                  sx={{
+                    minWidth: 300,
+                    maxHeight: '70vh',
+                    p: 2,
+                    boxShadow: 'shadow.large',
+                    borderColor: 'border.muted',
+                    bg: 'canvas.overlay',
+                    borderRadius: '12px'
+                  }}
                 >
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
                 </BorderBox>
