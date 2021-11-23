@@ -11,7 +11,16 @@ import StorybookLink from './storybook-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, status, source, storybook, additionalContributors, componentId, hideEditLink = false} = pageContext.frontmatter
+  let {
+    title,
+    description,
+    status,
+    source,
+    storybook,
+    additionalContributors,
+    componentId,
+    hideEditLink = false
+  } = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
