@@ -133,8 +133,7 @@ export default HeroLayout
 
 To use a custom hero component, [shadow](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/) Doctocat's default `Hero` component by creating a `hero.js` file in `src/@primer/gatsby-theme-doctocat/components`:
 
-```jsx
-// src/@primer/gatsby-theme-doctocat/components/hero.js
+```jsx title="src/@primer/gatsby-theme-doctocat/components/hero.js"
 import {Box} from '@primer/components'
 import React from 'react'
 
@@ -174,8 +173,7 @@ Doctocat uses [`gatsby-plugin-manifest`](https://www.gatsbyjs.org/packages/gatsb
 
 Doctocat uses [MDX](https://mdxjs.com/) to allow you to embed React components in your markdown files and provides a few React [components](/components) that are globally available in all `.md` and `.mdx` files (no import required). To add custom components to this list of globally available components, create an `mdx-components.js` file in `src/@primer/gatsby-theme-doctocat/` and export your custom components from this file:
 
-```js
-// src/@primer/gatsby-theme-doctocat/mdx-components.js
+```js title="src/@primer/gatsby-theme-doctocat/mdx-components.js"
 import {SomeComponent} from 'path/to/some-component'
 
 export default {
