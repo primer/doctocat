@@ -13,8 +13,8 @@ function TableOfContents({items, depth, activeSection}) {
                 display: 'inline-block',
                 py: 1,
                 fontSize: [2, null, 1],
-                color: `#${activeSection}` === item.url ? "fg.accent" : "fg.muted",
-                fontWeight: `#${activeSection}` === item.url ? "bold" : "normal"
+                color: `#${activeSection}` === item.url ? 'fg.accent' : 'fg.muted',
+                fontWeight: `#${activeSection}` === item.url ? 'bold' : 'normal'
               }}
             >
               {item.title}
