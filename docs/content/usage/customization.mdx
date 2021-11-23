@@ -1,11 +1,10 @@
 ---
 title: Customization
+description: Here are a few ways you can customize your Doctocat site.
 ---
 
 import {BorderBox} from '@primer/components'
 import {Contributors} from '@primer/gatsby-theme-doctocat'
-
-Here are a few ways you can customize your Doctocat site:
 
 ## Site metadata
 
@@ -40,7 +39,7 @@ Side navigation for your site is generated from the content in `src/@primer/gats
       url: /example/example-2
 ```
 
-_Note: Doctocat only supports one level of nesting._
+<Note variant="warning">Doctocat only supports one level of nesting.</Note>
 
 ## Repository
 
@@ -177,3 +176,26 @@ Doctocat uses [`gatsby-plugin-manifest`](https://www.gatsbyjs.org/packages/gatsb
 - 512x512 pixels or larger.
 - Square. If it’s not, the image will be [letterboxed](<https://en.wikipedia.org/wiki/Letterboxing_(filming)>) with a transparent background.
 - JPEG, PNG, WebP, TIFF, GIF, or SVG format.
+
+## MDX components
+
+Doctocat uses [MDX](https://mdxjs.com/) to allow you to embed React components in your markdown files and provides a few React [components](/components) that are globally available in all `.md` and `.mdx` files (no import required). To add custom components to this list of globally available components, create an `mdx-components.js` file in `src/@primer/gatsby-theme-doctocat/` and export your custom components from this file:
+
+```js
+// src/@primer/gatsby-theme-doctocat/mdx-components.js
+import {SomeComponent} from 'path/to/some-component'
+
+export default {
+  SomeComponent,
+}
+```
+
+```md
+---
+title: Some markdown file
+---
+
+You can now use your component in any markdown file like so:
+
+<SomeComponent />
+```

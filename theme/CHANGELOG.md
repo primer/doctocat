@@ -1,5 +1,49 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.0.1
+
+### Patch Changes
+
+- [`ff74ece`](https://github.com/primer/doctocat/commit/ff74ecea1b373469034c2122d94a54ca3e964158) [#301](https://github.com/primer/doctocat/pull/301) Thanks [@jfuchs](https://github.com/jfuchs)! - Removed styled system prop usage on Primer React components.
+
+## 3.0.0
+
+### Major Changes
+
+- [`c2037d8`](https://github.com/primer/doctocat/commit/c2037d8352fca4ce3055e801b365d4ff1b5eefe9) [#295](https://github.com/primer/doctocat/pull/295) Thanks [@colebemis](https://github.com/colebemis)! - Remove checklist feature
+
+### Minor Changes
+
+- [`a94e0a9`](https://github.com/primer/doctocat/commit/a94e0a962e8013901e4285c7a3cabc3a0b691a92) [#294](https://github.com/primer/doctocat/pull/294) Thanks [@colebemis](https://github.com/colebemis)! - You can now make custom React components globally available (no import required) to all markdown files in your site.
+
+### Patch Changes
+
+- [`31a62df`](https://github.com/primer/doctocat/commit/31a62dfb7eb7a467a4e03a991adad995564ae4d1) [#262](https://github.com/primer/doctocat/pull/262) Thanks [@SferaDev](https://github.com/SferaDev)! - Fix scroll flickering of table of contents
+
+* [`9972de8`](https://github.com/primer/doctocat/commit/9972de88224e1b868dad051abe62a92daf8796ef) [#291](https://github.com/primer/doctocat/pull/291) Thanks [@jonrohan](https://github.com/jonrohan)! - Fix release
+
+## 2.1.0
+
+### Minor Changes
+
+- [`9ddaa08`](https://github.com/primer/doctocat/commit/9ddaa08395a5d08fc0cd6f7dc0de4d1e19252fa7) [#267](https://github.com/primer/doctocat/pull/267) Thanks [@colebemis](https://github.com/colebemis)! - Add support for checklists. See the [checklists](https://primer.style/doctocat/usage/checklists) documentation for more details.
+
+### Patch Changes
+
+- [`43a78eb`](https://github.com/primer/doctocat/commit/43a78eb93e453f9659488c125f7e5889633b3540) [#254](https://github.com/primer/doctocat/pull/254) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump axios from 0.19.2 to 0.21.2
+
+* [`a730972`](https://github.com/primer/doctocat/commit/a7309725faa1636d7e53a5d63c65007bbe340e53) [#258](https://github.com/primer/doctocat/pull/258) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump tmpl from 1.0.4 to 1.0.5
+
+- [`5efe933`](https://github.com/primer/doctocat/commit/5efe93324e3b078cac84c41cbec7de4ee9c2c800) [#216](https://github.com/primer/doctocat/pull/216) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump socket.io from 2.3.0 to 2.4.1
+
+* [`6dcddf2`](https://github.com/primer/doctocat/commit/6dcddf2bd77019251b058c5e3081d815f7eaafed) [#256](https://github.com/primer/doctocat/pull/256) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump prismjs from 1.22.0 to 1.25.0
+
+## 2.0.0
+
+### Major Changes
+
+- [`c9e3209`](https://github.com/primer/doctocat/commit/c9e32094a6dbccc7f9d48cfa9202a2d1aa7fe7d3) [#260](https://github.com/primer/doctocat/pull/260) Thanks [@colebemis](https://github.com/colebemis)! - Update from `@primer/components` v20.0.0 to v30.0.0 which includes a migration to the new [functional color variables](https://primer.style/primitives/color).
+
 ## 1.8.1
 
 ### Patch Changes

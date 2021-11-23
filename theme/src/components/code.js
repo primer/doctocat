@@ -21,19 +21,13 @@ function Code({className, children, live, noinline}) {
         // https://stackoverflow.com/a/14406386
         display: 'table',
         tableLayout: 'fixed',
-        width: '100%',
+        width: '100%'
       }}
     >
-      <Absolute top={0} right={0} p={2}>
+      <Absolute sx={{top: 0, right: 0, p: 2}}>
         <ClipboardCopy value={code} />
       </Absolute>
-      <Highlight
-        {...defaultProps}
-        Prism={Prism}
-        code={code}
-        language={language}
-        theme={githubTheme}
-      >
+      <Highlight {...defaultProps} Prism={Prism} code={code} language={language} theme={githubTheme}>
         {({className, style, tokens, getLineProps, getTokenProps}) => (
           <Box
             as="pre"
@@ -48,12 +42,7 @@ function Code({className, children, live, noinline}) {
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({line, key: i})}>
                 {line.map((token, key) => (
-                  <Text
-                    key={key}
-                    fontFamily="mono"
-                    fontSize={1}
-                    {...getTokenProps({token, key})}
-                  />
+                  <Text key={key} fontFamily="mono" fontSize={1} {...getTokenProps({token, key})} />
                 ))}
               </div>
             ))}

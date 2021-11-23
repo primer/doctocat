@@ -9,8 +9,8 @@ function usePersistentScroll(id) {
 
   const handleScroll = React.useCallback(
     // Save scroll position in session storage on every scroll change
-    (event) => window.sessionStorage.setItem(id, event.target.scrollTop),
-    [id],
+    event => window.sessionStorage.setItem(id, event.target.scrollTop),
+    [id]
   )
 
   React.useLayoutEffect(() => {
@@ -24,7 +24,7 @@ function usePersistentScroll(id) {
   // Return props to spread onto the scroll container
   return {
     ref,
-    onScroll: handleScroll,
+    onScroll: handleScroll
   }
 }
 
@@ -33,22 +33,20 @@ function Sidebar() {
 
   return (
     <Position
-      position="sticky"
-      top={HEADER_HEIGHT}
-      height={`calc(100vh - ${HEADER_HEIGHT}px)`}
-      minWidth={260}
-      color="gray.8"
-      bg="gray.0"
+      sx={{
+        position: 'sticky',
+        top: HEADER_HEIGHT,
+        height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+        minWidth: 260,
+        bg: 'canvas.subtle'
+      }}
     >
       <BorderBox
         {...scrollContainerProps}
-        borderWidth={0}
-        borderRightWidth={1}
-        borderRadius={0}
-        height="100%"
         style={{overflow: 'auto'}}
+        sx={{borderWidth: 0, borderRightWidth: 1, borderRadius: 0, height: '100%'}}
       >
-        <Flex flexDirection="column">
+        <Flex sx={{flexDirection: 'column'}}>
           <NavItems items={navItems} />
         </Flex>
       </BorderBox>

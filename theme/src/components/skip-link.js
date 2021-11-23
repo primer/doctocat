@@ -6,11 +6,13 @@ function SkipLinkBase(props) {
   return (
     <Link
       {...props}
-      backgroundColor="blue.6"
-      color="white"
-      p={3}
       href="#skip-nav"
-      fontSize={1}
+      sx={{
+        p: 3,
+        color: 'fg.onEmphasis',
+        backgroundColor: 'accent.emphasis',
+        fontSize: 1
+      }}
     >
       Skip to content
     </Link>

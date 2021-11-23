@@ -1,51 +1,43 @@
-import {
-  Absolute,
-  BorderBox,
-  StyledOcticon,
-  Text,
-  themeGet,
-} from '@primer/components'
+import {Box, Details, StyledOcticon, Text, themeGet, useDetails} from '@primer/components'
 import {TriangleDownIcon} from '@primer/octicons-react'
 import React from 'react'
 import styled from 'styled-components'
-import Details from './details'
 
 function NavDropdown({title, children}) {
+  const {getDetailsProps} = useDetails({closeOnOutsideClick: true})
   return (
-    <Details overlay={true}>
-      {({toggle}) => (
-        <>
-          <summary style={{cursor: 'pointer'}} onClick={toggle}>
-            <Text>{title}</Text>
-            <StyledOcticon icon={TriangleDownIcon} ml={1} />
-          </summary>
-          <Absolute>
-            <BorderBox
-              bg="gray.8"
-              py={1}
-              mt={2}
-              boxShadow="medium"
-              borderColor="gray.7"
-              color="white"
-            >
-              {children}
-            </BorderBox>
-          </Absolute>
-        </>
-      )}
+    <Details {...getDetailsProps()}>
+      <summary style={{cursor: 'pointer'}}>
+        <Text>{title}</Text>
+        <StyledOcticon icon={TriangleDownIcon} sx={{ml: 1}} />
+      </summary>
+      <Box position="absolute">
+        <Box
+          bg="canvas.overlay"
+          p={2}
+          mt={2}
+          borderWidth="1px"
+          borderStyle="solid"
+          borderColor="border.default"
+          borderRadius="12px"
+        >
+          {children}
+        </Box>
+      </Box>
     </Details>
   )
 }
 
 export const NavDropdownItem = styled.a`
   display: block;
-  padding: ${themeGet('space.2')} ${themeGet('space.3')};
+  padding: ${themeGet('space.2')};
   color: inherit;
   text-decoration: none;
+  border-radius: ${themeGet('radii.2')};
+  line-height: 1.25;
 
   &:hover {
-    color: ${themeGet('colors.white')};
-    background-color: ${themeGet('colors.blue.5')};
+    background-color: ${themeGet('colors.neutral.muted')};
     text-decoration: none;
   }
 `
