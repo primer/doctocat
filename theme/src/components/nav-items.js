@@ -38,7 +38,13 @@ function NavItems({items}) {
           p={4}
         >
           <Box display="flex" flexDirection="column">
-            <NavLink as={GatsbyLink} to={item.url} activeClassName="active" partiallyActive={true} color="inherit">
+            <NavLink
+              as={GatsbyLink}
+              to={item.url}
+              activeClassName="active"
+              partiallyActive={true}
+              sx={{color: 'inherit'}}
+            >
               {item.title}
             </NavLink>
             {item.children ? (
@@ -49,10 +55,12 @@ function NavItems({items}) {
                     as={GatsbyLink}
                     to={child.url}
                     activeClassName="active"
-                    display="block"
-                    py={1}
-                    mt={2}
-                    fontSize={1}
+                    sx={{
+                      display: 'block',
+                      py: 1,
+                      mt: 2,
+                      fontSize: 1
+                    }}
                   >
                     {child.title}
                   </NavLink>
@@ -64,10 +72,10 @@ function NavItems({items}) {
       ))}
       {repositoryUrl ? (
         <Box borderWidth={0} borderTopWidth={1} borderRadius={0} borderStyle="solid" borderColor="border.default" p={4}>
-          <Link href={repositoryUrl} color="inherit">
+          <Link href={repositoryUrl} sx={{color: 'inherit'}}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
               GitHub
-              <StyledOcticon icon={LinkExternalIcon} color="fg.muted" />
+              <StyledOcticon icon={LinkExternalIcon} sx={{color: 'fg.muted'}} />
             </Box>
           </Link>
         </Box>

@@ -40,7 +40,7 @@ function LiveCode({code, language, noinline}) {
   const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
 
   return (
-    <Flex flexDirection="column" mb={3}>
+    <Flex sx={{flexDirection: 'column', mb: 3}}>
       <LiveProvider scope={scope} code={liveCode} transformCode={languageTransformers[language]} noInline={noinline}>
         <Flex
           sx={{
@@ -70,7 +70,7 @@ function LiveCode({code, language, noinline}) {
               borderColor: theme.colors.border.default
             }}
           />
-          <Absolute top={0} right={0} p={2}>
+          <Absolute sx={{top: 0, right: 0, p: 2}}>
             <ClipboardCopy value={liveCode} />
           </Absolute>
         </Relative>

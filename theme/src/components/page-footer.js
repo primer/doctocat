@@ -5,11 +5,11 @@ import Contributors from './contributors'
 
 function PageFooter({editUrl, contributors}) {
   return editUrl || contributors.length > 0 ? (
-    <BorderBox borderWidth={0} borderTopWidth={1} borderRadius={0} mt={8} py={5}>
-      <Grid gridGap={4}>
+    <BorderBox sx={{borderWidth: 0, borderTopWidth: 1, borderRadius: 0, mt: 8, py: 5}}>
+      <Grid sx={{gridGap: 4}}>
         {editUrl ? (
           <Link href={editUrl}>
-            <StyledOcticon icon={PencilIcon} mr={2} />
+            <StyledOcticon icon={PencilIcon} sx={{mr: 2}} />
             Edit this page on GitHub
           </Link>
         ) : null}

@@ -24,9 +24,9 @@ function ClipboardCopy({value}) {
       sx={{px: 2}}
     >
       {copied ? (
-        <StyledOcticon icon={CheckIcon} color="success.fg" />
+        <StyledOcticon icon={CheckIcon} sx={{color: 'success.fg'}} />
       ) : (
-        <StyledOcticon icon={CopyIcon} color="fg.muted" />
+        <StyledOcticon icon={CopyIcon} sx={{color: 'fg.muted'}} />
       )}
     </Button>
   )
