@@ -9,7 +9,7 @@
     "now-build": "npm run build"
   },
   "dependencies": {
-    "@primer/components": "^30.0.0",
+    "@primer/components": "^32.0.0",
     "@primer/gatsby-theme-doctocat": "*",
     "gatsby": "^2.24.52",
     "gatsby-plugin-sass": "^2.1.0",
