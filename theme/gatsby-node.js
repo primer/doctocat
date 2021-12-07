@@ -76,31 +76,35 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
 }
 
 exports.onPostBuild = async ({graphql}) => {
-  const {data} = await graphql(`
-    query {
-      allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}}}}) {
-        nodes {
-          path
-          context {
-            frontmatter {
-              componentId
-              status
+  try {
+    const {data} = await graphql(`
+      query {
+        allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}}}}) {
+          nodes {
+            path
+            context {
+              frontmatter {
+                componentId
+                status
+              }
             }
           }
         }
       }
-    }
-  `)
+    `)
 
-  const components = data.allSitePage.nodes.map(node => {
-    return {
-      id: node.context.frontmatter.componentId,
-      path: node.path,
-      status: node.context.frontmatter.status.toLowerCase()
-    }
-  })
+    const components = data.allSitePage.nodes.map(node => {
+      return {
+        id: node.context.frontmatter.componentId,
+        path: node.path,
+        status: node.context.frontmatter.status.toLowerCase()
+      }
+    })
 
-  fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
+    fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
+  } catch (error) {
+    console.warn('Unable to build components.json')
+  }
 }
 
 function getEditUrl(repo, filePath, defaultBranch) {
