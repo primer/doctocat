@@ -13,7 +13,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
 
   const {data} = await graphql(`
-    {
+    query {
       allMdx {
         nodes {
           fileAbsolutePath
@@ -77,7 +77,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
 
 exports.onPostBuild = async ({graphql}) => {
   const {data} = await graphql(`
-    {
+    query {
       allSitePage(filter: {context: {frontmatter: {component_id: {ne: null}}}}) {
         nodes {
           path
