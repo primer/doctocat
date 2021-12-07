@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const readPkgUp = require('read-pkg-up')
 const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
@@ -34,7 +35,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
   }
 
   // Turn every MDX file into a page.
-  return Promise.all(
+  await Promise.all(
     data.allMdx.nodes.map(async node => {
       const pagePath = path
         .join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
@@ -72,6 +73,34 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       })
     })
   )
+}
+
+exports.onPostBuild = async ({graphql}) => {
+  const {data} = await graphql(`
+    {
+      allSitePage(filter: {context: {frontmatter: {component_id: {ne: null}}}}) {
+        nodes {
+          path
+          context {
+            frontmatter {
+              component_id
+              status
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const components = data.allSitePage.nodes.map(node => {
+    return {
+      component_id: node.context.frontmatter.component_id,
+      path: node.path,
+      status: node.context.frontmatter.status.toLowerCase()
+    }
+  })
+
+  fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
 }
 
 function getEditUrl(repo, filePath, defaultBranch) {
