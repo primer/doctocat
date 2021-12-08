@@ -103,6 +103,8 @@ exports.onPostBuild = async ({graphql}) => {
 
     fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
   } catch (error) {
+    // This is not necessarily an error, so we just log a warning instead of failing the build.
+    // Some sites won't have any markdown files with `componentId` frontmatter and that's okay.
     console.warn('Unable to build components.json')
   }
 }
