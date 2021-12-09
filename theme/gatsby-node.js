@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const readPkgUp = require('read-pkg-up')
 const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
@@ -12,7 +13,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
 
   const {data} = await graphql(`
-    {
+    query {
       allMdx {
         nodes {
           fileAbsolutePath
@@ -34,7 +35,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
   }
 
   // Turn every MDX file into a page.
-  return Promise.all(
+  await Promise.all(
     data.allMdx.nodes.map(async node => {
       const pagePath = path
         .join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
@@ -72,6 +73,40 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       })
     })
   )
+}
+
+exports.onPostBuild = async ({graphql}) => {
+  try {
+    const {data} = await graphql(`
+      query {
+        allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}}}}) {
+          nodes {
+            path
+            context {
+              frontmatter {
+                componentId
+                status
+              }
+            }
+          }
+        }
+      }
+    `)
+
+    const components = data.allSitePage.nodes.map(node => {
+      return {
+        id: node.context.frontmatter.componentId,
+        path: node.path,
+        status: node.context.frontmatter.status.toLowerCase()
+      }
+    })
+
+    fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
+  } catch (error) {
+    // This is not necessarily an error, so we just log a warning instead of failing the build.
+    // Some sites won't have any markdown files with `componentId` frontmatter and that's okay.
+    console.warn('Unable to build components.json')
+  }
 }
 
 function getEditUrl(repo, filePath, defaultBranch) {
