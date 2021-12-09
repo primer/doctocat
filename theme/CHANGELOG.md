@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.1.0
+
+### Minor Changes
+
+- [`3767651`](https://github.com/primer/doctocat/commit/37676515f1d7485ca7b5e932e115d96e3ef0285b) [#318](https://github.com/primer/doctocat/pull/318) Thanks [@colebemis](https://github.com/colebemis)! - Add a step to build process that will output a static `components.json` file with component status info if the site that its building has markdown files containing `componentId` frontmatter.
+
 ## 3.0.1
 
 ### Patch Changes
