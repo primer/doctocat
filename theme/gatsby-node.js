@@ -93,13 +93,24 @@ exports.onPostBuild = async ({graphql}) => {
       }
     `)
 
-    const components = data.allSitePage.nodes.map(node => {
-      return {
-        id: node.context.frontmatter.componentId,
-        path: node.path,
-        status: node.context.frontmatter.status.toLowerCase()
+    const components = data.allSitePage.nodes.reduce((metadataArr, node) => {
+      const {
+        path,
+        context: {
+          frontmatter: {status, componentId}
+        }
+      } = node
+      if (status && componentId) {
+        metadataArr.push({
+          id: componentId,
+          path: path,
+          status: status.toLowerCase()
+        })
+        return metadataArr
       }
-    })
+    }, [])
+
+    console.log(123456, components)
 
     fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
   } catch (error) {
