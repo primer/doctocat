@@ -79,7 +79,7 @@ exports.onPostBuild = async ({graphql}) => {
   try {
     const {data} = await graphql(`
       query {
-        allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}}}}) {
+        allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}, status: {ne: null}}}}) {
           nodes {
             path
             context {
@@ -93,24 +93,13 @@ exports.onPostBuild = async ({graphql}) => {
       }
     `)
 
-    const components = data.allSitePage.nodes.reduce((metadataArr, node) => {
-      const {
-        path,
-        context: {
-          frontmatter: {status, componentId}
-        }
-      } = node
-      if (status && componentId) {
-        metadataArr.push({
-          id: componentId,
-          path: path,
-          status: status.toLowerCase()
-        })
+    const components = data.allSitePage.nodes.map(node => {
+      return {
+        id: node.context.frontmatter.componentId,
+        path: node.path,
+        status: node.context.frontmatter.status.toLowerCase()
       }
-      return metadataArr
-    }, [])
-
-    console.log(123456, components)
+    })
 
     fs.writeFileSync(path.resolve(process.cwd(), 'public/components.json'), JSON.stringify(components))
   } catch (error) {
