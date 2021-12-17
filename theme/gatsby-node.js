@@ -106,8 +106,8 @@ exports.onPostBuild = async ({graphql}) => {
           path: path,
           status: status.toLowerCase()
         })
-        return metadataArr
       }
+      return metadataArr
     }, [])
 
     console.log(123456, components)
