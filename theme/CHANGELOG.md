@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.1.1
+
+### Patch Changes
+
+- [`45e8748`](https://github.com/primer/doctocat/commit/45e8748a547903b8f7091fafb5b13e5c197b0dae) [#324](https://github.com/primer/doctocat/pull/324) Thanks [@rezrah](https://github.com/rezrah)! - Only add pages that have `componentId` and `status` to `components.json`
+
 ## 3.1.0
 
 ### Minor Changes
