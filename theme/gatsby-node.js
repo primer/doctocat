@@ -79,7 +79,7 @@ exports.onPostBuild = async ({graphql}) => {
   try {
     const {data} = await graphql(`
       query {
-        allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}}}}) {
+        allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}, status: {ne: null}}}}) {
           nodes {
             path
             context {
