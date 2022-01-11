@@ -34,14 +34,24 @@ function wrapWithFragment(jsx) {
   return `<React.Fragment>${jsx}</React.Fragment>`
 }
 
-function LiveCode({code, language, noinline}) {
+const getResolvedScope = metastring => {
+  if (typeof scope === 'function') return scope(metastring)
+  return scope
+}
+
+function LiveCode({code, language, noinline, metastring}) {
   const theme = React.useContext(ThemeContext)
   const [liveCode, setLiveCode] = useState(code)
   const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
 
   return (
     <Flex sx={{flexDirection: 'column', mb: 3}}>
-      <LiveProvider scope={scope} code={liveCode} transformCode={languageTransformers[language]} noInline={noinline}>
+      <LiveProvider
+        scope={getResolvedScope(metastring)}
+        code={liveCode}
+        transformCode={languageTransformers[language]}
+        noInline={noinline}
+      >
         <Flex
           sx={{
             border: '1px solid',

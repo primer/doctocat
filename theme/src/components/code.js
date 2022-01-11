@@ -6,12 +6,12 @@ import React from 'react'
 import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
 
-function Code({className, children, live, noinline}) {
+function Code({className, children, live, noinline, metastring}) {
   const language = className ? className.replace(/language-/, '') : ''
   const code = children.trim()
 
   if (live) {
-    return <LiveCode code={code} language={language} noinline={noinline} />
+    return <LiveCode code={code} language={language} noinline={noinline} metastring={metastring} />
   }
 
   return (
