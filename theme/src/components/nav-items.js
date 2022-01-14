@@ -1,9 +1,8 @@
-import {Box, Link, StyledOcticon, themeGet} from '@primer/react'
+import {ActionList} from '@primer/react/lib-esm/drafts'
 import {LinkExternalIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import preval from 'preval.macro'
 import React from 'react'
-import styled from 'styled-components'
 
 // This code needs to run at build-time so it can access the file system.
 const repositoryUrl = preval`
@@ -17,70 +16,58 @@ const repositoryUrl = preval`
   }
 `
 
-const NavLink = styled(Link)`
-  &.active {
-    font-weight: ${themeGet('fontWeights.bold')};
-    color: ${themeGet('colors.fg.default')};
-  }
-`
-
 function NavItems({items}) {
   return (
-    <>
-      {items.map(item => (
-        <Box
-          key={item.title}
-          borderWidth={0}
-          borderRadius={0}
-          borderTopWidth={1}
-          borderStyle="solid"
-          borderColor="border.muted"
-          p={4}
-        >
-          <Box display="flex" flexDirection="column">
-            <NavLink
-              as={GatsbyLink}
-              to={item.url}
-              activeClassName="active"
-              partiallyActive={true}
-              sx={{color: 'inherit'}}
-            >
-              {item.title}
-            </NavLink>
-            {item.children ? (
-              <Box display="flex" flexDirection="column" mt={2}>
+    <ActionList
+      sx={{
+        m: 2,
+        'a[aria-current]': {
+          position: 'relative',
+          bg: 'actionListItem.default.selectedBg',
+          '::after': {
+            content: '""',
+            position: 'absolute',
+            top: 'calc(50% - 12px)',
+            left: '-8px',
+            width: 4,
+            height: 24,
+            bg: 'accent.fg',
+            borderRadius: 6
+          }
+        }
+      }}
+    >
+      {items.map(item => {
+        if (item.children) {
+          return (
+            <>
+              <ActionList.Group title={item.title}>
                 {item.children.map(child => (
-                  <NavLink
-                    key={child.title}
-                    as={GatsbyLink}
-                    to={child.url}
-                    activeClassName="active"
-                    sx={{
-                      display: 'block',
-                      py: 1,
-                      mt: 2,
-                      fontSize: 1
-                    }}
-                  >
+                  <ActionList.LinkItem key={child.url} as={GatsbyLink} to={child.url}>
                     {child.title}
-                  </NavLink>
+                  </ActionList.LinkItem>
                 ))}
-              </Box>
-            ) : null}
-          </Box>
-        </Box>
-      ))}
+              </ActionList.Group>
+              <ActionList.Divider />
+            </>
+          )
+        } else {
+          return (
+            <ActionList.LinkItem key={item.url} href={item.url} activeClassName="active">
+              {item.title}
+            </ActionList.LinkItem>
+          )
+        }
+      })}
       {repositoryUrl ? (
-        <Box borderWidth={0} borderTopWidth={1} borderRadius={0} borderStyle="solid" borderColor="border.default" p={4}>
-          <Link href={repositoryUrl} sx={{color: 'inherit'}}>
-            <Box display="flex" justifyContent="space-between" alignItems="center">
-              GitHub
-              <StyledOcticon icon={LinkExternalIcon} sx={{color: 'fg.muted'}} />
-            </Box>
-          </Link>
-        </Box>
+        <ActionList.LinkItem href={repositoryUrl} target="_blank">
+          GitHub
+          <ActionList.TrailingVisual>
+            <LinkExternalIcon />
+          </ActionList.TrailingVisual>
+        </ActionList.LinkItem>
       ) : null}
-    </>
+    </ActionList>
   )
 }
 

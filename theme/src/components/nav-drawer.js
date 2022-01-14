@@ -1,6 +1,5 @@
 import {BorderBox, Flex, Link, Text, Button, ThemeProvider} from '@primer/react'
 import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
-import {ActionList} from '@primer/react/lib-esm/drafts'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
 import React from 'react'
@@ -89,7 +88,6 @@ function PrimerNavItems({items}) {
         key={item.title}
         sx={{borderWidth: 0, borderRadius: 0, borderTopWidth: index !== 0 ? 1 : 0, borderColor: 'border.muted', p: 4}}
       >
-        boundaries
         {item.children ? (
           <Details key={index}>
             {({open, toggle}) => (
