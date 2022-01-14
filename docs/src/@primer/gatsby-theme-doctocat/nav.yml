@@ -1,6 +1,8 @@
 - title: Getting started
   url: /getting-started
   children:
+    - title: Getting started
+      url: /getting-started
     - title: Gatsby CLI
       url: /getting-started/gatsby-cli
 - title: Usage
