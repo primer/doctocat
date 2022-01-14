@@ -1,4 +1,4 @@
-import {BaseStyles, Box} from '@primer/components'
+import {BaseStyles, Box} from '@primer/react'
 import Frame from './frame'
 import React from 'react'
 

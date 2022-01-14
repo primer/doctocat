@@ -1,4 +1,4 @@
-import {Box, Flex} from '@primer/components'
+import {Box, Flex} from '@primer/react'
 import React from 'react'
 import Container from './container'
 import PageFooter from './page-footer'

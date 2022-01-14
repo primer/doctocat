@@ -1,4 +1,4 @@
-import {Box, Heading, Text, ThemeProvider} from '@primer/components'
+import {Box, Heading, Text, ThemeProvider} from '@primer/react'
 import React from 'react'
 import useSiteMetadata from '../use-site-metadata'
 import Container from './container'

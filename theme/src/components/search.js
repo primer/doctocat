@@ -1,4 +1,4 @@
-import {BorderBox, Position, ThemeProvider} from '@primer/components'
+import {BorderBox, Position, ThemeProvider} from '@primer/react'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
 import React from 'react'
