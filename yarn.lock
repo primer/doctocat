@@ -967,6 +967,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.7.6":
+  version "7.17.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
+  integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/standalone@^7.10.2":
   version "7.11.4"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.11.4.tgz#e25a0fa05e9373545a1a38ad4462acfbec7d8a87"
@@ -1741,10 +1748,10 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
-"@primer/behaviors@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.0.2.tgz#54ffaa4ff0b9d62a55b60479f55b0f5fe29ec57b"
-  integrity sha512-/5kXIOYjWfD2Exbu12vpfGMo7oFepxLTR3rX+m8sK8gbW5Oebno+gO2N/22+HXF5twYk/d6eH1/jELKZpMge5A==
+"@primer/behaviors@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.0.3.tgz#505861fb6afb0ba867c86c457f78c2e759adc308"
+  integrity sha512-zh1FKvAXLjKs0rr9Ik9E5M3Q9/npa9hmpuHKmYZn7u9QnSl+X13jFPme3AmtokOlfduFYeHfQyzSIJEhSEVl3w==
 
 "@primer/component-metadata@^0.4.0":
   version "0.4.0"
@@ -1766,12 +1773,12 @@
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.1.1.tgz#46edb7f06fbe8809ebe2822bc692fc6c74dba98c"
   integrity sha512-+Gwo89YK1OFi6oubTlah/zPxxzMNaMLy+inECAYI646KIFdzzhAsKWb3z5tSOu5Ff7no4isRV64rWfMSKLZclw==
 
-"@primer/react@^34.2.0":
-  version "34.2.0"
-  resolved "https://registry.yarnpkg.com/@primer/react/-/react-34.2.0.tgz#a93856ad327343fa5888081bf8dbbae02896f78b"
-  integrity sha512-zVMEFzn/HDyDgpv1aCCphP+kopjBhkqeVqkpvDx64ddtXMIBzXErZ4vhXE1PJNaofWjUCX6zbvN6J9KoLGwb+A==
+"@primer/react@^34.5.0":
+  version "34.5.0"
+  resolved "https://registry.yarnpkg.com/@primer/react/-/react-34.5.0.tgz#480d9a4d6b7ced58baa1aa1d7ac55daeb0069a9d"
+  integrity sha512-jM2xXdYKHgNA1YMkJZm4lbMBpL2Dx6Qm/qwrFft2Kt3J1w5AcBBTZ/tT7OFIoUxwvlpmIuReVFfWkQbBaowqdw==
   dependencies:
-    "@primer/behaviors" "^1.0.2"
+    "@primer/behaviors" "1.0.3"
     "@primer/octicons-react" "16.1.1"
     "@primer/primitives" "7.1.1"
     "@radix-ui/react-polymorphic" "0.0.14"
@@ -1787,6 +1794,7 @@
     color2k "1.2.4"
     deepmerge "4.2.2"
     focus-visible "5.2.0"
+    history "5.0.0"
     styled-system "5.1.5"
 
 "@radix-ui/react-polymorphic@0.0.14":
@@ -8523,6 +8531,13 @@ highlight.js@^8.1.0:
   version "8.9.1"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-8.9.1.tgz#b8a9c5493212a9392f0222b649c9611497ebfb88"
   integrity sha1-uKnFSTISqTkvAiK2SclhFJfr+4g=
+
+history@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/history/-/history-5.0.0.tgz#0cabbb6c4bbf835addb874f8259f6d25101efd08"
+  integrity sha512-3NyRMKIiFSJmIPdq7FxkNMJkQ7ZEtVblOQ38VtKaA0zZMW1Eo6Q6W8oDKEflr1kNNTItSnk4JMCO1deeSgbLLg==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
