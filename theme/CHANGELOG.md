@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.2.0
+
+### Minor Changes
+
+- [`438eadb`](https://github.com/primer/doctocat/commit/438eadbae21b14c246ca7f6c9f405a1c4a00728a) [#332](https://github.com/primer/doctocat/pull/332) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Support function for `live-code-scope`
+
 ## 3.1.1
 
 ### Patch Changes
