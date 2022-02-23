@@ -24,9 +24,9 @@ function Code({className, children, live, noinline}) {
         width: '100%'
       }}
     >
-      <Absolute sx={{top: 0, right: 0, p: 2}}>
+      <Box position="absolute" sx={{top: 0, right: 0, p: 2}}>
         <ClipboardCopy value={code} />
-      </Absolute>
+      </Box>
       <Highlight {...defaultProps} Prism={Prism} code={code} language={language} theme={githubTheme}>
         {({className, style, tokens, getLineProps, getTokenProps}) => (
           <Box

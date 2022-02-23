@@ -71,9 +71,9 @@ function LiveCode({code, language, noinline}) {
               borderColor: theme.colors.border.default
             }}
           />
-          <Absolute sx={{top: 0, right: 0, p: 2}}>
+          <Box position="absolute" sx={{top: 0, right: 0, p: 2}}>
             <ClipboardCopy value={liveCode} />
-          </Absolute>
+          </Box>
         </Relative>
         <Text as={LiveError} m={0} p={3} fontFamily="mono" fontSize={1} color="fg.onEmphasis" bg="danger.emphasis" />
       </LiveProvider>

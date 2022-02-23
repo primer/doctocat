@@ -39,7 +39,8 @@ function MobileSearch({isOpen, onDismiss}) {
       {isOpen ? (
         <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
           <Fixed sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
-            <Absolute
+            <Box
+              position="absolute"
               as={motion.div}
               initial={{opacity: 0}}
               animate={{opacity: 1}}
