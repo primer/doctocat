@@ -1,4 +1,4 @@
-import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/components'
+import {Box, Text} from '@primer/components'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from '../github'
 import React, {useState} from 'react'

@@ -1,4 +1,4 @@
-import {BorderBox, Flex} from '@primer/components'
+import {BorderBox, Box} from '@primer/components'
 import React from 'react'
 
 function ImageContainer({children}) {

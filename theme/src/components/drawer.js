@@ -1,4 +1,4 @@
-import {Fixed} from '@primer/components'
+import {Box} from '@primer/components'
 import {AnimatePresence, motion} from 'framer-motion'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'

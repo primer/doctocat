@@ -1,4 +1,4 @@
-import {Absolute, Box, Button, Fixed, Flex} from '@primer/components'
+import {Box, Button} from '@primer/components'
 import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
@@ -6,8 +6,8 @@ import {navigate} from 'gatsby'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
 import useSearch from '../use-search'
-import TextInput from './text-input'
 import SearchResults from './search-results'
+import TextInput from './text-input'
 
 function stateReducer(state, changes) {
   switch (changes.type) {

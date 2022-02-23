@@ -1,5 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {BorderBox, Box, Flex, Grid, Heading, Position, Text} from '@primer/components'
+import {BorderBox, Box, Heading, Text} from '@primer/components'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'

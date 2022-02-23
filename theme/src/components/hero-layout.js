@@ -1,10 +1,10 @@
-import {Box, Flex} from '@primer/components'
+import {Box} from '@primer/components'
 import React from 'react'
 import Container from './container'
-import PageFooter from './page-footer'
 import Head from './head'
 import Header from './header'
 import Hero from './hero'
+import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 
 function HeroLayout({children, pageContext}) {
