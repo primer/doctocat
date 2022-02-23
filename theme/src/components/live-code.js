@@ -55,7 +55,7 @@ function LiveCode({code, language, noinline}) {
             <LivePreview />
           </LivePreviewWrapper>
         </Box>
-        <Relative>
+        <Box position="relative">
           <LiveEditor
             onChange={handleChange}
             theme={githubTheme}
@@ -74,7 +74,7 @@ function LiveCode({code, language, noinline}) {
           <Box position="absolute" sx={{top: 0, right: 0, p: 2}}>
             <ClipboardCopy value={liveCode} />
           </Box>
-        </Relative>
+        </Box>
         <Text as={LiveError} m={0} p={3} fontFamily="mono" fontSize={1} color="fg.onEmphasis" bg="danger.emphasis" />
       </LiveProvider>
     </Box>

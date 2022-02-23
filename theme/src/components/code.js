@@ -15,7 +15,8 @@ function Code({className, children, live, noinline}) {
   }
 
   return (
-    <Relative
+    <Box
+      position="relative"
       sx={{
         // Make <pre> adjust to the width of the container
         // https://stackoverflow.com/a/14406386
@@ -49,7 +50,7 @@ function Code({className, children, live, noinline}) {
           </Box>
         )}
       </Highlight>
-    </Relative>
+    </Box>
   )
 }
 
