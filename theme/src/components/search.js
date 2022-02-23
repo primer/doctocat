@@ -1,11 +1,11 @@
-import {BorderBox, Box, ThemeProvider} from '@primer/components'
+import {Box, ThemeProvider} from '@primer/components'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
 import React from 'react'
 import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
-import TextInput from './text-input'
 import SearchResults from './search-results'
+import TextInput from './text-input'
 
 function stateReducer(state, changes) {
   switch (changes.type) {
@@ -63,7 +63,9 @@ function Search() {
               })}
             >
               <ThemeProvider colorMode="day">
-                <BorderBox
+                <Box
+                  borderWidth="1px"
+                  borderStyle="solid"
                   style={{overflow: 'auto'}}
                   sx={{
                     minWidth: 300,
@@ -76,7 +78,7 @@ function Search() {
                   }}
                 >
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
-                </BorderBox>
+                </Box>
               </ThemeProvider>
             </Box>
           ) : null}

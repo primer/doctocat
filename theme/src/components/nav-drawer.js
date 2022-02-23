@@ -1,4 +1,4 @@
-import {BorderBox, Box, Link, Text, Button, ThemeProvider} from '@primer/components'
+import {Box, Button, Link, Text, ThemeProvider} from '@primer/components'
 import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
@@ -49,7 +49,10 @@ function NavDrawer({isOpen, onDismiss}) {
         sx={{flexDirection: 'column', height: '100%', bg: 'canvas.default'}}
       >
         <Box display="flex" sx={{flexDirection: 'column', flex: '0 0 auto', color: 'fg.default', bg: 'canvas.default'}}>
-          <BorderBox sx={{borderWidth: 0, borderRadius: 0, borderBottomWidth: 1, borderColor: 'border.muted'}}>
+          <Box
+            borderStyle="solid"
+            sx={{borderWidth: 0, borderRadius: 0, borderBottomWidth: 1, borderColor: 'border.muted'}}
+          >
             <Box display="flex" sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between'}}>
               <Link href="https://primer.style" sx={{fontFamily: 'mono', color: 'inherit'}}>
                 Primer
@@ -58,7 +61,7 @@ function NavDrawer({isOpen, onDismiss}) {
                 <XIcon />
               </Button>
             </Box>
-          </BorderBox>
+          </Box>
           <Box display="flex" sx={{flexDirection: 'column'}}>
             <PrimerNavItems items={primerNavItems} />
           </Box>
@@ -88,7 +91,11 @@ function NavDrawer({isOpen, onDismiss}) {
 function PrimerNavItems({items}) {
   return items.map((item, index) => {
     return (
-      <BorderBox
+      <Box
+        borderWidth="1px"
+        borderStyle="solid"
+        borderColor="border.default"
+        borderRadius={2}
         key={item.title}
         sx={{borderWidth: 0, borderRadius: 0, borderTopWidth: index !== 0 ? 1 : 0, borderColor: 'border.muted', p: 4}}
       >
@@ -117,7 +124,7 @@ function PrimerNavItems({items}) {
             {item.title}
           </Link>
         )}
-      </BorderBox>
+      </Box>
     )
   })
 }

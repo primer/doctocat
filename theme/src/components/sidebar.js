@@ -1,4 +1,4 @@
-import {BorderBox, Box} from '@primer/components'
+import {Box} from '@primer/components'
 import React from 'react'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
@@ -41,7 +41,9 @@ function Sidebar() {
         bg: 'canvas.subtle'
       }}
     >
-      <BorderBox
+      <Box
+        borderStyle="solid"
+        borderColor="border.default"
         {...scrollContainerProps}
         style={{overflow: 'auto'}}
         sx={{borderWidth: 0, borderRightWidth: 1, borderRadius: 0, height: '100%'}}
@@ -49,7 +51,7 @@ function Sidebar() {
         <Box display="flex" sx={{flexDirection: 'column'}}>
           <NavItems items={navItems} />
         </Box>
-      </BorderBox>
+      </Box>
     </Box>
   )
 }

@@ -1,5 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {BorderBox, Box, Heading, Text} from '@primer/components'
+import {Box, Heading, Text} from '@primer/components'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -92,7 +92,10 @@ function Layout({children, pageContext}) {
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
-              <BorderBox
+              <Box
+                borderWidth="1px"
+                borderStyle="solid"
+                borderRadius={2}
                 sx={{display: ['block', null, 'none'], mb: 5, borderColor: 'border.muted', bg: 'canvas.subtle'}}
               >
                 <Box p={3}>
@@ -106,7 +109,7 @@ function Layout({children, pageContext}) {
                 <Box p={3} borderTop="1px solid" borderColor="border.muted">
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
-              </BorderBox>
+              </Box>
             ) : null}
             {children}
             <PageFooter
