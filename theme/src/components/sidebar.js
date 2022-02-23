@@ -32,7 +32,7 @@ function Sidebar() {
   const scrollContainerProps = usePersistentScroll('sidebar')
 
   return (
-    <Position
+    <Box
       sx={{
         position: 'sticky',
         top: HEADER_HEIGHT,
@@ -50,7 +50,7 @@ function Sidebar() {
           <NavItems items={navItems} />
         </Box>
       </BorderBox>
-    </Position>
+    </Box>
   )
 }
 

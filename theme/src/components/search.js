@@ -44,7 +44,7 @@ function Search() {
       stateReducer={stateReducer}
     >
       {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, highlightedIndex}) => (
-        <Position {...getRootProps({position: 'relative'})}>
+        <Box {...getRootProps({position: 'relative'})}>
           <TextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
@@ -54,7 +54,7 @@ function Search() {
             })}
           />
           {isOpen ? (
-            <Position
+            <Box
               {...getMenuProps({
                 position: 'absolute',
                 left: 0,
@@ -78,9 +78,9 @@ function Search() {
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
                 </BorderBox>
               </ThemeProvider>
-            </Position>
+            </Box>
           ) : null}
-        </Position>
+        </Box>
       )}
     </Downshift>
   )

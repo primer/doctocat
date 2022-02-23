@@ -44,7 +44,7 @@ function Layout({children, pageContext}) {
           }}
         >
           {pageContext.tableOfContents.items ? (
-            <Position
+            <Box
               sx={{
                 width: 220,
                 flex: '0 0 auto',
@@ -60,7 +60,7 @@ function Layout({children, pageContext}) {
                 On this page
               </Text>
               <TableOfContents items={pageContext.tableOfContents.items} />
-            </Position>
+            </Box>
           ) : null}
           <Box width="100%" maxWidth="960px">
             <Box mb={4}>
