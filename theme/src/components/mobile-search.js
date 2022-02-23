@@ -38,7 +38,7 @@ function MobileSearch({isOpen, onDismiss}) {
     <AnimatePresence>
       {isOpen ? (
         <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
-          <Fixed sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
+          <Box position="fixed" sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
             <Box
               position="absolute"
               as={motion.div}
@@ -113,7 +113,7 @@ function MobileSearch({isOpen, onDismiss}) {
                 </Box>
               )}
             </Downshift>
-          </Fixed>
+          </Box>
         </FocusOn>
       ) : null}
     </AnimatePresence>

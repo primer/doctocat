@@ -16,7 +16,8 @@ function Drawer({isOpen, onDismiss, children}) {
           onClick={event => event.target.focus()}
         >
           <FocusOn returnFocus={true} onEscapeKey={() => onDismiss()}>
-            <Fixed
+            <Box
+              position="fixed"
               key="overlay"
               as={motion.div}
               initial={{opacity: 0}}
@@ -27,7 +28,8 @@ function Drawer({isOpen, onDismiss, children}) {
               sx={{top: 0, right: 0, bottom: 0, left: 0, bg: 'rgba(0, 0, 0, 0.5)'}}
             />
 
-            <Fixed
+            <Box
+              position="fixed"
               key="drawer"
               as={motion.div}
               initial={{x: '100%'}}
@@ -38,7 +40,7 @@ function Drawer({isOpen, onDismiss, children}) {
               sx={{width: 300, top: 0, right: 0, bottom: 0, bg: 'gray.0'}}
             >
               {children}
-            </Fixed>
+            </Box>
           </FocusOn>
         </div>
       ) : null}
