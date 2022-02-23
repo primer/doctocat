@@ -1,4 +1,4 @@
-import {BaseStyles, themeGet} from '@primer/components'
+import {BaseStyles, themeGet} from '@primer/react'
 import React from 'react'
 import {createGlobalStyle} from 'styled-components'
 import SkipLink from './skip-link'

@@ -1,4 +1,4 @@
-import {Link, Text} from '@primer/components'
+import {Link, Text} from '@primer/react'
 import React from 'react'
 
 function SourceLink({href}) {

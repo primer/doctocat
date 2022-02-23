@@ -1,5 +1,5 @@
-import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/components'
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
+import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'

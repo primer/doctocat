@@ -1,4 +1,4 @@
-import {Box, Button, Link, Text, ThemeProvider} from '@primer/components'
+import {Box, Button, Link, Text, ThemeProvider} from '@primer/react'
 import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'

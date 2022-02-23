@@ -1,5 +1,23 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.2.0
+
+### Minor Changes
+
+- [`438eadb`](https://github.com/primer/doctocat/commit/438eadbae21b14c246ca7f6c9f405a1c4a00728a) [#332](https://github.com/primer/doctocat/pull/332) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Support function for `live-code-scope`
+
+## 3.1.1
+
+### Patch Changes
+
+- [`45e8748`](https://github.com/primer/doctocat/commit/45e8748a547903b8f7091fafb5b13e5c197b0dae) [#324](https://github.com/primer/doctocat/pull/324) Thanks [@rezrah](https://github.com/rezrah)! - Only add pages that have `componentId` and `status` to `components.json`
+
+## 3.1.0
+
+### Minor Changes
+
+- [`3767651`](https://github.com/primer/doctocat/commit/37676515f1d7485ca7b5e932e115d96e3ef0285b) [#318](https://github.com/primer/doctocat/pull/318) Thanks [@colebemis](https://github.com/colebemis)! - Add a step to build process that will output a static `components.json` file with component status info if the site that its building has markdown files containing `componentId` frontmatter.
+
 ## 3.0.1
 
 ### Patch Changes

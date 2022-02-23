@@ -1,4 +1,4 @@
-import {Box, StyledOcticon, Text} from '@primer/components'
+import {Box, StyledOcticon, Text} from '@primer/react'
 import {CheckCircleFillIcon, XCircleFillIcon} from '@primer/octicons-react'
 import React from 'react'
 

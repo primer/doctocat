@@ -1,4 +1,4 @@
-import {Box, Text} from '@primer/components'
+import {Box, Text} from '@primer/react'
 import React from 'react'
 import sentenceCase from 'sentence-case'
 import useSiteMetadata from '../use-site-metadata'
