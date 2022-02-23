@@ -42,13 +42,18 @@ function Sidebar() {
       }}
     >
       <Box
-        borderStyle="solid"
-        borderColor="border.default"
         {...scrollContainerProps}
         style={{overflow: 'auto'}}
-        sx={{borderWidth: 0, borderRightWidth: 1, borderRadius: 0, height: '100%'}}
+        sx={{
+          borderWidth: 0,
+          borderRightWidth: 1,
+          borderRadius: 0,
+          height: '100%',
+          borderStyle: 'solid',
+          borderColor: 'border.default'
+        }}
       >
-        <Box display="flex" sx={{flexDirection: 'column'}}>
+        <Box sx={{flexDirection: 'column', display: 'flex'}}>
           <NavItems items={navItems} />
         </Box>
       </Box>

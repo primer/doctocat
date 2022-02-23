@@ -45,7 +45,7 @@ function LiveCode({code, language, noinline, metastring}) {
   const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
 
   return (
-    <Box display="flex" sx={{flexDirection: 'column', mb: 3}}>
+    <Box sx={{flexDirection: 'column', mb: 3, display: 'flex'}}>
       <LiveProvider
         scope={getResolvedScope(metastring)}
         code={liveCode}
@@ -53,19 +53,19 @@ function LiveCode({code, language, noinline, metastring}) {
         noInline={noinline}
       >
         <Box
-          display="flex"
           sx={{
             border: '1px solid',
             borderColor: 'border.default',
             borderTopRightRadius: 2,
-            borderTopLeftRadius: 2
+            borderTopLeftRadius: 2,
+            display: 'flex'
           }}
         >
           <LivePreviewWrapper>
             <LivePreview />
           </LivePreviewWrapper>
         </Box>
-        <Box position="relative">
+        <Box sx={{position: 'relative'}}>
           <LiveEditor
             onChange={handleChange}
             theme={githubTheme}
@@ -81,11 +81,14 @@ function LiveCode({code, language, noinline, metastring}) {
               borderColor: theme.colors.border.default
             }}
           />
-          <Box position="absolute" sx={{top: 0, right: 0, p: 2}}>
+          <Box sx={{top: 0, right: 0, p: 2, position: 'absolute'}}>
             <ClipboardCopy value={liveCode} />
           </Box>
         </Box>
-        <Text as={LiveError} m={0} p={3} fontFamily="mono" fontSize={1} color="fg.onEmphasis" bg="danger.emphasis" />
+        <Text
+          as={LiveError}
+          sx={{m: 0, p: 3, fontFamily: 'mono', fontSize: 1, color: 'fg.onEmphasis', bg: 'danger.emphasis'}}
+        />
       </LiveProvider>
     </Box>
   )

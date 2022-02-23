@@ -8,7 +8,7 @@ function LivePreviewWrapper({children}) {
   return (
     <Frame>
       <BaseStyles>
-        <Box p={3}>{children}</Box>
+        <Box sx={{p: 3}}>{children}</Box>
       </BaseStyles>
     </Frame>
   )

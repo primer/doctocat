@@ -6,12 +6,17 @@ import Contributors from './contributors'
 function PageFooter({editUrl, contributors}) {
   return editUrl || contributors.length > 0 ? (
     <Box
-      borderStyle="solid"
-      borderColor="border.default"
-      borderRadius={2}
-      sx={{borderWidth: 0, borderTopWidth: 1, borderRadius: 0, mt: 8, py: 5}}
+      sx={{
+        borderWidth: 0,
+        borderTopWidth: 1,
+        borderRadius: 0,
+        mt: 8,
+        py: 5,
+        borderStyle: 'solid',
+        borderColor: 'border.default'
+      }}
     >
-      <Box display="grid" sx={{gridGap: 4}}>
+      <Box sx={{gridGap: 4, display: 'grid'}}>
         {editUrl ? (
           <Link href={editUrl}>
             <StyledOcticon icon={PencilIcon} sx={{mr: 2}} />

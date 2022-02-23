@@ -26,21 +26,21 @@ function Layout({children, pageContext}) {
   }
 
   return (
-    <Box display="flex" sx={{flexDirection: 'column', minHeight: '100vh'}}>
+    <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
       <Header />
-      <Box display="flex" css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row'}}>
-        <Box display={['none', null, null, 'block']}>
+      <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
+        <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
         </Box>
         <Box
           id="skip-nav"
-          display="flex"
-          width="100%"
-          p={[4, 5, 6, 7]}
           sx={{
             justifyContent: 'center',
-            flexDirection: 'row-reverse'
+            flexDirection: 'row-reverse',
+            display: 'flex',
+            width: '100%',
+            p: [4, 5, 6, 7]
           }}
         >
           {pageContext.tableOfContents.items ? (
@@ -56,34 +56,28 @@ function Layout({children, pageContext}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Text display="inline-block" fontWeight="bold" mb={1}>
-                On this page
-              </Text>
+              <Text sx={{display: 'inline-block', fontWeight: 'bold', mb: 1}}>On this page</Text>
               <TableOfContents items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}
-          <Box width="100%" maxWidth="960px">
-            <Box mb={4}>
-              <Box display="flex" sx={{alignItems: 'center'}}>
+          <Box sx={{width: '100%', maxWidth: '960px'}}>
+            <Box sx={{mb: 4}}>
+              <Box sx={{alignItems: 'center', display: 'flex'}}>
                 <Heading as="h1" sx={{mr: 2}}>
                   {title}
                 </Heading>{' '}
                 {status ? <StatusLabel status={status} /> : null}
               </Box>
-              {description ? (
-                <Box pb={2} sx={{fontSize: 3}}>
-                  {description}
-                </Box>
-              ) : null}
+              {description ? <Box sx={{fontSize: 3, pb: 2}}>{description}</Box> : null}
               {source || storybook ? (
                 <Box
-                  display="grid"
                   sx={{
                     py: 2,
                     gridGap: [1, null, 3],
                     gridAutoFlow: ['row', null, 'column'],
                     gridAutoColumns: 'max-content',
-                    gridAutoRows: 'max-content'
+                    gridAutoRows: 'max-content',
+                    display: 'grid'
                   }}
                 >
                   {source ? <SourceLink href={source} /> : null}
@@ -93,20 +87,24 @@ function Layout({children, pageContext}) {
             </Box>
             {pageContext.tableOfContents.items ? (
               <Box
-                borderWidth="1px"
-                borderStyle="solid"
-                borderRadius={2}
-                sx={{display: ['block', null, 'none'], mb: 5, borderColor: 'border.muted', bg: 'canvas.subtle'}}
+                sx={{
+                  display: ['block', null, 'none'],
+                  mb: 5,
+                  borderColor: 'border.muted',
+                  bg: 'canvas.subtle',
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderRadius: 2
+                }}
               >
-                <Box p={3}>
+                <Box sx={{p: 3}}>
                   <Box
-                    display="flex"
-                    sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}
+                    sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}
                   >
-                    <Text fontWeight="bold">On this page</Text>
+                    <Text sx={{fontWeight: 'bold'}}>On this page</Text>
                   </Box>
                 </Box>
-                <Box p={3} borderTop="1px solid" borderColor="border.muted">
+                <Box sx={{p: 3, borderTop: '1px solid', borderColor: 'border.muted'}}>
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
               </Box>

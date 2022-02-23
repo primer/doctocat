@@ -64,8 +64,6 @@ function Search() {
             >
               <ThemeProvider colorMode="day">
                 <Box
-                  borderWidth="1px"
-                  borderStyle="solid"
                   style={{overflow: 'auto'}}
                   sx={{
                     minWidth: 300,
@@ -74,7 +72,9 @@ function Search() {
                     boxShadow: 'shadow.large',
                     borderColor: 'border.muted',
                     bg: 'canvas.overlay',
-                    borderRadius: '12px'
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    borderStyle: 'solid'
                   }}
                 >
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />

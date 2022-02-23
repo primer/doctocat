@@ -38,15 +38,22 @@ function MobileSearch({isOpen, onDismiss}) {
     <AnimatePresence>
       {isOpen ? (
         <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
-          <Box position="fixed" sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
+          <Box sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, position: 'fixed'}}>
             <Box
-              position="absolute"
               as={motion.div}
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
               onClick={handleDismiss}
-              sx={{top: 0, left: 0, right: 0, bottom: 0, bg: 'primer.canvas.backdrop', zIndex: -1}}
+              sx={{
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                bg: 'primer.canvas.backdrop',
+                zIndex: -1,
+                position: 'absolute'
+              }}
             />
             <Downshift
               inputValue={query}
@@ -63,13 +70,13 @@ function MobileSearch({isOpen, onDismiss}) {
             >
               {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen: isMenuOpen, highlightedIndex}) => (
                 <Box
-                  display="flex"
                   {...getRootProps({
                     flexDirection: 'column',
                     height: isMenuOpen ? '100%' : 'auto'
                   })}
+                  sx={{display: 'flex'}}
                 >
-                  <Box display="flex" sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto'}}>
+                  <Box sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto', display: 'flex'}}>
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}

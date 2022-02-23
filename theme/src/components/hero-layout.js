@@ -15,14 +15,14 @@ function HeroLayout({children, pageContext}) {
   }
 
   return (
-    <Box display="flex" sx={{flexDirection: 'column', minHeight: '100vh'}}>
+    <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head />
       <Header />
-      <Box display="flex" sx={{flex: '1 1 auto', flexDirection: 'row'}}>
-        <Box display={['none', null, null, 'block']}>
+      <Box sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
+        <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
         </Box>
-        <Box width="100%">
+        <Box sx={{width: '100%'}}>
           <Hero />
           <Container>
             {children}
