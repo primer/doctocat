@@ -46,9 +46,9 @@ function Sidebar() {
         style={{overflow: 'auto'}}
         sx={{borderWidth: 0, borderRightWidth: 1, borderRadius: 0, height: '100%'}}
       >
-        <Flex sx={{flexDirection: 'column'}}>
+        <Box display="flex" sx={{flexDirection: 'column'}}>
           <NavItems items={navItems} />
-        </Flex>
+        </Box>
       </BorderBox>
     </Position>
   )

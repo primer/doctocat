@@ -26,10 +26,10 @@ function Layout({children, pageContext}) {
   }
 
   return (
-    <Flex sx={{flexDirection: 'column', minHeight: '100vh'}}>
+    <Box display="flex" sx={{flexDirection: 'column', minHeight: '100vh'}}>
       <Head title={title} description={description} />
       <Header />
-      <Flex css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row'}}>
+      <Box display="flex" css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row'}}>
         <Box display={['none', null, null, 'block']}>
           <Sidebar />
         </Box>
@@ -64,12 +64,12 @@ function Layout({children, pageContext}) {
           ) : null}
           <Box width="100%" maxWidth="960px">
             <Box mb={4}>
-              <Flex sx={{alignItems: 'center'}}>
+              <Box display="flex" sx={{alignItems: 'center'}}>
                 <Heading as="h1" sx={{mr: 2}}>
                   {title}
                 </Heading>{' '}
                 {status ? <StatusLabel status={status} /> : null}
-              </Flex>
+              </Box>
               {description ? (
                 <Box pb={2} sx={{fontSize: 3}}>
                   {description}
@@ -95,9 +95,12 @@ function Layout({children, pageContext}) {
                 sx={{display: ['block', null, 'none'], mb: 5, borderColor: 'border.muted', bg: 'canvas.subtle'}}
               >
                 <Box p={3}>
-                  <Flex sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                  <Box
+                    display="flex"
+                    sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}
+                  >
                     <Text fontWeight="bold">On this page</Text>
-                  </Flex>
+                  </Box>
                 </Box>
                 <Box p={3} borderTop="1px solid" borderColor="border.muted">
                   <TableOfContents items={pageContext.tableOfContents.items} />
@@ -111,8 +114,8 @@ function Layout({children, pageContext}) {
             />
           </Box>
         </Box>
-      </Flex>
-    </Flex>
+      </Box>
+    </Box>
   )
 }
 

@@ -15,7 +15,8 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
   }
 
   return results.map((item, index) => (
-    <Flex
+    <Box
+      display="flex"
       key={item.path}
       {...getItemProps({
         item,
@@ -34,7 +35,7 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         {getBreadcrumbs(siteMetadata.shortName, item.path).join(' / ')}
       </Text>
       {item.title}
-    </Flex>
+    </Box>
   ))
 }
 

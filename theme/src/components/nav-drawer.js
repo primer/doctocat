@@ -43,28 +43,32 @@ function NavDrawer({isOpen, onDismiss}) {
   const siteMetadata = useSiteMetadata()
   return (
     <Drawer isOpen={isOpen} onDismiss={onDismiss}>
-      <Flex
+      <Box
+        display="flex"
         style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
         sx={{flexDirection: 'column', height: '100%', bg: 'canvas.default'}}
       >
-        <Flex sx={{flexDirection: 'column', flex: '0 0 auto', color: 'fg.default', bg: 'canvas.default'}}>
+        <Box display="flex" sx={{flexDirection: 'column', flex: '0 0 auto', color: 'fg.default', bg: 'canvas.default'}}>
           <BorderBox sx={{borderWidth: 0, borderRadius: 0, borderBottomWidth: 1, borderColor: 'border.muted'}}>
-            <Flex sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between'}}>
+            <Box display="flex" sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between'}}>
               <Link href="https://primer.style" sx={{fontFamily: 'mono', color: 'inherit'}}>
                 Primer
               </Link>
               <Button aria-label="Close" onClick={onDismiss}>
                 <XIcon />
               </Button>
-            </Flex>
+            </Box>
           </BorderBox>
-          <Flex sx={{flexDirection: 'column'}}>
+          <Box display="flex" sx={{flexDirection: 'column'}}>
             <PrimerNavItems items={primerNavItems} />
-          </Flex>
-        </Flex>
+          </Box>
+        </Box>
         {navItems.length > 0 ? (
           <ThemeProvider colorMode="day">
-            <Flex sx={{flexDirection: 'column', flex: '1 0 auto', color: 'fg.default', bg: 'canvas.default'}}>
+            <Box
+              display="flex"
+              sx={{flexDirection: 'column', flex: '1 0 auto', color: 'fg.default', bg: 'canvas.default'}}
+            >
               <Link
                 as={GatsbyLink}
                 to="/"
@@ -73,10 +77,10 @@ function NavDrawer({isOpen, onDismiss}) {
                 {siteMetadata.title}
               </Link>
               <NavItems items={navItems} />
-            </Flex>
+            </Box>
           </ThemeProvider>
         ) : null}
-      </Flex>
+      </Box>
     </Drawer>
   )
 }
@@ -93,18 +97,18 @@ function PrimerNavItems({items}) {
             {({open, toggle}) => (
               <>
                 <summary onClick={toggle} style={{cursor: 'pointer'}}>
-                  <Flex sx={{alignItems: 'center', justifyContent: 'space-between'}}>
+                  <Box display="flex" sx={{alignItems: 'center', justifyContent: 'space-between'}}>
                     <Text>{item.title}</Text>
                     {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                  </Flex>
+                  </Box>
                 </summary>
-                <Flex sx={{flexDirection: 'column', mt: 2}}>
+                <Box display="flex" sx={{flexDirection: 'column', mt: 2}}>
                   {item.children.map(child => (
                     <Link key={child.title} href={child.url} sx={{py: 1, mt: 2, fontSize: 1, color: 'inherit'}}>
                       {child.title}
                     </Link>
                   ))}
-                </Flex>
+                </Box>
               </>
             )}
           </Details>

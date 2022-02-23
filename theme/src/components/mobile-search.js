@@ -61,13 +61,14 @@ function MobileSearch({isOpen, onDismiss}) {
               stateReducer={stateReducer}
             >
               {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen: isMenuOpen, highlightedIndex}) => (
-                <Flex
+                <Box
+                  display="flex"
                   {...getRootProps({
                     flexDirection: 'column',
                     height: isMenuOpen ? '100%' : 'auto'
                   })}
                 >
-                  <Flex sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto'}}>
+                  <Box display="flex" sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto'}}>
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}
@@ -85,7 +86,7 @@ function MobileSearch({isOpen, onDismiss}) {
                     <Button aria-label="Cancel" onClick={handleDismiss} sx={{ml: 3}}>
                       <XIcon />
                     </Button>
-                  </Flex>
+                  </Box>
                   {isMenuOpen ? (
                     <Box
                       {...getMenuProps({
@@ -108,7 +109,7 @@ function MobileSearch({isOpen, onDismiss}) {
                       />
                     </Box>
                   ) : null}
-                </Flex>
+                </Box>
               )}
             </Downshift>
           </Fixed>
