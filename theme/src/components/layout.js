@@ -76,7 +76,8 @@ function Layout({children, pageContext}) {
                 </Box>
               ) : null}
               {source || storybook ? (
-                <Grid
+                <Box
+                  display="grid"
                   sx={{
                     py: 2,
                     gridGap: [1, null, 3],
@@ -87,7 +88,7 @@ function Layout({children, pageContext}) {
                 >
                   {source ? <SourceLink href={source} /> : null}
                   {storybook ? <StorybookLink href={storybook} /> : null}
-                </Grid>
+                </Box>
               ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
