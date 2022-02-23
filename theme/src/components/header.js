@@ -18,7 +18,7 @@ function Header({isSearchEnabled}) {
   const siteMetadata = useSiteMetadata()
   return (
     <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
-      <Sticky>
+      <Box position="sticky">
         <Box
           display="flex"
           height={HEADER_HEIGHT}
@@ -113,7 +113,7 @@ function Header({isSearchEnabled}) {
             </Box>
           </Box>
         </Box>
-      </Sticky>
+      </Box>
     </ThemeProvider>
   )
 }
