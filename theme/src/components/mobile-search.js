@@ -1,4 +1,4 @@
-import {Absolute, Box, Button, Fixed, Flex} from '@primer/components'
+import {Absolute, Box, Button, Fixed, Flex} from '@primer/react'
 import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'

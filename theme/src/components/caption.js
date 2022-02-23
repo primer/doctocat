@@ -1,4 +1,4 @@
-import {Text} from '@primer/components'
+import {Text} from '@primer/react'
 import React from 'react'
 
 function Caption(props) {

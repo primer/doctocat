@@ -1,4 +1,4 @@
-import {BorderBox, Grid, StyledOcticon, Link} from '@primer/components'
+import {BorderBox, Grid, StyledOcticon, Link} from '@primer/react'
 import {PencilIcon} from '@primer/octicons-react'
 import React from 'react'
 import Contributors from './contributors'

@@ -1,4 +1,4 @@
-import {Box, Button, Link, Sticky, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/components'
+import {Box, Button, Link, Sticky, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/react'
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'

@@ -1,4 +1,4 @@
-import {Box, Link, StyledOcticon, themeGet} from '@primer/components'
+import {Box, Link, StyledOcticon, themeGet} from '@primer/react'
 import {LinkExternalIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import preval from 'preval.macro'

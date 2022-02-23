@@ -1,4 +1,4 @@
-import {BorderBox, Flex, Position} from '@primer/components'
+import {BorderBox, Flex, Position} from '@primer/react'
 import React from 'react'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'

@@ -1,4 +1,4 @@
-import {Label} from '@primer/components'
+import {Label} from '@primer/react'
 import React from 'react'
 
 const STATUS_COLORS = {
