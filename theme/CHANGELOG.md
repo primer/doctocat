@@ -1,5 +1,13 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.2.1
+
+### Patch Changes
+
+- [`1c0ca36`](https://github.com/primer/doctocat/commit/1c0ca368ed9a61ac79eb6e47ff7208c0d5b038d2) [#361](https://github.com/primer/doctocat/pull/361) Thanks [@colebemis](https://github.com/colebemis)! - Refactor internals to not use deprecated Primer React components
+
+* [`ac6de57`](https://github.com/primer/doctocat/commit/ac6de57fdf7629eb74b9246f6ac62f97bca0d4a4) [#334](https://github.com/primer/doctocat/pull/334) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Upgrade from `@primer/components@30.0.0` to `@primer/react@34.5.0`
+
 ## 3.2.0
 
 ### Minor Changes
