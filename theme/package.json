@@ -71,7 +71,7 @@
     "react-element-to-jsx-string": "^14.0.3",
     "react-focus-on": "^3.3.0",
     "react-frame-component": "^4.1.1",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.1.0",
     "react-live": "^2.1.2",
     "react-measure": "^2.3.0",
     "read-pkg-up": "^6.0.0",
