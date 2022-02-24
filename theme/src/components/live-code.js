@@ -1,4 +1,4 @@
-import {Absolute, BorderBox, Flex, Relative, Text} from '@primer/react'
+import {Box, Text} from '@primer/react'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from '../github'
 import React, {useState} from 'react'
@@ -45,26 +45,27 @@ function LiveCode({code, language, noinline, metastring}) {
   const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
 
   return (
-    <Flex sx={{flexDirection: 'column', mb: 3}}>
+    <Box sx={{flexDirection: 'column', mb: 3, display: 'flex'}}>
       <LiveProvider
         scope={getResolvedScope(metastring)}
         code={liveCode}
         transformCode={languageTransformers[language]}
         noInline={noinline}
       >
-        <Flex
+        <Box
           sx={{
             border: '1px solid',
             borderColor: 'border.default',
             borderTopRightRadius: 2,
-            borderTopLeftRadius: 2
+            borderTopLeftRadius: 2,
+            display: 'flex'
           }}
         >
           <LivePreviewWrapper>
             <LivePreview />
           </LivePreviewWrapper>
-        </Flex>
-        <Relative>
+        </Box>
+        <Box sx={{position: 'relative'}}>
           <LiveEditor
             onChange={handleChange}
             theme={githubTheme}
@@ -80,13 +81,16 @@ function LiveCode({code, language, noinline, metastring}) {
               borderColor: theme.colors.border.default
             }}
           />
-          <Absolute sx={{top: 0, right: 0, p: 2}}>
+          <Box sx={{top: 0, right: 0, p: 2, position: 'absolute'}}>
             <ClipboardCopy value={liveCode} />
-          </Absolute>
-        </Relative>
-        <Text as={LiveError} m={0} p={3} fontFamily="mono" fontSize={1} color="fg.onEmphasis" bg="danger.emphasis" />
+          </Box>
+        </Box>
+        <Text
+          as={LiveError}
+          sx={{m: 0, p: 3, fontFamily: 'mono', fontSize: 1, color: 'fg.onEmphasis', bg: 'danger.emphasis'}}
+        />
       </LiveProvider>
-    </Flex>
+    </Box>
   )
 }
 

@@ -1,11 +1,20 @@
-import {BorderBox, Flex} from '@primer/react'
+import {Box} from '@primer/react'
 import React from 'react'
 
 function ImageContainer({children}) {
   return (
-    <BorderBox sx={{p: 6, bg: 'gray.1'}}>
-      <Flex sx={{img: {maxWidth: '100%'}, justifyContent: 'center'}}>{children}</Flex>
-    </BorderBox>
+    <Box
+      sx={{
+        p: 6,
+        bg: 'gray.1',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'border.default',
+        borderRadius: 2
+      }}
+    >
+      <Box sx={{img: {maxWidth: '100%'}, justifyContent: 'center', display: 'flex'}}>{children}</Box>
+    </Box>
   )
 }
 

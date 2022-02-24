@@ -1,4 +1,4 @@
-import {BorderBox, Flex, Position} from '@primer/react'
+import {Box} from '@primer/react'
 import React from 'react'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
@@ -32,7 +32,7 @@ function Sidebar() {
   const scrollContainerProps = usePersistentScroll('sidebar')
 
   return (
-    <Position
+    <Box
       sx={{
         position: 'sticky',
         top: HEADER_HEIGHT,
@@ -41,16 +41,23 @@ function Sidebar() {
         bg: 'canvas.subtle'
       }}
     >
-      <BorderBox
+      <Box
         {...scrollContainerProps}
         style={{overflow: 'auto'}}
-        sx={{borderWidth: 0, borderRightWidth: 1, borderRadius: 0, height: '100%'}}
+        sx={{
+          borderWidth: 0,
+          borderRightWidth: 1,
+          borderRadius: 0,
+          height: '100%',
+          borderStyle: 'solid',
+          borderColor: 'border.default'
+        }}
       >
-        <Flex sx={{flexDirection: 'column'}}>
+        <Box sx={{flexDirection: 'column', display: 'flex'}}>
           <NavItems items={navItems} />
-        </Flex>
-      </BorderBox>
-    </Position>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

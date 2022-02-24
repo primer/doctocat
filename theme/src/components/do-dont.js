@@ -4,7 +4,7 @@ import React from 'react'
 
 export function DoDontContainer({stacked, children}) {
   return (
-    <Box display="grid" gridTemplateColumns={['1fr', null, stacked ? '1fr' : '1fr 1fr']} gridGap={4} mb={4}>
+    <Box sx={{display: 'grid', gridTemplateColumns: ['1fr', null, stacked ? '1fr' : '1fr 1fr'], gridGap: 4, mb: 4}}>
       {children}
     </Box>
   )
@@ -24,14 +24,12 @@ export function Dont(props) {
 
 function DoDontBase({children, title, icon: Icon, iconBg}) {
   return (
-    <Box display="flex" flexDirection="column">
-      <Box display="flex" alignSelf="start" flexDirection="row" alignItems="center" mb="2">
+    <Box sx={{display: 'flex', flexDirection: 'column'}}>
+      <Box sx={{display: 'flex', alignSelf: 'start', flexDirection: 'row', alignItems: 'center', mb: '2'}}>
         <StyledOcticon icon={Icon} sx={{color: iconBg}} />
-        <Text fontWeight="bold" color="fg.default" ml={2}>
-          {title}
-        </Text>
+        <Text sx={{fontWeight: 'bold', color: 'fg.default', ml: 2}}>{title}</Text>
       </Box>
-      <Box display="flex" flexDirection="column" sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}}}>
+      <Box sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}, display: 'flex', flexDirection: 'column'}}>
         {children}
       </Box>
     </Box>

@@ -6,9 +6,7 @@ function SourceLink({href}) {
   return (
     <Link href={href}>
       <MarkGithubIcon />
-      <Text ml={2} display="inline-block">
-        View source
-      </Text>
+      <Text sx={{ml: 2, display: 'inline-block'}}>View source</Text>
     </Link>
   )
 }

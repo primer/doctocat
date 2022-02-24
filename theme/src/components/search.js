@@ -1,11 +1,11 @@
-import {BorderBox, Position, ThemeProvider} from '@primer/react'
+import {Box, ThemeProvider} from '@primer/react'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
 import React from 'react'
 import useSearch from '../use-search'
 import useSiteMetadata from '../use-site-metadata'
-import TextInput from './text-input'
 import SearchResults from './search-results'
+import TextInput from './text-input'
 
 function stateReducer(state, changes) {
   switch (changes.type) {
@@ -44,7 +44,7 @@ function Search() {
       stateReducer={stateReducer}
     >
       {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, highlightedIndex}) => (
-        <Position {...getRootProps({position: 'relative'})}>
+        <Box {...getRootProps({position: 'relative'})}>
           <TextInput
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
@@ -54,7 +54,7 @@ function Search() {
             })}
           />
           {isOpen ? (
-            <Position
+            <Box
               {...getMenuProps({
                 position: 'absolute',
                 left: 0,
@@ -63,7 +63,7 @@ function Search() {
               })}
             >
               <ThemeProvider colorMode="day">
-                <BorderBox
+                <Box
                   style={{overflow: 'auto'}}
                   sx={{
                     minWidth: 300,
@@ -72,15 +72,17 @@ function Search() {
                     boxShadow: 'shadow.large',
                     borderColor: 'border.muted',
                     bg: 'canvas.overlay',
-                    borderRadius: '12px'
+                    borderRadius: '12px',
+                    borderWidth: '1px',
+                    borderStyle: 'solid'
                   }}
                 >
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
-                </BorderBox>
+                </Box>
               </ThemeProvider>
-            </Position>
+            </Box>
           ) : null}
-        </Position>
+        </Box>
       )}
     </Downshift>
   )

@@ -1,4 +1,4 @@
-import {Flex, Text, Box} from '@primer/react'
+import {Box, Text} from '@primer/react'
 import React from 'react'
 import sentenceCase from 'sentence-case'
 import useSiteMetadata from '../use-site-metadata'
@@ -7,15 +7,11 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
   const siteMetadata = useSiteMetadata()
 
   if (results.length === 0) {
-    return (
-      <Box p={3} fontSize={1} color="fg.muted" width="100%">
-        No results
-      </Box>
-    )
+    return <Box sx={{p: 3, fontSize: 1, color: 'fg.muted', width: '100%'}}>No results</Box>
   }
 
   return results.map((item, index) => (
-    <Flex
+    <Box
       key={item.path}
       {...getItemProps({
         item,
@@ -29,12 +25,11 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         style: {cursor: 'pointer'},
         borderRadius: 2
       })}
+      sx={{display: 'flex'}}
     >
-      <Text fontSize={0} color="fg.muted">
-        {getBreadcrumbs(siteMetadata.shortName, item.path).join(' / ')}
-      </Text>
+      <Text sx={{fontSize: 0, color: 'fg.muted'}}>{getBreadcrumbs(siteMetadata.shortName, item.path).join(' / ')}</Text>
       {item.title}
-    </Flex>
+    </Box>
   ))
 }
 

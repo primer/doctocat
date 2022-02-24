@@ -5,9 +5,7 @@ function SourceLink({href}) {
   return (
     <Link href={href}>
       <StorybookIcon />
-      <Text ml={2} display="inline-block">
-        View storybook
-      </Text>
+      <Text sx={{ml: 2, display: 'inline-block'}}>View storybook</Text>
     </Link>
   )
 }

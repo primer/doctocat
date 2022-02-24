@@ -1,12 +1,22 @@
-import {BorderBox, Grid, StyledOcticon, Link} from '@primer/react'
+import {Box, Link, StyledOcticon} from '@primer/react'
 import {PencilIcon} from '@primer/octicons-react'
 import React from 'react'
 import Contributors from './contributors'
 
 function PageFooter({editUrl, contributors}) {
   return editUrl || contributors.length > 0 ? (
-    <BorderBox sx={{borderWidth: 0, borderTopWidth: 1, borderRadius: 0, mt: 8, py: 5}}>
-      <Grid sx={{gridGap: 4}}>
+    <Box
+      sx={{
+        borderWidth: 0,
+        borderTopWidth: 1,
+        borderRadius: 0,
+        mt: 8,
+        py: 5,
+        borderStyle: 'solid',
+        borderColor: 'border.default'
+      }}
+    >
+      <Box sx={{gridGap: 4, display: 'grid'}}>
         {editUrl ? (
           <Link href={editUrl}>
             <StyledOcticon icon={PencilIcon} sx={{mr: 2}} />
@@ -15,8 +25,8 @@ function PageFooter({editUrl, contributors}) {
         ) : null}
 
         {contributors.length > 0 ? <Contributors contributors={contributors} /> : null}
-      </Grid>
-    </BorderBox>
+      </Box>
+    </Box>
   ) : null
 }
 
