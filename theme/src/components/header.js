@@ -18,7 +18,7 @@ function Header({isSearchEnabled}) {
   const siteMetadata = useSiteMetadata()
   return (
     <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
-      <Box sx={{position: 'sticky', top: 0}}>
+      <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
           sx={{
             display: 'flex',
