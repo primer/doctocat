@@ -15,22 +15,48 @@ DoDontContainer.defaultProps = {
 }
 
 export function Do(props) {
-  return <DoDontBase {...props} title="Do" icon={CheckCircleFillIcon} iconBg="success.fg" />
+  return <DoDontBase {...props} title="Do" bg="success.fg" borderColor="success.subtle" />
 }
 
 export function Dont(props) {
-  return <DoDontBase {...props} title="Don't" icon={XCircleFillIcon} iconBg="danger.fg" />
+  return <DoDontBase {...props} title="Don’t" bg="danger.fg" borderColor="danger.subtle" />
 }
 
-function DoDontBase({children, title, icon: Icon, iconBg}) {
+function DoDontBase({children, title, bg, borderColor, indented}) {
   return (
     <Box sx={{display: 'flex', flexDirection: 'column'}}>
-      <Box sx={{display: 'flex', alignSelf: 'start', flexDirection: 'row', alignItems: 'center', mb: '2'}}>
-        <StyledOcticon icon={Icon} sx={{color: iconBg}} />
-        <Text sx={{fontWeight: 'bold', color: 'fg.default', ml: 2}}>{title}</Text>
+      <Box
+        sx={{
+          display: 'flex',
+          alignSelf: 'start',
+          flexDirection: 'row',
+          alignItems: 'center',
+          mb: '2',
+          backgroundColor: bg,
+          borderRadius: '2',
+          color: 'fg.onEmphasis',
+          paddingX: '2'
+        }}
+      >
+        <Text sx={{fontWeight: 'bold', fontSize: '1', color: 'fg.onEmphasis'}}>{title}</Text>
       </Box>
       <Box sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}, display: 'flex', flexDirection: 'column'}}>
-        {children}
+        {indented ? (
+          <Box
+            as="blockquote"
+            sx={{
+              margin: '0',
+              borderLeftWidth: '4px',
+              borderLeftStyle: 'solid',
+              borderLeftColor: borderColor,
+              paddingLeft: '3'
+            }}
+          >
+            {children}
+          </Box>
+        ) : (
+          children
+        )}
       </Box>
     </Box>
   )
