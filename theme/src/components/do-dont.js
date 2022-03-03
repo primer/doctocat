@@ -1,5 +1,4 @@
 import {Box, StyledOcticon, Text} from '@primer/react'
-import {CheckCircleFillIcon, XCircleFillIcon} from '@primer/octicons-react'
 import React from 'react'
 
 export function DoDontContainer({stacked, children}) {
@@ -15,11 +14,11 @@ DoDontContainer.defaultProps = {
 }
 
 export function Do(props) {
-  return <DoDontBase {...props} title="Do" bg="success.fg" borderColor="success.subtle" />
+  return <DoDontBase {...props} title="Do" bg="success.fg" borderColor="success.muted" />
 }
 
 export function Dont(props) {
-  return <DoDontBase {...props} title="Don’t" bg="danger.fg" borderColor="danger.subtle" />
+  return <DoDontBase {...props} title="Don’t" bg="danger.fg" borderColor="danger.muted" />
 }
 
 function DoDontBase({children, title, bg, borderColor, indented}) {
