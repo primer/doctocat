@@ -1,5 +1,4 @@
 ---
-'docs': minor
 '@primer/gatsby-theme-doctocat': minor
 ---
 
