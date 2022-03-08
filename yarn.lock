@@ -6965,10 +6965,10 @@ eslint-plugin-prettier@^4.0.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-primer-react@0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-primer-react/-/eslint-plugin-primer-react-0.7.3.tgz#d9208065bd4348a63f3ff87d1be2011afe40d4c4"
-  integrity sha512-JJwpff8u+TxJttAZfYPmcZjgQzke/hQa8AKhWQUXzLnjC8aPA912cCpYfxtg0jHmJd7c1Qu3RV8G1K35iTvclA==
+eslint-plugin-primer-react@0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-primer-react/-/eslint-plugin-primer-react-0.7.4.tgz#fd7ac424e5ad34332e303d65ccc6bddcbb6bb0ab"
+  integrity sha512-+ys1VQ8tWQDqVy0LNVUb0OmIuaekaOHOq0yXJhc2Ye/diZqr2fIBj3C50jwpQezs6YI8SpIsGqwkd3aTjBhhGA==
   dependencies:
     "@styled-system/props" "^5.1.5"
     eslint-traverse "^1.0.0"
@@ -13628,10 +13628,10 @@ prism-react-renderer@^1.2.0:
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.0.tgz#5ad4f90c3e447069426c8a53a0eafde60909cdf4"
   integrity sha512-GHqzxLYImx1iKN1jJURcuRoA/0ygCcNhfGw1IT8nPIMzarmKQ3Nc+JcG0gi8JXQzuh0C5ShE4npMIoqNin40hg==
 
-prismjs@^1.25.0:
-  version "1.25.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
-  integrity sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==
+prismjs@^1.27.0:
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
+  integrity sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
