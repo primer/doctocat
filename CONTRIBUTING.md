@@ -6,11 +6,9 @@ We appreciate your contribution and hope that this document helps you along the 
 
 <Note>
 
-
 These guidelines are for contributing to the theme itself, if you are looking for help running a Doctocat site for another project locally, check out the [Local Development](/usage/local-development) docs in the Usage section.
 
 </Note>
-
 
 ## Local development
 
@@ -18,11 +16,9 @@ Run the following commands to begin local development:
 
 <Note>
 
-
 These steps require [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) to be set up locally.
 
 </Note>
-
 
 ```shell
 # Clone the repository
@@ -136,15 +132,18 @@ Follow this process if you'd like your work considered for inclusion in the proj
 - If you cloned a while ago, get the latest changes from upstream:
 
   ```shell
-  git checkout master
-  git pull upstream master
+  git checkout main
+  git pull upstream main
   ```
 
-- Create a new topic branch (off of the `master` branch) to contain your feature, change, or fix:
+- Create a new mainbranch (off of the `main` branch) to contain your feature, change, or fix:
+  main
 
-  ```shell
+  ````shell
   git checkout -b <topic-branch-name>
-  ```
+  ```main
+
+  ````
 
 - Install the dependencies:
 
@@ -164,10 +163,11 @@ Follow this process if you'd like your work considered for inclusion in the proj
 - Locally merge (or rebase) the upstream development branch into your topic branch:
 
   ```shell
-  git pull [--rebase] upstream master
+  git pull [--rebase] upstream main
   ```
 
 - Push your topic branch up to your fork:
+  main
 
   ```shell
   git push origin <topic-branch-name>
