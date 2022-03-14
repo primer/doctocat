@@ -54,7 +54,7 @@
     "gatsby-plugin-react-helmet": "^3.1.0",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.2",
     "gatsby-plugin-styled-components": "^3.1.0",
-    "gatsby-source-filesystem": "^2.1.0",
+    "gatsby-source-filesystem": "^4.9.1",
     "gatsby-transformer-yaml": "^2.2.0",
     "get-pkg-repo": "^4.1.0",
     "github-slugger": "^1.2.1",
