@@ -48,7 +48,7 @@
     "framer-motion": "^1.4.2",
     "fuse.js": "^3.4.5",
     "gatsby-plugin-catch-links": "^2.1.2",
-    "gatsby-plugin-manifest": "^2.2.1",
+    "gatsby-plugin-manifest": "^4.10.1",
     "gatsby-plugin-mdx": "^1.0.13",
     "gatsby-plugin-page-creator": "^2.1.1",
     "gatsby-plugin-react-helmet": "^3.1.0",
