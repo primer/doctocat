@@ -15,6 +15,6 @@ jobs:
     name: Build and deploy
     uses: primer/.github/.github/workflows/deploy.yml@main
     with:
-      node_version: 16
+      node_version: 12
       install: yarn
       build: yarn build
