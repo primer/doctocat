@@ -16,3 +16,4 @@ jobs:
       node_version: 12
       install: yarn
       build: yarn build:preview
+      output_dir: docs/public
