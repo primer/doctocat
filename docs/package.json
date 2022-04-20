@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build --prefix-paths",
-    "now-build": "npm run build"
+    "build:preview": "gatsby build"
   },
   "dependencies": {
     "@primer/gatsby-theme-doctocat": "*",
