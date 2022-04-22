@@ -15,7 +15,7 @@ jobs:
     name: Build and deploy
     uses: primer/.github/.github/workflows/deploy.yml@rezrah/forward-secrets
     secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
     with:
       node_version: 12
       install: yarn
