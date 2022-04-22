@@ -1,4 +1,4 @@
-name: Deploy preview
+name: Deploy previews
 
 on:
   pull_request:
