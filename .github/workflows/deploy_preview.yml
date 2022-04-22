@@ -1,4 +1,4 @@
-name: Deploy previews
+name: Deploy preview
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   deploy:
     name: Build and deploy
-    uses: primer/.github/.github/workflows/deploy_preview.yml@rezrah/forward-secrets
+    uses: primer/.github/.github/workflows/deploy_preview.yml@main
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     with:

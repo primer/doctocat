@@ -13,7 +13,7 @@ permissions:
 jobs:
   build_deploy:
     name: Build and deploy
-    uses: primer/.github/.github/workflows/deploy.yml@rezrah/forward-secrets
+    uses: primer/.github/.github/workflows/deploy.yml@main
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     with:
