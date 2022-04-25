@@ -6,14 +6,12 @@
   "scripts": {
     "develop": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build --prefix-paths",
-    "now-build": "npm run build"
+    "build:preview": "gatsby build"
   },
   "dependencies": {
-    "@primer/components": "^30.0.0",
     "@primer/gatsby-theme-doctocat": "*",
-    "gatsby": "^2.24.52",
-    "gatsby-plugin-sass": "^2.1.0",
-    "node-sass": "^4.12.0",
+    "@primer/react": "^34.5.0",
+    "gatsby": "^2.32.13",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

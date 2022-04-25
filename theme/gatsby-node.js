@@ -30,7 +30,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
     }
   `)
 
-  if (!process.env.GITHUB_TOKEN && !process.env.NOW_GITHUB_DEPLOYMENT && !process.env.VERCEL_GITHUB_DEPLOYMENT) {
+  if (!process.env.GITHUB_TOKEN) {
     console.error(`Non-deploy build and no GITHUB_TOKEN environment variable set; skipping GitHub API calls`)
   }
 
@@ -48,7 +48,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       const editUrl = getEditUrl(repo, fileRelativePath, defaultBranch)
 
       let contributors = []
-      if (process.env.GITHUB_TOKEN || process.env.NOW_GITHUB_DEPLOYMENT || process.env.VERCEL_GITHUB_DEPLOYMENT) {
+      if (process.env.GITHUB_TOKEN) {
         contributors = await fetchContributors(repo, fileRelativePath, process.env.GITHUB_TOKEN)
       }
 

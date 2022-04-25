@@ -1,13 +1,11 @@
-import {Link, Text} from '@primer/components'
+import {Link, Text} from '@primer/react'
 import React from 'react'
 
 function SourceLink({href}) {
   return (
     <Link href={href}>
       <StorybookIcon />
-      <Text ml={2} display="inline-block">
-        View storybook
-      </Text>
+      <Text sx={{ml: 2, display: 'inline-block'}}>View storybook</Text>
     </Link>
   )
 }

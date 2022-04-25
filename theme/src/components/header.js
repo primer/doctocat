@@ -1,5 +1,5 @@
-import {Box, Button, Link, Sticky, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/components'
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
+import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/react'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'
@@ -18,16 +18,18 @@ function Header({isSearchEnabled}) {
   const siteMetadata = useSiteMetadata()
   return (
     <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
-      <Sticky>
+      <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
-          display="flex"
-          height={HEADER_HEIGHT}
-          px={[3, null, null, 4]}
-          alignItems="center"
-          justifyContent="space-between"
-          bg="canvas.default"
+          sx={{
+            display: 'flex',
+            height: HEADER_HEIGHT,
+            px: [3, null, null, 4],
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            bg: 'canvas.default'
+          }}
         >
-          <Box display="flex" alignItems="center">
+          <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Link
               href="https://primer.style"
               sx={{
@@ -57,7 +59,9 @@ function Header({isSearchEnabled}) {
 
             {siteMetadata.shortName ? (
               <>
-                <Text display={['none', null, null, 'inline-block']} color="accent.fg" fontFamily="mono" mx={2}>
+                <Text
+                  sx={{display: ['none', null, null, 'inline-block'], color: 'accent.fg', fontFamily: 'mono', mx: 2}}
+                >
                   /
                 </Text>
                 <Link
@@ -74,16 +78,16 @@ function Header({isSearchEnabled}) {
             ) : null}
 
             {isSearchEnabled ? (
-              <Box display={['none', null, null, 'block']} ml={4}>
+              <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
                 <Search />
               </Box>
             ) : null}
           </Box>
           <Box>
-            <Box display={['none', null, null, 'block']}>
+            <Box sx={{display: ['none', null, null, 'block']}}>
               <PrimerNavItems items={primerNavItems} />
             </Box>
-            <Box display={['flex', null, null, 'none']}>
+            <Box sx={{display: ['flex', null, null, 'none']}}>
               {isSearchEnabled ? (
                 <>
                   <Button
@@ -113,7 +117,7 @@ function Header({isSearchEnabled}) {
             </Box>
           </Box>
         </Box>
-      </Sticky>
+      </Box>
     </ThemeProvider>
   )
 }
@@ -124,11 +128,11 @@ Header.defaultProps = {
 
 function PrimerNavItems({items}) {
   return (
-    <Box display="flex" alignItems="center" color="fg.default">
+    <Box sx={{display: 'flex', alignItems: 'center', color: 'fg.default'}}>
       {items.map((item, index) => {
         if (item.children) {
           return (
-            <Box ml={4} key={index}>
+            <Box key={index} sx={{ml: 4}}>
               <NavDropdown title={item.title}>
                 {item.children.map(child => (
                   <NavDropdownItem key={child.title} href={child.url}>

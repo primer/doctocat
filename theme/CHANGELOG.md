@@ -1,5 +1,23 @@
 # @primer/gatsby-theme-doctocat
 
+## 3.3.0
+
+### Minor Changes
+
+- [`82bd051`](https://github.com/primer/doctocat/commit/82bd051ab35e5939a9ad5a3e89c26e2a63ce5df2) [#376](https://github.com/primer/doctocat/pull/376) Thanks [@vdepizzol](https://github.com/vdepizzol)! - New visual styles for Do/Dont components
+
+### Patch Changes
+
+- [`0d35f17`](https://github.com/primer/doctocat/commit/0d35f17a34ebfc468e15a23783a55379b8f0e125) [#402](https://github.com/primer/doctocat/pull/402) Thanks [@ichelsea](https://github.com/ichelsea)! - Added underlines to links in markdown documents
+
+## 3.2.1
+
+### Patch Changes
+
+- [`1c0ca36`](https://github.com/primer/doctocat/commit/1c0ca368ed9a61ac79eb6e47ff7208c0d5b038d2) [#361](https://github.com/primer/doctocat/pull/361) Thanks [@colebemis](https://github.com/colebemis)! - Refactor internals to not use deprecated Primer React components
+
+* [`ac6de57`](https://github.com/primer/doctocat/commit/ac6de57fdf7629eb74b9246f6ac62f97bca0d4a4) [#334](https://github.com/primer/doctocat/pull/334) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Upgrade from `@primer/components@30.0.0` to `@primer/react@34.5.0`
+
 ## 3.2.0
 
 ### Minor Changes
@@ -175,4 +193,4 @@
 
 - [`5fb29c9`](https://github.com/primer/doctocat/commit/5fb29c9000dd2a26919f661d969142fa1938d329) [#187](https://github.com/primer/doctocat/pull/187) Thanks [@mvasilkov](https://github.com/mvasilkov)! - Fix typo in an internal import
 
-* [`cab38c3`](https://github.com/primer/doctocat/commit/cab38c38eb00a9645991147b28a47a535dcd1d41) [#190](https://github.com/primer/doctocat/pull/190) Thanks [@colebemis](https://github.com/colebemis)! - Update the navigation dropdown icon from a `chrevon` to a `caret` to follow our [progressive disclosure guidelines](https://primer.style/design/ui-patterns/progressive-disclosure#progressive-disclosure-ui-patterns)
+* [`cab38c3`](https://github.com/primer/doctocat/commit/cab38c38eb00a9645991147b28a47a535dcd1d41) [#190](https://github.com/primer/doctocat/pull/190) Thanks [@colebemis](https://github.com/colebemis)! - Update the navigation dropdown icon from a `chevron` to a `caret` to follow our [progressive disclosure guidelines](https://primer.style/design/ui-patterns/progressive-disclosure#progressive-disclosure-ui-patterns)

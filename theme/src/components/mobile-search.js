@@ -1,4 +1,4 @@
-import {Absolute, Box, Button, Fixed, Flex} from '@primer/components'
+import {Box, Button} from '@primer/react'
 import {XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
@@ -6,8 +6,8 @@ import {navigate} from 'gatsby'
 import React from 'react'
 import {FocusOn} from 'react-focus-on'
 import useSearch from '../use-search'
-import TextInput from './text-input'
 import SearchResults from './search-results'
+import TextInput from './text-input'
 
 function stateReducer(state, changes) {
   switch (changes.type) {
@@ -38,14 +38,22 @@ function MobileSearch({isOpen, onDismiss}) {
     <AnimatePresence>
       {isOpen ? (
         <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
-          <Fixed sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
-            <Absolute
+          <Box sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, position: 'fixed'}}>
+            <Box
               as={motion.div}
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
               onClick={handleDismiss}
-              sx={{top: 0, left: 0, right: 0, bottom: 0, bg: 'primer.canvas.backdrop', zIndex: -1}}
+              sx={{
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                bg: 'primer.canvas.backdrop',
+                zIndex: -1,
+                position: 'absolute'
+              }}
             />
             <Downshift
               inputValue={query}
@@ -61,13 +69,14 @@ function MobileSearch({isOpen, onDismiss}) {
               stateReducer={stateReducer}
             >
               {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen: isMenuOpen, highlightedIndex}) => (
-                <Flex
+                <Box
                   {...getRootProps({
                     flexDirection: 'column',
                     height: isMenuOpen ? '100%' : 'auto'
                   })}
+                  sx={{display: 'flex'}}
                 >
-                  <Flex sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto'}}>
+                  <Box sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto', display: 'flex'}}>
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}
@@ -85,7 +94,7 @@ function MobileSearch({isOpen, onDismiss}) {
                     <Button aria-label="Cancel" onClick={handleDismiss} sx={{ml: 3}}>
                       <XIcon />
                     </Button>
-                  </Flex>
+                  </Box>
                   {isMenuOpen ? (
                     <Box
                       {...getMenuProps({
@@ -108,10 +117,10 @@ function MobileSearch({isOpen, onDismiss}) {
                       />
                     </Box>
                   ) : null}
-                </Flex>
+                </Box>
               )}
             </Downshift>
-          </Fixed>
+          </Box>
         </FocusOn>
       ) : null}
     </AnimatePresence>

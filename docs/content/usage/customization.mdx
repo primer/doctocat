@@ -3,7 +3,7 @@ title: Customization
 description: Here are a few ways you can customize your Doctocat site.
 ---
 
-import {BorderBox} from '@primer/components'
+import {Box} from '@primer/react'
 import {Contributors} from '@primer/gatsby-theme-doctocat'
 
 ## Site metadata
@@ -60,7 +60,7 @@ To enable these features, you'll need to specify your site's [`repository`](http
 
 ## Subdirectories
 
-If your site is located in a subdirectory of a repository, you'll also need to provide the relative path to the root of your git respository via the `repoRootPath` option in `gatsby-config.js`:
+If your site is located in a subdirectory of a repository, you'll also need to provide the relative path to the root of your git repository via the `repoRootPath` option in `gatsby-config.js`:
 
 ```js
 // gatsby-config.js
@@ -98,7 +98,14 @@ module.exports = {
 
 If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` set up correctly (as described [above](#edit-on-github-link)), Doctocat will automatically display contributors on the bottom of every page, like so:
 
-<BorderBox p={4} mb={3}>
+<Box
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+>
   <Contributors
     contributors={[
       {
@@ -117,7 +124,7 @@ If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-con
       },
     ]}
   />
-</BorderBox>
+</Box>
 
 These contributors are determined by commits. However, we know that commits aren't the only way to contribute. You can use [front matter](/usage/front-matter#additional-contributors) to give credit to people who aren't listed in the commit history but still contributed.
 
@@ -141,7 +148,7 @@ To use a custom hero component, [shadow](https://www.gatsbyjs.org/blog/2019-04-2
 
 ```jsx
 // src/@primer/gatsby-theme-doctocat/components/hero.js
-import {Box} from '@primer/components'
+import {Box} from '@primer/react'
 import React from 'react'
 
 export default function Hero() {

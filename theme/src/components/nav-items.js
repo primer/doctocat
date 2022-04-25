@@ -1,4 +1,4 @@
-import {Box, Link, StyledOcticon, themeGet} from '@primer/components'
+import {Box, Link, StyledOcticon, themeGet} from '@primer/react'
 import {LinkExternalIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import preval from 'preval.macro'
@@ -30,14 +30,16 @@ function NavItems({items}) {
       {items.map(item => (
         <Box
           key={item.title}
-          borderWidth={0}
-          borderRadius={0}
-          borderTopWidth={1}
-          borderStyle="solid"
-          borderColor="border.muted"
-          p={4}
+          sx={{
+            borderWidth: 0,
+            borderRadius: 0,
+            borderTopWidth: 1,
+            borderStyle: 'solid',
+            borderColor: 'border.muted',
+            p: 4
+          }}
         >
-          <Box display="flex" flexDirection="column">
+          <Box sx={{display: 'flex', flexDirection: 'column'}}>
             <NavLink
               as={GatsbyLink}
               to={item.url}
@@ -48,7 +50,7 @@ function NavItems({items}) {
               {item.title}
             </NavLink>
             {item.children ? (
-              <Box display="flex" flexDirection="column" mt={2}>
+              <Box sx={{display: 'flex', flexDirection: 'column', mt: 2}}>
                 {item.children.map(child => (
                   <NavLink
                     key={child.title}
@@ -71,9 +73,18 @@ function NavItems({items}) {
         </Box>
       ))}
       {repositoryUrl ? (
-        <Box borderWidth={0} borderTopWidth={1} borderRadius={0} borderStyle="solid" borderColor="border.default" p={4}>
+        <Box
+          sx={{
+            borderWidth: 0,
+            borderTopWidth: 1,
+            borderRadius: 0,
+            borderStyle: 'solid',
+            borderColor: 'border.default',
+            p: 4
+          }}
+        >
           <Link href={repositoryUrl} sx={{color: 'inherit'}}>
-            <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
               GitHub
               <StyledOcticon icon={LinkExternalIcon} sx={{color: 'fg.muted'}} />
             </Box>

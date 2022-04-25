@@ -1,5 +1,6 @@
 import {MDXProvider} from '@mdx-js/react'
-import {Link, ThemeProvider} from '@primer/components'
+import {ThemeProvider} from '@primer/react'
+import Link from './link'
 import React from 'react'
 import mdxComponents from '../mdx-components'
 import Blockquote from './blockquote'

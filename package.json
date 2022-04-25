@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "start": "yarn workspace docs develop",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "build": "yarn workspace docs build",
+    "build:preview": "yarn workspace docs build:preview"
   },
   "workspaces": [
     "theme",

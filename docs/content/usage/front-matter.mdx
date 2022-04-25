@@ -2,7 +2,7 @@
 title: Front matter
 ---
 
-import {BorderBox} from '@primer/components'
+import {Box} from '@primer/react'
 import {StatusLabel} from '@primer/gatsby-theme-doctocat'
 import StorybookLink from '@primer/gatsby-theme-doctocat/src/components/storybook-link'
 import SourceLink from '@primer/gatsby-theme-doctocat/src/components/source-link'
@@ -80,9 +80,9 @@ source: https://github.com/path/to/code
 
 If the `source` front matter variable is defined, Doctocat will add a source code link to the top of the page, like this:
 
-<BorderBox p={4} mb={3}>
+<Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
   <SourceLink href="#" />
-</BorderBox>
+</Box>
 
 <Note>
 
@@ -103,14 +103,14 @@ storybook: https://primer.style/view-components/stories/?path=/story/primer-avat
 
 If the `storybook` front matter variable is defined, Doctocat will add a storybook link to the top of the page, like this:
 
-<BorderBox p={4} mb={3}>
+<Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
   <StorybookLink href="#" />
-</BorderBox>
+</Box>
 
 
 ## Additional contributors
 
-If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` setup correctly (as desribed in the [customization](/usage/customization#contributors) guide), Doctocat will automatically display contributors on the bottom of every page. These contributors are determined by commits. However, we know that commits aren't the only way to contribute. To give credit to people who aren't listed in the commit history but still contributed, use the `additionalContributors` front matter variable to list their GitHub usernames, for example:
+If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` setup correctly (as described in the [customization](/usage/customization#contributors) guide), Doctocat will automatically display contributors on the bottom of every page. These contributors are determined by commits. However, we know that commits aren't the only way to contribute. To give credit to people who aren't listed in the commit history but still contributed, use the `additionalContributors` front matter variable to list their GitHub usernames, for example:
 
 ```markdown
 ---

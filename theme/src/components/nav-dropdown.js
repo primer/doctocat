@@ -1,4 +1,4 @@
-import {Box, Details, StyledOcticon, Text, themeGet, useDetails} from '@primer/components'
+import {Box, Details, StyledOcticon, Text, themeGet, useDetails} from '@primer/react'
 import {TriangleDownIcon} from '@primer/octicons-react'
 import React from 'react'
 import styled from 'styled-components'
@@ -11,15 +11,17 @@ function NavDropdown({title, children}) {
         <Text>{title}</Text>
         <StyledOcticon icon={TriangleDownIcon} sx={{ml: 1}} />
       </summary>
-      <Box position="absolute">
+      <Box sx={{position: 'absolute'}}>
         <Box
-          bg="canvas.overlay"
-          p={2}
-          mt={2}
-          borderWidth="1px"
-          borderStyle="solid"
-          borderColor="border.default"
-          borderRadius="12px"
+          sx={{
+            bg: 'canvas.overlay',
+            p: 2,
+            mt: 2,
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: 'border.default',
+            borderRadius: '12px'
+          }}
         >
           {children}
         </Box>

@@ -1,4 +1,4 @@
-import {Avatar, Box, Link, Text, Tooltip} from '@primer/components'
+import {Avatar, Box, Link, Text, Tooltip} from '@primer/react'
 import {format} from 'date-fns'
 import uniqBy from 'lodash.uniqby'
 import pluralize from 'pluralize'
@@ -12,8 +12,8 @@ function Contributors({contributors}) {
 
   return (
     <div>
-      <Box display="flex" alignItems="center">
-        <Text mr={2}>
+      <Box sx={{display: 'flex', alignItems: 'center'}}>
+        <Text sx={{mr: 2}}>
           {uniqueContributors.length} {pluralize('contributor', uniqueContributors.length)}
         </Text>
         {uniqueContributors.map(contributor => (
@@ -30,7 +30,7 @@ function Contributors({contributors}) {
       </Box>
 
       {latestContributor.latestCommit ? (
-        <Text fontSize={1} color="fg.muted" mt={1}>
+        <Text sx={{fontSize: 1, color: 'fg.muted', mt: 1}}>
           Last edited by <Link href={`https://github.com/${latestContributor.login}`}>{latestContributor.login}</Link>{' '}
           on{' '}
           <Link href={latestContributor.latestCommit.url}>
