@@ -28,6 +28,7 @@ const Table = styled.table`
 
   img {
     background-color: transparent;
+    vertical-align: middle;
   }
 `
 
