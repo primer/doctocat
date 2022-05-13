@@ -1,28 +1,16 @@
 import {Box, Link} from '@primer/react'
 import React from 'react'
+import {NavList} from '@primer/react/drafts'
 
-function TableOfContents({items, depth}) {
+function TableOfContents({'aria-labelledby': ariaLabelledBy, items, depth}) {
   return (
-    <Box as="ul" sx={{m: 0, p: 0, listStyle: 'none'}}>
+    <NavList aria-labelledby={ariaLabelledBy}>
       {items.map(item => (
-        <Box as="li" key={item.url} sx={{pl: depth > 0 ? 3 : 0}}>
-          {item.title ? (
-            <Link
-              href={item.url}
-              sx={{
-                display: 'inline-block',
-                py: 1,
-                fontSize: [2, null, 1],
-                color: 'fg.muted'
-              }}
-            >
-              {item.title}
-            </Link>
-          ) : null}
-          {item.items ? <TableOfContents items={item.items} depth={depth + 1} /> : null}
-        </Box>
+        <NavList.Item key={item.title} href={item.url}>
+          {item.title}
+        </NavList.Item>
       ))}
-    </Box>
+    </NavList>
   )
 }
 

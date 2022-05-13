@@ -56,8 +56,10 @@ function Layout({children, pageContext}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Text sx={{display: 'inline-block', fontWeight: 'bold', mb: 1}}>On this page</Text>
-              <TableOfContents items={pageContext.tableOfContents.items} />
+              <Text sx={{display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+                On this page
+              </Text>
+              <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>

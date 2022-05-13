@@ -4,6 +4,7 @@ import {Link as GatsbyLink} from 'gatsby'
 import preval from 'preval.macro'
 import React from 'react'
 import styled from 'styled-components'
+import {NavList} from '@primer/react/drafts'
 
 // This code needs to run at build-time so it can access the file system.
 const repositoryUrl = preval`
@@ -26,72 +27,39 @@ const NavLink = styled(Link)`
 
 function NavItems({items}) {
   return (
-    <>
+    <NavList>
       {items.map(item => (
-        <Box
-          key={item.title}
-          sx={{
-            borderWidth: 0,
-            borderRadius: 0,
-            borderTopWidth: 1,
-            borderStyle: 'solid',
-            borderColor: 'border.muted',
-            p: 4
-          }}
-        >
-          <Box sx={{display: 'flex', flexDirection: 'column'}}>
-            <NavLink
-              as={GatsbyLink}
-              to={item.url}
-              activeClassName="active"
-              partiallyActive={true}
-              sx={{color: 'inherit'}}
-            >
-              {item.title}
-            </NavLink>
-            {item.children ? (
-              <Box sx={{display: 'flex', flexDirection: 'column', mt: 2}}>
-                {item.children.map(child => (
-                  <NavLink
-                    key={child.title}
-                    as={GatsbyLink}
-                    to={child.url}
-                    activeClassName="active"
-                    sx={{
-                      display: 'block',
-                      py: 1,
-                      mt: 2,
-                      fontSize: 1
-                    }}
-                  >
-                    {child.title}
-                  </NavLink>
-                ))}
-              </Box>
-            ) : null}
-          </Box>
-        </Box>
+        <React.Fragment key={item.title}>
+          {item.children ? (
+            <NavList.Group title={item.title}>
+              {item.children.map(child => (
+                <NavList.Item
+                  key={child.title}
+                  // as={GatsbyLink}
+                  href={child.url}
+                  // activeClassName="active"
+                >
+                  {child.title}
+                </NavList.Item>
+              ))}
+            </NavList.Group>
+          ) : (
+            <NavList.Item href={item.url}>{item.title}</NavList.Item>
+          )}
+        </React.Fragment>
       ))}
       {repositoryUrl ? (
-        <Box
-          sx={{
-            borderWidth: 0,
-            borderTopWidth: 1,
-            borderRadius: 0,
-            borderStyle: 'solid',
-            borderColor: 'border.default',
-            p: 4
-          }}
-        >
-          <Link href={repositoryUrl} sx={{color: 'inherit'}}>
-            <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              GitHub
-              <StyledOcticon icon={LinkExternalIcon} sx={{color: 'fg.muted'}} />
-            </Box>
-          </Link>
-        </Box>
+        <>
+          <NavList.Divider />
+          <NavList.Item href={repositoryUrl}>
+            GitHub
+            <NavList.TrailingVisual>
+              <LinkExternalIcon />
+            </NavList.TrailingVisual>
+          </NavList.Item>
+        </>
       ) : null}
-    </>
+    </NavList>
   )
 }
 

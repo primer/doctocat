@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@primer/gatsby-theme-doctocat": "*",
-    "@primer/react": "^34.5.0",
+    "@primer/react": "^35.3.0-rc.587d0293",
     "gatsby": "^2.32.13",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
