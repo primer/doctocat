@@ -2641,10 +2641,10 @@
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.6.0.tgz#942efe38b6e09bf6d0351c045436e628e32c3ddb"
   integrity sha512-cu28QLjectVf2rT4P7m6zS9v4g4yHtErRuPfsgEWEJhbXVIII6vDBm6elJzYixGpTNxpVtSUNezxUXv16l1ejQ==
 
-"@primer/react@^35.3.0-rc.587d0293":
-  version "35.3.0-rc.587d0293"
-  resolved "https://registry.yarnpkg.com/@primer/react/-/react-35.3.0-rc.587d0293.tgz#2f8f472fa765b224b833d0f466ca5acfe4769d60"
-  integrity sha512-HUyAQDrhRU4Bqshbpzg0gyNHSyY4qC17/jkCGQyP7RTqgDkeamxk50le91uk7gNzG+ChofTZYVMPL0g9cdKqRg==
+"@primer/react@^35.3.0-rc.14a76ea9":
+  version "35.3.0-rc.14a76ea9"
+  resolved "https://registry.yarnpkg.com/@primer/react/-/react-35.3.0-rc.14a76ea9.tgz#328c854443746e9f17245117595f1d0ecf07be1e"
+  integrity sha512-w1qeXe3lAOuSVbZuFb0IMc87pRkPcv9Ld1qcWxzc4g4S3licMU7ZEd/cTqqb+dci3/HAkgKoQX/P+3hbFibXtg==
   dependencies:
     "@primer/behaviors" "^1.1.3"
     "@primer/octicons-react" "16.1.1"

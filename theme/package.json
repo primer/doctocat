@@ -34,7 +34,7 @@
     "@mdx-js/react": "^1.0.21",
     "@primer/component-metadata": "^0.4.0",
     "@primer/octicons-react": "^16.3.1",
-    "@primer/react": "^35.3.0-rc.587d0293",
+    "@primer/react": "^35.3.0-rc.14a76ea9",
     "@styled-system/theme-get": "^5.0.12",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^9.1.3",
