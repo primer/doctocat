@@ -1,10 +1,11 @@
-import {Box, Link, StyledOcticon, themeGet} from '@primer/react'
 import {LinkExternalIcon} from '@primer/octicons-react'
-import {Link as GatsbyLink} from 'gatsby'
+import {Link, themeGet} from '@primer/react'
+import {NavList} from '@primer/react/drafts'
+import {useLocation} from '@reach/router'
+import {Link as GatsbyLink, withPrefix} from 'gatsby'
 import preval from 'preval.macro'
 import React from 'react'
 import styled from 'styled-components'
-import {NavList} from '@primer/react/drafts'
 
 // This code needs to run at build-time so it can access the file system.
 const repositoryUrl = preval`
@@ -18,12 +19,15 @@ const repositoryUrl = preval`
   }
 `
 
-const NavLink = styled(Link)`
-  &.active {
-    font-weight: ${themeGet('fontWeights.bold')};
-    color: ${themeGet('colors.fg.default')};
-  }
-`
+function NavItem({href, children}) {
+  const location = useLocation()
+  const isCurrent = withPrefix(href) === location.pathname
+  return (
+    <NavList.Item as={GatsbyLink} to={href} aria-current={isCurrent ? 'page' : null}>
+      {children}
+    </NavList.Item>
+  )
+}
 
 function NavItems({items}) {
   return (
@@ -33,18 +37,13 @@ function NavItems({items}) {
           {item.children ? (
             <NavList.Group title={item.title}>
               {item.children.map(child => (
-                <NavList.Item
-                  key={child.title}
-                  // as={GatsbyLink}
-                  href={child.url}
-                  // activeClassName="active"
-                >
+                <NavItem key={child.title} href={child.url}>
                   {child.title}
-                </NavList.Item>
+                </NavItem>
               ))}
             </NavList.Group>
           ) : (
-            <NavList.Item href={item.url}>{item.title}</NavList.Item>
+            <NavItem href={item.url}>{item.title}</NavItem>
           )}
         </React.Fragment>
       ))}
