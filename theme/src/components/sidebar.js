@@ -38,7 +38,6 @@ function Sidebar() {
         top: HEADER_HEIGHT,
         height: `calc(100vh - ${HEADER_HEIGHT}px)`,
         minWidth: 260
-        // bg: 'canvas.subtle'
       }}
     >
       <Box
