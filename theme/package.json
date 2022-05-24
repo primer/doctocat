@@ -78,6 +78,6 @@
     "sentence-case": "^2.1.1",
     "styled-components": "^4.3.2",
     "styled-system": "^5.0.18",
-    "worker-loader": "^3.0.2"
+    "worker-loader": "^3.0.8"
   }
 }
