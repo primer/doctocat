@@ -99,14 +99,14 @@ function Layout({children, pageContext}) {
                   borderRadius: 2
                 }}
               >
-                <Box sx={{p: 3}}>
+                <Box sx={{px: 3, py: 2}}>
                   <Box
                     sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}
                   >
                     <Text sx={{fontWeight: 'bold'}}>On this page</Text>
                   </Box>
                 </Box>
-                <Box sx={{p: 3, borderTop: '1px solid', borderColor: 'border.muted'}}>
+                <Box sx={{borderTop: '1px solid', borderColor: 'border.muted'}}>
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
               </Box>
