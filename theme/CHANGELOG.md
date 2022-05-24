@@ -1,5 +1,26 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.0.0
+
+### Major Changes
+
+- [`1022d1c`](https://github.com/primer/doctocat/commit/1022d1c92588f1e4fed4bdacec30fd5d11256412) [#362](https://github.com/primer/doctocat/pull/362) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Drop support for node 12
+
+* [`5f4426c`](https://github.com/primer/doctocat/commit/5f4426cc0cec6201600241bc753e5c7c9bf188a6) [#427](https://github.com/primer/doctocat/pull/427) Thanks [@colebemis](https://github.com/colebemis)! - Items in [`nav.yml`](https://primer.style/doctocat/usage/customization#side-navigation) that contain `children` no longer render as links, meaning the `url` property will be ignored.
+
+  ```diff
+  # nav.yml
+  – title: Components
+  - url: /components
+    children:
+     — title: Avatar
+       url: /Avatar
+  ```
+
+### Patch Changes
+
+- [`facde5a`](https://github.com/primer/doctocat/commit/facde5a56119b160f98b8b01302e3508392c2146) [#330](https://github.com/primer/doctocat/pull/330) Thanks [@siddharthkp](https://github.com/siddharthkp)! - Vertically-center align images in table
+
 ## 3.3.0
 
 ### Minor Changes
