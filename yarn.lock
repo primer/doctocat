@@ -2616,10 +2616,10 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
-"@primer/behaviors@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.3.tgz#4945f79c39f8b4495ec868b053264830f687c7bc"
-  integrity sha512-WpCcjAkXG7Lv3ZbaCUgASWKHnCi/pmuSEiyTmHHb6f5xhwk1mliixNL5ZZHtDN6RCcT3VnXUsyek4GopG2lbZQ==
+"@primer/behaviors@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.1.tgz#51e2f02ebfe297c4c05f503cdc52ae8b4ce5794c"
+  integrity sha512-wvF1PYjyxKNTr6+5w4uR5Gkz53t1fsRDgKjWxDKk7wmlh0cwiILBo4dDFjjVhWRF1mBSjaIxxJGB4WGaP7ct2Q==
 
 "@primer/component-metadata@^0.4.0":
   version "0.4.0"
@@ -2641,12 +2641,12 @@
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.6.0.tgz#942efe38b6e09bf6d0351c045436e628e32c3ddb"
   integrity sha512-cu28QLjectVf2rT4P7m6zS9v4g4yHtErRuPfsgEWEJhbXVIII6vDBm6elJzYixGpTNxpVtSUNezxUXv16l1ejQ==
 
-"@primer/react@^35.3.0-rc.14a76ea9":
-  version "35.3.0-rc.14a76ea9"
-  resolved "https://registry.yarnpkg.com/@primer/react/-/react-35.3.0-rc.14a76ea9.tgz#328c854443746e9f17245117595f1d0ecf07be1e"
-  integrity sha512-w1qeXe3lAOuSVbZuFb0IMc87pRkPcv9Ld1qcWxzc4g4S3licMU7ZEd/cTqqb+dci3/HAkgKoQX/P+3hbFibXtg==
+"@primer/react@^35.2.2":
+  version "35.2.2"
+  resolved "https://registry.yarnpkg.com/@primer/react/-/react-35.2.2.tgz#b64c406b4e17a01cb0c850e9b6dea06ad4690393"
+  integrity sha512-JToTi4YwOJ5mlvSBF66Csz35fLeMl6PeGYcXqwE34giGXRrOLRID+eHVPZPWUEDo/Sg389cVYR44ueM03/C56A==
   dependencies:
-    "@primer/behaviors" "^1.1.3"
+    "@primer/behaviors" "1.1.1"
     "@primer/octicons-react" "16.1.1"
     "@primer/primitives" "7.6.0"
     "@radix-ui/react-polymorphic" "0.0.14"
