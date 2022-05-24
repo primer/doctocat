@@ -11,7 +11,7 @@
     "docs"
   ],
   "dependencies": {
-    "@changesets/changelog-github": "^0.2.7",
+    "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.10.3"
   }
 }
