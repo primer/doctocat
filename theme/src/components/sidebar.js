@@ -37,8 +37,7 @@ function Sidebar() {
         position: 'sticky',
         top: HEADER_HEIGHT,
         height: `calc(100vh - ${HEADER_HEIGHT}px)`,
-        minWidth: 260,
-        bg: 'canvas.subtle'
+        minWidth: 260
       }}
     >
       <Box
@@ -50,7 +49,8 @@ function Sidebar() {
           borderRadius: 0,
           height: '100%',
           borderStyle: 'solid',
-          borderColor: 'border.default'
+          borderColor: 'border.subtle',
+          px: 2
         }}
       >
         <Box sx={{flexDirection: 'column', display: 'flex'}}>

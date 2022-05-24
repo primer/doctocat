@@ -86,11 +86,13 @@ function NavDrawer({isOpen, onDismiss}) {
               <Link
                 as={GatsbyLink}
                 to="/"
-                sx={{display: 'inline-block', color: 'inherit', fontFamily: 'mono', mx: 4, my: 4}}
+                sx={{display: 'inline-block', color: 'inherit', fontFamily: 'mono', mx: 4, mt: 4}}
               >
                 {siteMetadata.title}
               </Link>
-              <NavItems items={navItems} />
+              <Box sx={{px: 2}}>
+                <NavItems items={navItems} />
+              </Box>
             </Box>
           </ThemeProvider>
         ) : null}

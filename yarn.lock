@@ -2616,10 +2616,10 @@
     style-value-types "^3.1.7"
     tslib "^1.10.0"
 
-"@primer/behaviors@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.0.3.tgz#505861fb6afb0ba867c86c457f78c2e759adc308"
-  integrity sha512-zh1FKvAXLjKs0rr9Ik9E5M3Q9/npa9hmpuHKmYZn7u9QnSl+X13jFPme3AmtokOlfduFYeHfQyzSIJEhSEVl3w==
+"@primer/behaviors@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.1.tgz#51e2f02ebfe297c4c05f503cdc52ae8b4ce5794c"
+  integrity sha512-wvF1PYjyxKNTr6+5w4uR5Gkz53t1fsRDgKjWxDKk7wmlh0cwiILBo4dDFjjVhWRF1mBSjaIxxJGB4WGaP7ct2Q==
 
 "@primer/component-metadata@^0.4.0":
   version "0.4.0"
@@ -2636,19 +2636,19 @@
   resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-16.3.1.tgz#86982fe1001eee138d5ee46accbcdf62d51d11c5"
   integrity sha512-uzTs8/CvLiW1/47cgMRkIK9bKWpnw+UonCbgczXErwSSLqMDHfiiTpobW1trvRuoiMgLwsPo0l7kBBdKBnmq3g==
 
-"@primer/primitives@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.1.1.tgz#46edb7f06fbe8809ebe2822bc692fc6c74dba98c"
-  integrity sha512-+Gwo89YK1OFi6oubTlah/zPxxzMNaMLy+inECAYI646KIFdzzhAsKWb3z5tSOu5Ff7no4isRV64rWfMSKLZclw==
+"@primer/primitives@7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.6.0.tgz#942efe38b6e09bf6d0351c045436e628e32c3ddb"
+  integrity sha512-cu28QLjectVf2rT4P7m6zS9v4g4yHtErRuPfsgEWEJhbXVIII6vDBm6elJzYixGpTNxpVtSUNezxUXv16l1ejQ==
 
-"@primer/react@^34.5.0":
-  version "34.5.0"
-  resolved "https://registry.yarnpkg.com/@primer/react/-/react-34.5.0.tgz#480d9a4d6b7ced58baa1aa1d7ac55daeb0069a9d"
-  integrity sha512-jM2xXdYKHgNA1YMkJZm4lbMBpL2Dx6Qm/qwrFft2Kt3J1w5AcBBTZ/tT7OFIoUxwvlpmIuReVFfWkQbBaowqdw==
+"@primer/react@^35.2.2":
+  version "35.2.2"
+  resolved "https://registry.yarnpkg.com/@primer/react/-/react-35.2.2.tgz#b64c406b4e17a01cb0c850e9b6dea06ad4690393"
+  integrity sha512-JToTi4YwOJ5mlvSBF66Csz35fLeMl6PeGYcXqwE34giGXRrOLRID+eHVPZPWUEDo/Sg389cVYR44ueM03/C56A==
   dependencies:
-    "@primer/behaviors" "1.0.3"
+    "@primer/behaviors" "1.1.1"
     "@primer/octicons-react" "16.1.1"
-    "@primer/primitives" "7.1.1"
+    "@primer/primitives" "7.6.0"
     "@radix-ui/react-polymorphic" "0.0.14"
     "@react-aria/ssr" "3.1.0"
     "@styled-system/css" "5.1.5"

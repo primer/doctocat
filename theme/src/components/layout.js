@@ -56,8 +56,10 @@ function Layout({children, pageContext}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Text sx={{display: 'inline-block', fontWeight: 'bold', mb: 1}}>On this page</Text>
-              <TableOfContents items={pageContext.tableOfContents.items} />
+              <Text sx={{display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+                On this page
+              </Text>
+              <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
@@ -97,14 +99,14 @@ function Layout({children, pageContext}) {
                   borderRadius: 2
                 }}
               >
-                <Box sx={{p: 3}}>
+                <Box sx={{px: 3, py: 2}}>
                   <Box
                     sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}
                   >
                     <Text sx={{fontWeight: 'bold'}}>On this page</Text>
                   </Box>
                 </Box>
-                <Box sx={{p: 3, borderTop: '1px solid', borderColor: 'border.muted'}}>
+                <Box sx={{borderTop: '1px solid', borderColor: 'border.muted'}}>
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
               </Box>

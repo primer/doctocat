@@ -1,10 +1,12 @@
-- title: Getting started
-  url: /getting-started
+- title: Introduction
   children:
+    - title: Getting started
+      url: /getting-started
     - title: Gatsby CLI
       url: /getting-started/gatsby-cli
+    - title: Contributing
+      url: /contributing
 - title: Usage
-  url: /usage
   children:
     - title: Local development
       url: /usage/local-development
@@ -19,7 +21,6 @@
     - title: Using images
       url: /usage/using-images
 - title: Components
-  url: /components
   children:
     - title: Caption
       url: /components/caption
@@ -29,5 +30,3 @@
       url: /components/image-container
     - title: Note
       url: /components/note
-- title: Contributing
-  url: /contributing
