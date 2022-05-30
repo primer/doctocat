@@ -8,10 +8,11 @@ import Sidebar from './sidebar'
 import SourceLink from './source-link'
 import StatusLabel from './status-label'
 import StorybookLink from './storybook-link'
+import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, status, source, storybook, additionalContributors, componentId} = pageContext.frontmatter
+  let {title, description, figma, status, source, storybook, additionalContributors, componentId} = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -84,6 +85,7 @@ function Layout({children, pageContext}) {
                 >
                   {source ? <SourceLink href={source} /> : null}
                   {storybook ? <StorybookLink href={storybook} /> : null}
+                  {figma ? <FigmaLink href={figma} /> : null}
                 </Box>
               ) : null}
             </Box>
