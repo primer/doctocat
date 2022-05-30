@@ -12,7 +12,8 @@ import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, figma, status, source, storybook, additionalContributors, componentId} = pageContext.frontmatter
+  let {title, description, figma, status, source, storybook, additionalContributors, componentId} =
+    pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
