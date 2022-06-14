@@ -4,6 +4,9 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16 ]
     steps:
       - name: Checkout repo
         uses: actions/checkout@master
