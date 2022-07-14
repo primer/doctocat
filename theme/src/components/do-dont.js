@@ -1,4 +1,4 @@
-import {Box, StyledOcticon, Text} from '@primer/react'
+import {Box, Text} from '@primer/react'
 import React from 'react'
 
 export function DoDontContainer({stacked, children}) {
