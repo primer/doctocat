@@ -6,12 +6,14 @@ import Prism from '../prism'
 import ClipboardCopy from './clipboard-copy'
 import LiveCode from './live-code'
 
-function Code({className, children, live, noinline, metastring}) {
+function Code({className, children, live, highlight, noinline, metastring}) {
   const language = className ? className.replace(/language-/, '') : ''
   const code = children.trim()
 
   if (live) {
-    return <LiveCode code={code} language={language} noinline={noinline} metastring={metastring} />
+    return (
+      <LiveCode code={code} highlight={highlight} language={language} noinline={noinline} metastring={metastring} />
+    )
   }
 
   return (
