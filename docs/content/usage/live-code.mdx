@@ -55,6 +55,35 @@ Every property on the object exported by `live-code-scope.js` will be available 
 ```
 ````
 
+## Line highlighting
+
+If you want to emphasize a particular range of lines, use the `highlight` attribute on the code block. The expected format is `higlight=start-end`. The line highlighting will disappear when the live example is edited.
+
+
+````markdown
+``` jsx live highlight=2-4
+<div>
+  <p>
+    This paragraph element should be higlighted.
+  </p>
+  <p>
+    This paragraph element should not be higlighted.
+  </p>
+</div>
+```
+````
+
+``` jsx live highlight=2-4
+<div>
+  <p>
+    This paragraph element should be higlighted.
+  </p>
+  <p>
+    This paragraph element should not be higlighted.
+  </p>
+</div>
+```
+
 ## Global styles
 
 Live previews are completely isolated from the rest of the page because they are rendered inside [iframes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). This means that you can apply global styles inside live previews without affecting the rest of the page:
