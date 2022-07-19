@@ -23,7 +23,7 @@
     "react-dom": "^16.13.1"
   },
   "peerDependencies": {
-    "gatsby": "2.x",
+    "gatsby": ">2",
     "react": "^16.9.x",
     "react-dom": "^16.9.x"
   },
