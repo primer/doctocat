@@ -4,7 +4,7 @@ import React from 'react'
 
 function SourceLink({href}) {
   return (
-    <Link href={href}>
+    <Link href={href} target="_blank">
       <MarkGithubIcon />
       <Text sx={{ml: 2, display: 'inline-block'}}>View source</Text>
     </Link>
