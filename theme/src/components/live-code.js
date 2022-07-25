@@ -8,6 +8,8 @@ import {ThemeContext} from 'styled-components'
 import scope from '../live-code-scope'
 import ClipboardCopy from './clipboard-copy'
 import LivePreviewWrapper from './live-preview-wrapper'
+import styled from 'styled-components'
+import themeGet from '@styled-system/theme-get'
 
 const languageTransformers = {
   html: html => htmlToJsx(html),
@@ -39,10 +41,43 @@ const getResolvedScope = metastring => {
   return scope
 }
 
-function LiveCode({code, language, noinline, metastring}) {
+function parseHighlightRange(highlight) {
+  // Captures numbers separated by a dash: 2-3, 34-5, 2-101
+  const numbersWithDash = new RegExp('([0-9]+)-([0-9]+)')
+
+  const match = numbersWithDash.exec(highlight)
+  if (!match) return null
+
+  return {firstLine: match[1], lastLine: match[2]}
+}
+
+const LineWrapper = styled.div`
+  // Using negative and positive nth-child values to select the children.
+  pre .token-line:nth-child(n + ${props => props.range.firstLine}):nth-child(-n + ${props => props.range.lastLine}) {
+    // 16px is the padding of the react-live <pre> element that wraps the .token-line elements.
+    // The margin/padding combo extends the token-line elements so the background color reaches the border.
+    margin: 0px -16px;
+    padding: 0px 16px;
+    background-color: ${themeGet('colors.accent.subtle')};
+    // We use box-shadow instead of a border to avoid flickering when toggling the highlighting on/off.
+    box-shadow: inset 3px 0px 0px 0px ${themeGet('colors.accent.fg')};
+  }
+`
+
+function LineHighlighter({enabled, range, children}) {
+  if (!enabled || !range) return children
+
+  return <LineWrapper range={range}>{children}</LineWrapper>
+}
+
+function LiveCode({code, language, highlight, noinline, metastring}) {
   const theme = React.useContext(ThemeContext)
   const [liveCode, setLiveCode] = useState(code)
-  const handleChange = updatedLiveCode => setLiveCode(updatedLiveCode)
+  const [pristine, setPristine] = useState(true)
+  const handleChange = updatedLiveCode => {
+    setLiveCode(updatedLiveCode)
+    setPristine(false)
+  }
 
   return (
     <Box sx={{flexDirection: 'column', mb: 3, display: 'flex'}}>
@@ -66,21 +101,23 @@ function LiveCode({code, language, noinline, metastring}) {
           </LivePreviewWrapper>
         </Box>
         <Box sx={{position: 'relative'}}>
-          <LiveEditor
-            onChange={handleChange}
-            theme={githubTheme}
-            ignoreTabKey={true}
-            padding={theme.space[3]}
-            style={{
-              fontFamily: theme.fonts.mono,
-              fontSize: '85%',
-              borderBottomLeftRadius: theme.radii[2],
-              borderBottomRightRadius: theme.radii[2],
-              border: '1px solid',
-              borderTop: 0,
-              borderColor: theme.colors.border.default
-            }}
-          />
+          <LineHighlighter range={parseHighlightRange(highlight)} enabled={pristine}>
+            <LiveEditor
+              onChange={handleChange}
+              theme={githubTheme}
+              ignoreTabKey={true}
+              padding={theme.space[3]}
+              style={{
+                fontFamily: theme.fonts.mono,
+                fontSize: '85%',
+                borderBottomLeftRadius: theme.radii[2],
+                borderBottomRightRadius: theme.radii[2],
+                border: '1px solid',
+                borderTop: 0,
+                borderColor: theme.colors.border.default
+              }}
+            />
+          </LineHighlighter>
           <Box sx={{top: 0, right: 0, p: 2, position: 'absolute'}}>
             <ClipboardCopy value={liveCode} />
           </Box>
