@@ -3,9 +3,9 @@ import React from 'react'
 
 function SourceLink({href}) {
   return (
-    <Link href={href}>
+    <Link href={href} target="_blank">
       <StorybookIcon />
-      <Text sx={{ml: 2, display: 'inline-block'}}>View storybook</Text>
+      <Text sx={{ml: 2, display: 'inline-block'}}>View Storybook</Text>
     </Link>
   )
 }
