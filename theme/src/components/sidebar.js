@@ -19,7 +19,7 @@ function usePersistentScroll(id) {
     if (scrollPosition && ref.current) {
       ref.current.scrollTop = scrollPosition
     }
-  }, [])
+  }, [id])
 
   // Return props to spread onto the scroll container
   return {

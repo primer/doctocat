@@ -21,7 +21,7 @@ export function useNavDrawerState(breakpoint) {
     if (window.innerWidth >= breakpoint) {
       setOpen(false)
     }
-  }, [setOpen])
+  }, [setOpen, breakpoint])
 
   const debouncedOnResize = React.useCallback(debounce(onResize, 250), [onResize])
 
