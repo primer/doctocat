@@ -1,8 +1,7 @@
-import {Box, Link} from '@primer/react'
 import React from 'react'
 import {NavList} from '@primer/react/drafts'
 
-function TableOfContents({'aria-labelledby': ariaLabelledBy, items, depth}) {
+function TableOfContents({'aria-labelledby': ariaLabelledBy, items}) {
   return (
     <NavList aria-labelledby={ariaLabelledBy}>
       {items.map(item => (
@@ -12,10 +11,6 @@ function TableOfContents({'aria-labelledby': ariaLabelledBy, items, depth}) {
       ))}
     </NavList>
   )
-}
-
-TableOfContents.defaultProps = {
-  depth: 0
 }
 
 export default TableOfContents

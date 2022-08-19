@@ -1,11 +1,9 @@
 import {LinkExternalIcon} from '@primer/octicons-react'
-import {Link, themeGet} from '@primer/react'
 import {NavList} from '@primer/react/drafts'
 import {useLocation} from '@reach/router'
 import {Link as GatsbyLink, withPrefix} from 'gatsby'
 import preval from 'preval.macro'
 import React from 'react'
-import styled from 'styled-components'
 
 // This code needs to run at build-time so it can access the file system.
 const repositoryUrl = preval`
