@@ -1,5 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text} from '@primer/react'
+import {Box, Heading, Text, LabelGroup, Label} from '@primer/react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -12,7 +12,7 @@ import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, figma, status, source, storybook, additionalContributors, componentId} =
+  let {title, description, figma, status, accessible, source, storybook, additionalContributors, componentId} =
     pageContext.frontmatter
 
   if (!additionalContributors) {
@@ -70,7 +70,16 @@ function Layout({children, pageContext}) {
                 <Heading as="h1" sx={{mr: 2}}>
                   {title}
                 </Heading>{' '}
-                {status ? <StatusLabel status={status} /> : null}
+                {status || accessible ? (
+                  <LabelGroup>
+                    {status ? <StatusLabel status={status} /> : null}
+                    {accessible ? (
+                      <Label sx={{backgroundColor: 'accent.emphasis', color: 'fg.onEmphasis'}} variant="accent">
+                        Accessible
+                      </Label>
+                    ) : null}
+                  </LabelGroup>
+                ) : null}
               </Box>
               {description ? <Box sx={{fontSize: 3, pb: 2}}>{description}</Box> : null}
               {source || storybook ? (
