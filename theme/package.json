@@ -11,15 +11,15 @@
   "prettier": "@github/prettier-config",
   "peerDependencies": {
     "gatsby": "3.x",
-    "react": "^16.9.x",
-    "react-dom": "^16.9.x"
+    "react": "17.x || 18.x",
+    "react-dom": "17.x || 18.x"
   },
   "dependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@mdx-js/mdx": "^1.0.21",
-    "@mdx-js/react": "^1.0.21",
+    "@mdx-js/mdx": "^1.0.0",
+    "@mdx-js/react": "^1.0.0",
     "@primer/component-metadata": "^0.4.0",
     "@primer/octicons-react": "^16.3.1",
     "@primer/react": "^35.2.2",
@@ -34,9 +34,8 @@
     "details-element-polyfill": "^2.4.0",
     "downshift": "^3.2.10",
     "find-up": "^6.3.0",
-    "framer-motion": "^1.4.2",
+    "framer-motion": "^2.9.5",
     "fuse.js": "^3.4.5",
-    "gatsby-plugin-catch-links": "^3.14.0",
     "gatsby-plugin-manifest": "^3.14.0",
     "gatsby-plugin-mdx": "^2.14.2",
     "gatsby-plugin-page-creator": "^3.14.0",
@@ -58,11 +57,11 @@
     "prism-react-renderer": "^1.2.0",
     "prismjs": "^1.27.0",
     "react-addons-text-content": "^0.0.4",
-    "react-element-to-jsx-string": "^14.0.3",
-    "react-focus-on": "^3.3.0",
+    "react-element-to-jsx-string": "^15.0.0",
+    "react-focus-on": "^3.6.0",
     "react-frame-component": "^5.2.1",
     "react-helmet": "^6.1.0",
-    "react-live": "^2.1.2",
+    "react-live": "^2.4.1",
     "react-measure": "^2.3.0",
     "read-pkg-up": "^6.0.0",
     "sentence-case": "^2.1.1",
@@ -80,7 +79,7 @@
     "eslint-plugin-react": "^7.26.1",
     "gatsby": "^3.14.6",
     "prettier": "^2.4.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   }
 }
