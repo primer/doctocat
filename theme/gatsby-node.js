@@ -86,7 +86,7 @@ exports.onPostBuild = async ({graphql}) => {
               frontmatter {
                 componentId
                 status
-                accessible
+                a11yReviewed
               }
             }
           }
@@ -99,7 +99,7 @@ exports.onPostBuild = async ({graphql}) => {
         id: node.context.frontmatter.componentId,
         path: node.path,
         status: node.context.frontmatter.status.toLowerCase(),
-        accessible: node.context.frontmatter.accessible || false
+        a11yReviewed: node.context.frontmatter.a11yReviewed || false
       }
     })
 

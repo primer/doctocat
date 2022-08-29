@@ -2,5 +2,4 @@
 '@primer/gatsby-theme-doctocat': patch
 ---
 
-- Add accessible frontmatter data to onPostBuild static files
-- Add accessible label in the Layout component
+- Add a11yReviewed frontmatter data to onPostBuild static files
