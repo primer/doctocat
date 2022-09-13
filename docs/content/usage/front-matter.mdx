@@ -108,6 +108,23 @@ If the `storybook` front matter variable is defined, Doctocat will add a storybo
 </Box>
 
 
+## Lookbook
+
+ You can use the `lookbook` front matter variable to link to [Lookbook](http://lookbook.build/) previews:
+
+```
+---
+lookbook: https://primer.style/view-components/lookbook/inspect/primer/avatar
+---
+```
+
+If the `lookbook` front matter variable is defined, Doctocat will add a lookbook link to the top of the page, like this:
+
+<Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
+  <LookbookLink href="#" />
+</Box>
+
+
 ## Additional contributors
 
 If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` setup correctly (as described in the [customization](/usage/customization#contributors) guide), Doctocat will automatically display contributors on the bottom of every page. These contributors are determined by commits. However, we know that commits aren't the only way to contribute. To give credit to people who aren't listed in the commit history but still contributed, use the `additionalContributors` front matter variable to list their GitHub usernames, for example:
