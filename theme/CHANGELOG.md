@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.1.0
+
+### Minor Changes
+
+- [`8a4cd71`](https://github.com/primer/doctocat/commit/8a4cd719954443991fbb53e642e62c04839fc7ac) [#476](https://github.com/primer/doctocat/pull/476) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding support for a Lookbook link
+
 ## 4.0.1
 
 ### Patch Changes
