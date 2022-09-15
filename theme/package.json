@@ -17,13 +17,13 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-primer-react": "0.7.4",
     "eslint-plugin-react": "^7.26.1",
-    "gatsby": "^2.32.13",
+    "gatsby": "^3.14.6",
     "prettier": "^2.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "peerDependencies": {
-    "gatsby": "2.x",
+    "gatsby": "3.x",
     "react": "^16.9.x",
     "react-dom": "^16.9.x"
   },
