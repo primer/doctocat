@@ -7,12 +7,13 @@ import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import SourceLink from './source-link'
 import StatusLabel from './status-label'
+import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, figma, status, source, storybook, additionalContributors, componentId} =
+  let {title, description, figma, status, source, storybook, lookbook, additionalContributors, componentId} =
     pageContext.frontmatter
 
   if (!additionalContributors) {
@@ -73,7 +74,7 @@ function Layout({children, pageContext}) {
                 {status ? <StatusLabel status={status} /> : null}
               </Box>
               {description ? <Box sx={{fontSize: 3, pb: 2}}>{description}</Box> : null}
-              {source || storybook ? (
+              {source || storybook || lookbook ? (
                 <Box
                   sx={{
                     py: 2,
@@ -85,6 +86,7 @@ function Layout({children, pageContext}) {
                   }}
                 >
                   {source ? <SourceLink href={source} /> : null}
+                  {lookbook ? <LookbookLink href={lookbook} /> : null}
                   {storybook ? <StorybookLink href={storybook} /> : null}
                   {figma ? <FigmaLink href={figma} /> : null}
                 </Box>

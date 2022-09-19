@@ -1,5 +1,20 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.1.0
+
+### Minor Changes
+
+- [`8a4cd71`](https://github.com/primer/doctocat/commit/8a4cd719954443991fbb53e642e62c04839fc7ac) [#476](https://github.com/primer/doctocat/pull/476) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding support for a Lookbook link
+
+## 4.0.1
+
+### Patch Changes
+
+- [`1e22900`](https://github.com/primer/doctocat/commit/1e229008d374b8b56d19ce33f315256c4301efb4) [#434](https://github.com/primer/doctocat/pull/434) Thanks [@rezrah](https://github.com/rezrah)! - - Updated external links in frontmatter to open in new tab
+  - Added support for Figma links in frontmatter
+
+* [`9585e40`](https://github.com/primer/doctocat/commit/9585e40d62b0bfcb8aff6d98cdd490b5058f6748) [#475](https://github.com/primer/doctocat/pull/475) Thanks [@JoshBowdenConcepts](https://github.com/JoshBowdenConcepts)! - Adding Primer Brand link to the main navigation
+
 ## 4.0.0
 
 ### Major Changes
