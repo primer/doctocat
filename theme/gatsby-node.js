@@ -18,7 +18,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
         nodes {
           fileAbsolutePath
           rawBody
-          tableOfContents(maxDepth: 2)
+          tableOfContents(maxDepth: 4)
           parent {
             ... on File {
               relativeDirectory
