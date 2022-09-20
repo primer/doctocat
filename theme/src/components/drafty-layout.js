@@ -15,13 +15,8 @@ function DraftyLayout({children, pageContext, location}) {
     additionalContributors = []
   }
 
-  console.log('location', location.hash)
-  console.log('location', location.pathname)
-  console.log('items', pageContext.tableOfContents.items[0].items)
-  console.log('items1000', pageContext.tableOfContents.items)
   // const subItems = pageContext.tableOfContents.items.find(x => x.url === location.hash).items
   const subItems = pageContext.tableOfContents.items
-  console.log('subItems', subItems)
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
