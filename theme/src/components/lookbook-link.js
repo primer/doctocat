@@ -7,7 +7,7 @@ function SourceLink({href}) {
     <Link href={href} target="_blank">
       <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
         <BookIcon />
-        <Text>View Lookbook</Text>
+        <Text>Lookbook</Text>
       </Box>
     </Link>
   )

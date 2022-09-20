@@ -6,7 +6,7 @@ function SourceLink({href}) {
     <Link href={href} target="_blank">
       <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
         <FigmaLogo />
-        <Text>View Figma</Text>
+        <Text>Figma</Text>
       </Box>
     </Link>
   )

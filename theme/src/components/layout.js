@@ -7,6 +7,8 @@ import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import SourceLink from './source-link'
+import RailsLink from './rails-link'
+import ReactLink from './react-link'
 import StatusLabel from './status-label'
 import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
@@ -18,9 +20,11 @@ function Layout({children, pageContext}) {
     title,
     description,
     figma,
+    react,
     status,
     a11yReviewed,
     source,
+    rails,
     storybook,
     lookbook,
     additionalContributors,
@@ -88,7 +92,7 @@ function Layout({children, pageContext}) {
                 sx={{
                   display: 'flex',
                   flexWrap: 'wrap',
-                  columnGap: 2,
+                  columnGap: 3,
                   rowGap: 3,
                   alignItems: 'center',
                   fontSize: 1
@@ -105,12 +109,14 @@ function Layout({children, pageContext}) {
                     ) : null}
                   </Box>
                 ) : null}
-                {source || storybook || lookbook || figma ? (
+                {source || storybook || lookbook || figma || rails || react ? (
                   <Box sx={{display: 'flex', flexWrap: 'wrap', gap: 3, alignItems: 'center'}}>
                     {source ? <SourceLink href={source} /> : null}
                     {lookbook ? <LookbookLink href={lookbook} /> : null}
                     {storybook ? <StorybookLink href={storybook} /> : null}
                     {figma ? <FigmaLink href={figma} /> : null}
+                    {react ? <ReactLink href={react} /> : null}
+                    {rails ? <RailsLink href={rails} /> : null}
                   </Box>
                 ) : null}
               </Box>
