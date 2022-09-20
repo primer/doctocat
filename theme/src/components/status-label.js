@@ -1,4 +1,4 @@
-import {Label} from '@primer/react'
+import {Label, Box} from '@primer/react'
 import React from 'react'
 
 const STATUS_COLORS = {
@@ -14,7 +14,8 @@ function getStatusColor(status) {
 
 function StatusLabel({status}) {
   return (
-    <Label outline sx={{color: getStatusColor(status), borderColor: getStatusColor(status)}}>
+    <Label size="large" variant="secondary">
+      <Box sx={{height: 8, width: 8, backgroundColor: getStatusColor(status), borderRadius: 9, mr: 1}} />
       {status}
     </Label>
   )

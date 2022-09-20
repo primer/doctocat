@@ -1,5 +1,6 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text} from '@primer/react'
+import {Box, Heading, Text, Label, StyledOcticon} from '@primer/react'
+import {AccessibilityInsetIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -13,8 +14,18 @@ import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, figma, status, source, storybook, lookbook, additionalContributors, componentId} =
-    pageContext.frontmatter
+  let {
+    title,
+    description,
+    figma,
+    status,
+    a11yReviewed,
+    source,
+    storybook,
+    lookbook,
+    additionalContributors,
+    componentId
+  } = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -66,31 +77,43 @@ function Layout({children, pageContext}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{mb: 4}}>
+            <Box sx={{mb: 7}}>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1" sx={{mr: 2}}>
+                <Heading as="h1" sx={{mb: 2}}>
                   {title}
                 </Heading>{' '}
-                {status ? <StatusLabel status={status} /> : null}
               </Box>
-              {description ? <Box sx={{fontSize: 3, pb: 2}}>{description}</Box> : null}
-              {source || storybook || lookbook ? (
-                <Box
-                  sx={{
-                    py: 2,
-                    gridGap: [1, null, 3],
-                    gridAutoFlow: ['row', null, 'column'],
-                    gridAutoColumns: 'max-content',
-                    gridAutoRows: 'max-content',
-                    display: 'grid'
-                  }}
-                >
-                  {source ? <SourceLink href={source} /> : null}
-                  {lookbook ? <LookbookLink href={lookbook} /> : null}
-                  {storybook ? <StorybookLink href={storybook} /> : null}
-                  {figma ? <FigmaLink href={figma} /> : null}
-                </Box>
-              ) : null}
+              {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  columnGap: 2,
+                  rowGap: 3,
+                  alignItems: 'center',
+                  fontSize: 1
+                }}
+              >
+                {status ? (
+                  <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+                    <StatusLabel status={status} />
+                    {a11yReviewed ? (
+                      <Label size="large" variant="secondary" sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+                        <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
+                        Reviewed by the accessibility team
+                      </Label>
+                    ) : null}
+                  </Box>
+                ) : null}
+                {source || storybook || lookbook || figma ? (
+                  <Box sx={{display: 'flex', flexWrap: 'wrap', gap: 3, alignItems: 'center'}}>
+                    {source ? <SourceLink href={source} /> : null}
+                    {lookbook ? <LookbookLink href={lookbook} /> : null}
+                    {storybook ? <StorybookLink href={storybook} /> : null}
+                    {figma ? <FigmaLink href={figma} /> : null}
+                  </Box>
+                ) : null}
+              </Box>
             </Box>
             {pageContext.tableOfContents.items ? (
               <Box
