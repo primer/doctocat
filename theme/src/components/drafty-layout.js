@@ -5,6 +5,7 @@ import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
+import UnderlineNavigation from './underline-navigation'
 import TableOfContents from './table-of-contents'
 import DraftTableOfContents from './draft-table-of-contents'
 
@@ -15,8 +16,8 @@ function DraftyLayout({children, pageContext, location}) {
     additionalContributors = []
   }
 
+  const navigationItems = pageContext.tableOfContents.items
   // const subItems = pageContext.tableOfContents.items.find(x => x.url === location.hash).items
-  const subItems = pageContext.tableOfContents.items
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
@@ -36,7 +37,7 @@ function DraftyLayout({children, pageContext, location}) {
             p: [4, 5, 6, 7]
           }}
         >
-          {subItems ? (
+          {navigationItems ? (
             <Box
               sx={{
                 width: 220,
@@ -52,7 +53,7 @@ function DraftyLayout({children, pageContext, location}) {
               <Text sx={{display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
                 On this page
               </Text>
-              <DraftTableOfContents aria-labelledby="toc-heading" items={subItems} />
+              <DraftTableOfContents aria-labelledby="toc-heading" items={navigationItems} />
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
@@ -81,6 +82,7 @@ function DraftyLayout({children, pageContext, location}) {
                 </Box>
               </Box>
             ) : null}
+            {navigationItems ? <UnderlineNavigation items={navigationItems} /> : null}
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
