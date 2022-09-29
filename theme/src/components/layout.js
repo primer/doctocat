@@ -99,18 +99,53 @@ function Layout({children, pageContext}) {
                 }}
               >
                 {status ? (
-                  <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+                  <Box as={'ul'} sx={{display: 'flex', gap: 1, alignItems: 'center', m: 0, p: 0, paddingInline: 0}}>
                     <StatusLabel status={status} />
                     {a11yReviewed ? (
-                      <Label size="large" variant="secondary" sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+                      <Label
+                        as={'li'}
+                        size="large"
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1,
+                          backgroundColor: 'done.subtle',
+                          fontWeight: 'normal',
+                          borderColor: 'transparent'
+                        }}
+                      >
                         <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
                         Reviewed by the accessibility team
                       </Label>
-                    ) : null}
+                    ) : (
+                      <Label
+                        size="large"
+                        as={'li'}
+                        sx={{
+                          backgroundColor: 'neutral.subtle',
+                          fontWeight: 'normal',
+                          borderColor: 'transparent'
+                        }}
+                      >
+                        Review pending by the accessibility team
+                      </Label>
+                    )}
                   </Box>
                 ) : null}
                 {source || storybook || lookbook || figma || rails || react ? (
-                  <Box sx={{display: 'flex', flexWrap: 'wrap', gap: 3, alignItems: 'center'}}>
+                  <Box
+                    as={'ul'}
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 3,
+                      alignItems: 'center',
+                      m: 0,
+                      p: 0,
+                      paddingInline: 0,
+                      listStyle: 'none'
+                    }}
+                  >
                     {source ? <SourceLink href={source} /> : null}
                     {lookbook ? <LookbookLink href={lookbook} /> : null}
                     {storybook ? <StorybookLink href={storybook} /> : null}

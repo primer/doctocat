@@ -8,14 +8,36 @@ const STATUS_COLORS = {
   deprecated: 'danger.fg'
 }
 
+const STATUS_BACKGROUND = {
+  alpha: 'severe.subtle',
+  beta: 'attention.subtle',
+  stable: 'success.subtle',
+  deprecated: 'danger.subtle'
+}
+
 function getStatusColor(status) {
   return STATUS_COLORS[status.toLowerCase()] || 'fg.muted'
 }
 
+function getStatusBackgroundColor(status) {
+  return STATUS_BACKGROUND[status.toLowerCase()] || 'neutral.subtle'
+}
+
 function StatusLabel({status}) {
   return (
-    <Label size="large" variant="secondary">
-      <Box sx={{height: 8, width: 8, backgroundColor: getStatusColor(status), borderRadius: 9, mr: 1}} />
+    <Label
+      as={'li'}
+      size="large"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+        backgroundColor: getStatusBackgroundColor(status),
+        borderColor: 'transparent',
+        fontWeight: 'normal'
+      }}
+    >
+      <Box aria-hidden="true" sx={{height: 8, width: 8, backgroundColor: getStatusColor(status), borderRadius: 99}} />
       {status}
     </Label>
   )

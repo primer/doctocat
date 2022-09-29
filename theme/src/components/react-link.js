@@ -3,12 +3,14 @@ import React from 'react'
 
 function SourceLink({href}) {
   return (
-    <Link href={href} target="_blank">
-      <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
-        <ReactLogo />
-        <Text>React</Text>
-      </Box>
-    </Link>
+    <li>
+      <Link href={href} target="_blank">
+        <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+          <ReactLogo />
+          <Text>React</Text>
+        </Box>
+      </Link>
+    </li>
   )
 }
 
