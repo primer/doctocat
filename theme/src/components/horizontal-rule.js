@@ -5,7 +5,7 @@ const HorizontalRule = styled.hr`
   height: ${themeGet('space.1')};
   padding: 0;
   margin: ${themeGet('space.4')} 0;
-  background-color: ${themeGet('colors.gray.2')};
+  background-color: ${themeGet('colors.border.default')};
   border: 0;
 `
 
