@@ -1,19 +1,35 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text} from '@primer/react'
+import {Box, Heading, Text, Label, StyledOcticon} from '@primer/react'
+import {AccessibilityInsetIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import SourceLink from './source-link'
+import RailsLink from './rails-link'
+import ReactLink from './react-link'
 import StatusLabel from './status-label'
+import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
 function Layout({children, pageContext}) {
-  let {title, description, figma, status, source, storybook, additionalContributors, componentId} =
-    pageContext.frontmatter
+  let {
+    title,
+    description,
+    figma,
+    react,
+    status,
+    a11yReviewed,
+    source,
+    rails,
+    storybook,
+    lookbook,
+    additionalContributors,
+    componentId
+  } = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -65,30 +81,80 @@ function Layout({children, pageContext}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{mb: 4}}>
+            <Box sx={{mb: 7}}>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1" sx={{mr: 2}}>
+                <Heading as="h1" sx={{mb: 2}}>
                   {title}
                 </Heading>{' '}
-                {status ? <StatusLabel status={status} /> : null}
               </Box>
-              {description ? <Box sx={{fontSize: 3, pb: 2}}>{description}</Box> : null}
-              {source || storybook ? (
-                <Box
-                  sx={{
-                    py: 2,
-                    gridGap: [1, null, 3],
-                    gridAutoFlow: ['row', null, 'column'],
-                    gridAutoColumns: 'max-content',
-                    gridAutoRows: 'max-content',
-                    display: 'grid'
-                  }}
-                >
-                  {source ? <SourceLink href={source} /> : null}
-                  {storybook ? <StorybookLink href={storybook} /> : null}
-                  {figma ? <FigmaLink href={figma} /> : null}
-                </Box>
-              ) : null}
+              {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  columnGap: 3,
+                  rowGap: 3,
+                  alignItems: 'center',
+                  fontSize: 1
+                }}
+              >
+                {status ? (
+                  <Box as={'ul'} sx={{display: 'flex', gap: 1, alignItems: 'center', m: 0, p: 0, paddingInline: 0}}>
+                    <StatusLabel status={status} />
+                    {a11yReviewed ? (
+                      <Label
+                        as={'li'}
+                        size="large"
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1,
+                          backgroundColor: 'done.subtle',
+                          fontWeight: 'normal',
+                          borderColor: 'transparent'
+                        }}
+                      >
+                        <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
+                        Reviewed by accessibility team
+                      </Label>
+                    ) : (
+                      <Label
+                        size="large"
+                        as={'li'}
+                        sx={{
+                          backgroundColor: 'neutral.subtle',
+                          fontWeight: 'normal',
+                          borderColor: 'transparent'
+                        }}
+                      >
+                        Review pending by accessibility team
+                      </Label>
+                    )}
+                  </Box>
+                ) : null}
+                {source || storybook || lookbook || figma || rails || react ? (
+                  <Box
+                    as={'ul'}
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 3,
+                      alignItems: 'center',
+                      m: 0,
+                      p: 0,
+                      paddingInline: 0,
+                      listStyle: 'none'
+                    }}
+                  >
+                    {source ? <SourceLink href={source} /> : null}
+                    {lookbook ? <LookbookLink href={lookbook} /> : null}
+                    {storybook ? <StorybookLink href={storybook} /> : null}
+                    {figma ? <FigmaLink href={figma} /> : null}
+                    {react ? <ReactLink href={react} /> : null}
+                    {rails ? <RailsLink href={rails} /> : null}
+                  </Box>
+                ) : null}
+              </Box>
             </Box>
             {pageContext.tableOfContents.items ? (
               <Box

@@ -5,6 +5,7 @@ title: Front matter
 import {Box} from '@primer/react'
 import {StatusLabel} from '@primer/gatsby-theme-doctocat'
 import StorybookLink from '@primer/gatsby-theme-doctocat/src/components/storybook-link'
+import LookbookLink from '@primer/gatsby-theme-doctocat/src/components/lookbook-link'
 import SourceLink from '@primer/gatsby-theme-doctocat/src/components/source-link'
 
 
@@ -105,6 +106,23 @@ If the `storybook` front matter variable is defined, Doctocat will add a storybo
 
 <Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
   <StorybookLink href="#" />
+</Box>
+
+
+## Lookbook
+
+ You can use the `lookbook` front matter variable to link to [Lookbook](http://lookbook.build/) previews:
+
+```
+---
+lookbook: https://primer.style/view-components/lookbook/inspect/primer/avatar
+---
+```
+
+If the `lookbook` front matter variable is defined, Doctocat will add a lookbook link to the top of the page, like this:
+
+<Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
+  <LookbookLink href="#" />
 </Box>
 
 
