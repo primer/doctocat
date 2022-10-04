@@ -16,17 +16,20 @@ const Table = styled.table`
   th,
   td {
     padding: ${themeGet('space.2')} ${themeGet('space.3')};
-    border-left: 1px solid ${themeGet('colors.border.muted')};
-    border-top: 1px solid ${themeGet('colors.border.muted')};
+    border-color: ${themeGet('colors.border.muted')};
+    border-style: solid;
+    border-width: 0;
+    border-left-width: ${themeGet('borderWidths.1')};
+    border-top-width: ${themeGet('borderWidths.1')};
   }
 
   tr:last-child td {
-    border-bottom: 1px solid ${themeGet('colors.border.muted')};
+    border-bottom-width: ${themeGet('borderWidths.1')};
   }
 
   tr td:last-child,
   tr th:last-child {
-    border-right: 1px solid ${themeGet('colors.border.muted')};
+    border-right-width: ${themeGet('borderWidths.1')};
   }
 
   thead th:first-child {
