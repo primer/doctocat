@@ -30,19 +30,19 @@ const Table = styled.table`
   }
 
   thead th:first-child {
-    border-top-left-radius: 6px;
+    border-top-left-radius: ${themeGet('radii.2')};
   }
 
   thead th:last-child {
-    border-top-right-radius: 6px;
+    border-top-right-radius: ${themeGet('radii.2')};
   }
 
   tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 6px;
+    border-bottom-right-radius: ${themeGet('radii.2')};
   }
 
   tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 6px;
+    border-bottom-left-radius: ${themeGet('radii.2')};
   }
 
   img {
