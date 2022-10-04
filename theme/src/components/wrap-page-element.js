@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
       padding-left: ${themeGet('space.3')};
     }
 
-    a {
+  .footnote-backref {
       font-family: ${themeGet('fonts.mono')};
       margin-left: 2px;
       text-decoration: none;
