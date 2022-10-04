@@ -100,7 +100,7 @@ function Layout({children, pageContext}) {
               >
                 {status ? (
                   <Box as={'ul'} sx={{display: 'flex', gap: 1, alignItems: 'center', m: 0, p: 0, paddingInline: 0}}>
-                    <StatusLabel status={status} />
+                    <StatusLabel siz="large" status={status} />
                     {a11yReviewed ? (
                       <Label
                         as={'li'}
