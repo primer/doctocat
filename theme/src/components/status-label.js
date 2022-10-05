@@ -23,13 +23,15 @@ function getStatusBackgroundColor(status) {
   return STATUS_BACKGROUND[status.toLowerCase()] || 'neutral.subtle'
 }
 
-function StatusLabel({status}) {
+function StatusLabel({status, size}) {
+  const circleSize = size === 'large' ? 8 : 6
+
   return (
     <Label
       as={'li'}
-      size="large"
+      size={size || 'small'}
       sx={{
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
         gap: 1,
         backgroundColor: getStatusBackgroundColor(status),
@@ -37,7 +39,10 @@ function StatusLabel({status}) {
         fontWeight: 'normal'
       }}
     >
-      <Box aria-hidden="true" sx={{height: 8, width: 8, backgroundColor: getStatusColor(status), borderRadius: 99}} />
+      <Box
+        aria-hidden="true"
+        sx={{height: circleSize, width: circleSize, backgroundColor: getStatusColor(status), borderRadius: 99}}
+      />
       {status}
     </Label>
   )

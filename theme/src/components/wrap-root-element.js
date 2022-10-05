@@ -16,6 +16,7 @@ import InlineCode from './inline-code'
 import List from './list'
 import Note from './note'
 import Paragraph from './paragraph'
+import Superscript from './superscript'
 import Table from './table'
 
 const components = {
@@ -28,6 +29,7 @@ const components = {
   p: Paragraph,
   hr: HorizontalRule,
   blockquote: Blockquote,
+  sup: Superscript,
   h1: H1,
   h2: H2,
   h3: H3,
