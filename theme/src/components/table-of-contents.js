@@ -1,9 +1,11 @@
 import React from 'react'
-import {NavList} from '@primer/react/drafts'
+import {NavList,useFocusZone} from '@primer/react'
+import {FocusKeys} from '@primer/behaviors'
 
 function TableOfContents({'aria-labelledby': ariaLabelledBy, items}) {
+  const {containerRef} = useFocusZone({bindKeys: FocusKeys.ArrowVertical | FocusKeys.HomeAndEnd})
   return (
-    <NavList aria-labelledby={ariaLabelledBy}>
+    <NavList ref={containerRef} aria-labelledby={ariaLabelledBy}>
       {items.map(item => (
         <NavList.Item key={item.title} href={item.url}>
           {item.title}
