@@ -1,5 +1,6 @@
+import {FocusKeys} from '@primer/behaviors'
 import {LinkExternalIcon} from '@primer/octicons-react'
-import {NavList} from '@primer/react/drafts'
+import {NavList,useFocusZone} from '@primer/react'
 import {useLocation} from '@reach/router'
 import {Link as GatsbyLink, withPrefix} from 'gatsby'
 import preval from 'preval.macro'
@@ -28,8 +29,9 @@ function NavItem({href, children}) {
 }
 
 function NavItems({items}) {
+  const {containerRef} = useFocusZone({bindKeys: FocusKeys.ArrowVertical | FocusKeys.HomeAndEnd})
   return (
-    <NavList>
+    <NavList ref={containerRef}>
       {items.map(item => (
         <React.Fragment key={item.title}>
           {item.children ? (
