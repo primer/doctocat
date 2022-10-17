@@ -6,7 +6,6 @@ import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import UnderlineNavigation from './underline-navigation'
-import TableOfContents from './table-of-contents'
 import DraftTableOfContents from './draft-table-of-contents'
 
 function DraftyLayout({children, pageContext, location}) {
@@ -17,7 +16,6 @@ function DraftyLayout({children, pageContext, location}) {
   }
 
   const navigationItems = pageContext.tableOfContents.items
-  // const subItems = pageContext.tableOfContents.items.find(x => x.url === location.hash).items
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
@@ -58,30 +56,6 @@ function DraftyLayout({children, pageContext, location}) {
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
             <Heading as="h1">{title}</Heading>{' '}
-            {pageContext.tableOfContents.items ? (
-              <Box
-                sx={{
-                  display: ['block', null, 'none'],
-                  mb: 5,
-                  borderColor: 'border.muted',
-                  bg: 'canvas.subtle',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderRadius: 2
-                }}
-              >
-                <Box sx={{px: 3, py: 2}}>
-                  <Box
-                    sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}
-                  >
-                    <Text sx={{fontWeight: 'bold'}}>On this page</Text>
-                  </Box>
-                </Box>
-                <Box sx={{borderTop: '1px solid', borderColor: 'border.muted'}}>
-                  <TableOfContents items={pageContext.tableOfContents.items} />
-                </Box>
-              </Box>
-            ) : null}
             {navigationItems ? <UnderlineNavigation items={navigationItems} /> : null}
             {children}
             <PageFooter

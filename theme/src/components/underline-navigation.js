@@ -6,12 +6,13 @@ export function UnderlineNavigation({items}) {
   const location = useLocation()
 
   return (
-    <UnderlineNav
-      aria-label="Page navigation"
-      sx={{position: 'sticky', top: '66px', background: '#ffffff', borderBottom: 'none'}}
-    >
-      {items.map(item => (
-        <UnderlineNav.Link key={item.title} href={item.url} selected={location.hash === item.url}>
+    <UnderlineNav aria-label="Page navigation" sx={{position: 'sticky', top: '66px', background: '#ffffff'}}>
+      {items.map((item, i) => (
+        <UnderlineNav.Link
+          key={item.title}
+          href={item.url}
+          selected={location.hash === item.url || (i === 0 && location.hash === '')}
+        >
           {item.title}
         </UnderlineNav.Link>
       ))}
