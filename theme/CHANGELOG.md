@@ -1,5 +1,38 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.2.0
+
+### Minor Changes
+
+- [`2aed832`](https://github.com/primer/doctocat/commit/2aed832beb012ec20767a9226c03aa1bcb12af5d) [#481](https://github.com/primer/doctocat/pull/481) Thanks [@josepmartins](https://github.com/josepmartins)! - - Add accessibility reviewed Label in the Layout
+  - Add Rails + React links to cover design guidelines needs
+
+### Patch Changes
+
+- [`9b62706`](https://github.com/primer/doctocat/commit/9b62706dddf3fea68a44f29d3763198ba3d57dd6) [#485](https://github.com/primer/doctocat/pull/485) Thanks [@josepmartins](https://github.com/josepmartins)! - - Ad superscript component
+  - Basic style for footnotes section
+  - Table styles
+  - Add sizes prop to StatusLabel component
+
+* [`61c5587`](https://github.com/primer/doctocat/commit/61c55874443fdb02873d6c47b1c931b4d3362231) [#460](https://github.com/primer/doctocat/pull/460) Thanks [@josepmartins](https://github.com/josepmartins)! - Adjust Sidebar to use fixed `width`
+
+- [`9d39774`](https://github.com/primer/doctocat/commit/9d397746fdeb3a6d3131304183400e1e1f4139c5) [#468](https://github.com/primer/doctocat/pull/468) Thanks [@josepmartins](https://github.com/josepmartins)! - - Add a11yReviewed frontmatter data to onPostBuild static files
+
+## 4.1.0
+
+### Minor Changes
+
+- [`8a4cd71`](https://github.com/primer/doctocat/commit/8a4cd719954443991fbb53e642e62c04839fc7ac) [#476](https://github.com/primer/doctocat/pull/476) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding support for a Lookbook link
+
+## 4.0.1
+
+### Patch Changes
+
+- [`1e22900`](https://github.com/primer/doctocat/commit/1e229008d374b8b56d19ce33f315256c4301efb4) [#434](https://github.com/primer/doctocat/pull/434) Thanks [@rezrah](https://github.com/rezrah)! - - Updated external links in frontmatter to open in new tab
+  - Added support for Figma links in frontmatter
+
+* [`9585e40`](https://github.com/primer/doctocat/commit/9585e40d62b0bfcb8aff6d98cdd490b5058f6748) [#475](https://github.com/primer/doctocat/pull/475) Thanks [@JoshBowdenConcepts](https://github.com/JoshBowdenConcepts)! - Adding Primer Brand link to the main navigation
+
 ## 4.0.0
 
 ### Major Changes

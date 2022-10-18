@@ -1,6 +1,6 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
-  "version": "4.0.0",
+  "version": "4.2.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -33,7 +33,7 @@
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "@primer/component-metadata": "^0.4.0",
-    "@primer/octicons-react": "^16.3.1",
+    "@primer/octicons-react": "^17.5.0",
     "@primer/react": "^35.2.2",
     "@styled-system/theme-get": "^5.0.12",
     "@testing-library/jest-dom": "^5.16.2",
@@ -70,7 +70,6 @@
     "react-addons-text-content": "^0.0.4",
     "react-element-to-jsx-string": "^14.0.3",
     "react-focus-on": "^3.3.0",
-    "react-frame-component": "^5.2.1",
     "react-helmet": "^6.1.0",
     "react-live": "^2.1.2",
     "react-measure": "^2.3.0",
