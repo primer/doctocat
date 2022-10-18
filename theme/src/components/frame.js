@@ -16,20 +16,21 @@ function Frame({children}) {
         // However, styles from the page's head don't apply inside iframes.
         // We're using StyleSheetManager to make styled-components inject styles
         // into the head of the iframe instead.
-        (contentDocument !== null) && ReactDOM.createPortal(
-          <StyleSheetManager target={contentDocument.head}>
-            <Measure
-              // iframes don't adjust to the height of their content by default.
-              // We're using Measure to calculate the size of the content
-              // and adjust the iframe's height dynamically.
-              bounds={true}
-              onResize={rect => setHeight(rect.bounds.height)}
-            >
-              {({measureRef}) => <div ref={measureRef}>{children}</div>}
-            </Measure>
-          </StyleSheetManager>,
-          contentDocument.body
-        )
+        contentDocument !== null &&
+          ReactDOM.createPortal(
+            <StyleSheetManager target={contentDocument.head}>
+              <Measure
+                // iframes don't adjust to the height of their content by default.
+                // We're using Measure to calculate the size of the content
+                // and adjust the iframe's height dynamically.
+                bounds={true}
+                onResize={rect => setHeight(rect.bounds.height)}
+              >
+                {({measureRef}) => <div ref={measureRef}>{children}</div>}
+              </Measure>
+            </StyleSheetManager>,
+            contentDocument.body
+          )
       }
     </iframe>
   )
