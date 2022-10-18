@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.2.1
+
+### Patch Changes
+
+- [`6c4da9e`](https://github.com/primer/doctocat/commit/6c4da9e5787862460972b2af75a27e5909093a05) [#498](https://github.com/primer/doctocat/pull/498) Thanks [@colebemis](https://github.com/colebemis)! - Fix live examples disappearing on hard reload
+
 ## 4.2.0
 
 ### Minor Changes
