@@ -81,11 +81,9 @@ function Layout({children, pageContext}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{mb: 7}}>
+            <Box sx={{mb: 4}}>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1" sx={{mb: 2}}>
-                  {title}
-                </Heading>{' '}
+                <Heading as="h1">{title}</Heading>{' '}
               </Box>
               {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
               <Box
@@ -93,6 +91,8 @@ function Layout({children, pageContext}) {
                   display: 'flex',
                   flexWrap: 'wrap',
                   columnGap: 3,
+                  mb: 7,
+                  mt: 2,
                   rowGap: 3,
                   alignItems: 'center',
                   fontSize: 1
