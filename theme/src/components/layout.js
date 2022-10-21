@@ -115,7 +115,7 @@ function Layout({children, pageContext}) {
                         }}
                       >
                         <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
-                        Reviewed by accessibility team
+                        Reviewed for accessibility
                       </Label>
                     ) : (
                       <Label
@@ -127,7 +127,7 @@ function Layout({children, pageContext}) {
                           borderColor: 'transparent'
                         }}
                       >
-                        Review pending by accessibility team
+                        Not reviewed for accessibility
                       </Label>
                     )}
                   </Box>
