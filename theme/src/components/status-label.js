@@ -28,7 +28,6 @@ function StatusLabel({status, size}) {
 
   return (
     <Label
-      as={'li'}
       size={size || 'small'}
       sx={{
         display: 'inline-flex',
