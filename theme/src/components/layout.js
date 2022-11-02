@@ -15,6 +15,8 @@ import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
+const reactStoriesBaseURL = '/react/storybook?path=/story/'
+
 function Layout({children, pageContext}) {
   let {
     title,
@@ -34,6 +36,13 @@ function Layout({children, pageContext}) {
   if (!additionalContributors) {
     additionalContributors = []
   }
+  const [storybookData, setStorybookData] = React.useState({})
+
+  React.useEffect(() => {
+    getStoriesData()
+      .then(data => setStorybookData(data))
+      .catch(error => console.error(error))
+  }, [])
 
   const component = componentMetadata.components[componentId]
 
@@ -42,6 +51,15 @@ function Layout({children, pageContext}) {
     title ||= component.displayName
     description ||= component.description
   }
+
+  const storybookReactURL = Object.values(storybookData).find(story => story.id.includes(componentId?.replace('-', '')))
+
+  // Auto-populate storybook using stories.json metadata
+  if (storybookReactURL) {
+    storybook ||= reactStoriesBaseURL + storybookReactURL.id
+  }
+
+  console.log('storybook', storybook)
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
@@ -193,3 +211,15 @@ function Layout({children, pageContext}) {
 }
 
 export default Layout
+
+async function getStoriesData() {
+  const handleError = error => {
+    console.error(error)
+  }
+
+  const storiesData = await fetch('https://primer.style/react/storybook/stories.json')
+    .then(res => res.json())
+    .catch(handleError)
+
+  return storiesData.stories
+}
