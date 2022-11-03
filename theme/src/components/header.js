@@ -40,7 +40,7 @@ function Header({isSearchEnabled}) {
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
-            {siteMetadata.header.title &&
+            {siteMetadata.header.title ? (
               <Link
                 href={siteMetadata.header.url}
                 sx={{
@@ -57,16 +57,16 @@ function Header({isSearchEnabled}) {
               >
                 {siteMetadata.header.title}
               </Link>
-            }
+            ) : null}
             {siteMetadata.shortName ? (
               <>
-                {siteMetadata.header.title &&
+                {siteMetadata.header.title ? (
                   <Text
                     sx={{display: ['none', null, null, 'inline-block'], color: 'accent.fg', fontFamily: 'mono', mx: 2}}
                   >
                     /
                   </Text>
-                }
+                ) : null}
                 <Link
                   as={GatsbyLink}
                   to="/"
