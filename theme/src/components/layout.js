@@ -14,6 +14,7 @@ import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
+import useSiteMetadata from '../use-site-metadata'
 
 const reactStoriesBaseURL = '/react/storybook?path=/story/'
 
@@ -33,16 +34,21 @@ function Layout({children, pageContext}) {
     componentId
   } = pageContext.frontmatter
 
+  const siteMetadata = useSiteMetadata()
+
   if (!additionalContributors) {
     additionalContributors = []
   }
   const [storybookData, setStorybookData] = React.useState({})
 
   React.useEffect(() => {
-    getStoriesData()
-      .then(data => setStorybookData(data))
-      .catch(error => console.error(error))
-  }, [])
+    // Fetch storybook data only when React docs
+    if (siteMetadata.shortName === 'React') {
+      getStoriesData()
+        .then(data => setStorybookData(data))
+        .catch(error => console.error(error))
+    }
+  }, [siteMetadata.shortName])
 
   const component = componentMetadata.components[componentId]
 
@@ -58,8 +64,6 @@ function Layout({children, pageContext}) {
   if (storybookReactURL) {
     storybook ||= reactStoriesBaseURL + storybookReactURL.id
   }
-
-  console.log('storybook', storybook)
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
