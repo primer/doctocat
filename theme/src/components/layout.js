@@ -58,7 +58,14 @@ function Layout({children, pageContext}) {
     description ||= component.description
   }
 
-  const storybookReactURL = Object.values(storybookData).find(story => story.id.includes(componentId?.replace('-', '')))
+  const componentIdFormatted = componentId?.replace(/_/g, '')
+  const storybookReactURL = Object.values(storybookData).find(story => {
+    if (status === 'Deprecated') {
+      return story.id.includes('deprecated-') && story.id.includes('-' + componentIdFormatted + '--default')
+    } else {
+      return story.id.includes('-' + componentIdFormatted + '--default')
+    }
+  })
 
   // Auto-populate storybook using stories.json metadata
   if (storybookReactURL) {
