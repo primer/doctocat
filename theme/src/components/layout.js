@@ -34,21 +34,21 @@ function Layout({children, pageContext}) {
     componentId
   } = pageContext.frontmatter
 
+  const [storybookData, setStorybookData] = React.useState({})
   const siteMetadata = useSiteMetadata()
 
   if (!additionalContributors) {
     additionalContributors = []
   }
-  const [storybookData, setStorybookData] = React.useState({})
 
   React.useEffect(() => {
-    // Fetch storybook data only when React docs
-    if (siteMetadata.shortName === 'Doctocat') {
+    // Fetch storybook data only when React docs are being rendered, if there's a componentID, and when no storybook data is present
+    if (siteMetadata.shortName === 'React' && componentId && !storybook) {
       getStoriesData()
         .then(data => setStorybookData(data))
         .catch(error => console.error(error))
     }
-  }, [siteMetadata.shortName])
+  }, [siteMetadata.shortName, componentId, storybook])
 
   const component = componentMetadata.components[componentId]
 
