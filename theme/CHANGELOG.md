@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.2.2
+
+### Patch Changes
+
+- [`da5c046`](https://github.com/primer/doctocat/commit/da5c04600843876e6b905fa439d8cd8ee73bdf91) [#501](https://github.com/primer/doctocat/pull/501) Thanks [@josepmartins](https://github.com/josepmartins)! - Adjust accessibilty labels content
+
 ## 4.2.1
 
 ### Patch Changes
