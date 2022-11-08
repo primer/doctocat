@@ -1,5 +1,17 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.2.2
+
+### Patch Changes
+
+- [`da5c046`](https://github.com/primer/doctocat/commit/da5c04600843876e6b905fa439d8cd8ee73bdf91) [#501](https://github.com/primer/doctocat/pull/501) Thanks [@josepmartins](https://github.com/josepmartins)! - Adjust accessibilty labels content
+
+## 4.2.1
+
+### Patch Changes
+
+- [`6c4da9e`](https://github.com/primer/doctocat/commit/6c4da9e5787862460972b2af75a27e5909093a05) [#498](https://github.com/primer/doctocat/pull/498) Thanks [@colebemis](https://github.com/colebemis)! - Fix live examples disappearing on hard reload
+
 ## 4.2.0
 
 ### Minor Changes

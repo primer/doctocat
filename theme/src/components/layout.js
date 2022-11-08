@@ -1,6 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text, Label, StyledOcticon} from '@primer/react'
-import {AccessibilityInsetIcon} from '@primer/octicons-react'
+import {Box, Heading, Text} from '@primer/react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -10,6 +9,7 @@ import SourceLink from './source-link'
 import RailsLink from './rails-link'
 import ReactLink from './react-link'
 import StatusLabel from './status-label'
+import AccessibilityLabel from './accessibility-label'
 import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
@@ -81,11 +81,9 @@ function Layout({children, pageContext}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{mb: 7}}>
+            <Box sx={{mb: 4}}>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1" sx={{mb: 2}}>
-                  {title}
-                </Heading>{' '}
+                <Heading as="h1">{title}</Heading>{' '}
               </Box>
               {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
               <Box
@@ -93,43 +91,32 @@ function Layout({children, pageContext}) {
                   display: 'flex',
                   flexWrap: 'wrap',
                   columnGap: 3,
+                  mb: 7,
+                  mt: 2,
                   rowGap: 3,
                   alignItems: 'center',
                   fontSize: 1
                 }}
               >
                 {status ? (
-                  <Box as={'ul'} sx={{display: 'flex', gap: 1, alignItems: 'center', m: 0, p: 0, paddingInline: 0}}>
-                    <StatusLabel size="large" status={status} />
-                    {a11yReviewed ? (
-                      <Label
-                        as={'li'}
-                        size="large"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 1,
-                          backgroundColor: 'done.subtle',
-                          fontWeight: 'normal',
-                          borderColor: 'transparent'
-                        }}
-                      >
-                        <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
-                        Reviewed by accessibility team
-                      </Label>
-                    ) : (
-                      <Label
-                        size="large"
-                        as={'li'}
-                        sx={{
-                          backgroundColor: 'neutral.subtle',
-                          fontWeight: 'normal',
-                          borderColor: 'transparent'
-                        }}
-                      >
-                        Review pending by accessibility team
-                      </Label>
-                    )}
+                  <Box
+                    as={'ul'}
+                    sx={{
+                      display: 'flex',
+                      gap: 1,
+                      alignItems: 'center',
+                      m: 0,
+                      p: 0,
+                      paddingInline: 0,
+                      listStyle: 'none'
+                    }}
+                  >
+                    <li>
+                      <StatusLabel size="large" status={status} />
+                    </li>
+                    <li>
+                      <AccessibilityLabel size="large" a11yReviewed={a11yReviewed} />
+                    </li>
                   </Box>
                 ) : null}
                 {source || storybook || lookbook || figma || rails || react ? (
