@@ -43,7 +43,7 @@ function Layout({children, pageContext}) {
 
   React.useEffect(() => {
     // Fetch storybook data only when React docs
-    if (siteMetadata.shortName === 'React') {
+    if (siteMetadata.shortName === 'Doctocat') {
       getStoriesData()
         .then(data => setStorybookData(data))
         .catch(error => console.error(error))
