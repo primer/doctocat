@@ -24,10 +24,10 @@ function getStatusBackgroundColor(status) {
   return STATUS_BACKGROUND[status.toLowerCase()] || 'neutral.subtle'
 }
 
-function StatusLabel({status, size}) {
+function StatusLabel({status}) {
   return (
     <Label
-      size={size || 'small'}
+      size="large"
       sx={{
         display: 'inline-flex',
         alignItems: 'center',

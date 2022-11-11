@@ -112,10 +112,10 @@ function Layout({children, pageContext}) {
                     }}
                   >
                     <li>
-                      <StatusLabel size="large" status={status} />
+                      <StatusLabel status={status} />
                     </li>
                     <li>
-                      <AccessibilityLabel size="large" a11yReviewed={a11yReviewed} />
+                      <AccessibilityLabel a11yReviewed={a11yReviewed} />
                     </li>
                   </Box>
                 ) : null}
