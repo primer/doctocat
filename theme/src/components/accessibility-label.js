@@ -11,7 +11,7 @@ function AccessibilityLabel({a11yReviewed, size, short}) {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            gap: 1,
+            gap: 2,
             backgroundColor: 'done.subtle',
             fontWeight: 'normal',
             borderColor: 'transparent'

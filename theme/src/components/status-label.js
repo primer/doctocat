@@ -1,4 +1,5 @@
-import {Label, Box} from '@primer/react'
+import {Label, StyledOcticon} from '@primer/react'
+import {DotFillIcon} from '@primer/octicons-react'
 import React from 'react'
 
 const STATUS_COLORS = {
@@ -38,10 +39,7 @@ function StatusLabel({status, size}) {
         fontWeight: 'normal'
       }}
     >
-      <Box
-        aria-hidden="true"
-        sx={{height: circleSize, width: circleSize, backgroundColor: getStatusColor(status), borderRadius: 99}}
-      />
+      <StyledOcticon icon={DotFillIcon} sx={{color: getStatusColor(status)}} />
       {status}
     </Label>
   )
