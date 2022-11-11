@@ -25,8 +25,6 @@ function getStatusBackgroundColor(status) {
 }
 
 function StatusLabel({status, size}) {
-  const circleSize = size === 'large' ? 8 : 6
-
   return (
     <Label
       size={size || 'small'}
