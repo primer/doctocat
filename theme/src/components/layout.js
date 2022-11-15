@@ -141,10 +141,10 @@ function Layout({children, pageContext}) {
                     }}
                   >
                     <li>
-                      <StatusLabel size="large" status={status} />
+                      <StatusLabel status={status} />
                     </li>
                     <li>
-                      <AccessibilityLabel size="large" a11yReviewed={a11yReviewed} />
+                      <AccessibilityLabel a11yReviewed={a11yReviewed} />
                     </li>
                   </Box>
                 ) : null}
@@ -154,7 +154,7 @@ function Layout({children, pageContext}) {
                     sx={{
                       display: 'flex',
                       flexWrap: 'wrap',
-                      gap: 3,
+                      gap: 4,
                       alignItems: 'center',
                       m: 0,
                       p: 0,
@@ -165,9 +165,9 @@ function Layout({children, pageContext}) {
                     {source ? <SourceLink href={source} /> : null}
                     {lookbook ? <LookbookLink href={lookbook} /> : null}
                     {storybook ? <StorybookLink href={storybook} /> : null}
-                    {figma ? <FigmaLink href={figma} /> : null}
                     {react ? <ReactLink href={react} /> : null}
                     {rails ? <RailsLink href={rails} /> : null}
+                    {figma ? <FigmaLink href={figma} /> : null}
                   </Box>
                 ) : null}
               </Box>
