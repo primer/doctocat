@@ -2,16 +2,16 @@ import {Label, StyledOcticon} from '@primer/react'
 import {AccessibilityInsetIcon} from '@primer/octicons-react'
 import React from 'react'
 
-function AccessibilityLabel({a11yReviewed, size, short}) {
+function AccessibilityLabel({a11yReviewed, short}) {
   return (
     <>
       {a11yReviewed ? (
         <Label
-          size={size}
+          size="large"
           sx={{
             display: 'flex',
             alignItems: 'center',
-            gap: 1,
+            gap: 2,
             backgroundColor: 'done.subtle',
             fontWeight: 'normal',
             borderColor: 'transparent'
@@ -22,7 +22,7 @@ function AccessibilityLabel({a11yReviewed, size, short}) {
         </Label>
       ) : (
         <Label
-          size={size}
+          size="large"
           sx={{
             backgroundColor: 'neutral.subtle',
             fontWeight: 'normal',

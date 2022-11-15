@@ -5,7 +5,7 @@ function SourceLink({href}) {
   return (
     <li>
       <Link href={href} target="_blank">
-        <Box sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
+        <Box sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
           <ReactLogo />
           <Text>React</Text>
         </Box>
