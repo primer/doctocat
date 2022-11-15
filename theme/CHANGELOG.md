@@ -1,5 +1,14 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.2.3
+
+### Patch Changes
+
+- [`f9ce48f`](https://github.com/primer/doctocat/commit/f9ce48f9133dbc01193a0f76c1b8323ff1af2d97) [#512](https://github.com/primer/doctocat/pull/512) Thanks [@josepmartins](https://github.com/josepmartins)! - - Use `rails` and `dotfilled` for rails-link and status-label component. cc @ashygee
+  - Adjust spacing between status labels and source links in layout
+
+* [`a43a1d3`](https://github.com/primer/doctocat/commit/a43a1d3913a4edb554194c751a2d33f47dd73545) [#514](https://github.com/primer/doctocat/pull/514) Thanks [@josepmartins](https://github.com/josepmartins)! - Bump component-metadata to v0.5.1
+
 ## 4.2.2
 
 ### Patch Changes
