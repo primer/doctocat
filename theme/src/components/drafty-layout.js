@@ -1,4 +1,4 @@
-// import componentMetadata from '@primer/component-metadata'
+import componentMetadata from '@primer/component-metadata'
 import {Box, Heading, Text} from '@primer/react'
 import React from 'react'
 import Head from './head'
@@ -9,13 +9,21 @@ import UnderlineNavigation from './underline-navigation'
 import DraftTableOfContents from './draft-table-of-contents'
 
 function DraftyLayout({children, pageContext, location}) {
-  let {title, description, additionalContributors} = pageContext.frontmatter
+  let {title, description, additionalContributors, componentId} = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
   }
 
   const navigationItems = pageContext.tableOfContents.items
+
+  const component = componentMetadata.components[componentId]
+
+  // Auto-populate title and description using component metadata
+  if (component) {
+    title ||= component.displayName
+    description ||= component.description
+  }
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
@@ -55,7 +63,10 @@ function DraftyLayout({children, pageContext, location}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Heading as="h1">{title}</Heading>{' '}
+            <Box sx={{alignItems: 'center', display: 'flex'}}>
+              <Heading as="h1">{title}</Heading>
+            </Box>
+            {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
             {navigationItems ? <UnderlineNavigation items={navigationItems} /> : null}
             {children}
             <PageFooter
