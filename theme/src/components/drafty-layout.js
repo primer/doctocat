@@ -1,5 +1,6 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text} from '@primer/react'
+import {Box, Heading, Text, Label, StyledOcticon} from '@primer/react'
+import {DotFillIcon} from '@primer/octicons-react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -8,8 +9,50 @@ import Sidebar from './sidebar'
 import UnderlineNavigation from './underline-navigation'
 import DraftTableOfContents from './draft-table-of-contents'
 
+const STATUS_COLORS = {
+  alpha: 'severe.fg',
+  beta: 'attention.fg',
+  stable: 'success.fg',
+  deprecated: 'danger.fg'
+}
+
+const STATUS_BACKGROUND = {
+  alpha: 'severe.subtle',
+  beta: 'attention.subtle',
+  stable: 'success.subtle',
+  deprecated: 'danger.subtle'
+}
+
+function getStatusColor(status) {
+  return STATUS_COLORS[status.toLowerCase()] || 'fg.muted'
+}
+
+function getStatusBackgroundColor(status) {
+  return STATUS_BACKGROUND[status.toLowerCase()] || 'neutral.subtle'
+}
+
+function StatusLabel({status, rails}) {
+  return (
+    <Label
+      size="large"
+      sx={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 1,
+        backgroundColor: getStatusBackgroundColor(status),
+        borderColor: 'transparent',
+        fontWeight: 'normal'
+      }}
+    >
+      <StyledOcticon icon={DotFillIcon} sx={{color: getStatusColor(status)}} />
+      {rails ? 'Rails:' : 'React:'} {status}
+    </Label>
+  )
+}
+
 function DraftyLayout({children, pageContext, location}) {
-  let {title, description, additionalContributors, componentId} = pageContext.frontmatter
+  let {title, description, additionalContributors, componentId, statusReact, statusViewComponent} =
+    pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -67,6 +110,22 @@ function DraftyLayout({children, pageContext, location}) {
               <Heading as="h1">{title}</Heading>
             </Box>
             {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
+            <Box
+              as={'ul'}
+              sx={{
+                display: 'flex',
+                gap: 1,
+                alignItems: 'center',
+                m: 0,
+                p: 0,
+                paddingInline: 0,
+                listStyle: 'none'
+              }}
+            >
+              <li>{statusReact ? <StatusLabel status={statusReact} /> : null}</li>
+              <li>{statusViewComponent ? <StatusLabel rails status={statusViewComponent} /> : null}</li>
+            </Box>
+
             {navigationItems ? <UnderlineNavigation items={navigationItems} /> : null}
             {children}
             <PageFooter
