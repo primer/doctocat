@@ -119,7 +119,8 @@ function DraftyLayout({children, pageContext, location}) {
                 m: 0,
                 p: 0,
                 paddingInline: 0,
-                listStyle: 'none'
+                listStyle: 'none',
+                mb: 2
               }}
             >
               <li>{statusReact ? <StatusLabel status={statusReact} /> : null}</li>
