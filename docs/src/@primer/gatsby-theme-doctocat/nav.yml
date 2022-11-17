@@ -22,6 +22,8 @@
       url: /usage/using-images
 - title: Components
   children:
+    - title: Test
+      url: /components/test
     - title: Caption
       url: /components/caption
     - title: Do/Don't
