@@ -7,6 +7,7 @@ import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import ReactLink from './react-link'
+import FigmaLink from './figma-link'
 import RailsLink from './rails-link'
 import DraftUnderlineNavigation from './draft-underline-navigation'
 import DraftTableOfContents from './draft-table-of-contents'
@@ -47,13 +48,13 @@ function StatusLabel({status, rails}) {
       }}
     >
       <StyledOcticon icon={DotFillIcon} sx={{color: getStatusColor(status)}} />
-      {rails ? 'Rails:' : 'React:'} {status}
+      {status} {'in '} {rails ? 'Rails' : 'React'}
     </Label>
   )
 }
 
 function DraftLayout({children, pageContext, location}) {
-  let {title, description, additionalContributors, componentId, statusReact, statusViewComponent, rails, react} =
+  let {title, description, additionalContributors, componentId, statusReact, statusViewComponent, rails, react, figma} =
     pageContext.frontmatter
 
   if (!additionalContributors) {
@@ -63,8 +64,6 @@ function DraftLayout({children, pageContext, location}) {
   const navigationItems = pageContext.tableOfContents.items
 
   const component = componentMetadata.components[componentId]
-
-  console.log('component', component)
 
   // Auto-populate title and description using component metadata
   if (component) {
@@ -143,7 +142,7 @@ function DraftLayout({children, pageContext, location}) {
                   <li>{statusViewComponent ? <StatusLabel rails status={statusViewComponent} /> : null}</li>
                 </Box>
               ) : null}
-              {react || react ? (
+              {react || react || figma ? (
                 <Box
                   as={'ul'}
                   sx={{
@@ -159,6 +158,7 @@ function DraftLayout({children, pageContext, location}) {
                 >
                   {react ? <ReactLink href={react} /> : null}
                   {rails ? <RailsLink href={rails} /> : null}
+                  {figma ? <FigmaLink href={figma} /> : null}
                 </Box>
               ) : null}
             </Box>
