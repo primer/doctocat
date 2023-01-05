@@ -60,13 +60,13 @@ function Header({isSearchEnabled}) {
             ) : null}
             {siteMetadata.shortName ? (
               <>
-                {siteMetadata.header.title ? (
+                {siteMetadata.header.title && (
                   <Text
                     sx={{display: ['none', null, null, 'inline-block'], color: 'accent.fg', fontFamily: 'mono', mx: 2}}
                   >
                     /
                   </Text>
-                ) : null}
+                )}
                 <Link
                   as={GatsbyLink}
                   to="/"
