@@ -37,6 +37,15 @@ function NavItems({items}) {
               {item.children.map(child => (
                 <NavItem key={child.title} href={child.url}>
                   {child.title}
+                  {child.children ? (
+                    <NavList.SubNav>
+                      {child.children.map(subChild => (
+                        <NavItem key={subChild.title} href={subChild.url}>
+                          {subChild.title}
+                        </NavItem>
+                      ))}
+                    </NavList.SubNav>
+                  ) : null}
                 </NavItem>
               ))}
             </NavList.Group>
