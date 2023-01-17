@@ -2,7 +2,7 @@
 "@primer/gatsby-theme-doctocat": minor
 ---
 
-Add support for three levels of nesting in `nav.yml`:
+Add support for two levels of nesting in `nav.yml`:
 
 ```diff
   - title: Introduction
