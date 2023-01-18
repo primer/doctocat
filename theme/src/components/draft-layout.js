@@ -7,6 +7,7 @@ import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import ReactLink from './react-link'
+import SourceLink from './source-link'
 import FigmaLink from './figma-link'
 import RailsLink from './rails-link'
 import DraftUnderlineNavigation from './draft-underline-navigation'
@@ -109,11 +110,11 @@ function DraftLayout({children, pageContext, location}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{alignItems: 'center', display: 'flex'}}>
+            <Box sx={{alignItems: 'center', display: 'flex', mb: 4}}>
               <Heading as="h1">{title}</Heading>
             </Box>
             {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
-            <Box
+            {/* <Box
               sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -159,9 +160,10 @@ function DraftLayout({children, pageContext, location}) {
                   {react ? <ReactLink href={react} /> : null}
                   {rails ? <RailsLink href={rails} /> : null}
                   {figma ? <FigmaLink href={figma} /> : null}
+                  {react ? <SourceLink href={react} /> : null}
                 </Box>
               ) : null}
-            </Box>
+            </Box> */}
 
             {navigationItems ? <DraftUnderlineNavigation items={navigationItems} /> : null}
             {children}

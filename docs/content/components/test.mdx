@@ -1,6 +1,6 @@
 ---
-title: Dialog
-componentId: button
+title: Button
+# componentId: button
 statusReact: Alpha
 statusViewComponent: Stable
 figma: https://github.com/primer/doctocat/blob/master/theme/src/components/do-dont.js
@@ -8,60 +8,232 @@ rails: https://primer.style/view-components/components/dialog
 react: https://primer.style/react/Dialog2
 ---
 
-import {DraftLayout} from '@primer/gatsby-theme-doctocat'
+import {
+  DraftLayout,
+  StatusLabel,
+  FigmaLink,
+} from '@primer/gatsby-theme-doctocat'
 export default DraftLayout
+import {Box, Link} from '@primer/react'
 
 ## Usage
 
-### Overview
+We have standardized buttons documented on [Primer CSS](https://primer.style/css/) and [Primer Components](https://primer.style/components), and these docs which serve as the source of truth for development implementation. This article serves to supplement our technical docs with proper guidance on design implementation.
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+### Types
 
-### Anatomy
+At GitHub, buttons are a fundamental building block of our products. Most of the time, we use the "Default" button type, but other types of buttons may be used to indicate something special about the button's hierarchy or functionality. The following table catalogues a quick glance at how we use buttons at GitHub:
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+| Type      | Visual                                                                                                                 | Usage                                                                                   |
+| --------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Default   | ![btn](https://user-images.githubusercontent.com/2313998/130091137-4f65a6cd-a890-434d-8ec7-292417f149af.png)           | The go-to style to render a button                                                      |
+| Outline   | ![btn-outline](https://user-images.githubusercontent.com/2313998/130091138-3e548b4a-0f31-45fb-beed-70aaf7c6b4f2.png)   | To downplay a button, for navigation buttons, or for filter buttons                     |
+| Primary   | ![btn-primary](https://user-images.githubusercontent.com/2313998/129806123-d7001d50-2900-435e-bb6b-f8289de1a415.png)   | To emphasize the highest priority action on a view                                      |
+| Danger    | ![btn-danger](https://user-images.githubusercontent.com/2313998/130091133-a48deda5-089a-4e1d-ac6b-a058a5c2497f.png)    | To warn that an action is potentially dangerous or destructive                          |
+| Invisible | ![btn-invisible](https://user-images.githubusercontent.com/2313998/129628226-bbb0aae4-8cba-4175-aa0f-33a6213f4f67.png) | A subtle style used for actions that are of lower priority in a view's button hierarchy |
 
-### Examples
+### Text
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+#### Labels
 
-### Behavior
+When designing buttons, keep the label as concise as possible. Buttons are to be understood by their type and text. If further clarity is required, consider adding an Octicon or adding a caption.
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+<DoDontContainer>
+  <Do>
+    <img src="https://user-images.githubusercontent.com/24916540/52501276-d3330080-2b94-11e9-954e-38c0f09f8ca1.png" />
+    <Caption>Use sentence case</Caption>
+  </Do>
+  <Dont>
+    <img src="https://user-images.githubusercontent.com/24916540/52501272-d3330080-2b94-11e9-8829-7d12aae36ba1.png" />
+    <Caption>Don't use all-caps or other text formats</Caption>
+  </Dont>
+</DoDontContainer>
 
-### Best practices
+#### Captions
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+In certain scenarios, buttons require supporting text to give the user more context. Use text labels sparingly, as buttons should generally be able to be understood on their own.
 
-## Styles
+<DoDontContainer>
+  <Do>
+    <img src="https://user-images.githubusercontent.com/24916540/52501400-1b522300-2b95-11e9-8c47-71af68cfaeec.png" />
+    <Caption>Keep text brief, specific, and descriptive</Caption>
+  </Do>
+  <Dont>
+    <img src="https://user-images.githubusercontent.com/24916540/53110379-cbfee180-3508-11e9-8762-04e3c8979afb.png" />
+    <Caption>Don't use unnecessary, redundant text descriptions</Caption>
+  </Dont>
+</DoDontContainer>
 
-### Style props
+### Sizes
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
-
-### Style examples
-
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+| Size   | Usage                                                                                                                                                            |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Medium | The default button size                                                                                                                                          |
+| Small  | Decrease button size when space is limited and the action is of lesser significance.                                                                             |
+| Large  | Increase button size to bring prominence to buttons that have major impact. Use large buttons sparingly, as layouts should generally have only one large button. |
 
 ## React
 
-### React props
+<StatusLabel status="Alpha" />
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+### Playground
 
-### React examples
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+### Props
+
+Property Name Type Default Description
+
+| Name       | Type    | Values      | Default |
+| ---------- | ------- | ----------- | ------- |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+
+### Examples
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
 
 ## Rails
 
-### Rails props
+<StatusLabel status="Beta" />
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+### Playground
 
-### Rails examples
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
 
-We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is recommended to use an octicon here. We can place an icon inside the Button in either the leading or the trailing position to enhance the visual context. It is
+### Props
+
+Property Name Type Default Description
+
+| Name       | Type    | Values      | Default |
+| ---------- | ------- | ----------- | ------- |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+
+### Examples
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
+
+## Figma
+
+<Box display="flex" gap="3" marginBottom="20px">
+  <StatusLabel status="Stable" />
+</Box>
+
+**Avatars** are images that users can set as their profile picture. On GitHub, they're always going to be rounded squares. They can be custom photos, uploaded by users, or generated as Identicons as a placeholder. Use to visually identify a human (circle), or other entity (square) such as an organization, bot, or team.
+
+### Playground
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
+
+### Props
+
+Property Name Type Default Description
+
+| Name       | Type    | Values      | Default |
+| ---------- | ------- | ----------- | ------- |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+| isboolean? | boolean | true, false | false   |
+
+### Examples
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
+
+<Box
+  height="200px"
+  bg="neutral.subtle"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderColor="border.default"
+  borderRadius={2}
+  p={4}
+  mb={3}
+></Box>
 
 ## Accessibility
 

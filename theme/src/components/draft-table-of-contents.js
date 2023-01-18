@@ -18,7 +18,7 @@ function DraftTableOfContents({'aria-labelledby': ariaLabelledBy, items}) {
   const subItems = getSubItems(items, location)
 
   return (
-    <NavList aria-labelledby={'asdfasdfdas'}>
+    <NavList>
       {subItems.map(item => (
         <NavList.Item key={item.title} href={item.url}>
           {item.title}
