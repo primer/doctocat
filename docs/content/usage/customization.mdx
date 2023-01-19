@@ -18,6 +18,12 @@ module.exports = {
     title: 'My Site',
     // Used in the header
     shortName: 'My Site',
+    // Used for the main link and the logo link in the header
+    header: {
+      title: 'Primer',
+      url: 'https://primer.style',
+      logoUrl: 'https://primer.style',
+    },
     // Used for SEO
     description: 'My site description',
     // Used for social previews
@@ -40,7 +46,9 @@ Side navigation for your site is generated from the content in `src/@primer/gats
 
 Entries with `children` cannot also have a `url`.
 
-<Note variant="warning">Doctocat only supports one level of nesting. </Note>
+<Note variant="warning">
+  Doctocat supports a maximum of two levels of nesting.
+</Note>
 
 ## Repository
 

@@ -1,5 +1,23 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.3.0
+
+### Minor Changes
+
+- [`9c0bbf5`](https://github.com/primer/doctocat/commit/9c0bbf509eec35361739ad12d8acec309e2b57f9) [#534](https://github.com/primer/doctocat/pull/534) Thanks [@colebemis](https://github.com/colebemis)! - Add support for two levels of nesting in `nav.yml`:
+
+  ```diff
+    - title: Introduction
+      children:
+        - title: Getting started
+  -       url: /getting-started
+  +       children:
+  +         - title: React
+  +           url: /getting-started/react
+  ```
+
+  Note: Items with `children` cannot also have URLs.
+
 ## 4.2.3
 
 ### Patch Changes

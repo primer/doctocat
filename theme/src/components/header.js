@@ -31,7 +31,7 @@ function Header({isSearchEnabled}) {
         >
           <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Link
-              href="https://primer.style"
+              href={siteMetadata.header.logoUrl}
               sx={{
                 color: 'accent.fg',
                 mr: 3,
@@ -40,30 +40,33 @@ function Header({isSearchEnabled}) {
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
-            <Link
-              href="https://primer.style"
-              sx={{
-                color: 'accent.fg',
-                fontFamily: 'mono',
-                display: [
-                  // We only hide "Primer" on small viewports if a shortName is defined.
-                  siteMetadata.shortName ? 'none' : 'inline-block',
-                  null,
-                  null,
-                  'inline-block'
-                ]
-              }}
-            >
-              Primer
-            </Link>
-
+            {siteMetadata.header.title ? (
+              <Link
+                href={siteMetadata.header.url}
+                sx={{
+                  color: 'accent.fg',
+                  fontFamily: 'mono',
+                  display: [
+                    // We only hide "Primer" on small viewports if a shortName is defined.
+                    siteMetadata.shortName ? 'none' : 'inline-block',
+                    null,
+                    null,
+                    'inline-block'
+                  ]
+                }}
+              >
+                {siteMetadata.header.title}
+              </Link>
+            ) : null}
             {siteMetadata.shortName ? (
               <>
-                <Text
-                  sx={{display: ['none', null, null, 'inline-block'], color: 'accent.fg', fontFamily: 'mono', mx: 2}}
-                >
-                  /
-                </Text>
+                {siteMetadata.header.title && (
+                  <Text
+                    sx={{display: ['none', null, null, 'inline-block'], color: 'accent.fg', fontFamily: 'mono', mx: 2}}
+                  >
+                    /
+                  </Text>
+                )}
                 <Link
                   as={GatsbyLink}
                   to="/"

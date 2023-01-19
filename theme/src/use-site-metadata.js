@@ -7,6 +7,11 @@ function useSiteMetadata() {
         siteMetadata {
           title
           shortName
+          header {
+            title
+            url
+            logoUrl
+          }
           description
           imageUrl
         }
