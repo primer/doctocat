@@ -44,7 +44,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
       const rootAbsolutePath = path.resolve(process.cwd(), themeOptions.repoRootPath || '.')
 
       const fileRelativePath = path.relative(rootAbsolutePath, node.fileAbsolutePath)
-      const defaultBranch = themeOptions.defaultBranch || 'master'
+      const defaultBranch = themeOptions.defaultBranch || 'main'
       const editUrl = getEditUrl(repo, fileRelativePath, defaultBranch)
 
       let contributors = []
