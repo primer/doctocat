@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.4.0
+
+### Minor Changes
+
+- [`cdd5f08`](https://github.com/primer/doctocat/commit/cdd5f08e47905ec3224dd9843974ecb711f95235) [#541](https://github.com/primer/doctocat/pull/541) Thanks [@maximedegreve](https://github.com/maximedegreve)! - Remove news from the menu
+
 ## 4.3.0
 
 ### Minor Changes
