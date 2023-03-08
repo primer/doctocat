@@ -3,11 +3,9 @@
     - title: Interface guidelines
       url: https://primer.style/design
     - title: Octicons
-      url: https://primer.style/octicons
-    - title: Presentations
-      url: https://primer.style/presentations
+      url: https://primer.style/design/foundations/icons
     - title: Desktop
-      url: https://primer.style/desktop
+      url: https://primer.style/design/native/desktop
 - title: Build
   children:
     - title: CSS
@@ -19,6 +17,6 @@
     - title: ViewComponents
       url: https://primer.style/view-components
 - title: Contribute
-  url: https://primer.style/contribute
+  url: https://primer.style/design/guides/contribute
 - title: About
-  url: https://primer.style/team
+  url: https://primer.style/design/guides/about
