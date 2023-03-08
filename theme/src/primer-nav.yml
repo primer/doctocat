@@ -6,6 +6,10 @@
       url: https://primer.style/design/foundations/icons
     - title: Desktop
       url: https://primer.style/design/native/desktop
+    - title: Mobile
+      url: https://primer.style/design/native/mobile
+    - title: CLI
+      url: https://primer.style/design/native/cli
 - title: Build
   children:
     - title: CSS
