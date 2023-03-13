@@ -29,18 +29,19 @@ function MarkdownHeading({children, ...props}) {
 
   return (
     <StyledHeading id={id} {...props}>
+      {children}
       <Link
         href={`#${id}`}
         aria-label={`${text} permalink`}
         sx={{
+          display: 'inline-flex',
           p: 2,
-          ml: -32,
-          color: 'fg.default'
+          ml: 1,
+          color: 'fg.muted'
         }}
       >
         <LinkIcon className="octicon-link" verticalAlign="middle" />
       </Link>
-      {children}
     </StyledHeading>
   )
 }
