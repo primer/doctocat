@@ -52,6 +52,7 @@ function Layout({children, pageContext}) {
           <Sidebar />
         </Box>
         <Box
+          as="main"
           id="skip-nav"
           sx={{
             justifyContent: 'center',
@@ -74,9 +75,9 @@ function Layout({children, pageContext}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Text sx={{display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+              <Heading as="h3" sx={{fontSize: 2, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
                 On this page
-              </Text>
+              </Heading>
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}

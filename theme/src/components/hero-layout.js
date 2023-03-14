@@ -22,7 +22,7 @@ function HeroLayout({children, pageContext}) {
         <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
         </Box>
-        <Box sx={{width: '100%'}}>
+        <Box as="main" id="skip-nav" sx={{width: '100%'}}>
           <Hero />
           <Container>
             {children}
