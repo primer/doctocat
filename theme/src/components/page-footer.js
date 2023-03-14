@@ -1,11 +1,14 @@
-import {Box, Link, StyledOcticon} from '@primer/react'
 import {PencilIcon} from '@primer/octicons-react'
+import {Box, Link, StyledOcticon} from '@primer/react'
 import React from 'react'
 import Contributors from './contributors'
+import VisuallyHidden from './visually-hidden'
 
 function PageFooter({editUrl, contributors}) {
   return editUrl || contributors.length > 0 ? (
     <Box
+      as="footer"
+      aria-labelledby="footer-heading"
       sx={{
         borderWidth: 0,
         borderTopWidth: 1,
@@ -16,6 +19,9 @@ function PageFooter({editUrl, contributors}) {
         borderColor: 'border.default'
       }}
     >
+      <VisuallyHidden>
+        <h3 id="footer-heading">Page footer</h3>
+      </VisuallyHidden>
       <Box sx={{gridGap: 4, display: 'grid'}}>
         {editUrl ? (
           <Link href={editUrl}>

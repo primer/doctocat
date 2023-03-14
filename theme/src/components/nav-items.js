@@ -4,6 +4,7 @@ import {useLocation} from '@reach/router'
 import {Link as GatsbyLink, withPrefix} from 'gatsby'
 import preval from 'preval.macro'
 import React from 'react'
+import VisuallyHidden from './visually-hidden'
 
 // This code needs to run at build-time so it can access the file system.
 const repositoryUrl = preval`
@@ -29,43 +30,48 @@ function NavItem({href, children}) {
 
 function NavItems({items}) {
   return (
-    <NavList>
-      {items.map(item => (
-        <React.Fragment key={item.title}>
-          {item.children ? (
-            <NavList.Group title={item.title}>
-              {item.children.map(child => (
-                <NavItem key={child.title} href={child.url}>
-                  {child.title}
-                  {child.children ? (
-                    <NavList.SubNav>
-                      {child.children.map(subChild => (
-                        <NavItem key={subChild.title} href={subChild.url}>
-                          {subChild.title}
-                        </NavItem>
-                      ))}
-                    </NavList.SubNav>
-                  ) : null}
-                </NavItem>
-              ))}
-            </NavList.Group>
-          ) : (
-            <NavItem href={item.url}>{item.title}</NavItem>
-          )}
-        </React.Fragment>
-      ))}
-      {repositoryUrl ? (
-        <>
-          <NavList.Divider />
-          <NavList.Item href={repositoryUrl}>
-            GitHub
-            <NavList.TrailingVisual>
-              <LinkExternalIcon />
-            </NavList.TrailingVisual>
-          </NavList.Item>
-        </>
-      ) : null}
-    </NavList>
+    <>
+      <VisuallyHidden>
+        <h3 id="nav-heading">Site navigation</h3>
+      </VisuallyHidden>
+      <NavList aria-labelledby="nav-heading">
+        {items.map(item => (
+          <React.Fragment key={item.title}>
+            {item.children ? (
+              <NavList.Group title={item.title}>
+                {item.children.map(child => (
+                  <NavItem key={child.title} href={child.url}>
+                    {child.title}
+                    {child.children ? (
+                      <NavList.SubNav>
+                        {child.children.map(subChild => (
+                          <NavItem key={subChild.title} href={subChild.url}>
+                            {subChild.title}
+                          </NavItem>
+                        ))}
+                      </NavList.SubNav>
+                    ) : null}
+                  </NavItem>
+                ))}
+              </NavList.Group>
+            ) : (
+              <NavItem href={item.url}>{item.title}</NavItem>
+            )}
+          </React.Fragment>
+        ))}
+        {repositoryUrl ? (
+          <>
+            <NavList.Divider />
+            <NavList.Item href={repositoryUrl}>
+              GitHub
+              <NavList.TrailingVisual>
+                <LinkExternalIcon />
+              </NavList.TrailingVisual>
+            </NavList.Item>
+          </>
+        ) : null}
+      </NavList>
+    </>
   )
 }
 
