@@ -1,4 +1,4 @@
-import {Heading, Link} from '@primer/react'
+import {Heading, Link, StyledOcticon} from '@primer/react'
 import {LinkIcon} from '@primer/octicons-react'
 import themeGet from '@styled-system/theme-get'
 import GithubSlugger from 'github-slugger'
@@ -11,14 +11,17 @@ const StyledHeading = styled(Heading)`
   margin-top: ${themeGet('space.4')};
   margin-bottom: ${themeGet('space.3')};
   scroll-margin-top: ${HEADER_HEIGHT + 24}px;
+  line-height: ${themeGet('lineHeights.condensed')};
 
-  & .octicon-link {
-    visibility: hidden;
-  }
+  @media (hover: hover) {
+    & .octicon-link {
+      visibility: hidden;
+    }
 
-  &:hover .octicon-link,
-  &:focus-within .octicon-link {
-    visibility: visible;
+    &:hover .octicon-link,
+    &:focus-within .octicon-link {
+      visibility: visible;
+    }
   }
 `
 
@@ -31,28 +34,37 @@ function MarkdownHeading({children, ...props}) {
     <StyledHeading id={id} {...props}>
       <Link
         href={`#${id}`}
-        aria-label={`${text} permalink`}
         sx={{
-          p: 2,
-          ml: -32,
-          color: 'fg.default'
+          color: 'inherit',
+          '&:hover, &:focus': {
+            textDecoration: 'none'
+          }
         }}
       >
-        <LinkIcon className="octicon-link" verticalAlign="middle" />
+        {children}
+        <StyledOcticon
+          icon={LinkIcon}
+          className="octicon-link"
+          sx={{
+            ml: 2,
+            color: 'fg.muted',
+            // !important is needed here to override default icon styles
+            verticalAlign: 'middle !important'
+          }}
+        />
       </Link>
-      {children}
     </StyledHeading>
   )
 }
 
 const StyledH1 = styled(StyledHeading).attrs({as: 'h1'})`
-  padding-bottom: ${themeGet('space.1')};
+  padding-bottom: ${themeGet('space.2')};
   font-size: ${themeGet('fontSizes.5')};
   border-bottom: 1px solid ${themeGet('colors.border.default')};
 `
 
 const StyledH2 = styled(StyledHeading).attrs({as: 'h2'})`
-  padding-bottom: ${themeGet('space.1')};
+  padding-bottom: ${themeGet('space.2')};
   font-size: ${themeGet('fontSizes.4')};
   border-bottom: 1px solid ${themeGet('colors.border.default')};
 `
