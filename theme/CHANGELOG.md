@@ -1,5 +1,17 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.4.1
+
+### Patch Changes
+
+- [`2dbdb69`](https://github.com/primer/doctocat/commit/2dbdb69562a13e600a994063fd2736cacde68d45) [#560](https://github.com/primer/doctocat/pull/560) Thanks [@colebemis](https://github.com/colebemis)! - Move heading permalinks to after headings
+
+* [`d3ddb0a`](https://github.com/primer/doctocat/commit/d3ddb0afac5ce764b8fab261e1f90ed0235b7798) [#548](https://github.com/primer/doctocat/pull/548) Thanks [@maximedegreve](https://github.com/maximedegreve)! - Remove `Command line` from the `Design` menu since it's now merged in guidelines.
+
+- [`2883499`](https://github.com/primer/doctocat/commit/2883499f9309af8a6388f053541d45ad3b94d570) [#550](https://github.com/primer/doctocat/pull/550) Thanks [@maximedegreve](https://github.com/maximedegreve)! - Remove `Mobile` from the `Design` menu since it's now merged in our guidelines.
+
+* [`a8fd12e`](https://github.com/primer/doctocat/commit/a8fd12ec0bcfeb35604936ef89707f279ed7ee52) [#561](https://github.com/primer/doctocat/pull/561) Thanks [@colebemis](https://github.com/colebemis)! - Miscellaneous accessibility improvements
+
 ## 4.4.0
 
 ### Minor Changes
