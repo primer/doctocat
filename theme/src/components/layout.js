@@ -1,8 +1,8 @@
 import componentMetadata from '@primer/component-metadata'
-import { Box, Heading, Text } from '@primer/react'
+import {Box, Heading, Text} from '@primer/react'
 import React from 'react'
 import Head from './head'
-import Header, { HEADER_HEIGHT } from './header'
+import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import SourceLink from './source-link'
@@ -15,7 +15,7 @@ import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
-function Layout({ children, pageContext }) {
+function Layout({children, pageContext}) {
   let {
     title,
     description,
@@ -44,11 +44,11 @@ function Layout({ children, pageContext }) {
   }
 
   return (
-    <Box sx={{ flexDirection: 'column', minHeight: '100vh', display: 'flex' }}>
+    <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
       <Header />
-      <Box css={{ zIndex: 0 }} sx={{ flex: '1 1 auto', flexDirection: 'row', display: 'flex' }}>
-        <Box sx={{ display: ['none', null, null, 'block'] }}>
+      <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
+        <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
         </Box>
         <Box
@@ -71,22 +71,20 @@ function Layout({ children, pageContext }) {
                 top: HEADER_HEIGHT + 48,
                 maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 48px)`
               }}
-              css={{ gridArea: 'table-of-contents', overflow: 'auto' }}
+              css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Heading as="h3" sx={{ fontSize: 2, display: 'inline-block', fontWeight: 'bold', pl: 3 }} id="toc-heading">
+              <Heading as="h3" sx={{fontSize: 2, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
                 On this page
               </Heading>
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}
-          <Box
-            sx={{ width: '100%', maxWidth: '960px' }}>
-            <Box as="main"
-              id="skip-nav" sx={{ mb: 4 }}>
-              <Box sx={{ alignItems: 'center', display: 'flex' }}>
+          <Box sx={{width: '100%', maxWidth: '960px'}}>
+            <Box as="main" id="skip-nav" sx={{mb: 4}}>
+              <Box sx={{alignItems: 'center', display: 'flex'}}>
                 <Heading as="h1">{title}</Heading>{' '}
               </Box>
-              {description ? <Box sx={{ fontSize: 3, mb: 3 }}>{description}</Box> : null}
+              {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
               <Box
                 sx={{
                   display: 'flex',
@@ -156,14 +154,14 @@ function Layout({ children, pageContext }) {
                   borderRadius: 2
                 }}
               >
-                <Box sx={{ px: 3, py: 2 }}>
+                <Box sx={{px: 3, py: 2}}>
                   <Box
-                    sx={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex' }}
+                    sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}
                   >
-                    <Text sx={{ fontWeight: 'bold' }}>On this page</Text>
+                    <Text sx={{fontWeight: 'bold'}}>On this page</Text>
                   </Box>
                 </Box>
-                <Box sx={{ borderTop: '1px solid', borderColor: 'border.muted' }}>
+                <Box sx={{borderTop: '1px solid', borderColor: 'border.muted'}}>
                   <TableOfContents items={pageContext.tableOfContents.items} />
                 </Box>
               </Box>
@@ -171,7 +169,7 @@ function Layout({ children, pageContext }) {
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
-              contributors={pageContext.contributors.concat(additionalContributors.map(login => ({ login })))}
+              contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
           </Box>
         </Box>

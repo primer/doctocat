@@ -43,9 +43,7 @@ function Header({isSearchEnabled}) {
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
-            <Box
-              sx={{fontSize: 'unset', fontWeight: 'unset', m: 0, display: 'flex', alignItems: 'center'}}
-            >
+            <Box sx={{fontSize: 'unset', fontWeight: 'unset', m: 0, display: 'flex', alignItems: 'center'}}>
               {siteMetadata.header.title ? (
                 <Link
                   href={siteMetadata.header.url}
