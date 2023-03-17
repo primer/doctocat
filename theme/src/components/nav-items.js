@@ -31,10 +31,10 @@ function NavItem({href, children}) {
 function NavItems({items}) {
   return (
     <>
-      <VisuallyHidden>
-        <h3 id="nav-heading">Site navigation</h3>
-      </VisuallyHidden>
-      <NavList aria-labelledby="nav-heading">
+      <NavList aria-label="Site">
+        <VisuallyHidden>
+          <h3 id="nav-heading">Site navigation</h3>
+        </VisuallyHidden>
         {items.map(item => (
           <React.Fragment key={item.title}>
             {item.children ? (

@@ -8,6 +8,7 @@ import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
+import SkipLink from './skip-link'
 
 export const HEADER_HEIGHT = 66
 
@@ -21,7 +22,6 @@ function Header({isSearchEnabled}) {
       <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
           as="header"
-          aria-labelledby="site-heading"
           sx={{
             display: 'flex',
             height: HEADER_HEIGHT,
@@ -31,6 +31,7 @@ function Header({isSearchEnabled}) {
             bg: 'canvas.default'
           }}
         >
+          <SkipLink />
           <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Link
               href={siteMetadata.header.logoUrl}
@@ -43,8 +44,6 @@ function Header({isSearchEnabled}) {
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
             <Box
-              as="h2"
-              id="site-heading"
               sx={{fontSize: 'unset', fontWeight: 'unset', m: 0, display: 'flex', alignItems: 'center'}}
             >
               {siteMetadata.header.title ? (
