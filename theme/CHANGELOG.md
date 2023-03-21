@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.4.2
+
+### Patch Changes
+
+- [`84f8a7e`](https://github.com/primer/doctocat/commit/84f8a7e6b64b431a620b59e5dcb54366ccc3f5c6) [#565](https://github.com/primer/doctocat/pull/565) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Accessibility improvements
+
 ## 4.4.1
 
 ### Patch Changes
