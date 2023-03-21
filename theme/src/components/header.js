@@ -8,6 +8,7 @@ import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
+import SkipLink from './skip-link'
 
 export const HEADER_HEIGHT = 66
 
@@ -21,7 +22,6 @@ function Header({isSearchEnabled}) {
       <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
           as="header"
-          aria-labelledby="site-heading"
           sx={{
             display: 'flex',
             height: HEADER_HEIGHT,
@@ -31,6 +31,7 @@ function Header({isSearchEnabled}) {
             bg: 'canvas.default'
           }}
         >
+          <SkipLink />
           <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Link
               href={siteMetadata.header.logoUrl}
@@ -42,56 +43,50 @@ function Header({isSearchEnabled}) {
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
-            <Box
-              as="h2"
-              id="site-heading"
-              sx={{fontSize: 'unset', fontWeight: 'unset', m: 0, display: 'flex', alignItems: 'center'}}
-            >
-              {siteMetadata.header.title ? (
-                <Link
-                  href={siteMetadata.header.url}
-                  sx={{
-                    color: 'accent.fg',
-                    fontFamily: 'mono',
-                    display: [
-                      // We only hide "Primer" on small viewports if a shortName is defined.
-                      siteMetadata.shortName ? 'none' : 'inline-block',
-                      null,
-                      null,
-                      'inline-block'
-                    ]
-                  }}
-                >
-                  {siteMetadata.header.title}
-                </Link>
-              ) : null}
-              {siteMetadata.shortName ? (
-                <>
-                  {siteMetadata.header.title && (
-                    <Text
-                      sx={{
-                        display: ['none', null, null, 'inline-block'],
-                        color: 'accent.fg',
-                        fontFamily: 'mono',
-                        mx: 2
-                      }}
-                    >
-                      /
-                    </Text>
-                  )}
-                  <Link
-                    as={GatsbyLink}
-                    to="/"
+            {siteMetadata.header.title ? (
+              <Link
+                href={siteMetadata.header.url}
+                sx={{
+                  color: 'accent.fg',
+                  fontFamily: 'mono',
+                  display: [
+                    // We only hide "Primer" on small viewports if a shortName is defined.
+                    siteMetadata.shortName ? 'none' : 'inline-block',
+                    null,
+                    null,
+                    'inline-block'
+                  ]
+                }}
+              >
+                {siteMetadata.header.title}
+              </Link>
+            ) : null}
+            {siteMetadata.shortName ? (
+              <>
+                {siteMetadata.header.title && (
+                  <Text
                     sx={{
+                      display: ['none', null, null, 'inline-block'],
                       color: 'accent.fg',
-                      fontFamily: 'mono'
+                      fontFamily: 'mono',
+                      mx: 2
                     }}
                   >
-                    {siteMetadata.shortName}
-                  </Link>
-                </>
-              ) : null}
-            </Box>
+                    /
+                  </Text>
+                )}
+                <Link
+                  as={GatsbyLink}
+                  to="/"
+                  sx={{
+                    color: 'accent.fg',
+                    fontFamily: 'mono'
+                  }}
+                >
+                  {siteMetadata.shortName}
+                </Link>
+              </>
+            ) : null}
 
             {isSearchEnabled ? (
               <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>

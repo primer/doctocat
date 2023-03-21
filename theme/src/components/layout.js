@@ -52,8 +52,6 @@ function Layout({children, pageContext}) {
           <Sidebar />
         </Box>
         <Box
-          as="main"
-          id="skip-nav"
           sx={{
             justifyContent: 'center',
             flexDirection: 'row-reverse',
@@ -82,7 +80,7 @@ function Layout({children, pageContext}) {
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{mb: 4}}>
+            <Box as="main" id="skip-nav" sx={{mb: 4}}>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
                 <Heading as="h1">{title}</Heading>{' '}
               </Box>

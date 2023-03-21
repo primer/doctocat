@@ -20,7 +20,7 @@ function PageFooter({editUrl, contributors}) {
       }}
     >
       <VisuallyHidden>
-        <h3 id="footer-heading">Page footer</h3>
+        <h2 id="footer-heading">Footer</h2>
       </VisuallyHidden>
       <Box sx={{gridGap: 4, display: 'grid'}}>
         {editUrl ? (
