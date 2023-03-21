@@ -33,7 +33,7 @@ function NavItems({items}) {
     <>
       <NavList aria-label="Site">
         <VisuallyHidden>
-          <h3 id="nav-heading">Site navigation</h3>
+          <h3>Site navigation</h3>
         </VisuallyHidden>
         {items.map(item => (
           <React.Fragment key={item.title}>
