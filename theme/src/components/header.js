@@ -43,50 +43,50 @@ function Header({isSearchEnabled}) {
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
-              {siteMetadata.header.title ? (
-                <Link
-                  href={siteMetadata.header.url}
-                  sx={{
-                    color: 'accent.fg',
-                    fontFamily: 'mono',
-                    display: [
-                      // We only hide "Primer" on small viewports if a shortName is defined.
-                      siteMetadata.shortName ? 'none' : 'inline-block',
-                      null,
-                      null,
-                      'inline-block'
-                    ]
-                  }}
-                >
-                  {siteMetadata.header.title}
-                </Link>
-              ) : null}
-              {siteMetadata.shortName ? (
-                <>
-                  {siteMetadata.header.title && (
-                    <Text
-                      sx={{
-                        display: ['none', null, null, 'inline-block'],
-                        color: 'accent.fg',
-                        fontFamily: 'mono',
-                        mx: 2
-                      }}
-                    >
-                      /
-                    </Text>
-                  )}
-                  <Link
-                    as={GatsbyLink}
-                    to="/"
+            {siteMetadata.header.title ? (
+              <Link
+                href={siteMetadata.header.url}
+                sx={{
+                  color: 'accent.fg',
+                  fontFamily: 'mono',
+                  display: [
+                    // We only hide "Primer" on small viewports if a shortName is defined.
+                    siteMetadata.shortName ? 'none' : 'inline-block',
+                    null,
+                    null,
+                    'inline-block'
+                  ]
+                }}
+              >
+                {siteMetadata.header.title}
+              </Link>
+            ) : null}
+            {siteMetadata.shortName ? (
+              <>
+                {siteMetadata.header.title && (
+                  <Text
                     sx={{
+                      display: ['none', null, null, 'inline-block'],
                       color: 'accent.fg',
-                      fontFamily: 'mono'
+                      fontFamily: 'mono',
+                      mx: 2
                     }}
                   >
-                    {siteMetadata.shortName}
-                  </Link>
-                </>
-              ) : null}
+                    /
+                  </Text>
+                )}
+                <Link
+                  as={GatsbyLink}
+                  to="/"
+                  sx={{
+                    color: 'accent.fg',
+                    fontFamily: 'mono'
+                  }}
+                >
+                  {siteMetadata.shortName}
+                </Link>
+              </>
+            ) : null}
 
             {isSearchEnabled ? (
               <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
