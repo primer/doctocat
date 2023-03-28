@@ -20,7 +20,7 @@
     "gatsby": "^2.32.13",
     "prettier": "^2.4.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
     "gatsby": "2.x",
