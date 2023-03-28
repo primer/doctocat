@@ -13,7 +13,7 @@
     "@primer/react": "^35.2.2",
     "gatsby": "^2.32.13",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^18.2.0"
   },
   "repository": "primer/doctocat"
 }
