@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.4.3
+
+### Patch Changes
+
+- [`5f2f390`](https://github.com/primer/doctocat/commit/5f2f3903e93b6a64743c38fead16eaaa14788c4e) [#586](https://github.com/primer/doctocat/pull/586) Thanks [@camertron](https://github.com/camertron)! - Wrap root node with an SSRProvider
+
 ## 4.4.2
 
 ### Patch Changes
