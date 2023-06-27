@@ -6,13 +6,9 @@ function NavDropdown({title, children}) {
   const {getDetailsProps} = useDetails({closeOnOutsideClick: true})
   return (
     <ActionMenu {...getDetailsProps()}>
-      <ActionMenu.Button variant='invisible'>
-        {title}
-      </ActionMenu.Button>
+      <ActionMenu.Button variant="invisible">{title}</ActionMenu.Button>
       <ActionMenu.Overlay width="auto">
-        <ActionList>
-          {children}
-        </ActionList>
+        <ActionList>{children}</ActionList>
       </ActionMenu.Overlay>
     </ActionMenu>
   )
