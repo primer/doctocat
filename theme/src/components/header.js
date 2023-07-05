@@ -146,7 +146,7 @@ function PrimerNavItems({siteMetadata, items}) {
       </VisuallyHidden>
       <Box
         as={'nav'}
-        sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default'}}
+        sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default', gap: 2}}
       >
         {items.map((item, index) => {
           if (item.children) {
@@ -169,7 +169,9 @@ function PrimerNavItems({siteMetadata, items}) {
               href={item.url}
               sx={{
                 display: 'block',
-                color: 'inherit',
+                color: 'fg.default',
+                fontSize: 2,
+                fontWeight: 'bold',
                 ml: 2,
                 mr: 2
               }}

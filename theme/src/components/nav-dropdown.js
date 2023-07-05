@@ -1,12 +1,21 @@
-import {ActionMenu, ActionList, themeGet, useDetails} from '@primer/react'
+import {ActionMenu, ActionList, themeGet, useDetails, sx} from '@primer/react'
 import React from 'react'
 import styled from 'styled-components'
+
+const ButtonBase = styled(ActionMenu.Button)`
+  :hover:not([disabled]) {
+    background-color: ${themeGet('colors.neutral.subtle')};
+  }
+  ${sx}
+`
 
 function NavDropdown({title, children}) {
   const {getDetailsProps} = useDetails({closeOnOutsideClick: true})
   return (
     <ActionMenu {...getDetailsProps()}>
-      <ActionMenu.Button variant="invisible">{title}</ActionMenu.Button>
+      <ButtonBase variant="invisible" sx={{fontSize: 2, color: 'fg.default'}}>
+        {title}
+      </ButtonBase>
       <ActionMenu.Overlay width="auto">
         <ActionList>{children}</ActionList>
       </ActionMenu.Overlay>
