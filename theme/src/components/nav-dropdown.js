@@ -1,36 +1,31 @@
-import {Box, Details, StyledOcticon, Text, themeGet, useDetails} from '@primer/react'
-import {TriangleDownIcon} from '@primer/octicons-react'
+import {ActionMenu, ActionList, themeGet, useDetails} from '@primer/react'
 import React from 'react'
 import styled from 'styled-components'
 
 function NavDropdown({title, children}) {
   const {getDetailsProps} = useDetails({closeOnOutsideClick: true})
   return (
-    <Details {...getDetailsProps()}>
-      <summary style={{cursor: 'pointer'}}>
-        <Text>{title}</Text>
-        <StyledOcticon icon={TriangleDownIcon} sx={{ml: 1}} />
-      </summary>
-      <Box sx={{position: 'absolute'}}>
-        <Box
-          sx={{
-            bg: 'canvas.overlay',
-            p: 2,
-            mt: 2,
-            borderWidth: '1px',
-            borderStyle: 'solid',
-            borderColor: 'border.default',
-            borderRadius: '12px'
-          }}
-        >
-          {children}
-        </Box>
-      </Box>
-    </Details>
+    <ActionMenu {...getDetailsProps()}>
+      <ActionMenu.Button
+        variant="invisible"
+        sx={{
+          fontSize: 2,
+          color: 'fg.default',
+          ':hover:not([disabled])': {
+            backgroundColor: 'canvas.subtle'
+          }
+        }}
+      >
+        {title}
+      </ActionMenu.Button>
+      <ActionMenu.Overlay width="auto">
+        <ActionList>{children}</ActionList>
+      </ActionMenu.Overlay>
+    </ActionMenu>
   )
 }
 
-export const NavDropdownItem = styled.a`
+export const NavDropdownItem = styled(ActionList.LinkItem)`
   display: block;
   padding: ${themeGet('space.2')};
   color: inherit;
