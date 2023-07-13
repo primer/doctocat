@@ -165,23 +165,9 @@ function PrimerNavItems({siteMetadata, items}) {
             }
 
             return (
-              <>
-                <UnderlineNav.Item aria-current="page">{item.title}</UnderlineNav.Item>
-                {/* <Link
-                key={index}
-                href={item.url}
-                sx={{
-                  display: 'block',
-                  color: 'fg.default',
-                  fontSize: 2,
-                  fontWeight: 'bold',
-                  ml: 2,
-                  mr: 2
-                }}
-              >
+              <UnderlineNav.Item key={index} aria-current="page">
                 {item.title}
-              </Link> */}
-              </>
+              </UnderlineNav.Item>
             )
           })}
         </UnderlineNav>
