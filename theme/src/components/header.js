@@ -1,5 +1,6 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/react'
+import {UnderlineNav} from '@primer/react/drafts'
 import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -19,7 +20,7 @@ function Header({isSearchEnabled}) {
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
   return (
-    <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
+    <ThemeProvider>
       <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
           as="header"
@@ -29,7 +30,10 @@ function Header({isSearchEnabled}) {
             px: [3, null, null, 4],
             alignItems: 'center',
             justifyContent: 'space-between',
-            bg: 'canvas.default'
+            bg: 'canvas.default',
+            border: '1px solid',
+            borderColor: 'border.default',
+            color: 'fg.default'
           }}
         >
           <SkipLink />
@@ -37,7 +41,7 @@ function Header({isSearchEnabled}) {
             <Link
               href={siteMetadata.header.logoUrl}
               sx={{
-                color: 'accent.fg',
+                color: 'fg.default',
                 mr: 3,
                 lineHeight: 'condensedUltra'
               }}
@@ -48,8 +52,7 @@ function Header({isSearchEnabled}) {
               <Link
                 href={siteMetadata.header.url}
                 sx={{
-                  color: 'accent.fg',
-                  fontFamily: 'mono',
+                  color: 'fg.default',
                   display: [
                     // We only hide "Primer" on small viewports if a shortName is defined.
                     siteMetadata.shortName ? 'none' : 'inline-block',
@@ -68,8 +71,7 @@ function Header({isSearchEnabled}) {
                   <Text
                     sx={{
                       display: ['none', null, null, 'inline-block'],
-                      color: 'accent.fg',
-                      fontFamily: 'mono',
+                      color: 'fg.default',
                       mx: 2
                     }}
                   >
@@ -80,24 +82,22 @@ function Header({isSearchEnabled}) {
                   as={GatsbyLink}
                   to="/"
                   sx={{
-                    color: 'accent.fg',
-                    fontFamily: 'mono'
+                    color: 'fg.default'
                   }}
                 >
                   {siteMetadata.shortName}
                 </Link>
               </>
             ) : null}
-
-            {isSearchEnabled ? (
-              <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
-                <Search />
-              </Box>
-            ) : null}
           </Box>
           <Box>
-            <Box sx={{display: ['none', null, null, 'block']}}>
+            <Box sx={{display: ['none', null, null, 'flex']}}>
               <PrimerNavItems siteMetadata={siteMetadata} items={primerNavItems} />
+              {isSearchEnabled ? (
+                <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
+                  <Search />
+                </Box>
+              ) : null}
             </Box>
             <Box sx={{display: ['flex', null, null, 'none']}}>
               {isSearchEnabled ? (
@@ -148,38 +148,43 @@ function PrimerNavItems({siteMetadata, items}) {
         as={'nav'}
         sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default', gap: 2}}
       >
-        {items.map((item, index) => {
-          if (item.children) {
-            return (
-              <Box key={index}>
-                <NavDropdown title={item.title}>
-                  {item.children.map(child => (
-                    <NavDropdownItem key={child.title} href={child.url}>
-                      {child.title}
-                    </NavDropdownItem>
-                  ))}
-                </NavDropdown>
-              </Box>
-            )
-          }
+        <UnderlineNav>
+          {items.map((item, index) => {
+            if (item.children) {
+              return (
+                <Box key={index}>
+                  <NavDropdown title={item.title}>
+                    {item.children.map(child => (
+                      <NavDropdownItem key={child.title} href={child.url}>
+                        {child.title}
+                      </NavDropdownItem>
+                    ))}
+                  </NavDropdown>
+                </Box>
+              )
+            }
 
-          return (
-            <Link
-              key={index}
-              href={item.url}
-              sx={{
-                display: 'block',
-                color: 'fg.default',
-                fontSize: 2,
-                fontWeight: 'bold',
-                ml: 2,
-                mr: 2
-              }}
-            >
-              {item.title}
-            </Link>
-          )
-        })}
+            return (
+              <>
+                <UnderlineNav.Item aria-current="page">{item.title}</UnderlineNav.Item>
+                {/* <Link
+                key={index}
+                href={item.url}
+                sx={{
+                  display: 'block',
+                  color: 'fg.default',
+                  fontSize: 2,
+                  fontWeight: 'bold',
+                  ml: 2,
+                  mr: 2
+                }}
+              >
+                {item.title}
+              </Link> */}
+              </>
+            )
+          })}
+        </UnderlineNav>
       </Box>
     </>
   )
