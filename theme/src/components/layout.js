@@ -1,5 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text} from '@primer/react'
+import {Box, Breadcrumbs, Heading, Text} from '@primer/react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -14,8 +14,33 @@ import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
+import navItems from '../nav.yml'
 
-function Layout({children, pageContext}) {
+const getPageAncestry = (url, object) => {
+  const result = []
+  const buildArray = (node, path) => {
+    if (node.url === path) {
+      result.push({title: node.title, url: node.url})
+    } else if (node.children) {
+      for (const child of node.children) {
+        buildArray(child, path)
+        if (result.length > 0) {
+          result.unshift({title: node.title, url: node.url})
+          break
+        }
+      }
+    }
+  }
+  for (const node of object) {
+    buildArray(node, url)
+    if (result.length > 0) {
+      break
+    }
+  }
+  return result
+}
+
+function Layout({children, pageContext, path}) {
   let {
     title,
     description,
@@ -42,6 +67,7 @@ function Layout({children, pageContext}) {
     title ||= component.displayName
     description ||= component.description
   }
+  const breadcrumbData = getPageAncestry(path, navItems).filter(item => item.url)
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
@@ -81,6 +107,15 @@ function Layout({children, pageContext}) {
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
             <Box as="main" id="skip-nav" sx={{mb: 4}}>
+              <Breadcrumbs sx={{mb: 4}}>
+                {breadcrumbData.length > 1
+                  ? breadcrumbData.map(item => (
+                      <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
+                        {item.title}
+                      </Breadcrumbs.Item>
+                    ))
+                  : null}
+              </Breadcrumbs>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
                 <Heading as="h1">{title}</Heading>{' '}
               </Box>
