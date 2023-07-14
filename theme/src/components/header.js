@@ -8,7 +8,6 @@ import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
 import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
-// import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
 import SkipLink from './skip-link'
 
