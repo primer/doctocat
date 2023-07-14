@@ -150,22 +150,8 @@ function PrimerNavItems({siteMetadata, items}) {
       >
         <UnderlineNav>
           {items.map((item, index) => {
-            if (item.children) {
-              return (
-                <Box key={index}>
-                  <NavDropdown title={item.title}>
-                    {item.children.map(child => (
-                      <NavDropdownItem key={child.title} href={child.url}>
-                        {child.title}
-                      </NavDropdownItem>
-                    ))}
-                  </NavDropdown>
-                </Box>
-              )
-            }
-
             return (
-              <UnderlineNav.Item key={index} aria-current="page">
+              <UnderlineNav.Item key={index} href={item.url} aria-current="page">
                 {item.title}
               </UnderlineNav.Item>
             )
