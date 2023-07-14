@@ -8,13 +8,13 @@ import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
 import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
-import NavDropdown, {NavDropdownItem} from './nav-dropdown'
+// import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
 import SkipLink from './skip-link'
 
 export const HEADER_HEIGHT = 66
 
-function Header({isSearchEnabled}) {
+function Header({isSearchEnabled, path}) {
   const {theme} = useTheme()
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(theme.breakpoints[2])
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
@@ -92,7 +92,7 @@ function Header({isSearchEnabled}) {
           </Box>
           <Box>
             <Box sx={{display: ['none', null, null, 'flex']}}>
-              <PrimerNavItems siteMetadata={siteMetadata} items={primerNavItems} />
+              <PrimerNavItems path={path} siteMetadata={siteMetadata} items={primerNavItems} />
               {isSearchEnabled ? (
                 <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
                   <Search />
@@ -138,7 +138,7 @@ Header.defaultProps = {
   isSearchEnabled: true
 }
 
-function PrimerNavItems({siteMetadata, items}) {
+function PrimerNavItems({siteMetadata, items, path}) {
   return (
     <>
       <VisuallyHidden>
@@ -148,10 +148,10 @@ function PrimerNavItems({siteMetadata, items}) {
         as={'nav'}
         sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default', gap: 2}}
       >
-        <UnderlineNav>
+        <UnderlineNav aria-label="Top navigation">
           {items.map((item, index) => {
             return (
-              <UnderlineNav.Item key={index} href={item.url} aria-current="page">
+              <UnderlineNav.Item key={index} href={item.url} aria-current={path === item.url ? 'page' : undefined}>
                 {item.title}
               </UnderlineNav.Item>
             )

@@ -15,7 +15,7 @@ import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 
-function Layout({children, pageContext}) {
+function Layout({children, pageContext, path}) {
   let {
     title,
     description,
@@ -46,7 +46,7 @@ function Layout({children, pageContext}) {
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
-      <Header />
+      <Header path={path} />
       <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
         <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
