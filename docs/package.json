@@ -13,8 +13,8 @@
     "@primer/gatsby-theme-doctocat": "*",
     "@primer/react": "^35.2.2",
     "gatsby": "^2.32.13",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "repository": "primer/doctocat"
 }

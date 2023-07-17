@@ -19,13 +19,13 @@
     "eslint-plugin-react": "^7.26.1",
     "gatsby": "^2.32.13",
     "prettier": "^2.4.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "peerDependencies": {
     "gatsby": "2.x",
-    "react": "^16.9.x",
-    "react-dom": "^16.9.x"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.5.5",
