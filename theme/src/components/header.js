@@ -10,7 +10,7 @@ import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import Search from './search'
 import SkipLink from './skip-link'
 
-export const HEADER_HEIGHT = 66
+export const HEADER_HEIGHT = 56
 
 function Header({isSearchEnabled, path}) {
   const {theme} = useTheme()
@@ -28,7 +28,9 @@ function Header({isSearchEnabled, path}) {
             px: [3, null, null, 4],
             alignItems: 'center',
             justifyContent: 'space-between',
-            bg: 'canvas.default'
+            bg: 'canvas.default',
+            border: '1px solid',
+            borderColor: 'border.muted'
           }}
         >
           <SkipLink />
@@ -41,13 +43,14 @@ function Header({isSearchEnabled, path}) {
                 lineHeight: 'condensedUltra'
               }}
             >
-              <StyledOcticon icon={MarkGithubIcon} size="medium" />
+              <StyledOcticon icon={MarkGithubIcon} size="24px" />
             </Link>
             {siteMetadata.header.title ? (
               <Link
                 href={siteMetadata.header.url}
                 sx={{
                   color: 'fg.default',
+                  fontWeight: 'bold',
                   display: [
                     // We only hide "Primer" on small viewports if a shortName is defined.
                     siteMetadata.shortName ? 'none' : 'inline-block',
@@ -77,6 +80,7 @@ function Header({isSearchEnabled, path}) {
                   as={GatsbyLink}
                   to="/"
                   sx={{
+                    fontWeight: 'bold',
                     color: 'fg.default'
                   }}
                 >
@@ -84,16 +88,15 @@ function Header({isSearchEnabled, path}) {
                 </Link>
               </>
             ) : null}
-
-            {isSearchEnabled ? (
-              <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
-                <Search />
-              </Box>
-            ) : null}
           </Box>
           <Box>
-            <Box sx={{display: ['none', null, null, 'block']}}>
+            <Box sx={{display: ['none', null, null, 'flex'], alignItems: 'center'}}>
               <PrimerNavItems path={path} siteMetadata={siteMetadata} items={primerNavItems} />
+              {isSearchEnabled ? (
+                <Box sx={{display: ['none', null, null, 'block'], ml: 3}}>
+                  <Search />
+                </Box>
+              ) : null}
             </Box>
             <Box sx={{display: ['flex', null, null, 'none']}}>
               {isSearchEnabled ? (
@@ -140,11 +143,7 @@ function PrimerNavItems({siteMetadata, items, path}) {
       <VisuallyHidden>
         <h3 aria-labelledby="site-header">{siteMetadata.header.title} </h3>
       </VisuallyHidden>
-      <Box
-        as={'nav'}
-        sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default', gap: 2}}
-      >
-        <UnderlineNav aria-label="Main"></UnderlineNav>
+      <UnderlineNav aria-label="top navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
           return (
             <UnderlineNav.Link key={index} href={item.url} selected={item.url === path}>
@@ -152,7 +151,7 @@ function PrimerNavItems({siteMetadata, items, path}) {
             </UnderlineNav.Link>
           )
         })}
-      </Box>
+      </UnderlineNav>
     </>
   )
 }
