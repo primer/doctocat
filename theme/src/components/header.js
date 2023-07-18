@@ -36,7 +36,7 @@ function Header({isSearchEnabled, path}) {
             <Link
               href={siteMetadata.header.logoUrl}
               sx={{
-                color: 'accent.fg',
+                color: 'fg.default',
                 mr: 3,
                 lineHeight: 'condensedUltra'
               }}
@@ -47,7 +47,7 @@ function Header({isSearchEnabled, path}) {
               <Link
                 href={siteMetadata.header.url}
                 sx={{
-                  color: 'accent.fg',
+                  color: 'fg.default',
                   display: [
                     // We only hide "Primer" on small viewports if a shortName is defined.
                     siteMetadata.shortName ? 'none' : 'inline-block',
@@ -66,7 +66,7 @@ function Header({isSearchEnabled, path}) {
                   <Text
                     sx={{
                       display: ['none', null, null, 'inline-block'],
-                      color: 'accent.fg',
+                      color: 'fg.default',
                       mx: 2
                     }}
                   >
@@ -77,7 +77,7 @@ function Header({isSearchEnabled, path}) {
                   as={GatsbyLink}
                   to="/"
                   sx={{
-                    color: 'accent.fg'
+                    color: 'fg.default'
                   }}
                 >
                   {siteMetadata.shortName}
