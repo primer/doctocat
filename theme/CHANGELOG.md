@@ -1,5 +1,13 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.5.0
+
+### Minor Changes
+
+- [`c5156b0`](https://github.com/primer/doctocat/commit/c5156b06c8f72ec267fb186be2705c421462f409) [#602](https://github.com/primer/doctocat/pull/602) Thanks [@mperrotti](https://github.com/mperrotti)! - Add breadcrumb nav to default layout
+
+* [`4960db2`](https://github.com/primer/doctocat/commit/4960db2a305fe39a529585036c5943119a0c326e) [#594](https://github.com/primer/doctocat/pull/594) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Add visually hidden header to the top navigation. Utilize the ActionMenu component in top nav.
+
 ## 4.4.3
 
 ### Patch Changes
