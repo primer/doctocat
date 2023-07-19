@@ -1,4 +1,5 @@
-import {Label} from '@primer/react'
+import {Label, StyledOcticon} from '@primer/react'
+import {DotFillIcon} from '@primer/octicons-react'
 import React from 'react'
 
 const STATUS_COLORS = {
@@ -8,13 +9,35 @@ const STATUS_COLORS = {
   deprecated: 'danger.fg'
 }
 
+const STATUS_BACKGROUND = {
+  alpha: 'severe.subtle',
+  beta: 'attention.subtle',
+  stable: 'success.subtle',
+  deprecated: 'danger.subtle'
+}
+
 function getStatusColor(status) {
   return STATUS_COLORS[status.toLowerCase()] || 'fg.muted'
 }
 
+function getStatusBackgroundColor(status) {
+  return STATUS_BACKGROUND[status.toLowerCase()] || 'neutral.subtle'
+}
+
 function StatusLabel({status}) {
   return (
-    <Label outline sx={{color: getStatusColor(status), borderColor: getStatusColor(status)}}>
+    <Label
+      size="large"
+      sx={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 1,
+        backgroundColor: getStatusBackgroundColor(status),
+        borderColor: 'transparent',
+        fontWeight: 'normal'
+      }}
+    >
+      <StyledOcticon icon={DotFillIcon} sx={{color: getStatusColor(status)}} />
       {status}
     </Label>
   )

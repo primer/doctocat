@@ -1,3 +1,4 @@
+import {SearchIcon} from '@primer/octicons-react'
 import {Box, ThemeProvider} from '@primer/react'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
@@ -46,10 +47,11 @@ function Search() {
       {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, highlightedIndex}) => (
         <Box {...getRootProps({position: 'relative'})}>
           <TextInput
+            leadingVisual={SearchIcon}
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
               sx: {
-                width: 240
+                width: 300
               }
             })}
           />

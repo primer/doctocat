@@ -1,20 +1,60 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Heading, Text} from '@primer/react'
+import {Box, Breadcrumbs, Heading, Text} from '@primer/react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
 import PageFooter from './page-footer'
 import Sidebar from './sidebar'
 import SourceLink from './source-link'
+import RailsLink from './rails-link'
+import ReactLink from './react-link'
 import StatusLabel from './status-label'
+import AccessibilityLabel from './accessibility-label'
 import LookbookLink from './lookbook-link'
 import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
+import navItems from '../nav.yml'
 
-function Layout({children, pageContext}) {
-  let {title, description, figma, status, source, storybook, lookbook, additionalContributors, componentId} =
-    pageContext.frontmatter
+const getPageAncestry = (url, object) => {
+  const result = []
+  const buildArray = (node, path) => {
+    if (node.url === path) {
+      result.push({title: node.title, url: node.url})
+    } else if (node.children) {
+      for (const child of node.children) {
+        buildArray(child, path)
+        if (result.length > 0) {
+          result.unshift({title: node.title, url: node.url})
+          break
+        }
+      }
+    }
+  }
+  for (const node of object) {
+    buildArray(node, url)
+    if (result.length > 0) {
+      break
+    }
+  }
+  return result
+}
+
+function Layout({children, pageContext, path}) {
+  let {
+    title,
+    description,
+    figma,
+    react,
+    status,
+    a11yReviewed,
+    source,
+    rails,
+    storybook,
+    lookbook,
+    additionalContributors,
+    componentId
+  } = pageContext.frontmatter
 
   if (!additionalContributors) {
     additionalContributors = []
@@ -27,6 +67,7 @@ function Layout({children, pageContext}) {
     title ||= component.displayName
     description ||= component.description
   }
+  const breadcrumbData = getPageAncestry(path, navItems).filter(item => item.url)
 
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
@@ -37,7 +78,6 @@ function Layout({children, pageContext}) {
           <Sidebar />
         </Box>
         <Box
-          id="skip-nav"
           sx={{
             justifyContent: 'center',
             flexDirection: 'row-reverse',
@@ -51,7 +91,7 @@ function Layout({children, pageContext}) {
               sx={{
                 width: 220,
                 flex: '0 0 auto',
-                marginLeft: 6,
+                marginLeft: [null, 7, 8, 9],
                 display: ['none', null, 'block'],
                 position: 'sticky',
                 top: HEADER_HEIGHT + 48,
@@ -59,38 +99,85 @@ function Layout({children, pageContext}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Text sx={{display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+              <Heading as="h3" sx={{fontSize: 1, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
                 On this page
-              </Text>
+              </Heading>
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
-            <Box sx={{mb: 4}}>
+            <Box as="main" id="skip-nav" sx={{mb: 4}}>
+              <Breadcrumbs sx={{mb: 4}}>
+                {breadcrumbData.length > 1
+                  ? breadcrumbData.map(item => (
+                      <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
+                        {item.title}
+                      </Breadcrumbs.Item>
+                    ))
+                  : null}
+              </Breadcrumbs>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1" sx={{mr: 2}}>
+                <Heading as="h1" sx={{fontSize: 7}}>
                   {title}
-                </Heading>{' '}
-                {status ? <StatusLabel status={status} /> : null}
+                </Heading>
               </Box>
-              {description ? <Box sx={{fontSize: 3, pb: 2}}>{description}</Box> : null}
-              {source || storybook || lookbook ? (
-                <Box
-                  sx={{
-                    py: 2,
-                    gridGap: [1, null, 3],
-                    gridAutoFlow: ['row', null, 'column'],
-                    gridAutoColumns: 'max-content',
-                    gridAutoRows: 'max-content',
-                    display: 'grid'
-                  }}
-                >
-                  {source ? <SourceLink href={source} /> : null}
-                  {lookbook ? <LookbookLink href={lookbook} /> : null}
-                  {storybook ? <StorybookLink href={storybook} /> : null}
-                  {figma ? <FigmaLink href={figma} /> : null}
-                </Box>
-              ) : null}
+              {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  columnGap: 3,
+                  mb: 7,
+                  mt: 2,
+                  rowGap: 3,
+                  alignItems: 'center',
+                  fontSize: 1
+                }}
+              >
+                {status ? (
+                  <Box
+                    as={'ul'}
+                    sx={{
+                      display: 'flex',
+                      gap: 1,
+                      alignItems: 'center',
+                      m: 0,
+                      p: 0,
+                      paddingInline: 0,
+                      listStyle: 'none'
+                    }}
+                  >
+                    <li>
+                      <StatusLabel status={status} />
+                    </li>
+                    <li>
+                      <AccessibilityLabel a11yReviewed={a11yReviewed} />
+                    </li>
+                  </Box>
+                ) : null}
+                {source || storybook || lookbook || figma || rails || react ? (
+                  <Box
+                    as={'ul'}
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 4,
+                      alignItems: 'center',
+                      m: 0,
+                      p: 0,
+                      paddingInline: 0,
+                      listStyle: 'none'
+                    }}
+                  >
+                    {source ? <SourceLink href={source} /> : null}
+                    {lookbook ? <LookbookLink href={lookbook} /> : null}
+                    {storybook ? <StorybookLink href={storybook} /> : null}
+                    {react ? <ReactLink href={react} /> : null}
+                    {rails ? <RailsLink href={rails} /> : null}
+                    {figma ? <FigmaLink href={figma} /> : null}
+                  </Box>
+                ) : null}
+              </Box>
             </Box>
             {pageContext.tableOfContents.items ? (
               <Box

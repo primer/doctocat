@@ -1,3 +1,4 @@
+import {SSRProvider} from '@react-aria/ssr'
 import {MDXProvider} from '@mdx-js/react'
 import {ThemeProvider} from '@primer/react'
 import Link from './link'
@@ -16,6 +17,7 @@ import InlineCode from './inline-code'
 import List from './list'
 import Note from './note'
 import Paragraph from './paragraph'
+import Superscript from './superscript'
 import Table from './table'
 
 const components = {
@@ -28,6 +30,7 @@ const components = {
   p: Paragraph,
   hr: HorizontalRule,
   blockquote: Blockquote,
+  sup: Superscript,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -50,9 +53,11 @@ const components = {
 
 function wrapRootElement({element}) {
   return (
-    <MDXProvider components={components}>
-      <ThemeProvider>{element}</ThemeProvider>
-    </MDXProvider>
+    <SSRProvider>
+      <MDXProvider components={components}>
+        <ThemeProvider>{element}</ThemeProvider>
+      </MDXProvider>
+    </SSRProvider>
   )
 }
 

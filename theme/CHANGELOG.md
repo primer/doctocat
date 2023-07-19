@@ -1,5 +1,106 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.5.1
+
+### Patch Changes
+
+- [`169049b`](https://github.com/primer/doctocat/commit/169049bd3d8d43ad412e20b842144a04a97ac365) [#605](https://github.com/primer/doctocat/pull/605) Thanks [@mperrotti](https://github.com/mperrotti)! - Updates the base layout with latest designs.
+
+## 4.5.0
+
+### Minor Changes
+
+- [`c5156b0`](https://github.com/primer/doctocat/commit/c5156b06c8f72ec267fb186be2705c421462f409) [#602](https://github.com/primer/doctocat/pull/602) Thanks [@mperrotti](https://github.com/mperrotti)! - Add breadcrumb nav to default layout
+
+* [`4960db2`](https://github.com/primer/doctocat/commit/4960db2a305fe39a529585036c5943119a0c326e) [#594](https://github.com/primer/doctocat/pull/594) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Add visually hidden header to the top navigation. Utilize the ActionMenu component in top nav.
+
+## 4.4.3
+
+### Patch Changes
+
+- [`5f2f390`](https://github.com/primer/doctocat/commit/5f2f3903e93b6a64743c38fead16eaaa14788c4e) [#586](https://github.com/primer/doctocat/pull/586) Thanks [@camertron](https://github.com/camertron)! - Wrap root node with an SSRProvider
+
+## 4.4.2
+
+### Patch Changes
+
+- [`84f8a7e`](https://github.com/primer/doctocat/commit/84f8a7e6b64b431a620b59e5dcb54366ccc3f5c6) [#565](https://github.com/primer/doctocat/pull/565) Thanks [@kendallgassner](https://github.com/kendallgassner)! - Accessibility improvements
+
+## 4.4.1
+
+### Patch Changes
+
+- [`2dbdb69`](https://github.com/primer/doctocat/commit/2dbdb69562a13e600a994063fd2736cacde68d45) [#560](https://github.com/primer/doctocat/pull/560) Thanks [@colebemis](https://github.com/colebemis)! - Move heading permalinks to after headings
+
+* [`d3ddb0a`](https://github.com/primer/doctocat/commit/d3ddb0afac5ce764b8fab261e1f90ed0235b7798) [#548](https://github.com/primer/doctocat/pull/548) Thanks [@maximedegreve](https://github.com/maximedegreve)! - Remove `Command line` from the `Design` menu since it's now merged in guidelines.
+
+- [`2883499`](https://github.com/primer/doctocat/commit/2883499f9309af8a6388f053541d45ad3b94d570) [#550](https://github.com/primer/doctocat/pull/550) Thanks [@maximedegreve](https://github.com/maximedegreve)! - Remove `Mobile` from the `Design` menu since it's now merged in our guidelines.
+
+* [`a8fd12e`](https://github.com/primer/doctocat/commit/a8fd12ec0bcfeb35604936ef89707f279ed7ee52) [#561](https://github.com/primer/doctocat/pull/561) Thanks [@colebemis](https://github.com/colebemis)! - Miscellaneous accessibility improvements
+
+## 4.4.0
+
+### Minor Changes
+
+- [`cdd5f08`](https://github.com/primer/doctocat/commit/cdd5f08e47905ec3224dd9843974ecb711f95235) [#541](https://github.com/primer/doctocat/pull/541) Thanks [@maximedegreve](https://github.com/maximedegreve)! - Remove news from the menu
+
+## 4.3.0
+
+### Minor Changes
+
+- [`9c0bbf5`](https://github.com/primer/doctocat/commit/9c0bbf509eec35361739ad12d8acec309e2b57f9) [#534](https://github.com/primer/doctocat/pull/534) Thanks [@colebemis](https://github.com/colebemis)! - Add support for two levels of nesting in `nav.yml`:
+
+  ```diff
+    - title: Introduction
+      children:
+        - title: Getting started
+  -       url: /getting-started
+  +       children:
+  +         - title: React
+  +           url: /getting-started/react
+  ```
+
+  Note: Items with `children` cannot also have URLs.
+
+## 4.2.3
+
+### Patch Changes
+
+- [`f9ce48f`](https://github.com/primer/doctocat/commit/f9ce48f9133dbc01193a0f76c1b8323ff1af2d97) [#512](https://github.com/primer/doctocat/pull/512) Thanks [@josepmartins](https://github.com/josepmartins)! - - Use `rails` and `dotfilled` for rails-link and status-label component. cc @ashygee
+  - Adjust spacing between status labels and source links in layout
+
+* [`a43a1d3`](https://github.com/primer/doctocat/commit/a43a1d3913a4edb554194c751a2d33f47dd73545) [#514](https://github.com/primer/doctocat/pull/514) Thanks [@josepmartins](https://github.com/josepmartins)! - Bump component-metadata to v0.5.1
+
+## 4.2.2
+
+### Patch Changes
+
+- [`da5c046`](https://github.com/primer/doctocat/commit/da5c04600843876e6b905fa439d8cd8ee73bdf91) [#501](https://github.com/primer/doctocat/pull/501) Thanks [@josepmartins](https://github.com/josepmartins)! - Adjust accessibilty labels content
+
+## 4.2.1
+
+### Patch Changes
+
+- [`6c4da9e`](https://github.com/primer/doctocat/commit/6c4da9e5787862460972b2af75a27e5909093a05) [#498](https://github.com/primer/doctocat/pull/498) Thanks [@colebemis](https://github.com/colebemis)! - Fix live examples disappearing on hard reload
+
+## 4.2.0
+
+### Minor Changes
+
+- [`2aed832`](https://github.com/primer/doctocat/commit/2aed832beb012ec20767a9226c03aa1bcb12af5d) [#481](https://github.com/primer/doctocat/pull/481) Thanks [@josepmartins](https://github.com/josepmartins)! - - Add accessibility reviewed Label in the Layout
+  - Add Rails + React links to cover design guidelines needs
+
+### Patch Changes
+
+- [`9b62706`](https://github.com/primer/doctocat/commit/9b62706dddf3fea68a44f29d3763198ba3d57dd6) [#485](https://github.com/primer/doctocat/pull/485) Thanks [@josepmartins](https://github.com/josepmartins)! - - Ad superscript component
+  - Basic style for footnotes section
+  - Table styles
+  - Add sizes prop to StatusLabel component
+
+* [`61c5587`](https://github.com/primer/doctocat/commit/61c55874443fdb02873d6c47b1c931b4d3362231) [#460](https://github.com/primer/doctocat/pull/460) Thanks [@josepmartins](https://github.com/josepmartins)! - Adjust Sidebar to use fixed `width`
+
+- [`9d39774`](https://github.com/primer/doctocat/commit/9d397746fdeb3a6d3131304183400e1e1f4139c5) [#468](https://github.com/primer/doctocat/pull/468) Thanks [@josepmartins](https://github.com/josepmartins)! - - Add a11yReviewed frontmatter data to onPostBuild static files
+
 ## 4.1.0
 
 ### Minor Changes

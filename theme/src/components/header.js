@@ -1,5 +1,6 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/react'
+import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'
@@ -8,6 +9,7 @@ import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
+import SkipLink from './skip-link'
 
 export const HEADER_HEIGHT = 66
 
@@ -20,6 +22,7 @@ function Header({isSearchEnabled}) {
     <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
       <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
+          as="header"
           sx={{
             display: 'flex',
             height: HEADER_HEIGHT,
@@ -29,9 +32,10 @@ function Header({isSearchEnabled}) {
             bg: 'canvas.default'
           }}
         >
+          <SkipLink />
           <Box sx={{display: 'flex', alignItems: 'center'}}>
             <Link
-              href="https://primer.style"
+              href={siteMetadata.header.logoUrl}
               sx={{
                 color: 'accent.fg',
                 mr: 3,
@@ -40,30 +44,38 @@ function Header({isSearchEnabled}) {
             >
               <StyledOcticon icon={MarkGithubIcon} size="medium" />
             </Link>
-            <Link
-              href="https://primer.style"
-              sx={{
-                color: 'accent.fg',
-                fontFamily: 'mono',
-                display: [
-                  // We only hide "Primer" on small viewports if a shortName is defined.
-                  siteMetadata.shortName ? 'none' : 'inline-block',
-                  null,
-                  null,
-                  'inline-block'
-                ]
-              }}
-            >
-              Primer
-            </Link>
-
+            {siteMetadata.header.title ? (
+              <Link
+                href={siteMetadata.header.url}
+                sx={{
+                  color: 'accent.fg',
+                  fontFamily: 'mono',
+                  display: [
+                    // We only hide "Primer" on small viewports if a shortName is defined.
+                    siteMetadata.shortName ? 'none' : 'inline-block',
+                    null,
+                    null,
+                    'inline-block'
+                  ]
+                }}
+              >
+                {siteMetadata.header.title}
+              </Link>
+            ) : null}
             {siteMetadata.shortName ? (
               <>
-                <Text
-                  sx={{display: ['none', null, null, 'inline-block'], color: 'accent.fg', fontFamily: 'mono', mx: 2}}
-                >
-                  /
-                </Text>
+                {siteMetadata.header.title && (
+                  <Text
+                    sx={{
+                      display: ['none', null, null, 'inline-block'],
+                      color: 'accent.fg',
+                      fontFamily: 'mono',
+                      mx: 2
+                    }}
+                  >
+                    /
+                  </Text>
+                )}
                 <Link
                   as={GatsbyLink}
                   to="/"
@@ -85,7 +97,7 @@ function Header({isSearchEnabled}) {
           </Box>
           <Box>
             <Box sx={{display: ['none', null, null, 'block']}}>
-              <PrimerNavItems items={primerNavItems} />
+              <PrimerNavItems siteMetadata={siteMetadata} items={primerNavItems} />
             </Box>
             <Box sx={{display: ['flex', null, null, 'none']}}>
               {isSearchEnabled ? (
@@ -126,39 +138,50 @@ Header.defaultProps = {
   isSearchEnabled: true
 }
 
-function PrimerNavItems({items}) {
+function PrimerNavItems({siteMetadata, items}) {
   return (
-    <Box sx={{display: 'flex', alignItems: 'center', color: 'fg.default'}}>
-      {items.map((item, index) => {
-        if (item.children) {
-          return (
-            <Box key={index} sx={{ml: 4}}>
-              <NavDropdown title={item.title}>
-                {item.children.map(child => (
-                  <NavDropdownItem key={child.title} href={child.url}>
-                    {child.title}
-                  </NavDropdownItem>
-                ))}
-              </NavDropdown>
-            </Box>
-          )
-        }
+    <>
+      <VisuallyHidden>
+        <h3 aria-labelledby="site-header">{siteMetadata.header.title} </h3>
+      </VisuallyHidden>
+      <Box
+        as={'nav'}
+        sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default', gap: 2}}
+      >
+        {items.map((item, index) => {
+          if (item.children) {
+            return (
+              <Box key={index}>
+                <NavDropdown title={item.title}>
+                  {item.children.map(child => (
+                    <NavDropdownItem key={child.title} href={child.url}>
+                      {child.title}
+                    </NavDropdownItem>
+                  ))}
+                </NavDropdown>
+              </Box>
+            )
+          }
 
-        return (
-          <Link
-            key={index}
-            href={item.url}
-            sx={{
-              display: 'block',
-              color: 'inherit',
-              ml: 4
-            }}
-          >
-            {item.title}
-          </Link>
-        )
-      })}
-    </Box>
+          return (
+            <Link
+              key={index}
+              href={item.url}
+              sx={{
+                display: 'block',
+                color: 'fg.default',
+                fontSize: 2,
+                fontWeight: 'bold',
+                ml: 2,
+                mr: 2
+              }}
+            >
+              {item.title}
+            </Link>
+          )
+        })}
+      </Box>
+    </>
   )
 }
 

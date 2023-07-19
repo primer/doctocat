@@ -6,6 +6,12 @@ const TextInput = styled(PrimerTextInput)`
    * Otherwise, iOS browsers will zoom in when the input is focused.
    * TODO: Update font-size of TextInput in @primer/react.
    */
-  font-size: ${themeGet('fontSizes.2')} !important;
+  input {
+    font-size: ${themeGet('fontSizes.2')} !important;
+  }
+
+  input::placeholder {
+    color: ${themeGet('colors.fg.muted')} !important;
+  }
 `
 export default TextInput

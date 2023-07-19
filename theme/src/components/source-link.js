@@ -1,13 +1,17 @@
-import {Link, Text} from '@primer/react'
+import {Link, Text, Box} from '@primer/react'
 import {MarkGithubIcon} from '@primer/octicons-react'
 import React from 'react'
 
 function SourceLink({href}) {
   return (
-    <Link href={href} target="_blank">
-      <MarkGithubIcon />
-      <Text sx={{ml: 2, display: 'inline-block'}}>View source</Text>
-    </Link>
+    <li>
+      <Link href={href} target="_blank">
+        <Box sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
+          <MarkGithubIcon />
+          <Text>Source</Text>
+        </Box>
+      </Link>
+    </li>
   )
 }
 
