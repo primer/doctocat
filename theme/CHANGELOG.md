@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.5.1
+
+### Patch Changes
+
+- [`169049b`](https://github.com/primer/doctocat/commit/169049bd3d8d43ad412e20b842144a04a97ac365) [#605](https://github.com/primer/doctocat/pull/605) Thanks [@mperrotti](https://github.com/mperrotti)! - Updates the base layout with latest designs.
+
 ## 4.5.0
 
 ### Minor Changes
