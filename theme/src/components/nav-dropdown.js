@@ -4,8 +4,9 @@ import styled from 'styled-components'
 
 function NavDropdown({title, children}) {
   const {getDetailsProps} = useDetails({closeOnOutsideClick: true})
+  const {open, setOpen} = getDetailsProps()
   return (
-    <ActionMenu {...getDetailsProps()}>
+    <ActionMenu open={open} setOpen={setOpen}>
       <ActionMenu.Button
         variant="invisible"
         sx={{
