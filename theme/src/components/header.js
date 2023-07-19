@@ -143,7 +143,7 @@ function PrimerNavItems({siteMetadata, items, path}) {
       <VisuallyHidden>
         <h3 aria-labelledby="site-header">{siteMetadata.header.title} </h3>
       </VisuallyHidden>
-      <UnderlineNav aria-label="top navigation" sx={{border: 'none'}}>
+      <UnderlineNav aria-label="main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
           return (
             <UnderlineNav.Link key={index} href={item.url} selected={item.url === path}>
