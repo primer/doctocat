@@ -91,7 +91,7 @@ function Layout({children, pageContext, path}) {
               sx={{
                 width: 220,
                 flex: '0 0 auto',
-                marginLeft: 6,
+                marginLeft: [null, 7, 8, 9],
                 display: ['none', null, 'block'],
                 position: 'sticky',
                 top: HEADER_HEIGHT + 48,
@@ -99,7 +99,7 @@ function Layout({children, pageContext, path}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Heading as="h3" sx={{fontSize: 2, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+              <Heading as="h3" sx={{fontSize: 1, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
                 On this page
               </Heading>
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
@@ -117,7 +117,9 @@ function Layout({children, pageContext, path}) {
                   : null}
               </Breadcrumbs>
               <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1">{title}</Heading>{' '}
+                <Heading as="h1" sx={{fontSize: 7}}>
+                  {title}
+                </Heading>
               </Box>
               {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
               <Box
