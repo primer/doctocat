@@ -171,7 +171,6 @@ function PrimerNavItems({siteMetadata, items}) {
                 display: 'block',
                 color: 'fg.default',
                 fontSize: 2,
-                fontWeight: 'bold',
                 ml: 2,
                 mr: 2
               }}
