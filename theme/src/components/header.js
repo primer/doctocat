@@ -17,6 +17,7 @@ function Header({isSearchEnabled, path}) {
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(theme.breakpoints[2])
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
+
   return (
     <ThemeProvider>
       <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
@@ -146,7 +147,7 @@ function PrimerNavItems({siteMetadata, items, path}) {
       <UnderlineNav aria-label="main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
           return (
-            <UnderlineNav.Link key={index} href={item.url} selected={item.url === path}>
+            <UnderlineNav.Link key={index} href={item.url} selected={item.url === siteMetadata.header.url + path}>
               {item.title}
             </UnderlineNav.Link>
           )
