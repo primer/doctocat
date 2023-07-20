@@ -107,15 +107,15 @@ function Layout({children, pageContext, path}) {
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
             <Box as="main" id="skip-nav" sx={{mb: 4}}>
-              <Breadcrumbs sx={{mb: 4}}>
-                {breadcrumbData.length > 1
-                  ? breadcrumbData.map(item => (
-                      <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
-                        {item.title}
-                      </Breadcrumbs.Item>
-                    ))
-                  : null}
-              </Breadcrumbs>
+              {breadcrumbData.length > 1 ? (
+                <Breadcrumbs sx={{mb: 4}}>
+                  {breadcrumbData.map(item => (
+                    <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
+                      {item.title}
+                    </Breadcrumbs.Item>
+                  ))}
+                </Breadcrumbs>
+              ) : null}
               <Box sx={{alignItems: 'center', display: 'flex'}}>
                 <Heading as="h1" sx={{fontSize: 7}}>
                   {title}
