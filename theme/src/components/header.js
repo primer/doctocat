@@ -1,5 +1,5 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
-import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme} from '@primer/react'
+import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
 import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -7,19 +7,19 @@ import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
 import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
-import NavDropdown, {NavDropdownItem} from './nav-dropdown'
 import Search from './search'
 import SkipLink from './skip-link'
 
-export const HEADER_HEIGHT = 66
+export const HEADER_HEIGHT = 56
 
-function Header({isSearchEnabled}) {
+function Header({isSearchEnabled, path}) {
   const {theme} = useTheme()
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(theme.breakpoints[2])
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
+
   return (
-    <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
+    <ThemeProvider>
       <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
         <Box
           as="header"
@@ -29,7 +29,9 @@ function Header({isSearchEnabled}) {
             px: [3, null, null, 4],
             alignItems: 'center',
             justifyContent: 'space-between',
-            bg: 'canvas.default'
+            bg: 'canvas.default',
+            border: '1px solid',
+            borderColor: 'border.muted'
           }}
         >
           <SkipLink />
@@ -37,19 +39,19 @@ function Header({isSearchEnabled}) {
             <Link
               href={siteMetadata.header.logoUrl}
               sx={{
-                color: 'accent.fg',
+                color: 'fg.default',
                 mr: 3,
                 lineHeight: 'condensedUltra'
               }}
             >
-              <StyledOcticon icon={MarkGithubIcon} size="medium" />
+              <StyledOcticon icon={MarkGithubIcon} size="24px" />
             </Link>
             {siteMetadata.header.title ? (
               <Link
                 href={siteMetadata.header.url}
                 sx={{
-                  color: 'accent.fg',
-                  fontFamily: 'mono',
+                  color: 'fg.default',
+                  fontWeight: 'bold',
                   display: [
                     // We only hide "Primer" on small viewports if a shortName is defined.
                     siteMetadata.shortName ? 'none' : 'inline-block',
@@ -68,8 +70,7 @@ function Header({isSearchEnabled}) {
                   <Text
                     sx={{
                       display: ['none', null, null, 'inline-block'],
-                      color: 'accent.fg',
-                      fontFamily: 'mono',
+                      color: 'fg.default',
                       mx: 2
                     }}
                   >
@@ -80,24 +81,23 @@ function Header({isSearchEnabled}) {
                   as={GatsbyLink}
                   to="/"
                   sx={{
-                    color: 'accent.fg',
-                    fontFamily: 'mono'
+                    fontWeight: 'bold',
+                    color: 'fg.default'
                   }}
                 >
                   {siteMetadata.shortName}
                 </Link>
               </>
             ) : null}
-
-            {isSearchEnabled ? (
-              <Box sx={{display: ['none', null, null, 'block'], ml: 4}}>
-                <Search />
-              </Box>
-            ) : null}
           </Box>
           <Box>
-            <Box sx={{display: ['none', null, null, 'block']}}>
-              <PrimerNavItems siteMetadata={siteMetadata} items={primerNavItems} />
+            <Box sx={{display: ['none', null, null, 'flex'], alignItems: 'center'}}>
+              <PrimerNavItems path={path} siteMetadata={siteMetadata} items={primerNavItems} />
+              {isSearchEnabled ? (
+                <Box sx={{display: ['none', null, null, 'block'], ml: 3}}>
+                  <Search />
+                </Box>
+              ) : null}
             </Box>
             <Box sx={{display: ['flex', null, null, 'none']}}>
               {isSearchEnabled ? (
@@ -138,48 +138,21 @@ Header.defaultProps = {
   isSearchEnabled: true
 }
 
-function PrimerNavItems({siteMetadata, items}) {
+function PrimerNavItems({siteMetadata, items, path}) {
   return (
     <>
       <VisuallyHidden>
         <h3 aria-labelledby="site-header">{siteMetadata.header.title} </h3>
       </VisuallyHidden>
-      <Box
-        as={'nav'}
-        sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'fg.default', gap: 2}}
-      >
+      <UnderlineNav aria-label="main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
-          if (item.children) {
-            return (
-              <Box key={index}>
-                <NavDropdown title={item.title}>
-                  {item.children.map(child => (
-                    <NavDropdownItem key={child.title} href={child.url}>
-                      {child.title}
-                    </NavDropdownItem>
-                  ))}
-                </NavDropdown>
-              </Box>
-            )
-          }
-
           return (
-            <Link
-              key={index}
-              href={item.url}
-              sx={{
-                display: 'block',
-                color: 'fg.default',
-                fontSize: 2,
-                ml: 2,
-                mr: 2
-              }}
-            >
+            <UnderlineNav.Link key={index} href={item.url} selected={item.url === siteMetadata.header.url + path}>
               {item.title}
-            </Link>
+            </UnderlineNav.Link>
           )
         })}
-      </Box>
+      </UnderlineNav>
     </>
   )
 }
