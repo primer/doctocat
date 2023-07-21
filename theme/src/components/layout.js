@@ -107,77 +107,77 @@ function Layout({children, pageContext, path}) {
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
             <Box as="main" id="skip-nav" sx={{mb: 4}}>
-              <Breadcrumbs sx={{mb: 4}}>
-                {breadcrumbData.length > 1
-                  ? breadcrumbData.map(item => (
-                      <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
-                        {item.title}
-                      </Breadcrumbs.Item>
-                    ))
-                  : null}
-              </Breadcrumbs>
-              <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1" sx={{fontSize: 7}}>
-                  {title}
-                </Heading>
-              </Box>
+              {breadcrumbData.length > 1 ? (
+                <Breadcrumbs sx={{mb: 4}}>
+                  {breadcrumbData.map(item => (
+                    <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
+                      {item.title}
+                    </Breadcrumbs.Item>
+                  ))}
+                </Breadcrumbs>
+              ) : null}
+              <Heading as="h1" sx={{fontSize: 7}}>
+                {title}
+              </Heading>
               {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  columnGap: 3,
-                  mb: 7,
-                  mt: 2,
-                  rowGap: 3,
-                  alignItems: 'center',
-                  fontSize: 1
-                }}
-              >
-                {status ? (
-                  <Box
-                    as={'ul'}
-                    sx={{
-                      display: 'flex',
-                      gap: 1,
-                      alignItems: 'center',
-                      m: 0,
-                      p: 0,
-                      paddingInline: 0,
-                      listStyle: 'none'
-                    }}
-                  >
-                    <li>
-                      <StatusLabel status={status} />
-                    </li>
-                    <li>
-                      <AccessibilityLabel a11yReviewed={a11yReviewed} />
-                    </li>
-                  </Box>
-                ) : null}
-                {source || storybook || lookbook || figma || rails || react ? (
-                  <Box
-                    as={'ul'}
-                    sx={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: 4,
-                      alignItems: 'center',
-                      m: 0,
-                      p: 0,
-                      paddingInline: 0,
-                      listStyle: 'none'
-                    }}
-                  >
-                    {source ? <SourceLink href={source} /> : null}
-                    {lookbook ? <LookbookLink href={lookbook} /> : null}
-                    {storybook ? <StorybookLink href={storybook} /> : null}
-                    {react ? <ReactLink href={react} /> : null}
-                    {rails ? <RailsLink href={rails} /> : null}
-                    {figma ? <FigmaLink href={figma} /> : null}
-                  </Box>
-                ) : null}
-              </Box>
+              {status || source || storybook || lookbook || figma || rails || react ? (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    columnGap: 3,
+                    mb: 7,
+                    mt: 2,
+                    rowGap: 3,
+                    alignItems: 'center',
+                    fontSize: 1
+                  }}
+                >
+                  {status ? (
+                    <Box
+                      as={'ul'}
+                      sx={{
+                        display: 'flex',
+                        gap: 1,
+                        alignItems: 'center',
+                        m: 0,
+                        p: 0,
+                        paddingInline: 0,
+                        listStyle: 'none'
+                      }}
+                    >
+                      <li>
+                        <StatusLabel status={status} />
+                      </li>
+                      <li>
+                        <AccessibilityLabel a11yReviewed={a11yReviewed} />
+                      </li>
+                    </Box>
+                  ) : null}
+                  {source || storybook || lookbook || figma || rails || react ? (
+                    <Box
+                      as={'ul'}
+                      sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 4,
+                        alignItems: 'center',
+                        m: 0,
+                        p: 0,
+                        paddingInline: 0,
+                        listStyle: 'none'
+                      }}
+                    >
+                      {source ? <SourceLink href={source} /> : null}
+                      {lookbook ? <LookbookLink href={lookbook} /> : null}
+                      {storybook ? <StorybookLink href={storybook} /> : null}
+                      {react ? <ReactLink href={react} /> : null}
+                      {rails ? <RailsLink href={rails} /> : null}
+                      {figma ? <FigmaLink href={figma} /> : null}
+                    </Box>
+                  ) : null}
+                </Box>
+              ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
               <Box
