@@ -1,5 +1,22 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.6.0
+
+### Minor Changes
+
+- [`02eb6b3`](https://github.com/primer/doctocat/commit/02eb6b34f8049305baa7cceb815cd085acd7d845) [#603](https://github.com/primer/doctocat/pull/603) Thanks [@josepmartins](https://github.com/josepmartins)! - Navigation updates:
+
+  - Remove monospace font
+  - Remove dark background and update link colors
+  - Use UnderlineNav for top right links to provide the correct styling
+  - Remove "View components" and "React components" from top and leave "Brand" and "About"
+
+### Patch Changes
+
+- [`ba972b1`](https://github.com/primer/doctocat/commit/ba972b167844f92a8a7c584f7cacf8f595b1db4d) [#610](https://github.com/primer/doctocat/pull/610) Thanks [@josepmartins](https://github.com/josepmartins)! - - Move the heading out of the sidebar Navigation. This fixes the extra divider on top of the navigation.
+  - Remove extra space below the heading when there's no status or external links
+  - Remove extra space when there's no Breadcrumbs
+
 ## 4.5.1
 
 ### Patch Changes
