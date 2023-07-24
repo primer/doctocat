@@ -60,7 +60,7 @@ function NavDrawer({isOpen, onDismiss}) {
             }}
           >
             <Box sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
-              <Link href="https://primer.style" sx={{fontFamily: 'mono', color: 'inherit'}}>
+              <Link href="https://primer.style" sx={{fontWeight: 'bold', color: 'inherit'}}>
                 Primer
               </Link>
               <Button aria-label="Close" onClick={onDismiss}>
@@ -86,7 +86,7 @@ function NavDrawer({isOpen, onDismiss}) {
               <Link
                 as={GatsbyLink}
                 to="/"
-                sx={{display: 'inline-block', color: 'inherit', fontFamily: 'mono', mx: 4, mt: 4}}
+                sx={{display: 'inline-block', color: 'inherit', fontWeight: 'bold', mx: 4, mt: 4}}
               >
                 {siteMetadata.title}
               </Link>
@@ -111,7 +111,8 @@ function PrimerNavItems({items}) {
           borderRadius: 0,
           borderTopWidth: index !== 0 ? 1 : 0,
           borderColor: 'border.muted',
-          p: 4,
+          px: 4,
+          py: 3,
           borderStyle: 'solid'
         }}
       >
