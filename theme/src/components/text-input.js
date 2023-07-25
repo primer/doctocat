@@ -7,7 +7,7 @@ const TextInput = styled(PrimerTextInput)`
    * TODO: Update font-size of TextInput in @primer/react.
    */
   input {
-    // font-size: ${themeGet('fontSizes.2')} !important;
+    font-size: ${themeGet('fontSizes.2')} !important;
   }
 
   input::placeholder {

@@ -52,7 +52,6 @@ function Header({isSearchEnabled, path}) {
                 sx={{
                   color: 'fg.default',
                   fontWeight: 'bold',
-                  fontSize: 1,
                   display: [
                     // We only hide "Primer" on small viewports if a shortName is defined.
                     siteMetadata.shortName ? 'none' : 'inline-block',
@@ -72,7 +71,6 @@ function Header({isSearchEnabled, path}) {
                     sx={{
                       display: ['none', null, null, 'inline-block'],
                       color: 'fg.default',
-                      fontSize: 1,
                       mx: 2
                     }}
                   >
@@ -84,7 +82,6 @@ function Header({isSearchEnabled, path}) {
                   to="/"
                   sx={{
                     fontWeight: 'bold',
-                    fontSize: 1,
                     color: 'fg.default'
                   }}
                 >
@@ -150,7 +147,12 @@ function PrimerNavItems({siteMetadata, items, path}) {
       <UnderlineNav aria-label="main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
           return (
-            <UnderlineNav.Link key={index} href={item.url} selected={item.url === siteMetadata.header.url + path}>
+            <UnderlineNav.Link
+              key={index}
+              href={item.url}
+              selected={item.url === siteMetadata.header.url + path}
+              sx={{fontSize: 2, lineHeight: 'condensed'}}
+            >
               {item.title}
             </UnderlineNav.Link>
           )
