@@ -1,5 +1,12 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.6.1
+
+### Patch Changes
+
+- [`e2cd01a`](https://github.com/primer/doctocat/commit/e2cd01a79e668c21a762e82a5f1b914be0d0c5b6) [#613](https://github.com/primer/doctocat/pull/613) Thanks [@josepmartins](https://github.com/josepmartins)! - - Fix the primer navigation about link
+  - Removes mono space font in the nav drawer + fontweight bold to match top left navigation
+
 ## 4.6.0
 
 ### Minor Changes
