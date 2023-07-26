@@ -147,7 +147,12 @@ function PrimerNavItems({siteMetadata, items, path}) {
       <UnderlineNav aria-label="main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
           return (
-            <UnderlineNav.Link key={index} href={item.url} selected={item.url === siteMetadata.header.url + path}>
+            <UnderlineNav.Link
+              key={index}
+              href={item.url}
+              selected={item.url === siteMetadata.header.url + path}
+              sx={{fontSize: 2, lineHeight: 'condensed'}}
+            >
               {item.title}
             </UnderlineNav.Link>
           )
