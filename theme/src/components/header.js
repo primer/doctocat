@@ -156,7 +156,7 @@ function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
             <UnderlineNav.Link
               key={index}
               href={item.url}
-              selected={item.url === siteMetadata.header.url + pathPrefix + path}
+              selected={item.url === siteMetadata.header.url + (pathPrefix || '') + (path || '')}
               sx={{fontSize: 2, lineHeight: 'condensed'}}
             >
               {item.title}
