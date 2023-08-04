@@ -5,6 +5,7 @@ import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
 import primerNavItems from '../primer-nav.yml'
 import useSiteMetadata from '../use-site-metadata'
+import usePathPrefix from '../use-path-prefix'
 import MobileSearch from './mobile-search'
 import NavDrawer, {useNavDrawerState} from './nav-drawer'
 import Search from './search'
@@ -17,6 +18,7 @@ function Header({isSearchEnabled, path}) {
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useNavDrawerState(theme.breakpoints[2])
   const [isMobileSearchOpen, setIsMobileSearchOpen] = React.useState(false)
   const siteMetadata = useSiteMetadata()
+  const pathPrefix = usePathPrefix()
 
   return (
     <ThemeProvider>
@@ -92,7 +94,7 @@ function Header({isSearchEnabled, path}) {
           </Box>
           <Box>
             <Box sx={{display: ['none', null, null, 'flex'], alignItems: 'center'}}>
-              <PrimerNavItems path={path} siteMetadata={siteMetadata} items={primerNavItems} />
+              <PrimerNavItems path={path} siteMetadata={siteMetadata} pathPrefix={pathPrefix} items={primerNavItems} />
               {isSearchEnabled ? (
                 <Box sx={{display: ['none', null, null, 'block'], ml: 3}}>
                   <Search />
@@ -138,7 +140,11 @@ Header.defaultProps = {
   isSearchEnabled: true
 }
 
-function PrimerNavItems({siteMetadata, items, path}) {
+function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
+  console.log('header url', siteMetadata.header.url)
+  console.log('pathPrefix', pathPrefix)
+  console.log('path', path)
+
   return (
     <>
       <VisuallyHidden>
@@ -150,7 +156,7 @@ function PrimerNavItems({siteMetadata, items, path}) {
             <UnderlineNav.Link
               key={index}
               href={item.url}
-              selected={item.url === siteMetadata.header.url + path}
+              selected={item.url === siteMetadata.header.url + pathPrefix + path}
               sx={{fontSize: 2, lineHeight: 'condensed'}}
             >
               {item.title}
