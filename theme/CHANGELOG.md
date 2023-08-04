@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.6.3
+
+### Patch Changes
+
+- [`af1a0e1`](https://github.com/primer/doctocat/commit/af1a0e1bab8df4d241a3e1e760fe6924b887372f) [#621](https://github.com/primer/doctocat/pull/621) Thanks [@josepmartins](https://github.com/josepmartins)! - Fixes selected state when the path is `undefined`
+
 ## 4.6.2
 
 ### Patch Changes
