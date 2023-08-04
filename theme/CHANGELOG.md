@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.6.2
+
+### Patch Changes
+
+- [`545c1ef`](https://github.com/primer/doctocat/commit/545c1ef96087e3da1990c206e484f0bd06e5eb39) [#618](https://github.com/primer/doctocat/pull/618) Thanks [@josepmartins](https://github.com/josepmartins)! - Add missing `pathPrefix`` to the selected state in Underlinenav items
+
 ## 4.6.1
 
 ### Patch Changes
