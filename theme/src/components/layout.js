@@ -73,7 +73,7 @@ function Layout({children, pageContext, path}) {
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
       <Header path={path} />
-      <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
+      <Box css={{zIndex: 0}} sx={{maxWidth: '960px', flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
         <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
         </Box>
