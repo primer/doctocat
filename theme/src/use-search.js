@@ -44,7 +44,7 @@ function useSearch(query) {
       rawBody: node.rawBody
     }))
 
-    return [...mdxData, data.allCustomSearchDoc.nodes]
+    return [...mdxData, ...data.allCustomSearchDoc.nodes]
   }, [data])
 
   const [results, setResults] = React.useState(list)
