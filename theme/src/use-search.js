@@ -10,7 +10,7 @@ function useSearch(query) {
   const workerRef = React.useRef()
 
   const data = useStaticQuery(graphql`
-    {
+    query {
       allMdx {
         nodes {
           fileAbsolutePath
@@ -28,15 +28,17 @@ function useSearch(query) {
       }
 
       allCustomSearchDoc {
-        path
-        title
-        rawBody
+        nodes {
+          path
+          title
+          rawBody
+        }
       }
     }
   `)
 
   const list = React.useMemo(() => {
-    const mdxData = data.allMdx.nodes.map(node => ({
+    const results = data.allMdx.nodes.map(node => ({
       path: ensureAbsolute(
         path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
       ),
@@ -44,7 +46,11 @@ function useSearch(query) {
       rawBody: node.rawBody
     }))
 
-    return [...mdxData, ...data.allCustomSearchDoc.nodes]
+    if (data.allCustomSearchDoc.nodes) {
+      results.push(...data.allCustomSearchDoc.nodes)
+    }
+
+    return results
   }, [data])
 
   const [results, setResults] = React.useState(list)
