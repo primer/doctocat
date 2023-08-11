@@ -26,20 +26,26 @@ function useSearch(query) {
           }
         }
       }
+
+      allCustomSearchDoc {
+        path
+        title
+        rawBody
+      }
     }
   `)
 
-  const list = React.useMemo(
-    () =>
-      data.allMdx.nodes.map(node => ({
-        path: ensureAbsolute(
-          path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
-        ),
-        title: node.frontmatter.title,
-        rawBody: node.rawBody
-      })),
-    [data]
-  )
+  const list = React.useMemo(() => {
+    const mdxData = data.allMdx.nodes.map(node => ({
+      path: ensureAbsolute(
+        path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
+      ),
+      title: node.frontmatter.title,
+      rawBody: node.rawBody
+    }))
+
+    return [...mdxData, data.allCustomSearchDoc.nodes]
+  }, [data])
 
   const [results, setResults] = React.useState(list)
 
