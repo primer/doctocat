@@ -73,7 +73,7 @@ function Layout({children, pageContext, path}) {
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
       <Header path={path} />
-      <Box css={{zIndex: 0}} sx={{maxWidth: '1200', flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
+      <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
         <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
         </Box>
@@ -82,6 +82,8 @@ function Layout({children, pageContext, path}) {
             justifyContent: 'center',
             flexDirection: 'row-reverse',
             display: 'flex',
+            maxWidth: '1200',
+            mx: 'auto',
             width: '100%',
             p: [4, 5, 6, 7]
           }}
