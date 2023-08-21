@@ -1,5 +1,41 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.6.3
+
+### Patch Changes
+
+- [`af1a0e1`](https://github.com/primer/doctocat/commit/af1a0e1bab8df4d241a3e1e760fe6924b887372f) [#621](https://github.com/primer/doctocat/pull/621) Thanks [@josepmartins](https://github.com/josepmartins)! - Fixes selected state when the path is `undefined`
+
+## 4.6.2
+
+### Patch Changes
+
+- [`545c1ef`](https://github.com/primer/doctocat/commit/545c1ef96087e3da1990c206e484f0bd06e5eb39) [#618](https://github.com/primer/doctocat/pull/618) Thanks [@josepmartins](https://github.com/josepmartins)! - Add missing `pathPrefix`` to the selected state in Underlinenav items
+
+## 4.6.1
+
+### Patch Changes
+
+- [`e2cd01a`](https://github.com/primer/doctocat/commit/e2cd01a79e668c21a762e82a5f1b914be0d0c5b6) [#613](https://github.com/primer/doctocat/pull/613) Thanks [@josepmartins](https://github.com/josepmartins)! - - Fix the primer navigation about link
+  - Removes mono space font in the nav drawer + fontweight bold to match top left navigation
+
+## 4.6.0
+
+### Minor Changes
+
+- [`02eb6b3`](https://github.com/primer/doctocat/commit/02eb6b34f8049305baa7cceb815cd085acd7d845) [#603](https://github.com/primer/doctocat/pull/603) Thanks [@josepmartins](https://github.com/josepmartins)! - Navigation updates:
+
+  - Remove monospace font
+  - Remove dark background and update link colors
+  - Use UnderlineNav for top right links to provide the correct styling
+  - Remove "View components" and "React components" from top and leave "Brand" and "About"
+
+### Patch Changes
+
+- [`ba972b1`](https://github.com/primer/doctocat/commit/ba972b167844f92a8a7c584f7cacf8f595b1db4d) [#610](https://github.com/primer/doctocat/pull/610) Thanks [@josepmartins](https://github.com/josepmartins)! - - Move the heading out of the sidebar Navigation. This fixes the extra divider on top of the navigation.
+  - Remove extra space below the heading when there's no status or external links
+  - Remove extra space when there's no Breadcrumbs
+
 ## 4.5.1
 
 ### Patch Changes
