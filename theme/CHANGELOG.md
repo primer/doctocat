@@ -1,5 +1,15 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.7.0
+
+### Minor Changes
+
+- [`a7749f9`](https://github.com/primer/doctocat/commit/a7749f9d44681e2eaa5b265d35767461a648e259) [#624](https://github.com/primer/doctocat/pull/624) Thanks [@camertron](https://github.com/camertron)! - Ability to add custom docs to search
+
+### Patch Changes
+
+- [`d03feaa`](https://github.com/primer/doctocat/commit/d03feaab9942485559e99da5525ccb34f1502a68) [#623](https://github.com/primer/doctocat/pull/623) Thanks [@emilybrick](https://github.com/emilybrick)! - - Add maxWidth: '1200' to the base layout container so that content widths are consistent across primer.style docs
+
 ## 4.6.3
 
 ### Patch Changes
