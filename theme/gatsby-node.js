@@ -9,6 +9,17 @@ const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
 
 const CONTRIBUTOR_CACHE = new Map()
 
+exports.createSchemaCustomization = async ({actions}) => {
+  const typeDefs = `
+    type CustomSearchDoc implements Node {
+      path: String!
+      title: String!
+      rawBody: String!
+    }
+  `
+  actions.createTypes(typeDefs)
+}
+
 exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
 

@@ -83,6 +83,8 @@ function Layout({children, pageContext, path}) {
             justifyContent: 'center',
             flexDirection: 'row-reverse',
             display: 'flex',
+            maxWidth: '1200px',
+            mx: 'auto',
             width: '100%',
             p: [4, 5, 6, 7]
           }}
