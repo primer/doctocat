@@ -9,6 +9,10 @@
     "lint:fix": "yarn lint -- --fix"
   },
   "prettier": "@github/prettier-config",
+  "resolutions": {
+    "graphql": "^15.4.0",
+    "graphql-compose": "^7.25.0"
+  },
   "devDependencies": {
     "@github/prettier-config": "^0.0.4",
     "eslint": "^8.0.1",
@@ -19,13 +23,13 @@
     "eslint-plugin-react": "^7.26.1",
     "gatsby": "^3.14.6",
     "prettier": "^2.4.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
     "gatsby": "3.x",
-    "react": "^16.9.x",
-    "react-dom": "^16.9.x"
+    "react": "^18.x",
+    "react-dom": "^18.x"
   },
   "dependencies": {
     "@babel/core": "^7.19.1",
