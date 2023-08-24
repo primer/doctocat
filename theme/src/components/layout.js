@@ -15,7 +15,7 @@ import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 import navItems from '../nav.yml'
-import withPrefix from 'gatsby'
+import {withPrefix} from 'gatsby'
 
 const getPageAncestry = (url, object) => {
   const result = []
