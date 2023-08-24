@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 4.7.1
+
+### Patch Changes
+
+- [`ce79030`](https://github.com/primer/doctocat/commit/ce790304dce82ce99f536d474e384ed341db7103) [#628](https://github.com/primer/doctocat/pull/628) Thanks [@emilybrick](https://github.com/emilybrick)! - - Add withPrefix to breadcrumbs
+
 ## 4.7.0
 
 ### Minor Changes
