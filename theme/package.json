@@ -1,6 +1,10 @@
 {
   "name": "@primer/gatsby-theme-doctocat",
+<<<<<<< Updated upstream
   "version": "4.7.1",
+=======
+  "version": "5.0.0",
+>>>>>>> Stashed changes
   "main": "index.js",
   "license": "MIT",
   "scripts": {
