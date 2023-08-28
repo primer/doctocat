@@ -1,5 +1,5 @@
 import {graphql, useStaticQuery} from 'gatsby'
-import path from 'path'
+import path from 'path-browserify'
 import React from 'react'
 import SearchWorker from 'worker-loader!./search.worker.js'
 
