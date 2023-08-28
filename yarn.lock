@@ -8660,7 +8660,7 @@ grapheme-splitter@^1.0.4:
 
 graphql-compose@~7.25.0:
   version "7.25.1"
-  resolved "https://registry.npmjs.org/graphql-compose/-/graphql-compose-7.25.1.tgz"
+  resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-7.25.1.tgz#9d89f72781931590d4dfca6a709f381f2f76b873"
   integrity sha512-TPXTe1BoQkMjp/MH93yA0SQo8PiXxJAv6Eo6K/+kpJELM9l2jZnd5PCduweuXFcKv+nH973wn/VYzYKDMQ9YoQ==
   dependencies:
     graphql-type-json "0.3.2"
@@ -12755,10 +12755,10 @@ prettier@^2.3.2:
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.7.1.tgz"
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
-prettier@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.4.1.tgz"
-  integrity sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==
+prettier@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.2.tgz#78fcecd6d870551aa5547437cdae39d4701dca5b"
+  integrity sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==
 
 pretty-bytes@^5.3.0:
   version "5.3.0"

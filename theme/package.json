@@ -22,7 +22,7 @@
     "eslint-plugin-primer-react": "0.7.4",
     "eslint-plugin-react": "^7.26.1",
     "gatsby": "^3.14.6",
-    "prettier": "^2.4.1",
+    "prettier": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
