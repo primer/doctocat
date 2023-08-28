@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "yarn workspace docs develop",
+    "start": "npm run -w docs develop",
     "release": "changeset publish",
-    "build": "yarn workspace docs build",
-    "build:preview": "yarn workspace docs build:preview"
+    "build": "npm run build -ws --if-present",
+    "build:preview": "npm run -w docs build:preview"
   },
   "workspaces": [
     "theme",
