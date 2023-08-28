@@ -18,6 +18,6 @@ jobs:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
     with:
       node_version: 12
-      install: yarn
-      build: yarn build
+      install: npm ci
+      build: npm run build
       output_dir: docs/public
