@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 5.0.0
+
+### Major Changes
+
+- [`7b07123`](https://github.com/primer/doctocat/commit/7b0712311247b5f8ddf8e306eb89424d162a6e7b) [#479](https://github.com/primer/doctocat/pull/479) Thanks [@joshblack](https://github.com/joshblack)! - Update gatsby to v3
+
 ## 4.7.1
 
 ### Patch Changes
