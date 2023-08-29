@@ -17,7 +17,7 @@ jobs:
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
     with:
-      node_version: 12
+      node_version: 18
       install: npm ci
       build: npm run build
       output_dir: docs/public
