@@ -15,6 +15,7 @@ import StorybookLink from './storybook-link'
 import FigmaLink from './figma-link'
 import TableOfContents from './table-of-contents'
 import navItems from '../nav.yml'
+import {withPrefix} from 'gatsby'
 
 const getPageAncestry = (url, object) => {
   const result = []
@@ -72,7 +73,7 @@ function Layout({children, pageContext, path}) {
   return (
     <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
-      <Header />
+      <Header path={path} />
       <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
         <Box sx={{display: ['none', null, null, 'block']}}>
           <Sidebar />
@@ -82,6 +83,8 @@ function Layout({children, pageContext, path}) {
             justifyContent: 'center',
             flexDirection: 'row-reverse',
             display: 'flex',
+            maxWidth: '1200px',
+            mx: 'auto',
             width: '100%',
             p: [4, 5, 6, 7]
           }}
@@ -91,7 +94,7 @@ function Layout({children, pageContext, path}) {
               sx={{
                 width: 220,
                 flex: '0 0 auto',
-                marginLeft: 6,
+                marginLeft: [null, 7, 8, 9],
                 display: ['none', null, 'block'],
                 position: 'sticky',
                 top: HEADER_HEIGHT + 48,
@@ -99,7 +102,7 @@ function Layout({children, pageContext, path}) {
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Heading as="h3" sx={{fontSize: 2, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+              <Heading as="h3" sx={{fontSize: 1, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
                 On this page
               </Heading>
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
@@ -107,75 +110,77 @@ function Layout({children, pageContext, path}) {
           ) : null}
           <Box sx={{width: '100%', maxWidth: '960px'}}>
             <Box as="main" id="skip-nav" sx={{mb: 4}}>
-              <Breadcrumbs sx={{mb: 4}}>
-                {breadcrumbData.length > 1
-                  ? breadcrumbData.map(item => (
-                      <Breadcrumbs.Item key={item.url} href={item.url} selected={path === item.url}>
-                        {item.title}
-                      </Breadcrumbs.Item>
-                    ))
-                  : null}
-              </Breadcrumbs>
-              <Box sx={{alignItems: 'center', display: 'flex'}}>
-                <Heading as="h1">{title}</Heading>{' '}
-              </Box>
+              {breadcrumbData.length > 1 ? (
+                <Breadcrumbs sx={{mb: 4}}>
+                  {breadcrumbData.map(item => (
+                    <Breadcrumbs.Item key={item.url} href={withPrefix(item.url)} selected={path === item.url}>
+                      {item.title}
+                    </Breadcrumbs.Item>
+                  ))}
+                </Breadcrumbs>
+              ) : null}
+              <Heading as="h1" sx={{fontSize: 7}}>
+                {title}
+              </Heading>
               {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  columnGap: 3,
-                  mb: 7,
-                  mt: 2,
-                  rowGap: 3,
-                  alignItems: 'center',
-                  fontSize: 1
-                }}
-              >
-                {status ? (
-                  <Box
-                    as={'ul'}
-                    sx={{
-                      display: 'flex',
-                      gap: 1,
-                      alignItems: 'center',
-                      m: 0,
-                      p: 0,
-                      paddingInline: 0,
-                      listStyle: 'none'
-                    }}
-                  >
-                    <li>
-                      <StatusLabel status={status} />
-                    </li>
-                    <li>
-                      <AccessibilityLabel a11yReviewed={a11yReviewed} />
-                    </li>
-                  </Box>
-                ) : null}
-                {source || storybook || lookbook || figma || rails || react ? (
-                  <Box
-                    as={'ul'}
-                    sx={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: 4,
-                      alignItems: 'center',
-                      m: 0,
-                      p: 0,
-                      paddingInline: 0,
-                      listStyle: 'none'
-                    }}
-                  >
-                    {source ? <SourceLink href={source} /> : null}
-                    {lookbook ? <LookbookLink href={lookbook} /> : null}
-                    {storybook ? <StorybookLink href={storybook} /> : null}
-                    {react ? <ReactLink href={react} /> : null}
-                    {rails ? <RailsLink href={rails} /> : null}
-                    {figma ? <FigmaLink href={figma} /> : null}
-                  </Box>
-                ) : null}
-              </Box>
+              {status || source || storybook || lookbook || figma || rails || react ? (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    columnGap: 3,
+                    mb: 7,
+                    mt: 2,
+                    rowGap: 3,
+                    alignItems: 'center',
+                    fontSize: 1
+                  }}
+                >
+                  {status ? (
+                    <Box
+                      as={'ul'}
+                      sx={{
+                        display: 'flex',
+                        gap: 1,
+                        alignItems: 'center',
+                        m: 0,
+                        p: 0,
+                        paddingInline: 0,
+                        listStyle: 'none'
+                      }}
+                    >
+                      <li>
+                        <StatusLabel status={status} />
+                      </li>
+                      <li>
+                        <AccessibilityLabel a11yReviewed={a11yReviewed} />
+                      </li>
+                    </Box>
+                  ) : null}
+                  {source || storybook || lookbook || figma || rails || react ? (
+                    <Box
+                      as={'ul'}
+                      sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: 4,
+                        alignItems: 'center',
+                        m: 0,
+                        p: 0,
+                        paddingInline: 0,
+                        listStyle: 'none'
+                      }}
+                    >
+                      {source ? <SourceLink href={source} /> : null}
+                      {lookbook ? <LookbookLink href={lookbook} /> : null}
+                      {storybook ? <StorybookLink href={storybook} /> : null}
+                      {react ? <ReactLink href={react} /> : null}
+                      {rails ? <RailsLink href={rails} /> : null}
+                      {figma ? <FigmaLink href={figma} /> : null}
+                    </Box>
+                  ) : null}
+                </Box>
+              ) : null}
             </Box>
             {pageContext.tableOfContents.items ? (
               <Box

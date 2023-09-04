@@ -59,7 +59,7 @@ function MarkdownHeading({children, ...props}) {
 
 const StyledH1 = styled(StyledHeading).attrs({as: 'h1'})`
   padding-bottom: ${themeGet('space.2')};
-  font-size: ${themeGet('fontSizes.5')};
+  font-size: ${themeGet('fontSizes.7')};
   border-bottom: 1px solid ${themeGet('colors.border.default')};
 `
 
@@ -67,14 +67,17 @@ const StyledH2 = styled(StyledHeading).attrs({as: 'h2'})`
   padding-bottom: ${themeGet('space.2')};
   font-size: ${themeGet('fontSizes.4')};
   border-bottom: 1px solid ${themeGet('colors.border.default')};
+  font-weight: ${themeGet('fontWeights.semibold')};
 `
 
 const StyledH3 = styled(StyledHeading).attrs({as: 'h3'})`
   font-size: ${themeGet('fontSizes.3')};
+  font-weight: ${themeGet('fontWeights.semibold')};
 `
 
 const StyledH4 = styled(StyledHeading).attrs({as: 'h4'})`
   font-size: ${themeGet('fontSizes.2')};
+  font-weight: ${themeGet('fontWeights.semibold')};
 `
 
 const StyledH5 = styled(StyledHeading).attrs({as: 'h5'})`

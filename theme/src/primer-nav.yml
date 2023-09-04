@@ -1,26 +1,4 @@
-- title: Design
-  children:
-    - title: Interface guidelines
-      url: https://primer.style/design
-    - title: Octicons
-      url: https://primer.style/design/foundations/icons
-    - title: Desktop
-      url: https://primer.style/design/native/desktop
-    - title: Mobile
-      url: https://primer.style/design/native/mobile
-    - title: CLI
-      url: https://primer.style/design/native/cli
-- title: Build
-  children:
-    - title: CSS
-      url: https://primer.style/css
-    - title: React
-      url: https://primer.style/react
-    - title: React Brand
-      url: https://primer.style/brand
-    - title: ViewComponents
-      url: https://primer.style/view-components
-- title: Contribute
-  url: https://primer.style/design/guides/contribute
+- title: Brand
+  url: https://primer.style/brand
 - title: About
-  url: https://primer.style/design/guides/about
+  url: https://primer.style/design/about

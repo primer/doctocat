@@ -1,5 +1,5 @@
 import {graphql, useStaticQuery} from 'gatsby'
-import path from 'path'
+import path from 'path-browserify'
 import React from 'react'
 import SearchWorker from 'worker-loader!./search.worker.js'
 
@@ -10,7 +10,7 @@ function useSearch(query) {
   const workerRef = React.useRef()
 
   const data = useStaticQuery(graphql`
-    {
+    query {
       allMdx {
         nodes {
           fileAbsolutePath
@@ -26,20 +26,32 @@ function useSearch(query) {
           }
         }
       }
+
+      allCustomSearchDoc {
+        nodes {
+          path
+          title
+          rawBody
+        }
+      }
     }
   `)
 
-  const list = React.useMemo(
-    () =>
-      data.allMdx.nodes.map(node => ({
-        path: ensureAbsolute(
-          path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
-        ),
-        title: node.frontmatter.title,
-        rawBody: node.rawBody
-      })),
-    [data]
-  )
+  const list = React.useMemo(() => {
+    const results = data.allMdx.nodes.map(node => ({
+      path: ensureAbsolute(
+        path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
+      ),
+      title: node.frontmatter.title,
+      rawBody: node.rawBody
+    }))
+
+    if (data.allCustomSearchDoc.nodes) {
+      results.push(...data.allCustomSearchDoc.nodes)
+    }
+
+    return results
+  }, [data])
 
   const [results, setResults] = React.useState(list)
 
