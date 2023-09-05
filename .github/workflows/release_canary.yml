@@ -23,9 +23,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn
+        run: npm ci
 
       - name: Create .npmrc
         run: |
@@ -40,8 +41,8 @@ jobs:
           echo "$( jq '.version = "0.0.0"' package.json )" > package.json
           echo -e "---\n'@primer/gatsby-theme-doctocat': patch\n---\n\nFake entry to force publishing" > .changeset/force-snapshot-release.md
           rm -f .changeset/pre.json
-          yarn changeset version --snapshot
-          yarn changeset publish --tag canary
+          npx changeset version --snapshot
+          npx changeset publish --tag canary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

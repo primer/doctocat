@@ -12,12 +12,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn
+        run: npm ci
 
       - name: Lint
-        run: yarn workspace @primer/gatsby-theme-doctocat lint
+        run: npm run lint -ws --if-present
 
       - name: Test
-        run: yarn workspace @primer/gatsby-theme-doctocat test
+        run: npm run test -ws --if-present

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint '**/*.{js,ts,tsx}'",
-    "lint:fix": "yarn lint -- --fix"
+    "lint:fix": "npm run lint -- --fix"
   },
   "prettier": "@github/prettier-config",
   "resolutions": {
