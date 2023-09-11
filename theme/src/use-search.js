@@ -13,11 +13,13 @@ function useSearch(query) {
     query {
       allMdx {
         nodes {
-          fileAbsolutePath
+          internal {
+            contentFilePath
+          }
           frontmatter {
             title
           }
-          rawBody
+          body
           parent {
             ... on File {
               relativeDirectory
@@ -31,7 +33,7 @@ function useSearch(query) {
         nodes {
           path
           title
-          rawBody
+          body
         }
       }
     }
@@ -43,7 +45,7 @@ function useSearch(query) {
         path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
       ),
       title: node.frontmatter.title,
-      rawBody: node.rawBody
+      body: node.body
     }))
 
     if (data.allCustomSearchDoc.nodes) {
