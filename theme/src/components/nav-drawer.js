@@ -120,6 +120,8 @@ function PrimerNavItems({items}) {
           <Details key={index}>
             {({open, toggle}) => (
               <>
+                {/* Disabled linging rule due to bug with summary: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/656 */}
+                {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
                 <summary onClick={toggle} onKeyDown={toggle} style={{cursor: 'pointer'}}>
                   <Box sx={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
                     <Text>{item.title}</Text>
