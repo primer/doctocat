@@ -93,13 +93,7 @@ exports.onPostBuild = async ({graphql}) => {
         allSitePage(filter: {context: {frontmatter: {componentId: {ne: null}, status: {ne: null}}}}) {
           nodes {
             path
-            context {
-              frontmatter {
-                componentId
-                status
-                a11yReviewed
-              }
-            }
+            pageContext
           }
         }
       }
@@ -107,10 +101,10 @@ exports.onPostBuild = async ({graphql}) => {
 
     const components = data.allSitePage.nodes.map(node => {
       return {
-        id: node.context.frontmatter.componentId,
+        id: node.pageContext.frontmatter.componentId,
         path: node.path,
-        status: node.context.frontmatter.status.toLowerCase(),
-        a11yReviewed: node.context.frontmatter.a11yReviewed || false,
+        status: node.pageContext.frontmatter.status.toLowerCase(),
+        a11yReviewed: node.pageContext.frontmatter.a11yReviewed || false
       }
     })
 
