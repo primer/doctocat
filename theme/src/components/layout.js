@@ -54,7 +54,7 @@ function Layout({children, pageContext, path}) {
     storybook,
     lookbook,
     additionalContributors,
-    componentId
+    componentId,
   } = pageContext.frontmatter
 
   if (!additionalContributors) {
@@ -86,7 +86,7 @@ function Layout({children, pageContext, path}) {
             maxWidth: '1200px',
             mx: 'auto',
             width: '100%',
-            p: [4, 5, 6, 7]
+            p: [4, 5, 6, 7],
           }}
         >
           {pageContext.tableOfContents.items ? (
@@ -98,7 +98,7 @@ function Layout({children, pageContext, path}) {
                 display: ['none', null, 'block'],
                 position: 'sticky',
                 top: HEADER_HEIGHT + 48,
-                maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 48px)`
+                maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 48px)`,
               }}
               css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
@@ -133,7 +133,7 @@ function Layout({children, pageContext, path}) {
                     mt: 2,
                     rowGap: 3,
                     alignItems: 'center',
-                    fontSize: 1
+                    fontSize: 1,
                   }}
                 >
                   {status ? (
@@ -146,7 +146,7 @@ function Layout({children, pageContext, path}) {
                         m: 0,
                         p: 0,
                         paddingInline: 0,
-                        listStyle: 'none'
+                        listStyle: 'none',
                       }}
                     >
                       <li>
@@ -168,7 +168,7 @@ function Layout({children, pageContext, path}) {
                         m: 0,
                         p: 0,
                         paddingInline: 0,
-                        listStyle: 'none'
+                        listStyle: 'none',
                       }}
                     >
                       {source ? <SourceLink href={source} /> : null}
@@ -191,7 +191,7 @@ function Layout({children, pageContext, path}) {
                   bg: 'canvas.subtle',
                   borderWidth: '1px',
                   borderStyle: 'solid',
-                  borderRadius: 2
+                  borderRadius: 2,
                 }}
               >
                 <Box sx={{px: 3, py: 2}}>

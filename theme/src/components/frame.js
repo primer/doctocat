@@ -29,7 +29,7 @@ function Frame({children}) {
                 {({measureRef}) => <div ref={measureRef}>{children}</div>}
               </Measure>
             </StyleSheetManager>,
-            contentDocument.body
+            contentDocument.body,
           )
       }
     </iframe>

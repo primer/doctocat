@@ -37,8 +37,8 @@ function MarkdownHeading({children, ...props}) {
         sx={{
           color: 'inherit',
           '&:hover, &:focus': {
-            textDecoration: 'none'
-          }
+            textDecoration: 'none',
+          },
         }}
       >
         {children}
@@ -49,7 +49,7 @@ function MarkdownHeading({children, ...props}) {
             ml: 2,
             color: 'fg.muted',
             // !important is needed here to override default icon styles
-            verticalAlign: 'middle !important'
+            verticalAlign: 'middle !important',
           }}
         />
       </Link>

@@ -16,7 +16,7 @@ function PageFooter({editUrl, contributors}) {
         mt: 8,
         py: 5,
         borderStyle: 'solid',
-        borderColor: 'border.default'
+        borderColor: 'border.default',
       }}
     >
       <VisuallyHidden>
@@ -37,7 +37,7 @@ function PageFooter({editUrl, contributors}) {
 }
 
 PageFooter.defaultProps = {
-  contributors: []
+  contributors: [],
 }
 
 export default PageFooter

@@ -5,6 +5,6 @@ import '@testing-library/jest-dom/extend-expect'
 global.ResizeObserver = jest.fn().mockImplementation(() => {
   return {
     observe: jest.fn(),
-    disconnect: jest.fn()
+    disconnect: jest.fn(),
   }
 })
