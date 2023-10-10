@@ -10,7 +10,7 @@ export function DoDontContainer({stacked, children}) {
 }
 
 DoDontContainer.defaultProps = {
-  stacked: false
+  stacked: false,
 }
 
 export function Do(props) {
@@ -34,7 +34,7 @@ function DoDontBase({children, title, bg, borderColor, indented}) {
           backgroundColor: bg,
           borderRadius: '2',
           color: 'fg.onEmphasis',
-          paddingX: '2'
+          paddingX: '2',
         }}
       >
         <Text sx={{fontWeight: 'bold', fontSize: '1', color: 'fg.onEmphasis'}}>{title}</Text>
@@ -48,7 +48,7 @@ function DoDontBase({children, title, bg, borderColor, indented}) {
               borderLeftWidth: '4px',
               borderLeftStyle: 'solid',
               borderLeftColor: borderColor,
-              paddingLeft: '3'
+              paddingLeft: '3',
             }}
           >
             {children}

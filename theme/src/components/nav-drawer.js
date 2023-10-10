@@ -56,7 +56,7 @@ function NavDrawer({isOpen, onDismiss}) {
               borderRadius: 0,
               borderBottomWidth: 1,
               borderColor: 'border.muted',
-              borderStyle: 'solid'
+              borderStyle: 'solid',
             }}
           >
             <Box sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
@@ -80,7 +80,7 @@ function NavDrawer({isOpen, onDismiss}) {
                 flex: '1 0 auto',
                 color: 'fg.default',
                 bg: 'canvas.default',
-                display: 'flex'
+                display: 'flex',
               }}
             >
               <Link
@@ -113,7 +113,7 @@ function PrimerNavItems({items}) {
           borderColor: 'border.muted',
           px: 4,
           py: 3,
-          borderStyle: 'solid'
+          borderStyle: 'solid',
         }}
       >
         {item.children ? (
