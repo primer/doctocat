@@ -35,6 +35,7 @@ function Details({children, overlay, render = getRenderer(children), ...rest}) {
 
   function toggle(event) {
     if (event) event.preventDefault()
+    if (event.key && (event.key !== 'Enter' || event.key !== ' ')) return
     if (overlay) {
       openMenu()
     } else {
