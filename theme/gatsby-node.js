@@ -166,3 +166,26 @@ async function fetchContributors(repo, filePath, accessToken = '') {
     return []
   }
 }
+
+/**
+ * Workaround for missing sitePage.context:
+ * Used for generating sitemap with `gatsby-plugin-react-i18next` and `gatsby-plugin-sitemap` plugins
+ * https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v3-to-v4/#field-sitepagecontext-is-no-longer-available-in-graphql-queries
+ * Found via this issue comment: https://github.com/microapps/gatsby-plugin-react-i18next/issues/143#issuecomment-1183523819
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+  type SitePage implements Node {
+    context: SitePageContext
+  }
+  type SitePageContext {
+    frontmatter: frontmatterContext
+  }
+  type frontmatterContext {
+    componentId: String
+    status: String
+    a11yReviewed: Boolean
+  }
+`)
+}
