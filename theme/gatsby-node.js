@@ -88,7 +88,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
         context: {
           editUrl,
           contributors,
-          tableOfContents: node.tableOfContents,
+          tableOfContents: node.tableOfContents
         }
       })
     })
