@@ -10,14 +10,14 @@ test('renders contributors', () => {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19Z'
+            date: '2019-08-15T23:40:19'
           }
         },
         {
           login: 'emplums',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54Z'
+            date: '2019-08-14T00:19:54'
           }
         }
       ]}
@@ -27,6 +27,7 @@ test('renders contributors', () => {
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeInTheDocument()
   expect(queryByText(/colebemis/)).toBeInTheDocument()
+  expect(queryByText(/Last edited by/)).toBeInTheDocument()
   expect(queryByText(/August 15, 2019/)).toBeInTheDocument()
 })
 
