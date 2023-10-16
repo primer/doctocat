@@ -141,10 +141,6 @@ Header.defaultProps = {
 }
 
 function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
-  console.log('header url', siteMetadata.header.url)
-  console.log('pathPrefix', pathPrefix)
-  console.log('path', path)
-
   return (
     <>
       <VisuallyHidden>
