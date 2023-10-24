@@ -118,23 +118,29 @@ function PrimerNavItems({items}) {
       >
         {item.children ? (
           <Details key={index}>
-            {({open, toggle}) => (
-              <>
-                <summary onClick={toggle} style={{cursor: 'pointer'}}>
-                  <Box sx={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
-                    <Text>{item.title}</Text>
-                    {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+            {({open, toggle}) => {
+              const summaryProps = {
+                onClick: toggle,
+                style: "cursor: 'pointer'",
+              }
+              return (
+                <>
+                  <summary {...summaryProps}>
+                    <Box sx={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
+                      <Text>{item.title}</Text>
+                      {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                    </Box>
+                  </summary>
+                  <Box sx={{flexDirection: 'column', mt: 2, display: 'flex'}}>
+                    {item.children.map(child => (
+                      <Link key={child.title} href={child.url} sx={{py: 1, mt: 2, fontSize: 1, color: 'inherit'}}>
+                        {child.title}
+                      </Link>
+                    ))}
                   </Box>
-                </summary>
-                <Box sx={{flexDirection: 'column', mt: 2, display: 'flex'}}>
-                  {item.children.map(child => (
-                    <Link key={child.title} href={child.url} sx={{py: 1, mt: 2, fontSize: 1, color: 'inherit'}}>
-                      {child.title}
-                    </Link>
-                  ))}
-                </Box>
-              </>
-            )}
+                </>
+              )
+            }}
           </Details>
         ) : (
           <Link key={index} href={item.url} sx={{color: 'inherit', display: 'block'}}>
