@@ -1,5 +1,5 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
-import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
+import {Box, Button, Link, Octicon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
 import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -46,7 +46,7 @@ function Header({isSearchEnabled, path}) {
                 lineHeight: 'condensedUltra',
               }}
             >
-              <StyledOcticon icon={MarkGithubIcon} size="24px" />
+              <Octicon icon={MarkGithubIcon} size="24px" />
             </Link>
             {siteMetadata.header.title ? (
               <Link
