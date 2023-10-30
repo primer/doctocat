@@ -1,5 +1,6 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
 import {Box, Button, Link, Octicon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
+import {UnderlineNav} from '@primer/react/deprecated'
 import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
