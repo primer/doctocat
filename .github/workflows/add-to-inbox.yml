@@ -5,7 +5,7 @@ on:
 
 jobs:
   add-to-inbox:
-    if: ${{ github.repository == 'primer/eslint-plugin-primer-react' }}
+    if: ${{ github.repository == 'primer/doctocat' }}
     runs-on: ubuntu-latest
     env:
       ISSUE_URL: ${{ github.event.issue.html_url }}
