@@ -18,10 +18,7 @@ function Contributors({contributors}) {
         </Text>
         {uniqueContributors.map(contributor => (
           <Tooltip key={contributor.login} aria-label={contributor.login} sx={{mr: 2, lineHeight: 'condensedUltra'}}>
-            <Link
-              key={contributor.login}
-              href={`https://github.com/${contributor.login}`}
-            >
+            <Link key={contributor.login} href={`https://github.com/${contributor.login}`}>
               <Avatar src={`https://github.com/${contributor.login}.png?size=40`} alt={contributor.login} />
             </Link>
           </Tooltip>
