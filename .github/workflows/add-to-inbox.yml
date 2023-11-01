@@ -3,6 +3,9 @@ on:
   issues:
     types: [opened, reopened]
 
+permissions:
+  issues: write
+
 jobs:
   add-to-inbox:
     if: ${{ github.repository == 'primer/doctocat' }}
@@ -13,6 +16,8 @@ jobs:
     steps:
       - name: Add labels to issue
         run: gh issue edit $ISSUE_URL --add-label 'react'
+        env:
+          GH_TOKEN: ${{ github.token }}
       - id: get-github-access-token
         uses: actions/create-github-app-token@v1
         with:
