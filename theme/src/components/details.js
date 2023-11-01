@@ -62,7 +62,7 @@ function Details({children, overlay, render = getRenderer(children), ...rest}) {
 }
 
 Details.defaultProps = {
-  overlay: false
+  overlay: false,
 }
 
 export default Details

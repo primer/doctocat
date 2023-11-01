@@ -48,7 +48,7 @@ const components = {
   DoDontContainer,
   Caption,
   ImageContainer,
-  ...mdxComponents
+  ...mdxComponents,
 }
 
 function wrapRootElement({element}) {

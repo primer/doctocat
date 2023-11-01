@@ -9,6 +9,17 @@ const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
 
 const CONTRIBUTOR_CACHE = new Map()
 
+exports.createSchemaCustomization = async ({actions}) => {
+  const typeDefs = `
+    type CustomSearchDoc implements Node {
+      path: String!
+      title: String!
+      rawBody: String!
+    }
+  `
+  actions.createTypes(typeDefs)
+}
+
 exports.createPages = async ({graphql, actions}, themeOptions) => {
   const repo = getPkgRepo(readPkgUp.sync().package)
 
@@ -68,10 +79,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
           // for us here, and does on the first build,
           // but when HMR kicks in the frontmatter is lost.
           // The solution is to include it here explicitly.
-          frontmatter
-        }
+          frontmatter,
+        },
       })
-    })
+    }),
   )
 }
 
@@ -99,7 +110,7 @@ exports.onPostBuild = async ({graphql}) => {
         id: node.context.frontmatter.componentId,
         path: node.path,
         status: node.context.frontmatter.status.toLowerCase(),
-        a11yReviewed: node.context.frontmatter.a11yReviewed || false
+        a11yReviewed: node.context.frontmatter.a11yReviewed || false,
       }
     })
 
@@ -126,12 +137,12 @@ async function fetchContributors(repo, filePath, accessToken = '') {
     const req = {
       method: 'get',
       baseURL: 'https://api.github.com/',
-      url: `/repos/${repo.user}/${repo.project}/commits?path=${filePath}&per_page=100`
+      url: `/repos/${repo.user}/${repo.project}/commits?path=${filePath}&per_page=100`,
     }
 
     if (accessToken && accessToken.length) {
       req.headers = {
-        Authorization: `token ${accessToken}`
+        Authorization: `token ${accessToken}`,
       }
     }
 
@@ -142,8 +153,8 @@ async function fetchContributors(repo, filePath, accessToken = '') {
         login: commit.author && commit.author.login,
         latestCommit: {
           date: commit.commit.author.date,
-          url: commit.html_url
-        }
+          url: commit.html_url,
+        },
       }))
       .filter(contributor => Boolean(contributor.login))
 
