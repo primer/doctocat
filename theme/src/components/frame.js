@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom'
 import {StyleSheetManager} from 'styled-components'
 import Measure from 'react-measure'
 
-function Frame({children}) {
+function Frame({title = 'Code frame', children}) {
   const [height, setHeight] = React.useState('auto')
   const [iframeRef, setIframeRef] = React.useState(null)
   const contentDocument = iframeRef ? iframeRef.contentWindow.document : null
 
   return (
-    // eslint-disable-next-line jsx-a11y/iframe-has-title
-    <iframe ref={setIframeRef} style={{width: '100%', border: 0, borderRadius: 6, height}}>
+    <iframe ref={setIframeRef} style={{width: '100%', border: 0, borderRadius: 6, height}} title={title}>
       {
         // By default, styled-components injects styles in the head of the page.
         // However, styles from the page's head don't apply inside iframes.
