@@ -12,8 +12,8 @@ function NavDropdown({title, children}) {
           fontSize: 2,
           color: 'fg.default',
           ':hover:not([disabled])': {
-            backgroundColor: 'canvas.subtle'
-          }
+            backgroundColor: 'canvas.subtle',
+          },
         }}
       >
         {title}

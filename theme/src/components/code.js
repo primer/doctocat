@@ -24,7 +24,7 @@ function Code({className, children, live, highlight, noinline, metastring}) {
         display: 'table',
         tableLayout: 'fixed',
         width: '100%',
-        position: 'relative'
+        position: 'relative',
       }}
     >
       <Box sx={{top: 0, right: 0, p: 2, position: 'absolute'}}>
