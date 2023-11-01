@@ -12,6 +12,6 @@
   ],
   "dependencies": {
     "@changesets/changelog-github": "^0.2.7",
-    "@changesets/cli": "^2.10.3"
+    "@changesets/cli": "^2.26.2"
   }
 }

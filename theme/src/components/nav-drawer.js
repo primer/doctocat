@@ -120,7 +120,14 @@ function PrimerNavItems({items}) {
           <Details key={index}>
             {({open, toggle}) => (
               <>
-                <summary onClick={toggle} style={{cursor: 'pointer'}}>
+                {/*eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+                <summary
+                  //The following line of code has only an onClick event and no keyboard event and its a non static
+                  //element. This is because we don't want it to be a tabstop thats tedious for keyboard users and sr's.
+                  //This needs to be a hard exception
+                  onClick={toggle}
+                  style={{cursor: 'pointer'}}
+                >
                   <Box sx={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
                     <Text>{item.title}</Text>
                     {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
