@@ -63,7 +63,7 @@
     "gatsby-plugin-styled-components": "^4.14.0",
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-yaml": "^3.14.0",
-    "get-pkg-repo": "^4.1.0",
+    "get-pkg-repo": "^5.0.0",
     "github-slugger": "^1.2.1",
     "html-react-parser": "^5.0.3",
     "jest": "^24.9.0",
