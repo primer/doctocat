@@ -33,7 +33,7 @@ function Header({isSearchEnabled, path}) {
             justifyContent: 'space-between',
             bg: 'canvas.default',
             border: '1px solid',
-            borderColor: 'border.muted'
+            borderColor: 'border.muted',
           }}
         >
           <SkipLink />
@@ -43,7 +43,7 @@ function Header({isSearchEnabled, path}) {
               sx={{
                 color: 'fg.default',
                 mr: 3,
-                lineHeight: 'condensedUltra'
+                lineHeight: 'condensedUltra',
               }}
             >
               <StyledOcticon icon={MarkGithubIcon} size="24px" />
@@ -59,8 +59,8 @@ function Header({isSearchEnabled, path}) {
                     siteMetadata.shortName ? 'none' : 'inline-block',
                     null,
                     null,
-                    'inline-block'
-                  ]
+                    'inline-block',
+                  ],
                 }}
               >
                 {siteMetadata.header.title}
@@ -73,7 +73,7 @@ function Header({isSearchEnabled, path}) {
                     sx={{
                       display: ['none', null, null, 'inline-block'],
                       color: 'fg.default',
-                      mx: 2
+                      mx: 2,
                     }}
                   >
                     /
@@ -84,7 +84,7 @@ function Header({isSearchEnabled, path}) {
                   to="/"
                   sx={{
                     fontWeight: 'bold',
-                    color: 'fg.default'
+                    color: 'fg.default',
                   }}
                 >
                   {siteMetadata.shortName}
@@ -109,7 +109,7 @@ function Header({isSearchEnabled, path}) {
                     aria-expanded={isMobileSearchOpen}
                     onClick={() => setIsMobileSearchOpen(true)}
                     sx={{
-                      ml: 3
+                      ml: 3,
                     }}
                   >
                     <SearchIcon />
@@ -122,7 +122,7 @@ function Header({isSearchEnabled, path}) {
                 aria-expanded={isNavDrawerOpen}
                 onClick={() => setIsNavDrawerOpen(true)}
                 sx={{
-                  ml: 3
+                  ml: 3,
                 }}
               >
                 <ThreeBarsIcon />
@@ -137,14 +137,10 @@ function Header({isSearchEnabled, path}) {
 }
 
 Header.defaultProps = {
-  isSearchEnabled: true
+  isSearchEnabled: true,
 }
 
 function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
-  console.log('header url', siteMetadata.header.url)
-  console.log('pathPrefix', pathPrefix)
-  console.log('path', path)
-
   return (
     <>
       <VisuallyHidden>

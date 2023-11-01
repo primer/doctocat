@@ -14,7 +14,7 @@ function AccessibilityLabel({a11yReviewed, short}) {
             gap: 2,
             backgroundColor: 'done.subtle',
             fontWeight: 'normal',
-            borderColor: 'transparent'
+            borderColor: 'transparent',
           }}
         >
           <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
@@ -26,7 +26,7 @@ function AccessibilityLabel({a11yReviewed, short}) {
           sx={{
             backgroundColor: 'neutral.subtle',
             fontWeight: 'normal',
-            borderColor: 'transparent'
+            borderColor: 'transparent',
           }}
         >
           {short ? 'Not reviewed' : 'Not reviewed for accessibility'}

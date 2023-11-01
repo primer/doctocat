@@ -52,7 +52,7 @@ function MobileSearch({isOpen, onDismiss}) {
                 bottom: 0,
                 bg: 'primer.canvas.backdrop',
                 zIndex: -1,
-                position: 'absolute'
+                position: 'absolute',
               }}
             />
             <Downshift
@@ -72,7 +72,7 @@ function MobileSearch({isOpen, onDismiss}) {
                 <Box
                   {...getRootProps({
                     flexDirection: 'column',
-                    height: isMenuOpen ? '100%' : 'auto'
+                    height: isMenuOpen ? '100%' : 'auto',
                   })}
                   sx={{display: 'flex'}}
                 >
@@ -88,7 +88,7 @@ function MobileSearch({isOpen, onDismiss}) {
                         leadingVisual={SearchIcon}
                         {...getInputProps({
                           placeholder: `Search`,
-                          sx: {width: '100%'}
+                          sx: {width: '100%'},
                         })}
                       />
                     </motion.div>
@@ -107,8 +107,8 @@ function MobileSearch({isOpen, onDismiss}) {
                         flex: '1 1 auto',
                         style: {
                           overflow: 'auto',
-                          WebkitOverflowScrolling: 'touch'
-                        }
+                          WebkitOverflowScrolling: 'touch',
+                        },
                       })}
                     >
                       <SearchResults

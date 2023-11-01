@@ -51,8 +51,8 @@ function Search() {
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
               sx: {
-                width: 300
-              }
+                width: 300,
+              },
             })}
           />
           {isOpen ? (
@@ -61,7 +61,7 @@ function Search() {
                 position: 'absolute',
                 left: 0,
                 right: 0,
-                pt: 2
+                pt: 2,
               })}
             >
               <ThemeProvider colorMode="day">
@@ -76,7 +76,7 @@ function Search() {
                     bg: 'canvas.overlay',
                     borderRadius: '12px',
                     borderWidth: '1px',
-                    borderStyle: 'solid'
+                    borderStyle: 'solid',
                   }}
                 >
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />

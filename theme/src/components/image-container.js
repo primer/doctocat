@@ -10,7 +10,7 @@ function ImageContainer({children}) {
         borderWidth: '1px',
         borderStyle: 'solid',
         borderColor: 'border.default',
-        borderRadius: 2
+        borderRadius: 2,
       }}
     >
       <Box sx={{img: {maxWidth: '100%'}, justifyContent: 'center', display: 'flex'}}>{children}</Box>

@@ -16,22 +16,22 @@ const Note = styled.div`
     variants: {
       info: {
         borderColor: 'accent.muted',
-        bg: 'accent.subtle'
+        bg: 'accent.subtle',
       },
       warning: {
         borderColor: 'attention.muted',
-        bg: 'attention.subtle'
+        bg: 'attention.subtle',
       },
       danger: {
         borderColor: 'danger.muted',
-        bg: 'danger.subtle'
-      }
-    }
+        bg: 'danger.subtle',
+      },
+    },
   })}
 `
 
 Note.defaultProps = {
-  variant: 'info'
+  variant: 'info',
 }
 
 export default Note

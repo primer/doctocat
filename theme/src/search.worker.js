@@ -18,7 +18,7 @@ import debounce from 'lodash.debounce'
       postMessage({results: results, query: query})
     },
     50,
-    {leading: true, trailing: true}
+    {leading: true, trailing: true},
   )
 
   onmessage = function ({data}) {
@@ -26,7 +26,7 @@ import debounce from 'lodash.debounce'
       fuse = new Fuse(data.list, {
         threshold: 0.2,
         keys: ['title', 'rawBody'],
-        tokenize: true
+        tokenize: true,
       })
     } else if (data.query) {
       performSearch(data.query)

@@ -10,7 +10,7 @@ function usePersistentScroll(id) {
   const handleScroll = React.useCallback(
     // Save scroll position in session storage on every scroll change
     event => window.sessionStorage.setItem(id, event.target.scrollTop),
-    [id]
+    [id],
   )
 
   React.useLayoutEffect(() => {
@@ -24,7 +24,7 @@ function usePersistentScroll(id) {
   // Return props to spread onto the scroll container
   return {
     ref,
-    onScroll: handleScroll
+    onScroll: handleScroll,
   }
 }
 
@@ -37,7 +37,7 @@ function Sidebar() {
         position: 'sticky',
         top: HEADER_HEIGHT,
         height: `calc(100vh - ${HEADER_HEIGHT}px)`,
-        width: 260
+        width: 260,
       }}
     >
       <Box
@@ -50,7 +50,7 @@ function Sidebar() {
           height: '100%',
           borderStyle: 'solid',
           borderColor: 'border.subtle',
-          px: 2
+          px: 2,
         }}
       >
         <Box sx={{flexDirection: 'column', display: 'flex'}}>
