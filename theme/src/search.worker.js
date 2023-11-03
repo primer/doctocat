@@ -18,7 +18,7 @@ import debounce from 'lodash.debounce'
       postMessage({results: results, query: query})
     },
     50,
-    {leading: true, trailing: true}
+    {leading: true, trailing: true},
   )
 
   onmessage = function ({data}) {

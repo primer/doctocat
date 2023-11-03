@@ -21,7 +21,7 @@ test('renders contributors', () => {
           }
         }
       ]}
-    />
+    />,
   )
 
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
@@ -54,18 +54,18 @@ test('does not render duplicate contributors', () => {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19Z'
-          }
+            date: '2019-08-15T23:40:19Z',
+          },
         },
         {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54Z'
-          }
-        }
+            date: '2019-08-14T00:19:54Z',
+          },
+        },
       ]}
-    />
+    />,
   )
 
   expect(queryByText(/1 contributor/)).toBeInTheDocument()

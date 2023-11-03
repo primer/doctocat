@@ -8,10 +8,10 @@ module.exports = themeOptions => {
       header: {
         title: 'Primer',
         url: 'https://primer.style',
-        logoUrl: 'https://primer.style'
+        logoUrl: 'https://primer.style',
       },
       description: 'A Gatsby theme for creating Primer documentation sites',
-      imageUrl: 'https://user-images.githubusercontent.com/10384315/53922681-2f6d3100-402a-11e9-9719-5d1811c8110a.png'
+      imageUrl: 'https://user-images.githubusercontent.com/10384315/53922681-2f6d3100-402a-11e9-9719-5d1811c8110a.png',
     },
     plugins: [
       'gatsby-plugin-styled-components',
@@ -23,16 +23,16 @@ module.exports = themeOptions => {
         options: {
           extensions: ['.mdx', '.md'],
           defaultLayouts: {
-            default: require.resolve('./src/components/layout.js')
-          }
-        }
+            default: require.resolve('./src/components/layout.js'),
+          },
+        },
       },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'content',
-          path: path.resolve('./content')
-        }
+          path: path.resolve('./content'),
+        },
       },
       {
         resolve: 'gatsby-plugin-manifest',

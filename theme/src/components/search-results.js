@@ -23,7 +23,7 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
         fontSize: 1,
         bg: highlightedIndex === index ? 'neutral.muted' : 'transparent',
         style: {cursor: 'pointer'},
-        borderRadius: 2
+        borderRadius: 2,
       })}
       sx={{display: 'flex'}}
     >
@@ -42,7 +42,7 @@ function getBreadcrumbs(siteTitle, path) {
       // The last title will be displayed separately, so we exclude it
       // from the breadcrumbs to avoid displaying it twice.
       .slice(0, -1)
-      .map(sentenceCase)
+      .map(sentenceCase),
   ]
 }
 

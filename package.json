@@ -12,7 +12,7 @@
   ],
   "dependencies": {
     "@changesets/changelog-github": "^0.2.7",
-    "@changesets/cli": "^2.10.3",
-    "@primer/react": "^35.31.0"
+    "@primer/react": "^35.31.0",
+    "@changesets/cli": "^2.26.2"
   }
 }

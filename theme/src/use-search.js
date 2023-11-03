@@ -39,7 +39,7 @@ function useSearch(query) {
   const list = React.useMemo(() => {
     const results = data.allMdx.nodes.map(node => ({
       path: ensureAbsolute(
-        path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name)
+        path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name),
       ),
       title: node.frontmatter.title,
       body: node.body
