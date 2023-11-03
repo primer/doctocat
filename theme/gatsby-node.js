@@ -4,17 +4,26 @@ const readPkgUp = require('read-pkg-up')
 const getPkgRepo = require('get-pkg-repo')
 const axios = require('axios')
 const uniqBy = require('lodash.uniqby')
-const extractExports = require(`gatsby-plugin-mdx/utils/extract-exports`)
-const mdx = require(`gatsby-plugin-mdx/utils/mdx`)
 
 const CONTRIBUTOR_CACHE = new Map()
 
 exports.createSchemaCustomization = async ({actions}) => {
   const typeDefs = `
+    type SitePage implements Node {
+      context: SitePageContext
+    }
+    type SitePageContext {
+      frontmatter: frontmatterContext
+    }
+    type frontmatterContext {
+      componentId: String
+      status: String
+      a11yReviewed: Boolean
+    }
     type CustomSearchDoc implements Node {
       path: String!
       title: String!
-      rawBody: String!
+      body: String!
     }
   `
   actions.createTypes(typeDefs)
@@ -27,8 +36,10 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
     query {
       allMdx {
         nodes {
-          fileAbsolutePath
-          rawBody
+          internal {
+            contentFilePath
+          }
+          body
           tableOfContents(maxDepth: 2)
           parent {
             ... on File {
@@ -54,7 +65,7 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
 
       const rootAbsolutePath = path.resolve(process.cwd(), themeOptions.repoRootPath || '.')
 
-      const fileRelativePath = path.relative(rootAbsolutePath, node.fileAbsolutePath)
+      const fileRelativePath = path.relative(rootAbsolutePath, node.internal.contentFilePath)
       const defaultBranch = themeOptions.defaultBranch || 'main'
       const editUrl = getEditUrl(repo, fileRelativePath, defaultBranch)
 
@@ -63,23 +74,13 @@ exports.createPages = async ({graphql, actions}, themeOptions) => {
         contributors = await fetchContributors(repo, fileRelativePath, process.env.GITHUB_TOKEN)
       }
 
-      // Copied from gatsby-plugin-mdx (https://git.io/JUs3H)
-      // as a workaround for https://github.com/gatsbyjs/gatsby/issues/21837
-      const code = await mdx(node.rawBody)
-      const {frontmatter} = extractExports(code)
-
       actions.createPage({
         path: pagePath,
-        component: node.fileAbsolutePath,
+        component: node.internal.contentFilePath,
         context: {
           editUrl,
           contributors,
           tableOfContents: node.tableOfContents,
-          // Note: gatsby-plugin-mdx should insert frontmatter
-          // for us here, and does on the first build,
-          // but when HMR kicks in the frontmatter is lost.
-          // The solution is to include it here explicitly.
-          frontmatter,
         },
       })
     }),

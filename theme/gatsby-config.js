@@ -15,17 +15,12 @@ module.exports = themeOptions => {
     },
     plugins: [
       'gatsby-plugin-styled-components',
-      'gatsby-plugin-react-helmet',
-      'gatsby-plugin-remove-trailing-slashes',
       'gatsby-plugin-catch-links',
       'gatsby-transformer-yaml',
       {
         resolve: 'gatsby-plugin-mdx',
         options: {
           extensions: ['.mdx', '.md'],
-          defaultLayouts: {
-            default: require.resolve('./src/components/layout.js'),
-          },
         },
       },
       {
@@ -42,5 +37,6 @@ module.exports = themeOptions => {
         },
       },
     ],
+    trailingSlash: false,
   }
 }
