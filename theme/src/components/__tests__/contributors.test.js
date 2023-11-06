@@ -10,16 +10,16 @@ test('renders contributors', () => {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19'
-          }
+            date: '2019-08-15T23:40:19',
+          },
         },
         {
           login: 'emplums',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54'
-          }
-        }
+            date: '2019-08-14T00:19:54',
+          },
+        },
       ]}
     />,
   )

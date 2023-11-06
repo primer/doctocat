@@ -42,7 +42,7 @@ function useSearch(query) {
         path.join(node.parent.relativeDirectory, node.parent.name === 'index' ? '/' : node.parent.name),
       ),
       title: node.frontmatter.title,
-      body: node.body
+      body: node.body,
     }))
 
     if (data.allCustomSearchDoc.nodes) {

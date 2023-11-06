@@ -37,10 +37,10 @@ module.exports = themeOptions => {
       {
         resolve: 'gatsby-plugin-manifest',
         options: {
-          icon: themeOptions.icon ? path.resolve(themeOptions.icon) : require.resolve('./src/images/favicon.png')
-        }
-      }
+          icon: themeOptions.icon ? path.resolve(themeOptions.icon) : require.resolve('./src/images/favicon.png'),
+        },
+      },
     ],
-    trailingSlash: false
+    trailingSlash: false,
   }
 }

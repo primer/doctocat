@@ -12,5 +12,5 @@ global.ResizeObserver = jest.fn().mockImplementation(() => {
 // Some weird issue with JSDOM and CSS.supports
 // Copied from https://github.com/kazzkiq/CodeFlask/issues/136
 Object.defineProperty(global.CSS, 'supports', {
-  value: () => jest.fn()
+  value: () => jest.fn(),
 })

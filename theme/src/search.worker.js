@@ -26,7 +26,7 @@ import debounce from 'lodash.debounce'
       fuse = new Fuse(data.list, {
         threshold: 0.2,
         keys: ['title', 'body'],
-        tokenize: true
+        tokenize: true,
       })
     } else if (data.query) {
       performSearch(data.query)
