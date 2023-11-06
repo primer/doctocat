@@ -120,12 +120,12 @@ function PrimerNavItems({items}) {
           <Details key={index}>
             {({open, toggle}) => (
               <>
+              {/*TODO: Before merging this PR, check the validitity of this:
+                  The following line of code has only an onClick event and no keyboard event and its a non static
+                  element. This is because we don't want it to be a tabstop thats tedious for keyboard users and sr's.
+                  This needs to be a hard exception.*/}
                 {/*eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-                <summary
-                  //TODO: Before merging this PR, check the validitity of this:
-                  //The following line of code has only an onClick event and no keyboard event and its a non static
-                  //element. This is because we don't want it to be a tabstop thats tedious for keyboard users and sr's.
-                  //This needs to be a hard exception
+                <summary                  
                   onClick={toggle}
                   style={{cursor: 'pointer'}}
                 >
