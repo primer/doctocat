@@ -23,7 +23,7 @@ test('renders contributors', () => {
       ]}
     />,
   )
-      debug()
+  debug()
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeInTheDocument()
   expect(queryByText(/colebemis/)).toBeInTheDocument()
