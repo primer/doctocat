@@ -1,4 +1,4 @@
-import {Label, StyledOcticon} from '@primer/react'
+import {Label, Octicon} from '@primer/react'
 import {DotFillIcon} from '@primer/octicons-react'
 import React from 'react'
 
@@ -37,7 +37,7 @@ function StatusLabel({status}) {
         fontWeight: 'normal',
       }}
     >
-      <StyledOcticon icon={DotFillIcon} sx={{color: getStatusColor(status)}} />
+      <Octicon icon={DotFillIcon} sx={{color: getStatusColor(status)}} />
       {status}
     </Label>
   )
