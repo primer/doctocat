@@ -27,7 +27,7 @@ test('renders contributors', () => {
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeInTheDocument()
   expect(queryByText(/colebemis/)).toBeInTheDocument()
-  expect(queryByText(/August 16, 2019/)).toBeInTheDocument()
+  expect(queryByText(/August 15, 2019/)).toBeInTheDocument()
 })
 
 test('does not render "last edited by" if latest contributor does not have a latest commit', () => {
