@@ -1,4 +1,4 @@
-import {Box, Text} from '@primer/react'
+import {Box, Text, useTheme} from '@primer/react'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from '../github'
 import React, {useState} from 'react'
@@ -71,7 +71,7 @@ function LineHighlighter({enabled, range, children}) {
 }
 
 function LiveCode({code, language, highlight, noinline, metastring}) {
-  const theme = React.useContext(ThemeContext)
+  const {theme} = useTheme()
   const [liveCode, setLiveCode] = useState(code)
   const [pristine, setPristine] = useState(true)
   const handleChange = updatedLiveCode => {

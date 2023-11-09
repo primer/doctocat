@@ -46,7 +46,7 @@ function Header({isSearchEnabled, path}) {
                 lineHeight: 'condensedUltra',
               }}
             >
-              <Octicon icon={MarkGithubIcon} size="24px" />
+              <Octicon icon={MarkGithubIcon} size={24} />
             </Link>
             {siteMetadata.header.title ? (
               <Link
@@ -148,15 +148,16 @@ function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
       </VisuallyHidden>
       <UnderlineNav aria-label="Main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
+          const current = item.url === siteMetadata.header.url + (pathPrefix || '') + (path || '')
           return (
-            <UnderlineNav.Link
+            <UnderlineNav.Item
               key={index}
               href={item.url}
-              selected={item.url === siteMetadata.header.url + (pathPrefix || '') + (path || '')}
+              aria-current={current ? true : undefined}
               sx={{fontSize: 2, lineHeight: 'condensed'}}
             >
               {item.title}
-            </UnderlineNav.Link>
+            </UnderlineNav.Item>
           )
         })}
       </UnderlineNav>
