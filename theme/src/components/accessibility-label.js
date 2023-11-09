@@ -1,4 +1,4 @@
-import {Label, Octicon} from '@primer/react'
+import {Label, StyledOcticon} from '@primer/react'
 import {AccessibilityInsetIcon} from '@primer/octicons-react'
 import React from 'react'
 
@@ -17,7 +17,7 @@ function AccessibilityLabel({a11yReviewed, short}) {
             borderColor: 'transparent',
           }}
         >
-          <Octicon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
+          <StyledOcticon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
           {short ? 'Reviewed' : 'Reviewed for accessibility'}
         </Label>
       ) : (
