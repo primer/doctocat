@@ -3,7 +3,7 @@ import React from 'react'
 import Contributors from '../contributors'
 
 test('renders contributors', () => {
-  const {queryByText} = render(
+  const {queryByText, debug} = render(
     <Contributors
       contributors={[
         {
@@ -23,7 +23,7 @@ test('renders contributors', () => {
       ]}
     />,
   )
-
+  debug()
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeInTheDocument()
   expect(queryByText(/colebemis/)).toBeInTheDocument()

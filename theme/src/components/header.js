@@ -1,5 +1,5 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
-import {Box, Button, Link, StyledOcticon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
+import {Box, Button, Link, Octicon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
 import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -46,7 +46,7 @@ function Header({isSearchEnabled, path}) {
                 lineHeight: 'condensedUltra',
               }}
             >
-              <StyledOcticon icon={MarkGithubIcon} size="24px" />
+              <Octicon icon={MarkGithubIcon} size="24px" />
             </Link>
             {siteMetadata.header.title ? (
               <Link
@@ -141,16 +141,12 @@ Header.defaultProps = {
 }
 
 function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
-  console.log('header url', siteMetadata.header.url)
-  console.log('pathPrefix', pathPrefix)
-  console.log('path', path)
-
   return (
     <>
       <VisuallyHidden>
         <h3 aria-labelledby="site-header">{siteMetadata.header.title} </h3>
       </VisuallyHidden>
-      <UnderlineNav aria-label="main navigation" sx={{border: 'none'}}>
+      <UnderlineNav aria-label="Main navigation" sx={{border: 'none'}}>
         {items.map((item, index) => {
           return (
             <UnderlineNav.Link
