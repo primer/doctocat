@@ -6,18 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn
+        run: npm ci
 
       - name: Lint
-        run: yarn workspace @primer/gatsby-theme-doctocat lint
+        run: npm run lint -ws --if-present
 
       - name: Test
-        run: yarn workspace @primer/gatsby-theme-doctocat test
+        run: npm run test -ws --if-present

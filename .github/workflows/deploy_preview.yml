@@ -16,6 +16,6 @@ jobs:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
     with:
       node_version: 18
-      install: yarn
-      build: yarn build:preview
+      install: npm ci
+      build: npm run build:preview
       output_dir: docs/public

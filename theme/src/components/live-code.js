@@ -13,7 +13,7 @@ import themeGet from '@styled-system/theme-get'
 
 const languageTransformers = {
   html: html => htmlToJsx(html),
-  jsx: jsx => wrapWithFragment(jsx)
+  jsx: jsx => wrapWithFragment(jsx),
 }
 
 function htmlToJsx(html) {
@@ -93,7 +93,7 @@ function LiveCode({code, language, highlight, noinline, metastring}) {
             borderColor: 'border.default',
             borderTopRightRadius: 2,
             borderTopLeftRadius: 2,
-            display: 'flex'
+            display: 'flex',
           }}
         >
           <LivePreviewWrapper>
@@ -114,7 +114,7 @@ function LiveCode({code, language, highlight, noinline, metastring}) {
                 borderBottomRightRadius: theme.radii[2],
                 border: '1px solid',
                 borderTop: 0,
-                borderColor: theme.colors.border.default
+                borderColor: theme.colors.border.default,
               }}
             />
           </LineHighlighter>

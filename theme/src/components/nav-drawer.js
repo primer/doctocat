@@ -56,7 +56,7 @@ function NavDrawer({isOpen, onDismiss}) {
               borderRadius: 0,
               borderBottomWidth: 1,
               borderColor: 'border.muted',
-              borderStyle: 'solid'
+              borderStyle: 'solid',
             }}
           >
             <Box sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
@@ -80,7 +80,7 @@ function NavDrawer({isOpen, onDismiss}) {
                 flex: '1 0 auto',
                 color: 'fg.default',
                 bg: 'canvas.default',
-                display: 'flex'
+                display: 'flex',
               }}
             >
               <Link
@@ -113,14 +113,21 @@ function PrimerNavItems({items}) {
           borderColor: 'border.muted',
           px: 4,
           py: 3,
-          borderStyle: 'solid'
+          borderStyle: 'solid',
         }}
       >
         {item.children ? (
           <Details key={index}>
             {({open, toggle}) => (
               <>
-                <summary onClick={toggle} style={{cursor: 'pointer'}}>
+                {/*eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+                <summary
+                  //The following line of code has only an onClick event and no keyboard event and its a non static
+                  //element. This is because we don't want it to be a tabstop thats tedious for keyboard users and sr's.
+                  //This needs to be a hard exception
+                  onClick={toggle}
+                  style={{cursor: 'pointer'}}
+                >
                   <Box sx={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
                     <Text>{item.title}</Text>
                     {open ? <ChevronUpIcon /> : <ChevronDownIcon />}

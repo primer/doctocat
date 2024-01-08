@@ -3,27 +3,27 @@ import React from 'react'
 import Contributors from '../contributors'
 
 test('renders contributors', () => {
-  const {queryByText} = render(
+  const {queryByText, debug} = render(
     <Contributors
       contributors={[
         {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19Z'
-          }
+            date: '2019-08-15T23:40:19Z',
+          },
         },
         {
           login: 'emplums',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54Z'
-          }
-        }
+            date: '2019-08-14T00:19:54Z',
+          },
+        },
       ]}
-    />
+    />,
   )
-
+  debug()
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeInTheDocument()
   expect(queryByText(/colebemis/)).toBeInTheDocument()
@@ -53,18 +53,18 @@ test('does not render duplicate contributors', () => {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-15T23:40:19Z'
-          }
+            date: '2019-08-15T23:40:19Z',
+          },
         },
         {
           login: 'colebemis',
           latestCommit: {
             url: '#',
-            date: '2019-08-14T00:19:54Z'
-          }
-        }
+            date: '2019-08-14T00:19:54Z',
+          },
+        },
       ]}
-    />
+    />,
   )
 
   expect(queryByText(/1 contributor/)).toBeInTheDocument()

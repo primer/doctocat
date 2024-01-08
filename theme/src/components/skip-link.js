@@ -11,7 +11,7 @@ function SkipLinkBase(props) {
         p: 3,
         color: 'fg.onEmphasis',
         backgroundColor: 'accent.emphasis',
-        fontSize: 1
+        fontSize: 1,
       }}
     >
       Skip to content
