@@ -20,7 +20,7 @@
     "eslint-plugin-github": "^4.10.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-primer-react": "^4.0.3",
+    "eslint-plugin-primer-react": "^4.1.0",
     "eslint-plugin-react": "^7.26.1",
     "gatsby": "^3.14.6",
     "jest-environment-jsdom": "^29.7.0",
