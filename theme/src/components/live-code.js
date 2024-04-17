@@ -106,15 +106,15 @@ function LiveCode({code, language, highlight, noinline, metastring}) {
               onChange={handleChange}
               theme={githubTheme}
               ignoreTabKey={true}
-              padding={theme.space[3]}
+              padding={theme?.space[3]}
               style={{
-                fontFamily: theme.fonts.mono,
+                fontFamily: theme?.fonts.mono,
                 fontSize: '85%',
-                borderBottomLeftRadius: theme.radii[2],
-                borderBottomRightRadius: theme.radii[2],
+                borderBottomLeftRadius: theme?.radii[2],
+                borderBottomRightRadius: theme?.radii[2],
                 border: '1px solid',
                 borderTop: 0,
-                borderColor: theme.colors.border.default,
+                borderColor: theme?.colors.border.default,
               }}
             />
           </LineHighlighter>
