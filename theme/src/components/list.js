@@ -23,7 +23,7 @@ const List = styled.ul`
   }
 `
 
-export const UL = ListBase
-export const OL = styled(ListBase).attrs({as: 'ol'})
+export const UL = List
+export const OL = styled(List).attrs({as: 'ol'})
 
 export default List
