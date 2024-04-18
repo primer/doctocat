@@ -15,13 +15,12 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-      {siteMetadata.primerTracking ?
+      {siteMetadata.primerTracking ? (
         <>
           <meta name="ha-url" content="https://collector.githubapp.com/primer/collect" />
           <script src="https://analytics.githubassets.com/hydro-marketing.min.js"></script>
         </>
-        : null
-      }
+      ) : null}
     </Helmet>
   )
 }
