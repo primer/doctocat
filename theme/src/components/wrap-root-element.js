@@ -14,7 +14,7 @@ import HorizontalRule from './horizontal-rule'
 import Image from './image'
 import ImageContainer from './image-container'
 import InlineCode from './inline-code'
-import List from './list'
+import {OL, UL} from './list'
 import Note from './note'
 import Paragraph from './paragraph'
 import Superscript from './superscript'
@@ -37,8 +37,8 @@ const components = {
   h4: H4,
   h5: H5,
   h6: H6,
-  ul: List,
-  ol: List.withComponent('ol'),
+  ul: UL,
+  ol: OL,
   dl: DescriptionList,
 
   // Custom components
