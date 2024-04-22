@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 5.1.0
+
+### Minor Changes
+
+- [`0798937`](https://github.com/primer/doctocat/commit/0798937ceb981c88abc95e428a1d73e3237a6460) [#727](https://github.com/primer/doctocat/pull/727) Thanks [@dipree](https://github.com/dipree)! - Add optional tracking option to head
+
 ## 5.0.0
 
 ### Major Changes
