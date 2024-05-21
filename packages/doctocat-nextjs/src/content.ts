@@ -11,3 +11,10 @@ export async function getPosts(contentDirectory: string): Promise<Array<Post>> {
 export async function getPost(): Promise<Post | null> {
   return null
 }
+
+/**
+ * Validate that the content directory matches expected structure
+ */
+export async function validate() {
+  throw new Error('Not implemented')
+}
