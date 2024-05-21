@@ -1,4 +1,4 @@
-import {doctocat} from '@primer/doctocat-nextjs'
+import {doctocat} from '@primer/doctocat-nextjs/config'
 
 const withDoctocat = doctocat()
 

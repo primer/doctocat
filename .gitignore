@@ -34,3 +34,6 @@ blob-report
 
 # TypeScript
 *.tsbuildinfo
+
+# Turbo
+.turbo

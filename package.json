@@ -6,13 +6,10 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "",
-    "build:preview": "",
+    "build": "turbo build",
     "format": "prettier --cache --write '**/*.{js,css,md,mdx,ts,tsx,yml}'",
     "format:diff": "prettier --cache --list-different '**/*.{js,css,md,mdx,ts,tsx,yml}'",
-    "release": "",
-    "start": "",
-    "type-check": "npm run type-check -ws --if-present"
+    "type-check": "turbo type-check"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.3",
@@ -31,6 +28,7 @@
     "eslint-plugin-ssr-friendly": "^1.3.0",
     "prettier": "^3.2.5",
     "publint": "^0.2.8",
+    "turbo": "^1.13.3",
     "typescript": "^5.4.5"
   }
 }
