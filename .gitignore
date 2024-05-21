@@ -1,5 +1,5 @@
 # Build folders
-dist/
+dist
 
 # Editor
 .DS_Store
@@ -22,6 +22,7 @@ storybook-static
 
 # Next.js
 .next
+out
 
 # Jest
 .test

@@ -1,0 +1,22 @@
+{
+  "name": "@primer/doctocat",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "",
+    "clean": "rimraf dist",
+    "type-check": "tsc --noEmit",
+    "watch": ""
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.7",
+    "typescript": "^5.4.5"
+  }
+}
