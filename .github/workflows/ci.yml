@@ -51,10 +51,12 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
-      - name: Check published types
-        uses: './.github/actions/arethetypeswrong'
-        with:
-          workspace: ${{ matrix.workspace }}
+      - name: Run arethetypeswrong
+        working-directory: ${{ matrix.workspace }}
+        run: npx @arethetypeswrong/cli --pack .
+      - name: Run publint
+        working-directory: ${{ matrix.workspace }}
+        run: npx publint . --strict
 
   type-check:
     runs-on: ubuntu-latest
