@@ -33,6 +33,28 @@ jobs:
       - name: Check for unformatted files
         run: npm run format:diff
 
+  lint-pkg:
+    name: 'lint:pkg'
+    runs-on: ubuntu-latest
+    matrix:
+      workspace: [packages/doctocat, packages/doctocat-nextjs]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Check published types
+        uses: './.github/actions/arethetypeswrong'
+        with:
+          workspace: ${{ matrix.workspace }}
+
   type-check:
     runs-on: ubuntu-latest
     steps:
