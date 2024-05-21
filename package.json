@@ -2,8 +2,6 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "theme",
-    "docs",
     "packages/*"
   ],
   "scripts": {
@@ -19,6 +17,16 @@
     "@changesets/changelog-github": "^0.2.7",
     "@changesets/cli": "^2.26.2",
     "@github/prettier-config": "^0.0.6",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-github": "^4.10.2",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-primer-react": "^5.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-ssr-friendly": "^1.3.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   }
