@@ -1,10 +1,12 @@
 import createMDX from '@next/mdx'
 import type {NextConfig} from 'next'
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     rehypePlugins: [],
   },
 })

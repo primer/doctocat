@@ -1,0 +1,62 @@
+---
+title: Banner
+description: Banner is used to highlight important information.
+componentId: banner
+railsIds:
+  - Primer::Alpha::Banner
+tags:
+  - flash
+---
+
+import ComponentLayout from '~/src/layouts/component-layout'
+export default ComponentLayout
+import {AccessibilityLink} from '~/src/components/accessibility-link'
+
+Banner can be used in one of two ways:
+
+1. To highlight prominent information on a page.
+2. To communicate feedback in response to a user action.
+
+## Accessibility
+
+### Feedback Banners
+
+Banners that are used to communicate feedback require extra accessibility considerations to ensure they are immediately perceived by assistive technology users.
+
+Consider using either a **live region announcement** or **focus management** technique:
+
+- **Live region announcements**: can be used to announce the new content to screen reader users. This is the preferred method for non-critical information (**though exceptions apply**, such in scenarios where focus loss needs to be handled).
+- **Focus management**: involves shifting a user's focus directly the new Banner. This method is disruptive when used inappropriately, but is extremely helpful in scenarios where we need to guide the user towards an action.
+
+Here are some questions to consider when deciding which method to use:
+
+#### Will the user be blocked if they miss the Banner?
+
+If a user is blocked from proceeding if they miss the Banner, moving focus is usually preferred over a live region announcement.
+
+A prime example of this is an error banner that appears after a form validation, such as [interactive error summary](https://primer.style/ui-patterns/forms/overview#interactive-summary-of-errors). Moving focus directly into the error banner allows all users (including screen reader users, zoom magnification users, and sighted keyboard users), to immediately perceive the feedback and take the necessary action to resolve the issue.
+
+If the banner communicates non-critical information (e.g. a success banner) that wouldn't block a user if missed, a live region announcement is sufficient.
+
+#### Does the Banner contain an action?
+
+If the Banner contains an action, placing focus on the newly shown Banner may be preferred over a live region announcement, especially if the action helps unblock/guide a user within a current flow. This ensures the user can immediately interact with the action without having to manually locate it.
+
+#### Where is a user's focus when the banner appears?
+
+If a user triggers an action that results in the element that they were were on being removed from the DOM (that isn't a result of a page navigation), then focus management is required. For example, let's say that a user activates a `Save` button successfully, and the section of the page they were on gets replaced by new content. The removal of the `Save` button from the DOM will result in the user's focus getting lost.
+
+Focus loss is disorienting, especially when some assistive technology users are unexpectedly taken back to the top of the page after performing an action. This is a [WCAG 2.4.3 Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html) issue.
+
+If the Banner appears as part of the new content on the page after a user experiences focus loss, then it may be an appropriate focus target. This does not apply to scenarios where the user is navigated to a completely new route.
+
+#### Still unsure?
+
+Many scenarios are nuanced, and can be tricky to figure out the appropriate path forward for. These benefit from additional feedback from assistive technology users.
+
+If you're unsure about which technique is appropriate for your usecase, please reach out to the Accessibility team who can help find a path forward.
+
+### Known accessibility issues (GitHub staff only)
+
+{' '}
+<AccessibilityLink label="Banner" />
