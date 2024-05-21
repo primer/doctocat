@@ -36,6 +36,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/mdx": "^2.0.13",
     "@types/webpack-bundle-analyzer": "^4.7.0",
+    "esbuild": "^0.21.3",
     "next": "^14.2.3",
     "rimraf": "^5.0.7",
     "rollup": "^4.17.2",
