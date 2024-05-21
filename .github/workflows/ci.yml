@@ -50,7 +50,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build project
-        run: npm run build --ignore 'examples/**'
+        run: npm run build -- --filter './packages/*'
       - name: Run arethetypeswrong
         working-directory: ${{ matrix.workspace }}
         run: npx @arethetypeswrong/cli --pack .
@@ -71,6 +71,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build project
-        run: npm run build --ignore 'examples/**'
+        run: npm run build -- --filter './packages/*'
       - name: Type check
         run: npm run type-check
