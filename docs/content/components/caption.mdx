@@ -17,18 +17,13 @@ The caption component can be used to append a caption to images used in document
 
 ```jsx live
 <Box display="flex" alignItems="center" flexDirection="column">
-  <img
-    alt=""
-    src="https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/245/card/500000291_medium.jpg"
-  />
+  <img alt="" src="https://s3.us-west-2.amazonaws.com/photos.puppyspot.com/breeds/245/card/500000291_medium.jpg" />
   <Caption>A beautiful husky puppy.</Caption>
 </Box>
 ```
 
 <Note variant="warning">
 
-
 Be sure to provide enough detail in your caption so users with assistive technology have adequate context. An empty alt tag `alt=""` should be used on the `img` in cases where the caption describes the image, thus making the image decorative in purpose.
 
 </Note>
-

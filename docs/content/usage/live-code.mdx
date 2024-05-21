@@ -41,11 +41,9 @@ export default {
 
 <Note variant="warning">
 
-
 Make sure to place `live-code-scope.js` in the root of your `gatsby-theme-doctocat` folder. Shadowed files must be present in the same location as they exist in the theme repository.
 
 </Note>
-
 
 Every property on the object exported by `live-code-scope.js` will be available as a variable in the code:
 
@@ -59,28 +57,19 @@ Every property on the object exported by `live-code-scope.js` will be available 
 
 If you want to emphasize a particular range of lines, use the `highlight` attribute on the code block. The expected format is `higlight=start-end`. The line highlighting will disappear when the live example is edited.
 
-
 ````markdown
-``` jsx live highlight=2-4
+```jsx live highlight=2-4
 <div>
-  <p>
-    This paragraph element should be higlighted.
-  </p>
-  <p>
-    This paragraph element should not be higlighted.
-  </p>
+  <p>This paragraph element should be higlighted.</p>
+  <p>This paragraph element should not be higlighted.</p>
 </div>
 ```
 ````
 
-``` jsx live highlight=2-4
+```jsx live highlight=2-4
 <div>
-  <p>
-    This paragraph element should be higlighted.
-  </p>
-  <p>
-    This paragraph element should not be higlighted.
-  </p>
+  <p>This paragraph element should be higlighted.</p>
+  <p>This paragraph element should not be higlighted.</p>
 </div>
 ```
 
@@ -91,9 +80,7 @@ Live previews are completely isolated from the rest of the page because they are
 ```jsx live
 <div>
   <style>{`p { color: red; }`}</style>
-  <p>
-    This text should be red. All other text on the page should be unaffected.
-  </p>
+  <p>This text should be red. All other text on the page should be unaffected.</p>
 </div>
 ```
 
@@ -124,9 +111,9 @@ function DemoApp() {
 
   return (
     <div>
-      <button onClick={() => setCount((n) => n - 1)}>-</button>
+      <button onClick={() => setCount(n => n - 1)}>-</button>
       {count}
-      <button onClick={() => setCount((n) => n + 1)}>+</button>
+      <button onClick={() => setCount(n => n + 1)}>+</button>
     </div>
   )
 }
@@ -141,9 +128,9 @@ function DemoApp() {
 
   return (
     <div style={{textAlign: 'center'}}>
-      <button onClick={() => setCount((n) => n - 1)}>-</button>
+      <button onClick={() => setCount(n => n - 1)}>-</button>
       {count}
-      <button onClick={() => setCount((n) => n + 1)}>+</button>
+      <button onClick={() => setCount(n => n + 1)}>+</button>
     </div>
   )
 }

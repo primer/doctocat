@@ -8,7 +8,6 @@ import StorybookLink from '@primer/gatsby-theme-doctocat/src/components/storyboo
 import LookbookLink from '@primer/gatsby-theme-doctocat/src/components/lookbook-link'
 import SourceLink from '@primer/gatsby-theme-doctocat/src/components/source-link'
 
-
 When you create a Markdown file (`.md` or `.mdx`) in `src/pages/`, you can define variables to provide additional information about that page. This information is called front matter and is set between triple dashes starting on the first line of the file:
 
 ```
@@ -58,12 +57,12 @@ status: Stable
 
 Doctocat comes with a few predefined statuses that have colors associated with them:
 
-| Status         | Output                                | Meaning                                                                |
-| -------------- | ------------------------------------- |------------------------------------------------------------------------|
-| `Alpha`        | <StatusLabel status="Alpha" />        | Experimental. Breaking changes are likely. |
-| `Beta`         | <StatusLabel status="Beta" />         | Usage encouraged, but not required.                                    |
-| `Stable`       | <StatusLabel status="Stable" />       | Usage expected.                                                        |
-| `Deprecated`   | <StatusLabel status="Deprecated" />   | Usage not allowed. May be removed at any time.                         |
+| Status       | Output                              | Meaning                                        |
+| ------------ | ----------------------------------- | ---------------------------------------------- |
+| `Alpha`      | <StatusLabel status="Alpha" />      | Experimental. Breaking changes are likely.     |
+| `Beta`       | <StatusLabel status="Beta" />       | Usage encouraged, but not required.            |
+| `Stable`     | <StatusLabel status="Stable" />     | Usage expected.                                |
+| `Deprecated` | <StatusLabel status="Deprecated" /> | Usage not allowed. May be removed at any time. |
 
 Custom statuses will render a gray dot:
 
@@ -87,14 +86,13 @@ If the `source` front matter variable is defined, Doctocat will add a source cod
 
 <Note>
 
-
 This source code link is not the same as the "Edit this page on GitHub" link that is automatically added to the bottom of every page. The source code link should point to code that is relevant to the page. The "Edit this page on GitHub" link points to the Markdown file for the page itself.
 
 </Note>
 
 ## Storybook
 
- You can use the `storybook` front matter variable to link to [Storybook](https://storybook.js.org/) stories:
+You can use the `storybook` front matter variable to link to [Storybook](https://storybook.js.org/) stories:
 
 ```
 ---
@@ -108,10 +106,9 @@ If the `storybook` front matter variable is defined, Doctocat will add a storybo
   <StorybookLink href="#" />
 </Box>
 
-
 ## Lookbook
 
- You can use the `lookbook` front matter variable to link to [Lookbook](http://lookbook.build/) previews:
+You can use the `lookbook` front matter variable to link to [Lookbook](http://lookbook.build/) previews:
 
 ```
 ---
@@ -124,7 +121,6 @@ If the `lookbook` front matter variable is defined, Doctocat will add a lookbook
 <Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
   <LookbookLink href="#" />
 </Box>
-
 
 ## Additional contributors
 

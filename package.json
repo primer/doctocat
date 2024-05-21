@@ -1,17 +1,23 @@
 {
   "private": true,
-  "scripts": {
-    "start": "npm run -w docs develop",
-    "release": "changeset publish",
-    "build": "npm run build -ws --if-present",
-    "build:preview": "npm run -w docs build:preview"
-  },
+  "type": "module",
   "workspaces": [
     "theme",
-    "docs"
+    "docs",
+    "packages/*"
   ],
-  "dependencies": {
+  "scripts": {
+    "format": "prettier --cache --write '**/*.{js,css,md,mdx,ts,tsx,yml}'",
+    "format:diff": "prettier --cache --list-different '**/*.{js,css,md,mdx,ts,tsx,yml}'",
+    "start": "",
+    "release": "",
+    "build": "",
+    "build:preview": ""
+  },
+  "devDependencies": {
     "@changesets/changelog-github": "^0.2.7",
-    "@changesets/cli": "^2.26.2"
+    "@changesets/cli": "^2.26.2",
+    "@github/prettier-config": "^0.0.6",
+    "prettier": "^3.2.5"
   }
 }

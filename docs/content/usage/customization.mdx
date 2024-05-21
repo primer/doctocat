@@ -46,9 +46,7 @@ Side navigation for your site is generated from the content in `src/@primer/gats
 
 Entries with `children` cannot also have a `url`.
 
-<Note variant="warning">
-  Doctocat supports a maximum of two levels of nesting.
-</Note>
+<Note variant="warning">Doctocat supports a maximum of two levels of nesting.</Note>
 
 ## Repository
 
@@ -107,14 +105,7 @@ module.exports = {
 
 If you have the `repository` in `package.json` and `repoRootPath` in `gatsby-config.js` set up correctly (as described [above](#edit-on-github-link)), Doctocat will automatically display contributors on the bottom of every page, like so:
 
-<Box
-  borderWidth="1px"
-  borderStyle="solid"
-  borderColor="border.default"
-  borderRadius={2}
-  p={4}
-  mb={3}
->
+<Box borderWidth="1px" borderStyle="solid" borderColor="border.default" borderRadius={2} p={4} mb={3}>
   <Contributors
     contributors={[
       {
