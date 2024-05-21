@@ -36,8 +36,9 @@ jobs:
   lint-pkg:
     name: 'lint:pkg'
     runs-on: ubuntu-latest
-    matrix:
-      workspace: [packages/doctocat, packages/doctocat-nextjs]
+    strategy:
+      matrix:
+        workspace: [packages/doctocat, packages/doctocat-nextjs]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
