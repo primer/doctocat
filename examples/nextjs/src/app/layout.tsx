@@ -1,4 +1,9 @@
+import '@primer/react-brand/lib/css/main.css'
+import './global.css'
 import {BaseLayout} from '@primer/doctocat-nextjs'
+import {BaseStyles, ThemeProvider} from '@primer/react'
+import {StyledComponentsRegistry} from './registry'
+import {AutoRefresh} from '../components/AutoRefresh'
 
 export const metadata = {
   title: 'Next.js',
@@ -7,9 +12,23 @@ export const metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning={true}
+      data-color-mode="auto"
+      data-light-theme="light"
+      data-dark-theme="dark"
+    >
       <body>
-        <BaseLayout>{children}</BaseLayout>
+        <AutoRefresh>
+          <BaseLayout>
+            <StyledComponentsRegistry>
+              <ThemeProvider>
+                <BaseStyles>{children}</BaseStyles>
+              </ThemeProvider>
+            </StyledComponentsRegistry>
+          </BaseLayout>
+        </AutoRefresh>
       </body>
     </html>
   )

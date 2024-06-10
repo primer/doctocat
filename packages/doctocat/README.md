@@ -42,6 +42,7 @@
 | NotFound           | Unavailable |             |
 | PageFooter         | Unavailable |             |
 | Paragraph          | Unavailable |             |
+| PropsTable         | Unavailable |             |
 | RailsLink          | Unavailable |             |
 | ReactLink          | Unavailable |             |
 | SearchResults      | Unavailable |             |

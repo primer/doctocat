@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/src/components/*": ["src/components/*"],
+      "~/src/layouts/*": ["src/layouts/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",

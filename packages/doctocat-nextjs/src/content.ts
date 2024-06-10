@@ -12,6 +12,22 @@ export async function getPost(): Promise<Post | null> {
   return null
 }
 
+interface SiteNavigation {
+  routes: Array<Route>
+}
+
+interface Route {
+  title: string
+  url: string
+  children?: Array<Route>
+}
+
+export async function getSiteNavigation(): Promise<SiteNavigation> {
+  return {
+    routes: [],
+  }
+}
+
 /**
  * Validate that the content directory matches expected structure
  */
