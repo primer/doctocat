@@ -108,7 +108,7 @@ function Layout({children, pageContext, path}) {
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
             </Box>
           ) : null}
-          <Box sx={{width: '100%', maxWidth: '960px'}}>
+          <Box sx={{width: '100%', maxWidth: '960px', minWidth: 0}}>
             <Box as="main" id="skip-nav" sx={{mb: 4}}>
               {breadcrumbData.length > 1 ? (
                 <Breadcrumbs sx={{mb: 4}}>
