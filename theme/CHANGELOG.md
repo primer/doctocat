@@ -1,5 +1,11 @@
 # @primer/gatsby-theme-doctocat
 
+## 5.1.1
+
+### Patch Changes
+
+- [`5260057`](https://github.com/primer/doctocat/commit/52600573b858f4036a8580c7b730fcbc4c7dab51) [#739](https://github.com/primer/doctocat/pull/739) Thanks [@pouretrebelle](https://github.com/pouretrebelle)! - Fix content blowout
+
 ## 5.1.0
 
 ### Minor Changes
