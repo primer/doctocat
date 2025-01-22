@@ -34,9 +34,9 @@
     "react-dom": "^18.x"
   },
   "dependencies": {
-    "@babel/core": "^7.19.1",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "@primer/component-metadata": "^0.5.1",
