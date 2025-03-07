@@ -8,8 +8,8 @@ import styled from 'styled-components'
 import {HEADER_HEIGHT} from './header'
 
 const StyledHeading = styled(Heading)`
-  margin-top: ${themeGet('space.4')};
-  margin-bottom: ${themeGet('space.3')};
+  margin-top: ${themeGet('space.8')};
+  margin-bottom: ${themeGet('space.4')};
   scroll-margin-top: ${HEADER_HEIGHT + 24}px;
   line-height: ${themeGet('lineHeights.condensed')};
 
@@ -58,13 +58,13 @@ function MarkdownHeading({children, ...props}) {
 }
 
 const StyledH1 = styled(StyledHeading).attrs({as: 'h1'})`
-  padding-bottom: ${themeGet('space.2')};
+  padding-bottom: ${themeGet('space.3')};
   font-size: ${themeGet('fontSizes.7')};
   border-bottom: 1px solid ${themeGet('colors.border.default')};
 `
 
 const StyledH2 = styled(StyledHeading).attrs({as: 'h2'})`
-  padding-bottom: ${themeGet('space.2')};
+  padding-bottom: ${themeGet('space.3')};
   font-size: ${themeGet('fontSizes.4')};
   border-bottom: 1px solid ${themeGet('colors.border.default')};
   font-weight: ${themeGet('fontWeights.semibold')};
