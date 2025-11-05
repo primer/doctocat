@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.0.0",
     "@mdx-js/mdx": "^1.0.21",
-    "@mdx-js/react": "^1.0.21",
+    "@mdx-js/react": "^3.1.1",
     "@primer/component-metadata": "^0.5.1",
     "@primer/octicons-react": "^17.5.0",
     "@primer/react": "^36.1.0",
