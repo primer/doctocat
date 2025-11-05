@@ -8,7 +8,10 @@
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "lint:fix": "npm run lint -- --fix"
   },
-  "repo": "https://github.com/primer/doctocat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/primer/doctocat.git"
+  },
   "prettier": "@github/prettier-config",
   "resolutions": {
     "graphql": "^15.4.0",
