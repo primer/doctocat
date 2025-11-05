@@ -1,13 +1,21 @@
 name: Release
 on:
   push:
-    branches:
-      - 'main'
-      - 'next_major'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+  checks: write
+  statuses: write
+
 jobs:
-  release:
-    name: Final
-    if: ${{ github.repository == 'primer/doctocat' }}
+  release-main:
+    name: Main
+    if: ${{ github.repository == 'primer/doctocat' && github.ref_name == 'main' }}
 
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +29,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
@@ -29,11 +37,56 @@ jobs:
 
       - name: Create release pull request or publish to npm
         id: changesets
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           title: Release Tracking
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
+
+  release-canary:
+    name: Canary
+    if: ${{ github.repository == 'primer/doctocat' && github.ref_name != 'main' && github.ref_name != 'changeset-release/main' }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish canary version
+        run: |
+          echo "$( jq '.version = "0.0.0"' package.json )" > package.json
+          echo -e "---\n'@primer/gatsby-theme-doctocat': patch\n---\n\nFake entry to force publishing" > .changeset/force-snapshot-release.md
+          rm -f .changeset/pre.json
+          npx changeset version --snapshot
+          npx changeset publish --tag canary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Output canary version number
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const package = require(`${process.env.GITHUB_WORKSPACE}/theme/package.json`)
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: 'success',
+              context: `Published ${package.name}`,
+              description: package.version,
+              target_url: `https://unpkg.com/${package.name}@${package.version}/`
+            })
