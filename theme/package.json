@@ -47,7 +47,7 @@
     "@primer/octicons-react": "^17.5.0",
     "@primer/react": "^36.1.0",
     "@styled-system/theme-get": "^5.0.12",
-    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^14.0.0",
     "axios": "^1.12.2",
     "babel-jest": "^29.7.0",
