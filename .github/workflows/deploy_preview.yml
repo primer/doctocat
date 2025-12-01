@@ -11,7 +11,7 @@ permissions:
 jobs:
   deploy:
     name: Build and deploy
-    uses: primer/.github/.github/workflows/deploy_preview.yml@v2.2.1
+    uses: primer/.github/.github/workflows/deploy_preview.yml@v2.4.0
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
     with:
