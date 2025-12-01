@@ -70,7 +70,7 @@
     "gatsby-transformer-yaml": "^3.14.0",
     "get-pkg-repo": "^5.0.0",
     "github-slugger": "^1.2.1",
-    "html-react-parser": "^5.2.7",
+    "html-react-parser": "^5.2.10",
     "jest": "^29.7.0",
     "lodash.debounce": "4.0.8",
     "lodash.uniqby": "^4.7.0",
