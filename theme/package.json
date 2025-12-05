@@ -40,7 +40,7 @@
   "dependencies": {
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.28.5",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-react": "^7.28.5",
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
     "@primer/component-metadata": "^0.5.1",
