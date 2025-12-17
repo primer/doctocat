@@ -1,6 +1,6 @@
 import {Box, Text} from '@primer/react'
 import React from 'react'
-import sentenceCase from 'sentence-case'
+import {sentenceCase} from 'change-case'
 import useSiteMetadata from '../use-site-metadata'
 
 function SearchResults({results, getItemProps, highlightedIndex}) {
