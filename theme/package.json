@@ -52,6 +52,7 @@
     "axios": "^1.12.2",
     "babel-jest": "^29.7.0",
     "babel-plugin-styled-components": "^2.0.7",
+    "change-case":"^5.4.4",
     "copy-to-clipboard": "^3.2.0",
     "date-fns": "^4.1.0",
     "details-element-polyfill": "^2.4.0",
@@ -87,7 +88,6 @@
     "react-live": "^2.1.2",
     "react-measure": "^2.5.2",
     "read-pkg-up": "^6.0.0",
-    "sentence-case": "^4.0.0",
     "styled-components": "^5.3.11",
     "styled-system": "^5.0.18",
     "worker-loader": "^3.0.2"
