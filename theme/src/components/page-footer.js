@@ -1,38 +1,38 @@
 import {PencilIcon} from '@primer/octicons-react'
-import {Box, Link, Octicon} from '@primer/react'
+import {Link} from '@primer/react'
 import React from 'react'
 import Contributors from './contributors'
 import VisuallyHidden from './visually-hidden'
 
 function PageFooter({editUrl, contributors}) {
   return editUrl || contributors.length > 0 ? (
-    <Box
-      as="footer"
+    <footer
       aria-labelledby="footer-heading"
-      sx={{
+      style={{
         borderWidth: 0,
         borderTopWidth: 1,
         borderRadius: 0,
-        mt: 8,
-        py: 5,
+        marginTop: 64,
+        paddingTop: 20,
+        paddingBottom: 20,
         borderStyle: 'solid',
-        borderColor: 'border.default',
+        borderColor: 'var(--borderColor-default, var(--color-border-default))',
       }}
     >
       <VisuallyHidden>
         <h2 id="footer-heading">Footer</h2>
       </VisuallyHidden>
-      <Box sx={{gridGap: 4, display: 'grid'}}>
+      <div style={{display: 'grid', gap: 16}}>
         {editUrl ? (
           <Link href={editUrl}>
-            <Octicon icon={PencilIcon} sx={{mr: 2}} />
+            <PencilIcon style={{marginRight: 8}} />
             Edit this page on GitHub
           </Link>
         ) : null}
 
         {contributors.length > 0 ? <Contributors contributors={contributors} /> : null}
-      </Box>
-    </Box>
+      </div>
+    </footer>
   ) : null
 }
 

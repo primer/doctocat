@@ -1,4 +1,4 @@
-import {Avatar, Box, Link, Text} from '@primer/react'
+import {Avatar, Link, Text} from '@primer/react'
 import {Tooltip} from '@primer/react/next'
 import {format} from 'date-fns'
 import uniqBy from 'lodash.uniqby'
@@ -13,8 +13,8 @@ function Contributors({contributors}) {
 
   return (
     <div>
-      <Box sx={{display: 'flex', alignItems: 'center'}}>
-        <Text sx={{mr: 2}}>
+      <div style={{display: 'flex', alignItems: 'center'}}>
+        <Text style={{marginRight: 8}}>
           {uniqueContributors.length} {pluralize('contributor', uniqueContributors.length)}
         </Text>
         {uniqueContributors.map(contributor => (
@@ -22,16 +22,16 @@ function Contributors({contributors}) {
             <Link
               key={contributor.login}
               href={`https://github.com/${contributor.login}`}
-              sx={{mr: 2, lineHeight: 'condensedUltra'}}
+              style={{marginRight: 8, lineHeight: '1'}}
             >
               <Avatar src={`https://github.com/${contributor.login}.png?size=40`} alt={contributor.login} />
             </Link>
           </Tooltip>
         ))}
-      </Box>
+      </div>
 
       {latestContributor.latestCommit ? (
-        <Text sx={{fontSize: 1, color: 'fg.muted', mt: 1}}>
+        <Text style={{fontSize: '12px', color: 'var(--fgColor-muted, var(--color-fg-muted))', marginTop: 4}}>
           Last edited by <Link href={`https://github.com/${latestContributor.login}`}>{latestContributor.login}</Link>{' '}
           on{' '}
           <Link href={latestContributor.latestCommit.url}>

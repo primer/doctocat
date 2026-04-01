@@ -1,4 +1,3 @@
-import {SSRProvider} from '@react-aria/ssr'
 import {MDXProvider} from '@mdx-js/react'
 import {ThemeProvider} from '@primer/react'
 import Link from './link'
@@ -53,11 +52,9 @@ const components = {
 
 function wrapRootElement({element}) {
   return (
-    <SSRProvider>
-      <MDXProvider components={components}>
-        <ThemeProvider>{element}</ThemeProvider>
-      </MDXProvider>
-    </SSRProvider>
+    <MDXProvider components={components}>
+      <ThemeProvider>{element}</ThemeProvider>
+    </MDXProvider>
   )
 }
 
