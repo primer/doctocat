@@ -1,4 +1,5 @@
-import {Avatar, Box, Link, Text, Tooltip} from '@primer/react'
+import {Avatar, Box, Link, Text} from '@primer/react'
+import {Tooltip} from '@primer/react/next'
 import {format} from 'date-fns'
 import uniqBy from 'lodash.uniqby'
 import pluralize from 'pluralize'
@@ -17,8 +18,12 @@ function Contributors({contributors}) {
           {uniqueContributors.length} {pluralize('contributor', uniqueContributors.length)}
         </Text>
         {uniqueContributors.map(contributor => (
-          <Tooltip key={contributor.login} aria-label={contributor.login} sx={{mr: 2, lineHeight: 'condensedUltra'}}>
-            <Link key={contributor.login} href={`https://github.com/${contributor.login}`}>
+          <Tooltip key={contributor.login} text={contributor.login}>
+            <Link
+              key={contributor.login}
+              href={`https://github.com/${contributor.login}`}
+              sx={{mr: 2, lineHeight: 'condensedUltra'}}
+            >
               <Avatar src={`https://github.com/${contributor.login}.png?size=40`} alt={contributor.login} />
             </Link>
           </Tooltip>
