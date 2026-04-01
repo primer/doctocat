@@ -1,20 +1,17 @@
-import {Box} from '@primer/react'
 import React from 'react'
 
 function ImageContainer({children}) {
   return (
-    <Box
-      sx={{
-        p: 6,
-        bg: 'gray.1',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'border.default',
-        borderRadius: 2,
+    <div
+      style={{
+        padding: 40,
+        backgroundColor: 'var(--bgColor-muted, var(--color-canvas-subtle))',
+        border: '1px solid var(--borderColor-default, var(--color-border-default))',
+        borderRadius: 6,
       }}
     >
-      <Box sx={{img: {maxWidth: '100%'}, justifyContent: 'center', display: 'flex'}}>{children}</Box>
-    </Box>
+      <div style={{justifyContent: 'center', display: 'flex'}}>{children}</div>
+    </div>
   )
 }
 

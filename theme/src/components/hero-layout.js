@@ -1,4 +1,3 @@
-import {Box} from '@primer/react'
 import React from 'react'
 import Container from './container'
 import Head from './head'
@@ -15,14 +14,15 @@ function HeroLayout({children, pageContext}) {
   }
 
   return (
-    <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
+    <div style={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head />
       <Header />
-      <Box sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
-        <Box sx={{display: ['none', null, null, 'block']}}>
+      <div style={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
+        {/* className="sidebar-wrapper": add CSS for display:none on mobile (display:block on desktop) */}
+        <div className="sidebar-wrapper" style={{display: 'block'}}>
           <Sidebar />
-        </Box>
-        <Box as="main" id="skip-nav" sx={{width: '100%'}}>
+        </div>
+        <main id="skip-nav" style={{width: '100%'}}>
           <Hero />
           <Container>
             {children}
@@ -31,9 +31,9 @@ function HeroLayout({children, pageContext}) {
               contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
           </Container>
-        </Box>
-      </Box>
-    </Box>
+        </main>
+      </div>
+    </div>
   )
 }
 

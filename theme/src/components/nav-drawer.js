@@ -1,4 +1,4 @@
-import {Box, Button, Link, Text, ThemeProvider} from '@primer/react'
+import {Button, Link, Text, ThemeProvider} from '@primer/react'
 import {ChevronDownIcon, ChevronUpIcon, XIcon} from '@primer/octicons-react'
 import {Link as GatsbyLink} from 'gatsby'
 import debounce from 'lodash.debounce'
@@ -43,60 +43,89 @@ function NavDrawer({isOpen, onDismiss}) {
   const siteMetadata = useSiteMetadata()
   return (
     <Drawer isOpen={isOpen} onDismiss={onDismiss}>
-      <Box
-        style={{overflow: 'auto', WebkitOverflowScrolling: 'touch'}}
-        sx={{flexDirection: 'column', height: '100%', bg: 'canvas.default', display: 'flex'}}
+      <div
+        style={{
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          flexDirection: 'column',
+          height: '100%',
+          backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
+          display: 'flex',
+        }}
       >
-        <Box
-          sx={{flexDirection: 'column', flex: '0 0 auto', color: 'fg.default', bg: 'canvas.default', display: 'flex'}}
+        <div
+          style={{
+            flexDirection: 'column',
+            flex: '0 0 auto',
+            color: 'var(--fgColor-default, var(--color-fg-default))',
+            backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
+            display: 'flex',
+          }}
         >
-          <Box
-            sx={{
+          <div
+            style={{
               borderWidth: 0,
               borderRadius: 0,
-              borderBottomWidth: 1,
-              borderColor: 'border.muted',
+              borderBottomWidth: '1px',
+              borderColor: 'var(--borderColor-muted, var(--color-border-muted))',
               borderStyle: 'solid',
             }}
           >
-            <Box sx={{py: 3, pl: 4, pr: 3, alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
-              <Link href="https://primer.style" sx={{fontWeight: 'bold', color: 'inherit'}}>
+            <div
+              style={{
+                paddingTop: 16,
+                paddingBottom: 16,
+                paddingLeft: 24,
+                paddingRight: 16,
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                display: 'flex',
+              }}
+            >
+              <Link href="https://primer.style" style={{fontWeight: 'bold', color: 'inherit'}}>
                 Primer
               </Link>
               <Button aria-label="Close" onClick={onDismiss}>
                 <XIcon />
               </Button>
-            </Box>
-          </Box>
-          <Box sx={{flexDirection: 'column', display: 'flex'}}>
+            </div>
+          </div>
+          <div style={{flexDirection: 'column', display: 'flex'}}>
             <PrimerNavItems items={primerNavItems} />
-          </Box>
-        </Box>
+          </div>
+        </div>
         {navItems.length > 0 ? (
           <ThemeProvider colorMode="day">
-            <Box
-              sx={{
+            <div
+              style={{
                 flexDirection: 'column',
                 flex: '1 0 auto',
-                color: 'fg.default',
-                bg: 'canvas.default',
+                color: 'var(--fgColor-default, var(--color-fg-default))',
+                backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
                 display: 'flex',
               }}
             >
               <Link
                 as={GatsbyLink}
                 to="/"
-                sx={{display: 'inline-block', color: 'inherit', fontWeight: 'bold', mx: 4, mt: 4}}
+                style={{
+                  display: 'inline-block',
+                  color: 'inherit',
+                  fontWeight: 'bold',
+                  marginLeft: 24,
+                  marginRight: 24,
+                  marginTop: 24,
+                }}
               >
                 {siteMetadata.title}
               </Link>
-              <Box sx={{px: 2}}>
+              <div style={{paddingLeft: 8, paddingRight: 8}}>
                 <NavItems items={navItems} />
-              </Box>
-            </Box>
+              </div>
+            </div>
           </ThemeProvider>
         ) : null}
-      </Box>
+      </div>
     </Drawer>
   )
 }
@@ -104,15 +133,17 @@ function NavDrawer({isOpen, onDismiss}) {
 function PrimerNavItems({items}) {
   return items.map((item, index) => {
     return (
-      <Box
+      <div
         key={item.title}
-        sx={{
+        style={{
           borderWidth: 0,
           borderRadius: 0,
-          borderTopWidth: index !== 0 ? 1 : 0,
-          borderColor: 'border.muted',
-          px: 4,
-          py: 3,
+          borderTopWidth: index !== 0 ? '1px' : 0,
+          borderColor: 'var(--borderColor-muted, var(--color-border-muted))',
+          paddingLeft: 24,
+          paddingRight: 24,
+          paddingTop: 16,
+          paddingBottom: 16,
           borderStyle: 'solid',
         }}
       >
@@ -121,27 +152,31 @@ function PrimerNavItems({items}) {
             {({open, toggle}) => (
               <>
                 <summary style={{cursor: 'pointer'}}>
-                  <Box sx={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
+                  <div style={{alignItems: 'center', justifyContent: 'space-between', display: 'flex'}}>
                     <Text>{item.title}</Text>
                     {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                  </Box>
+                  </div>
                 </summary>
-                <Box sx={{flexDirection: 'column', mt: 2, display: 'flex'}}>
+                <div style={{flexDirection: 'column', marginTop: 8, display: 'flex'}}>
                   {item.children.map(child => (
-                    <Link key={child.title} href={child.url} sx={{py: 1, mt: 2, fontSize: 1, color: 'inherit'}}>
+                    <Link
+                      key={child.title}
+                      href={child.url}
+                      style={{paddingTop: 4, paddingBottom: 4, marginTop: 8, fontSize: 14, color: 'inherit'}}
+                    >
                       {child.title}
                     </Link>
                   ))}
-                </Box>
+                </div>
               </>
             )}
           </Details>
         ) : (
-          <Link key={index} href={item.url} sx={{color: 'inherit', display: 'block'}}>
+          <Link key={index} href={item.url} style={{color: 'inherit', display: 'block'}}>
             {item.title}
           </Link>
         )}
-      </Box>
+      </div>
     )
   })
 }

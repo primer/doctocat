@@ -1,5 +1,5 @@
 import componentMetadata from '@primer/component-metadata'
-import {Box, Breadcrumbs, Heading, Text} from '@primer/react'
+import {Breadcrumbs, Heading} from '@primer/react'
 import React from 'react'
 import Head from './head'
 import Header, {HEADER_HEIGHT} from './header'
@@ -71,47 +71,56 @@ function Layout({children, pageContext, path}) {
   const breadcrumbData = getPageAncestry(path, navItems).filter(item => item.url)
 
   return (
-    <Box sx={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
+    <div style={{flexDirection: 'column', minHeight: '100vh', display: 'flex'}}>
       <Head title={title} description={description} />
       <Header path={path} />
-      <Box css={{zIndex: 0}} sx={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
-        <Box sx={{display: ['none', null, null, 'block']}}>
+      <div style={{flex: '1 1 auto', flexDirection: 'row', display: 'flex', zIndex: 0}}>
+        {/* className="sidebar-wrapper": add CSS for display:none on mobile (display:block on desktop) */}
+        <div className="sidebar-wrapper" style={{display: 'block'}}>
           <Sidebar />
-        </Box>
-        <Box
-          sx={{
+        </div>
+        <div
+          style={{
             justifyContent: 'center',
             flexDirection: 'row-reverse',
             display: 'flex',
             maxWidth: '1200px',
-            mx: 'auto',
+            marginLeft: 'auto',
+            marginRight: 'auto',
             width: '100%',
-            p: [4, 5, 6, 7],
+            // className="layout-padding": add CSS for responsive padding (24px mobile → 48px desktop)
+            padding: 48,
           }}
         >
           {pageContext.tableOfContents.items ? (
-            <Box
-              sx={{
+            <div
+              style={{
                 width: 220,
                 flex: '0 0 auto',
-                marginLeft: [null, 7, 8, 9],
-                display: ['none', null, 'block'],
+                // className="toc-sidebar": add CSS for responsive marginLeft and display:none on mobile
+                marginLeft: 80,
+                display: 'block',
                 position: 'sticky',
                 top: HEADER_HEIGHT + 48,
                 maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 48px)`,
+                gridArea: 'table-of-contents',
+                overflow: 'auto',
               }}
-              css={{gridArea: 'table-of-contents', overflow: 'auto'}}
             >
-              <Heading as="h3" sx={{fontSize: 1, display: 'inline-block', fontWeight: 'bold', pl: 3}} id="toc-heading">
+              <Heading
+                as="h3"
+                style={{fontSize: 14, display: 'inline-block', fontWeight: 'bold', paddingLeft: 16}}
+                id="toc-heading"
+              >
                 On this page
               </Heading>
               <TableOfContents aria-labelledby="toc-heading" items={pageContext.tableOfContents.items} />
-            </Box>
+            </div>
           ) : null}
-          <Box sx={{width: '100%', maxWidth: '960px', minWidth: 0}}>
-            <Box as="main" id="skip-nav" sx={{mb: 4}}>
+          <div style={{width: '100%', maxWidth: '960px', minWidth: 0}}>
+            <main id="skip-nav" style={{marginBottom: 24}}>
               {breadcrumbData.length > 1 ? (
-                <Breadcrumbs sx={{mb: 4}}>
+                <Breadcrumbs style={{marginBottom: 24}}>
                   {breadcrumbData.map(item => (
                     <Breadcrumbs.Item key={item.url} href={withPrefix(item.url)} selected={path === item.url}>
                       {item.title}
@@ -119,32 +128,31 @@ function Layout({children, pageContext, path}) {
                   ))}
                 </Breadcrumbs>
               ) : null}
-              <Heading as="h1" sx={{fontSize: 7}}>
+              <Heading as="h1" style={{fontSize: 48}}>
                 {title}
               </Heading>
-              {description ? <Box sx={{fontSize: 3, mb: 3}}>{description}</Box> : null}
+              {description ? <div style={{fontSize: 20, marginBottom: 16}}>{description}</div> : null}
               {status || source || storybook || lookbook || figma || rails || react ? (
-                <Box
-                  sx={{
+                <div
+                  style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    columnGap: 3,
-                    mb: 7,
-                    mt: 2,
-                    rowGap: 3,
+                    columnGap: 16,
+                    marginBottom: 48,
+                    marginTop: 8,
+                    rowGap: 16,
                     alignItems: 'center',
-                    fontSize: 1,
+                    fontSize: 14,
                   }}
                 >
                   {status ? (
-                    <Box
-                      as={'ul'}
-                      sx={{
+                    <ul
+                      style={{
                         display: 'flex',
-                        gap: 1,
+                        gap: 4,
                         alignItems: 'center',
-                        m: 0,
-                        p: 0,
+                        margin: 0,
+                        padding: 0,
                         paddingInline: 0,
                         listStyle: 'none',
                       }}
@@ -155,18 +163,17 @@ function Layout({children, pageContext, path}) {
                       <li>
                         <AccessibilityLabel a11yReviewed={a11yReviewed} />
                       </li>
-                    </Box>
+                    </ul>
                   ) : null}
                   {source || storybook || lookbook || figma || rails || react ? (
-                    <Box
-                      as={'ul'}
-                      sx={{
+                    <ul
+                      style={{
                         display: 'flex',
                         flexWrap: 'wrap',
-                        gap: 4,
+                        gap: 24,
                         alignItems: 'center',
-                        m: 0,
-                        p: 0,
+                        margin: 0,
+                        padding: 0,
                         paddingInline: 0,
                         listStyle: 'none',
                       }}
@@ -177,44 +184,49 @@ function Layout({children, pageContext, path}) {
                       {react ? <ReactLink href={react} /> : null}
                       {rails ? <RailsLink href={rails} /> : null}
                       {figma ? <FigmaLink href={figma} /> : null}
-                    </Box>
+                    </ul>
                   ) : null}
-                </Box>
+                </div>
               ) : null}
-            </Box>
+            </main>
             {pageContext.tableOfContents.items ? (
-              <Box
-                sx={{
-                  display: ['block', null, 'none'],
-                  mb: 5,
-                  borderColor: 'border.muted',
-                  bg: 'canvas.subtle',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderRadius: 2,
+              // className="mobile-toc": add CSS for display:block on mobile (display:none on desktop)
+              <div
+                className="mobile-toc"
+                style={{
+                  display: 'none',
+                  marginBottom: 32,
+                  border: '1px solid var(--borderColor-muted, var(--color-border-muted))',
+                  backgroundColor: 'var(--bgColor-muted, var(--color-canvas-subtle))',
+                  borderRadius: 6,
                 }}
               >
-                <Box sx={{px: 3, py: 2}}>
-                  <Box
-                    sx={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}
+                <div style={{paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8}}>
+                  <div
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      display: 'flex',
+                    }}
                   >
-                    <Text sx={{fontWeight: 'bold'}}>On this page</Text>
-                  </Box>
-                </Box>
-                <Box sx={{borderTop: '1px solid', borderColor: 'border.muted'}}>
+                    <span style={{fontWeight: 'bold'}}>On this page</span>
+                  </div>
+                </div>
+                <div style={{borderTop: '1px solid var(--borderColor-muted, var(--color-border-muted))'}}>
                   <TableOfContents items={pageContext.tableOfContents.items} />
-                </Box>
-              </Box>
+                </div>
+              </div>
             ) : null}
             {children}
             <PageFooter
               editUrl={pageContext.editUrl}
               contributors={pageContext.contributors.concat(additionalContributors.map(login => ({login})))}
             />
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

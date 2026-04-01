@@ -1,5 +1,5 @@
 import {SearchIcon} from '@primer/octicons-react'
-import {Box, ThemeProvider} from '@primer/react'
+import {ThemeProvider} from '@primer/react'
 import Downshift from 'downshift'
 import {navigate} from 'gatsby'
 import React from 'react'
@@ -45,46 +45,35 @@ function Search() {
       stateReducer={stateReducer}
     >
       {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, highlightedIndex}) => (
-        <Box {...getRootProps({position: 'relative'})}>
+        <div {...getRootProps()} style={{position: 'relative'}}>
           <TextInput
             leadingVisual={SearchIcon}
             {...getInputProps({
               placeholder: `Search ${siteMetadata.title}`,
-              sx: {
-                width: 300,
-              },
+              style: {width: 300},
             })}
           />
           {isOpen ? (
-            <Box
-              {...getMenuProps({
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                pt: 2,
-              })}
-            >
+            <div {...getMenuProps()} style={{position: 'absolute', left: 0, right: 0, paddingTop: 8}}>
               <ThemeProvider colorMode="day">
-                <Box
-                  style={{overflow: 'auto'}}
-                  sx={{
+                <div
+                  style={{
+                    overflow: 'auto',
                     minWidth: 300,
                     maxHeight: '70vh',
-                    p: 2,
-                    boxShadow: 'shadow.large',
-                    borderColor: 'border.muted',
-                    bg: 'canvas.overlay',
+                    padding: 8,
+                    boxShadow: 'var(--shadow-large)',
+                    border: '1px solid var(--borderColor-muted, var(--color-border-muted))',
+                    backgroundColor: 'var(--overlay-bgColor, var(--color-canvas-overlay))',
                     borderRadius: '12px',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
                   }}
                 >
                   <SearchResults results={results} getItemProps={getItemProps} highlightedIndex={highlightedIndex} />
-                </Box>
+                </div>
               </ThemeProvider>
-            </Box>
+            </div>
           ) : null}
-        </Box>
+        </div>
       )}
     </Downshift>
   )

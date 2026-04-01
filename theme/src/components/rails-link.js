@@ -1,4 +1,4 @@
-import {Link, Text, Box} from '@primer/react'
+import {Link, Text} from '@primer/react'
 import {RubyIcon} from '@primer/octicons-react'
 import React from 'react'
 
@@ -6,10 +6,10 @@ function SourceLink({href}) {
   return (
     <li>
       <Link href={href} target="_blank">
-        <Box sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
+        <span style={{display: 'flex', gap: 8, alignItems: 'center'}}>
           <RubyIcon />
           <Text>Rails</Text>
-        </Box>
+        </span>
       </Link>
     </li>
   )

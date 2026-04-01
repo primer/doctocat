@@ -1,4 +1,4 @@
-import {BaseStyles, Box} from '@primer/react'
+import {BaseStyles} from '@primer/react'
 import Frame from './frame'
 import React from 'react'
 
@@ -8,7 +8,7 @@ function LivePreviewWrapper({children}) {
   return (
     <Frame>
       <BaseStyles>
-        <Box sx={{p: 3}}>{children}</Box>
+        <div style={{padding: 16}}>{children}</div>
       </BaseStyles>
     </Frame>
   )

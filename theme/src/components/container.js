@@ -1,8 +1,9 @@
-import {Box} from '@primer/react'
 import React from 'react'
 
 function Container({children}) {
-  return <Box sx={{width: '100%', maxWidth: 960, p: 5, mx: 'auto'}}>{children}</Box>
+  return (
+    <div style={{width: '100%', maxWidth: 960, padding: 32, marginLeft: 'auto', marginRight: 'auto'}}>{children}</div>
+  )
 }
 
 export default Container

@@ -1,4 +1,3 @@
-import {Box, Text} from '@primer/react'
 import htmlReactParser from 'html-react-parser'
 import githubTheme from '../github'
 import React, {useState} from 'react'
@@ -80,27 +79,26 @@ function LiveCode({code, language, highlight, noinline, metastring}) {
   }
 
   return (
-    <Box sx={{flexDirection: 'column', mb: 3, display: 'flex'}}>
+    <div style={{flexDirection: 'column', marginBottom: 16, display: 'flex'}}>
       <LiveProvider
         scope={getResolvedScope(metastring)}
         code={liveCode}
         transformCode={languageTransformers[language]}
         noInline={noinline}
       >
-        <Box
-          sx={{
-            border: '1px solid',
-            borderColor: 'border.default',
-            borderTopRightRadius: 2,
-            borderTopLeftRadius: 2,
+        <div
+          style={{
+            border: '1px solid var(--borderColor-default, var(--color-border-default))',
+            borderTopRightRadius: 6,
+            borderTopLeftRadius: 6,
             display: 'flex',
           }}
         >
           <LivePreviewWrapper>
             <LivePreview />
           </LivePreviewWrapper>
-        </Box>
-        <Box sx={{position: 'relative'}}>
+        </div>
+        <div style={{position: 'relative'}}>
           <LineHighlighter range={parseHighlightRange(highlight)} enabled={pristine}>
             <LiveEditor
               onChange={handleChange}
@@ -118,16 +116,22 @@ function LiveCode({code, language, highlight, noinline, metastring}) {
               }}
             />
           </LineHighlighter>
-          <Box sx={{top: 0, right: 0, p: 2, position: 'absolute'}}>
+          <div style={{top: 0, right: 0, padding: 8, position: 'absolute'}}>
             <ClipboardCopy value={liveCode} />
-          </Box>
-        </Box>
-        <Text
-          as={LiveError}
-          sx={{m: 0, p: 3, fontFamily: 'mono', fontSize: 1, color: 'fg.onEmphasis', bg: 'danger.emphasis'}}
+          </div>
+        </div>
+        <LiveError
+          style={{
+            margin: 0,
+            padding: 16,
+            fontFamily: 'monospace',
+            fontSize: '14px',
+            color: 'var(--fgColor-onEmphasis, var(--color-fg-on-emphasis))',
+            backgroundColor: 'var(--bgColor-danger-emphasis, var(--color-danger-emphasis))',
+          }}
         />
       </LiveProvider>
-    </Box>
+    </div>
   )
 }
 

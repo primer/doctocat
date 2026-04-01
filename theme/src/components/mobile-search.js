@@ -1,4 +1,4 @@
-import {Box, Button} from '@primer/react'
+import {Button} from '@primer/react'
 import {SearchIcon, XIcon} from '@primer/octicons-react'
 import Downshift from 'downshift'
 import {AnimatePresence, motion} from 'framer-motion'
@@ -38,19 +38,18 @@ function MobileSearch({isOpen, onDismiss}) {
     <AnimatePresence>
       {isOpen ? (
         <FocusOn returnFocus={true} onEscapeKey={() => handleDismiss()}>
-          <Box sx={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, position: 'fixed'}}>
-            <Box
-              as={motion.div}
+          <div style={{top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, position: 'fixed'}}>
+            <motion.div
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
               onClick={handleDismiss}
-              sx={{
+              style={{
                 top: 0,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                bg: 'primer.canvas.backdrop',
+                backgroundColor: 'rgba(0,0,0,0.5)',
                 zIndex: -1,
                 position: 'absolute',
               }}
@@ -69,14 +68,19 @@ function MobileSearch({isOpen, onDismiss}) {
               stateReducer={stateReducer}
             >
               {({getInputProps, getItemProps, getMenuProps, getRootProps, isOpen: isMenuOpen, highlightedIndex}) => (
-                <Box
-                  {...getRootProps({
-                    flexDirection: 'column',
-                    height: isMenuOpen ? '100%' : 'auto',
-                  })}
-                  sx={{display: 'flex'}}
+                <div
+                  {...getRootProps()}
+                  style={{display: 'flex', flexDirection: 'column', height: isMenuOpen ? '100%' : 'auto'}}
                 >
-                  <Box sx={{bg: 'canvas.default', color: 'fg.default', p: 3, flex: '0 0 auto', display: 'flex'}}>
+                  <div
+                    style={{
+                      backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
+                      color: 'var(--fgColor-default, var(--color-fg-default))',
+                      padding: 16,
+                      flex: '0 0 auto',
+                      display: 'flex',
+                    }}
+                  >
                     <motion.div
                       initial={{scaleX: 0.1}}
                       animate={{scaleX: 1}}
@@ -88,40 +92,41 @@ function MobileSearch({isOpen, onDismiss}) {
                         leadingVisual={SearchIcon}
                         {...getInputProps({
                           placeholder: `Search`,
-                          sx: {width: '100%'},
+                          style: {width: '100%'},
                         })}
                       />
                     </motion.div>
-                    <Button aria-label="Cancel" onClick={handleDismiss} sx={{ml: 3}}>
+                    <Button aria-label="Cancel" onClick={handleDismiss} style={{marginLeft: 16}}>
                       <XIcon />
                     </Button>
-                  </Box>
+                  </div>
                   {isMenuOpen ? (
-                    <Box
-                      {...getMenuProps({
+                    <div
+                      {...getMenuProps()}
+                      style={{
                         display: 'flex',
-                        bg: 'canvas.default',
-                        py: 1,
-                        px: 2,
+                        backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
+                        paddingTop: 4,
+                        paddingBottom: 4,
+                        paddingLeft: 8,
+                        paddingRight: 8,
                         flexDirection: 'column',
                         flex: '1 1 auto',
-                        style: {
-                          overflow: 'auto',
-                          WebkitOverflowScrolling: 'touch',
-                        },
-                      })}
+                        overflow: 'auto',
+                        WebkitOverflowScrolling: 'touch',
+                      }}
                     >
                       <SearchResults
                         results={results}
                         getItemProps={getItemProps}
                         highlightedIndex={highlightedIndex}
                       />
-                    </Box>
+                    </div>
                   ) : null}
-                </Box>
+                </div>
               )}
             </Downshift>
-          </Box>
+          </div>
         </FocusOn>
       ) : null}
     </AnimatePresence>

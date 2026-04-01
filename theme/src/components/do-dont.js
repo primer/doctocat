@@ -1,11 +1,18 @@
-import {Box, Text} from '@primer/react'
 import React from 'react'
 
 export function DoDontContainer({stacked, children}) {
   return (
-    <Box sx={{display: 'grid', gridTemplateColumns: ['1fr', null, stacked ? '1fr' : '1fr 1fr'], gridGap: 4, mb: 4}}>
+    <div
+      style={{
+        display: 'grid',
+        // Use desktop column layout; responsive single-column must be handled via CSS
+        gridTemplateColumns: stacked ? '1fr' : '1fr 1fr',
+        gridGap: 24,
+        marginBottom: 24,
+      }}
+    >
       {children}
-    </Box>
+    </div>
   )
 }
 
@@ -14,49 +21,72 @@ DoDontContainer.defaultProps = {
 }
 
 export function Do(props) {
-  return <DoDontBase {...props} title="Do" bg="success.fg" borderColor="success.muted" />
+  return (
+    <DoDontBase
+      {...props}
+      title="Do"
+      bg="var(--fgColor-success, var(--color-success-fg))"
+      borderColor="var(--borderColor-success-muted, var(--color-success-muted))"
+    />
+  )
 }
 
 export function Dont(props) {
-  return <DoDontBase {...props} title="Don’t" bg="danger.fg" borderColor="danger.muted" />
+  return (
+    <DoDontBase
+      {...props}
+      title="Don't"
+      bg="var(--fgColor-danger, var(--color-danger-fg))"
+      borderColor="var(--borderColor-danger-muted, var(--color-danger-muted))"
+    />
+  )
 }
 
 function DoDontBase({children, title, bg, borderColor, indented}) {
   return (
-    <Box sx={{display: 'flex', flexDirection: 'column'}}>
-      <Box
-        sx={{
+    <div style={{display: 'flex', flexDirection: 'column'}}>
+      <div
+        style={{
           display: 'flex',
           alignSelf: 'start',
           flexDirection: 'row',
           alignItems: 'center',
-          mb: '2',
+          marginBottom: 8,
           backgroundColor: bg,
-          borderRadius: '2',
-          color: 'fg.onEmphasis',
-          paddingX: '2',
+          borderRadius: 6,
+          color: 'var(--fgColor-onEmphasis, var(--color-fg-on-emphasis))',
+          paddingLeft: 8,
+          paddingRight: 8,
         }}
       >
-        <Text sx={{fontWeight: 'bold', fontSize: '1', color: 'fg.onEmphasis'}}>{title}</Text>
-      </Box>
-      <Box sx={{'& *:last-child': {mb: 0}, img: {maxWidth: '100%'}, display: 'flex', flexDirection: 'column'}}>
+        <span
+          style={{
+            fontWeight: 'bold',
+            fontSize: 14,
+            color: 'var(--fgColor-onEmphasis, var(--color-fg-on-emphasis))',
+          }}
+        >
+          {title}
+        </span>
+      </div>
+      {/* Note: nested CSS selectors (& *:last-child, img) cannot be expressed as inline styles */}
+      <div style={{display: 'flex', flexDirection: 'column'}}>
         {indented ? (
-          <Box
-            as="blockquote"
-            sx={{
-              margin: '0',
-              borderLeftWidth: '4px',
+          <blockquote
+            style={{
+              margin: 0,
+              borderLeftWidth: 4,
               borderLeftStyle: 'solid',
               borderLeftColor: borderColor,
-              paddingLeft: '3',
+              paddingLeft: 16,
             }}
           >
             {children}
-          </Box>
+          </blockquote>
         ) : (
           children
         )}
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }

@@ -1,4 +1,3 @@
-import {Box, Text} from '@primer/react'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 import React from 'react'
 import githubTheme from '../github'
@@ -17,8 +16,8 @@ function Code({className, children, live, highlight, noinline, metastring}) {
   }
 
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         // Make <pre> adjust to the width of the container
         // https://stackoverflow.com/a/14406386
         display: 'table',
@@ -27,28 +26,34 @@ function Code({className, children, live, highlight, noinline, metastring}) {
         position: 'relative',
       }}
     >
-      <Box sx={{top: 0, right: 0, p: 2, position: 'absolute'}}>
+      <div style={{top: 0, right: 0, padding: 8, position: 'absolute'}}>
         <ClipboardCopy value={code} />
-      </Box>
+      </div>
       <Highlight {...defaultProps} Prism={Prism} code={code} language={language} theme={githubTheme}>
         {({className, style, tokens, getLineProps, getTokenProps}) => (
-          <Box
-            as="pre"
+          <pre
             className={className}
-            style={{...style, overflow: 'auto'}}
-            sx={{borderRadius: 2, mt: 0, mb: 3, p: 3, border: 0}}
+            style={{
+              ...style,
+              overflow: 'auto',
+              borderRadius: 6,
+              marginTop: 0,
+              marginBottom: 16,
+              padding: 16,
+              border: 0,
+            }}
           >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({line, key: i})}>
                 {line.map((token, key) => (
-                  <Text key={key} {...getTokenProps({token, key})} sx={{fontFamily: 'mono', fontSize: 1}} />
+                  <span key={key} {...getTokenProps({token, key})} style={{fontFamily: 'monospace', fontSize: 14}} />
                 ))}
               </div>
             ))}
-          </Box>
+          </pre>
         )}
       </Highlight>
-    </Box>
+    </div>
   )
 }
 

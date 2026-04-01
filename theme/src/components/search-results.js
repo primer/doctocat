@@ -1,4 +1,3 @@
-import {Box, Text} from '@primer/react'
 import React from 'react'
 import {sentenceCase} from 'change-case'
 import useSiteMetadata from '../use-site-metadata'
@@ -7,29 +6,45 @@ function SearchResults({results, getItemProps, highlightedIndex}) {
   const siteMetadata = useSiteMetadata()
 
   if (results.length === 0) {
-    return <Box sx={{p: 3, fontSize: 1, color: 'fg.muted', width: '100%'}}>No results</Box>
+    return (
+      <div
+        style={{
+          padding: 16,
+          fontSize: 14,
+          color: 'var(--fgColor-muted, var(--color-fg-muted))',
+          width: '100%',
+        }}
+      >
+        No results
+      </div>
+    )
   }
 
   return results.map((item, index) => (
-    <Box
+    <div
       key={item.path}
-      {...getItemProps({
-        item,
+      {...getItemProps({item, index})}
+      style={{
+        display: 'flex',
         flexDirection: 'column',
         flex: '0 0 auto',
-        px: 2,
-        py: 2,
-        color: 'fg.default',
-        fontSize: 1,
-        bg: highlightedIndex === index ? 'neutral.muted' : 'transparent',
-        style: {cursor: 'pointer'},
-        borderRadius: 2,
-      })}
-      sx={{display: 'flex'}}
+        paddingLeft: 8,
+        paddingRight: 8,
+        paddingTop: 8,
+        paddingBottom: 8,
+        color: 'var(--fgColor-default, var(--color-fg-default))',
+        fontSize: 14,
+        backgroundColor:
+          highlightedIndex === index ? 'var(--bgColor-neutral-muted, var(--color-neutral-muted))' : 'transparent',
+        cursor: 'pointer',
+        borderRadius: 6,
+      }}
     >
-      <Text sx={{fontSize: 0, color: 'fg.muted'}}>{getBreadcrumbs(siteMetadata.shortName, item.path).join(' / ')}</Text>
+      <span style={{fontSize: 12, color: 'var(--fgColor-muted, var(--color-fg-muted))'}}>
+        {getBreadcrumbs(siteMetadata.shortName, item.path).join(' / ')}
+      </span>
       {item.title}
-    </Box>
+    </div>
   ))
 }
 

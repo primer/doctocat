@@ -1,4 +1,3 @@
-import {Box} from '@primer/react'
 import React from 'react'
 import navItems from '../nav.yml'
 import {HEADER_HEIGHT} from './header'
@@ -32,32 +31,33 @@ function Sidebar() {
   const scrollContainerProps = usePersistentScroll('sidebar')
 
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         position: 'sticky',
         top: HEADER_HEIGHT,
         height: `calc(100vh - ${HEADER_HEIGHT}px)`,
         width: 260,
       }}
     >
-      <Box
+      <div
         {...scrollContainerProps}
-        style={{overflow: 'auto'}}
-        sx={{
+        style={{
+          overflow: 'auto',
           borderWidth: 0,
-          borderRightWidth: 1,
+          borderRightWidth: '1px',
           borderRadius: 0,
           height: '100%',
           borderStyle: 'solid',
-          borderColor: 'border.subtle',
-          px: 2,
+          borderColor: 'var(--borderColor-subtle, var(--color-border-subtle))',
+          paddingLeft: 8,
+          paddingRight: 8,
         }}
       >
-        <Box sx={{flexDirection: 'column', display: 'flex'}}>
+        <div style={{flexDirection: 'column', display: 'flex'}}>
           <NavItems items={navItems} />
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   )
 }
 

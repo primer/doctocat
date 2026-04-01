@@ -1,4 +1,4 @@
-import {Heading, Link, Octicon} from '@primer/react'
+import {Heading, Link} from '@primer/react'
 import {LinkIcon} from '@primer/octicons-react'
 import themeGet from '@styled-system/theme-get'
 import GithubSlugger from 'github-slugger'
@@ -25,6 +25,14 @@ const StyledHeading = styled(Heading)`
   }
 `
 
+const StyledLink = styled(Link)`
+  color: inherit;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+`
+
 function MarkdownHeading({children, ...props}) {
   const slugger = new GithubSlugger()
   const text = children ? textContent(children) : ''
@@ -32,27 +40,17 @@ function MarkdownHeading({children, ...props}) {
 
   return (
     <StyledHeading id={id} {...props}>
-      <Link
-        href={`#${id}`}
-        sx={{
-          color: 'inherit',
-          '&:hover, &:focus': {
-            textDecoration: 'none',
-          },
-        }}
-      >
+      <StyledLink href={`#${id}`}>
         {children}
-        <Octicon
-          icon={LinkIcon}
+        <LinkIcon
           className="octicon-link"
-          sx={{
-            ml: 2,
-            color: 'fg.muted',
-            // !important is needed here to override default icon styles
-            verticalAlign: 'middle !important',
+          style={{
+            marginLeft: 8,
+            color: 'var(--fgColor-muted, var(--color-fg-muted))',
+            verticalAlign: 'middle',
           }}
         />
-      </Link>
+      </StyledLink>
     </StyledHeading>
   )
 }

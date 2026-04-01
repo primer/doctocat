@@ -1,5 +1,5 @@
 import {MarkGithubIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
-import {Box, Button, Link, Octicon, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
+import {Button, Link, Text, ThemeProvider, useTheme, UnderlineNav} from '@primer/react'
 import VisuallyHidden from './visually-hidden'
 import {Link as GatsbyLink} from 'gatsby'
 import React from 'react'
@@ -22,45 +22,40 @@ function Header({isSearchEnabled, path}) {
 
   return (
     <ThemeProvider>
-      <Box sx={{position: 'sticky', top: 0, zIndex: 1}}>
-        <Box
-          as="header"
-          sx={{
+      <div style={{position: 'sticky', top: 0, zIndex: 1}}>
+        <header
+          style={{
             display: 'flex',
             height: HEADER_HEIGHT,
-            px: [3, null, null, 4],
+            // className="header-px": add CSS for px:3 (12px) on mobile
+            paddingLeft: 24,
+            paddingRight: 24,
             alignItems: 'center',
             justifyContent: 'space-between',
-            bg: 'canvas.default',
-            border: '1px solid',
-            borderColor: 'border.muted',
+            backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
+            border: '1px solid var(--borderColor-muted, var(--color-border-muted))',
           }}
         >
           <SkipLink />
-          <Box sx={{display: 'flex', alignItems: 'center'}}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
             <Link
               href={siteMetadata.header.logoUrl}
-              sx={{
-                color: 'fg.default',
-                mr: 3,
-                lineHeight: 'condensedUltra',
+              style={{
+                color: 'var(--fgColor-default, var(--color-fg-default))',
+                marginRight: 16,
+                lineHeight: 1,
               }}
             >
-              <Octicon icon={MarkGithubIcon} size="24px" />
+              <MarkGithubIcon size={24} />
             </Link>
             {siteMetadata.header.title ? (
               <Link
                 href={siteMetadata.header.url}
-                sx={{
-                  color: 'fg.default',
+                style={{
+                  color: 'var(--fgColor-default, var(--color-fg-default))',
                   fontWeight: 'bold',
-                  display: [
-                    // We only hide "Primer" on small viewports if a shortName is defined.
-                    siteMetadata.shortName ? 'none' : 'inline-block',
-                    null,
-                    null,
-                    'inline-block',
-                  ],
+                  // className="header-title": add CSS for display:none on mobile when shortName is set
+                  display: 'inline-block',
                 }}
               >
                 {siteMetadata.header.title}
@@ -70,10 +65,12 @@ function Header({isSearchEnabled, path}) {
               <>
                 {siteMetadata.header.title && (
                   <Text
-                    sx={{
-                      display: ['none', null, null, 'inline-block'],
-                      color: 'fg.default',
-                      mx: 2,
+                    style={{
+                      // className="header-separator": add CSS for display:none on mobile
+                      display: 'inline-block',
+                      color: 'var(--fgColor-default, var(--color-fg-default))',
+                      marginLeft: 8,
+                      marginRight: 8,
                     }}
                   >
                     /
@@ -82,35 +79,36 @@ function Header({isSearchEnabled, path}) {
                 <Link
                   as={GatsbyLink}
                   to="/"
-                  sx={{
+                  style={{
                     fontWeight: 'bold',
-                    color: 'fg.default',
+                    color: 'var(--fgColor-default, var(--color-fg-default))',
                   }}
                 >
                   {siteMetadata.shortName}
                 </Link>
               </>
             ) : null}
-          </Box>
-          <Box>
-            <Box sx={{display: ['none', null, null, 'flex'], alignItems: 'center'}}>
+          </div>
+          <div>
+            {/* className="desktop-nav": add CSS for display:none on mobile */}
+            <div className="desktop-nav" style={{display: 'flex', alignItems: 'center'}}>
               <PrimerNavItems path={path} siteMetadata={siteMetadata} pathPrefix={pathPrefix} items={primerNavItems} />
               {isSearchEnabled ? (
-                <Box sx={{display: ['none', null, null, 'block'], ml: 3}}>
+                // className="desktop-search": add CSS for display:none on mobile
+                <div className="desktop-search" style={{display: 'block', marginLeft: 16}}>
                   <Search />
-                </Box>
+                </div>
               ) : null}
-            </Box>
-            <Box sx={{display: ['flex', null, null, 'none']}}>
+            </div>
+            {/* className="mobile-controls": add CSS for display:flex on mobile */}
+            <div className="mobile-controls" style={{display: 'none'}}>
               {isSearchEnabled ? (
                 <>
                   <Button
                     aria-label="Search"
                     aria-expanded={isMobileSearchOpen}
                     onClick={() => setIsMobileSearchOpen(true)}
-                    sx={{
-                      ml: 3,
-                    }}
+                    style={{marginLeft: 16}}
                   >
                     <SearchIcon />
                   </Button>
@@ -121,17 +119,15 @@ function Header({isSearchEnabled, path}) {
                 aria-label="Menu"
                 aria-expanded={isNavDrawerOpen}
                 onClick={() => setIsNavDrawerOpen(true)}
-                sx={{
-                  ml: 3,
-                }}
+                style={{marginLeft: 16}}
               >
                 <ThreeBarsIcon />
               </Button>
               <NavDrawer isOpen={isNavDrawerOpen} onDismiss={() => setIsNavDrawerOpen(false)} />
-            </Box>
-          </Box>
-        </Box>
-      </Box>
+            </div>
+          </div>
+        </header>
+      </div>
     </ThemeProvider>
   )
 }
@@ -146,14 +142,14 @@ function PrimerNavItems({siteMetadata, items, path, pathPrefix}) {
       <VisuallyHidden>
         <h3 aria-labelledby="site-header">{siteMetadata.header.title} </h3>
       </VisuallyHidden>
-      <UnderlineNav aria-label="Main navigation" sx={{border: 'none'}}>
+      <UnderlineNav aria-label="Main navigation" style={{border: 'none'}}>
         {items.map((item, index) => {
           return (
             <UnderlineNav.Item
               key={index}
               href={item.url}
               selected={item.url === siteMetadata.header.url + (pathPrefix || '') + (path || '')}
-              sx={{fontSize: 2, lineHeight: 'condensed'}}
+              style={{fontSize: 16, lineHeight: '1.25'}}
             >
               {item.title}
             </UnderlineNav.Item>

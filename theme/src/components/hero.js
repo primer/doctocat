@@ -1,4 +1,4 @@
-import {Box, Heading, Text, ThemeProvider} from '@primer/react'
+import {Heading, Text, ThemeProvider} from '@primer/react'
 import React from 'react'
 import useSiteMetadata from '../use-site-metadata'
 import Container from './container'
@@ -8,16 +8,22 @@ function Hero() {
 
   return (
     <ThemeProvider colorMode="night" nightScheme="dark_dimmed">
-      <Box sx={{bg: 'canvas.default', py: 6}}>
+      <div
+        style={{
+          backgroundColor: 'var(--bgColor-default, var(--color-canvas-default))',
+          paddingTop: 40,
+          paddingBottom: 40,
+        }}
+      >
         <Container>
-          <Heading as="h1" sx={{color: 'accent.fg', fontSize: 7, m: 0}}>
+          <Heading as="h1" style={{color: 'var(--fgColor-accent, var(--color-accent-fg))', fontSize: 48, margin: 0}}>
             {title}
           </Heading>
-          <Text as="p" sx={{m: 0, color: 'fg.default', fontSize: 4}}>
+          <Text as="p" style={{margin: 0, color: 'var(--fgColor-default, var(--color-fg-default))', fontSize: 24}}>
             {description}
           </Text>
         </Container>
-      </Box>
+      </div>
     </ThemeProvider>
   )
 }

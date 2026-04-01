@@ -1,4 +1,4 @@
-import {Label, Octicon} from '@primer/react'
+import {Label} from '@primer/react'
 import {AccessibilityInsetIcon} from '@primer/octicons-react'
 import React from 'react'
 
@@ -8,23 +8,23 @@ function AccessibilityLabel({a11yReviewed, short}) {
       {a11yReviewed ? (
         <Label
           size="large"
-          sx={{
+          style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 2,
-            backgroundColor: 'done.subtle',
+            gap: 8,
+            backgroundColor: 'var(--bgColor-done-subtle, var(--color-done-subtle))',
             fontWeight: 'normal',
             borderColor: 'transparent',
           }}
         >
-          <Octicon icon={AccessibilityInsetIcon} sx={{fill: 'done.fg'}} />
+          <AccessibilityInsetIcon style={{fill: 'var(--fgColor-done, var(--color-done-fg))'}} />
           {short ? 'Reviewed' : 'Reviewed for accessibility'}
         </Label>
       ) : (
         <Label
           size="large"
-          sx={{
-            backgroundColor: 'neutral.subtle',
+          style={{
+            backgroundColor: 'var(--bgColor-neutral-subtle, var(--color-neutral-subtle))',
             fontWeight: 'normal',
             borderColor: 'transparent',
           }}
