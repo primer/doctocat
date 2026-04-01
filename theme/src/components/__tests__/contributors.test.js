@@ -1,4 +1,4 @@
-import {render} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import React from 'react'
 import Contributors from '../contributors'
 
@@ -26,7 +26,7 @@ test('renders contributors', () => {
   debug()
   expect(queryByText(/2 contributors/)).toBeInTheDocument()
   expect(queryByText(/Last edited by/)).toBeInTheDocument()
-  expect(queryByText(/colebemis/)).toBeInTheDocument()
+  expect(screen.getAllByText(/colebemis/).length).toBeGreaterThan(0)
   expect(queryByText(/August 15, 2019/)).toBeInTheDocument()
 })
 
