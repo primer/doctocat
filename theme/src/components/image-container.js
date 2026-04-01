@@ -10,7 +10,9 @@ function ImageContainer({children}) {
         borderRadius: 6,
       }}
     >
-      <div style={{justifyContent: 'center', display: 'flex'}}>{children}</div>
+      <div className="image-container" style={{justifyContent: 'center', display: 'flex'}}>
+        {children}
+      </div>
     </div>
   )
 }

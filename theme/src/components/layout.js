@@ -75,8 +75,7 @@ function Layout({children, pageContext, path}) {
       <Head title={title} description={description} />
       <Header path={path} />
       <div style={{flex: '1 1 auto', flexDirection: 'row', display: 'flex', zIndex: 0}}>
-        {/* className="sidebar-wrapper": add CSS for display:none on mobile (display:block on desktop) */}
-        <div className="sidebar-wrapper" style={{display: 'block'}}>
+        <div className="sidebar-wrapper">
           <Sidebar />
         </div>
         <div
@@ -94,12 +93,11 @@ function Layout({children, pageContext, path}) {
         >
           {pageContext.tableOfContents.items ? (
             <div
+              className="toc-sidebar"
               style={{
                 width: 220,
                 flex: '0 0 auto',
-                // className="toc-sidebar": add CSS for responsive marginLeft and display:none on mobile
                 marginLeft: 80,
-                display: 'block',
                 position: 'sticky',
                 top: HEADER_HEIGHT + 48,
                 maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 48px)`,
@@ -190,11 +188,9 @@ function Layout({children, pageContext, path}) {
               ) : null}
             </main>
             {pageContext.tableOfContents.items ? (
-              // className="mobile-toc": add CSS for display:block on mobile (display:none on desktop)
               <div
                 className="mobile-toc"
                 style={{
-                  display: 'none',
                   marginBottom: 32,
                   border: '1px solid var(--borderColor-muted, var(--color-border-muted))',
                   backgroundColor: 'var(--bgColor-muted, var(--color-canvas-subtle))',

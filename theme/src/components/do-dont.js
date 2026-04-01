@@ -69,8 +69,8 @@ function DoDontBase({children, title, bg, borderColor, indented}) {
           {title}
         </span>
       </div>
-      {/* Note: nested CSS selectors (& *:last-child, img) cannot be expressed as inline styles */}
-      <div style={{display: 'flex', flexDirection: 'column'}}>
+      {/* Global CSS handles img max-width and last-child margin via .do-dont-content */}
+      <div className="do-dont-content" style={{display: 'flex', flexDirection: 'column'}}>
         {indented ? (
           <blockquote
             style={{

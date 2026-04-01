@@ -54,7 +54,6 @@ function Header({isSearchEnabled, path}) {
                 style={{
                   color: 'var(--fgColor-default, var(--color-fg-default))',
                   fontWeight: 'bold',
-                  // className="header-title": add CSS for display:none on mobile when shortName is set
                   display: 'inline-block',
                 }}
               >
@@ -66,7 +65,6 @@ function Header({isSearchEnabled, path}) {
                 {siteMetadata.header.title && (
                   <Text
                     style={{
-                      // className="header-separator": add CSS for display:none on mobile
                       display: 'inline-block',
                       color: 'var(--fgColor-default, var(--color-fg-default))',
                       marginLeft: 8,
@@ -90,18 +88,15 @@ function Header({isSearchEnabled, path}) {
             ) : null}
           </div>
           <div>
-            {/* className="desktop-nav": add CSS for display:none on mobile */}
-            <div className="desktop-nav" style={{display: 'flex', alignItems: 'center'}}>
+            <div className="desktop-nav" style={{alignItems: 'center'}}>
               <PrimerNavItems path={path} siteMetadata={siteMetadata} pathPrefix={pathPrefix} items={primerNavItems} />
               {isSearchEnabled ? (
-                // className="desktop-search": add CSS for display:none on mobile
-                <div className="desktop-search" style={{display: 'block', marginLeft: 16}}>
+                <div className="desktop-search" style={{marginLeft: 16}}>
                   <Search />
                 </div>
               ) : null}
             </div>
-            {/* className="mobile-controls": add CSS for display:flex on mobile */}
-            <div className="mobile-controls" style={{display: 'none'}}>
+            <div className="mobile-controls">
               {isSearchEnabled ? (
                 <>
                   <Button

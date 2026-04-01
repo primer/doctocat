@@ -18,8 +18,7 @@ function HeroLayout({children, pageContext}) {
       <Head />
       <Header />
       <div style={{flex: '1 1 auto', flexDirection: 'row', display: 'flex'}}>
-        {/* className="sidebar-wrapper": add CSS for display:none on mobile (display:block on desktop) */}
-        <div className="sidebar-wrapper" style={{display: 'block'}}>
+        <div className="sidebar-wrapper">
           <Sidebar />
         </div>
         <main id="skip-nav" style={{width: '100%'}}>
