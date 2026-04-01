@@ -125,7 +125,7 @@ function LiveCode({code, language, highlight, noinline, metastring}) {
             margin: 0,
             padding: 16,
             fontFamily: 'monospace',
-            fontSize: '14px',
+            fontSize: 14,
             color: 'var(--fgColor-onEmphasis, var(--color-fg-on-emphasis))',
             backgroundColor: 'var(--bgColor-danger-emphasis, var(--color-danger-emphasis))',
           }}

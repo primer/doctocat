@@ -31,7 +31,7 @@ function Contributors({contributors}) {
       </div>
 
       {latestContributor.latestCommit ? (
-        <Text style={{fontSize: '12px', color: 'var(--fgColor-muted, var(--color-fg-muted))', marginTop: 4}}>
+        <Text style={{fontSize: 12, color: 'var(--fgColor-muted, var(--color-fg-muted))', marginTop: 4}}>
           Last edited by <Link href={`https://github.com/${latestContributor.login}`}>{latestContributor.login}</Link>{' '}
           on{' '}
           <Link href={latestContributor.latestCommit.url}>
