@@ -87,7 +87,6 @@ function Layout({children, pageContext, path}) {
             marginLeft: 'auto',
             marginRight: 'auto',
             width: '100%',
-            // className="layout-padding": add CSS for responsive padding (24px mobile → 48px desktop)
             padding: 48,
           }}
         >
