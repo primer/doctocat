@@ -20,7 +20,6 @@
     "react/prop-types": "off",
     "react/display-name": "off",
     "eslint-comments/no-use": "off",
-    "no-shadow": "off",
-    "primer-react/no-system-props": ["warn", {"includeUtilityComponents": true}]
+    "no-shadow": "off"
   }
 }
