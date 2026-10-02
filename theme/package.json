@@ -88,7 +88,7 @@
     "react-live": "^2.1.2",
     "react-measure": "^2.5.2",
     "read-pkg-up": "^6.0.0",
-    "styled-components": "^6.5.3",
+    "styled-components": "^5.3.11",
     "styled-system": "^5.0.18",
     "worker-loader": "^3.0.2"
   }
